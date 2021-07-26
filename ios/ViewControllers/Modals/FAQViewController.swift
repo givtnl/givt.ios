@@ -62,7 +62,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         stack.addArrangedSubview(spacer)
         spacer.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,7 +86,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         spacer.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         stack.addArrangedSubview(spacer)
         spacer.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-
+        
         addSpacer()
         
         for view in stack.arrangedSubviews {
@@ -94,75 +94,75 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         }
         
         
-            let GB:Bool = (AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE")
-                if (GB) {
-                    addQuestion(q: "FAQVraagDDI", a: "FAQAntwoordDDI")
-                }
-                addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
-                
-                // GIVING
-                addQuestion(q: "FAQHowDoesGivingWork", a: "AnswerHowDoesGivingWork")
-                addQuestion(q: "FAQQuestion14", a: "FAQAnswer14")
-                addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
-                addQuestion(q: "FAQHowDoesManualGivingWork", a: "AnswerHowDoesManualGivingWork")
-                addQuestion(q: "KerkdienstGemistQuestion", a: "KerkdienstGemistAnswer")
-                addQuestion(q: "FAQVraag16", a: "FAQAntwoord16") // annuleren van giften
-                if (GB) {
-                    addQuestion(q: "FAQvraag5", a: "FAQantwoord5GB")
-                }
-                else {
-                    addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
-                }
-                if (GB) {
-                    addQuestion(q: "FAQQuestion12", a: "FAQAnswer12GB")
-                }
-                else {
-                    addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
-                }
-                addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
-                if (GB) {
-                    addQuestion(q: "FAQvraag15GB", a: "FAQantwoord15GB")
-                }
-                else {
-                    addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
-                }
-            
-                // ACCOUNT
-                if (GB) {
-                    addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWorkGB")
-                }
-                else {
-                    addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
-                }
-                addQuestion(q: "FAQQuestion11", a: "FAQAnswer11")
-                addQuestion(q: "FaqVraag10", a: "FaqAntwoord10")
-                addQuestion(q: "FAQvraag3", a: "FAQantwoord3")
-                addQuestion(q: "FAQvraag8", a: "FAQantwoord8")
-                
-                // GIVT
-                addQuestion(q: "FAQvraag1", a: "FAQantwoord1")
-                addQuestion(q: "FAQvraag2", a: "FAQantwoord2")
-                addQuestion(q: "FAQvraag4", a: "FAQantwoord4")
-                addQuestion(q: "FAQvraag6", a: "FAQantwoord6")
-                if (GB) {
-                    addQuestion(q: "FAQvraag7", a: "FAQantwoord7GB")
-                }
-                else {
-                    addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
-                }
-                addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
-                addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
-                if (GB) {
-                    addQuestion(q: "FAQvraag18", a: "FAQantwoord18GB")
-                    addQuestion(q: "TermsTitle", a: "TermsTextGB")
-                    addQuestion(q: "PrivacyTitle", a: "PolicyTextGB")
-                }
-                else {
-                    addQuestion(q: "FAQvraag18", a: "FAQAntwoord18")
-                    addQuestion(q: "TermsTitle", a: "TermsText")
-                    addQuestion(q: "PrivacyTitle", a: "PolicyText")
-                }
-
+        let GB:Bool = AppServices.isCountryFromSimGB() || UserDefaults.standard.accountType == .bacs
+        if (GB) {
+            addQuestion(q: "FAQVraagDDI", a: "FAQAntwoordDDI")
+        }
+        addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
+        
+        // GIVING
+        addQuestion(q: "FAQHowDoesGivingWork", a: "AnswerHowDoesGivingWork")
+        addQuestion(q: "FAQQuestion14", a: "FAQAnswer14")
+        addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
+        addQuestion(q: "FAQHowDoesManualGivingWork", a: "AnswerHowDoesManualGivingWork")
+        addQuestion(q: "KerkdienstGemistQuestion", a: "KerkdienstGemistAnswer")
+        addQuestion(q: "FAQVraag16", a: "FAQAntwoord16") // annuleren van giften
+        if (GB) {
+            addQuestion(q: "FAQvraag5", a: "FAQantwoord5GB")
+        }
+        else {
+            addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
+        }
+        if (GB) {
+            addQuestion(q: "FAQQuestion12", a: "FAQAnswer12GB")
+        }
+        else {
+            addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
+        }
+        addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
+        if (GB) {
+            addQuestion(q: "FAQvraag15GB", a: "FAQantwoord15GB")
+        }
+        else {
+            addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
+        }
+        
+        // ACCOUNT
+        if (GB) {
+            addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWorkGB")
+        }
+        else {
+            addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
+        }
+        addQuestion(q: "FAQQuestion11", a: "FAQAnswer11")
+        addQuestion(q: "FaqVraag10", a: "FaqAntwoord10")
+        addQuestion(q: "FAQvraag3", a: "FAQantwoord3")
+        addQuestion(q: "FAQvraag8", a: "FAQantwoord8")
+        
+        // GIVT
+        addQuestion(q: "FAQvraag1", a: "FAQantwoord1")
+        addQuestion(q: "FAQvraag2", a: "FAQantwoord2")
+        addQuestion(q: "FAQvraag4", a: "FAQantwoord4")
+        addQuestion(q: "FAQvraag6", a: "FAQantwoord6")
+        if (GB) {
+            addQuestion(q: "FAQvraag7", a: "FAQantwoord7GB")
+        }
+        else {
+            addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
+        }
+        addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
+        addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
+        if (GB) {
+            addQuestion(q: "FAQvraag18", a: "FAQantwoord18GB")
+            addQuestion(q: "TermsTitle", a: "TermsTextGB")
+            addQuestion(q: "PrivacyTitle", a: "PolicyTextGB")
+        }
+        else {
+            addQuestion(q: "FAQvraag18", a: "FAQAntwoord18")
+            addQuestion(q: "TermsTitle", a: "TermsText")
+            addQuestion(q: "PrivacyTitle", a: "PolicyText")
+        }
+        
         addSpacer()
     }
     
@@ -173,18 +173,18 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
-
+    
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 protocol OpenedQuestionDelegate: class {

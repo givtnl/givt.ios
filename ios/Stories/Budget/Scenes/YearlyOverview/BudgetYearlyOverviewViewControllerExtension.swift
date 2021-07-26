@@ -9,6 +9,15 @@
 import Foundation
 import SVProgressHUD
 import UIKit
+extension MonthlySummaryKey {
+    func toDate() -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = self.Year
+        dateComponents.month = self.Month
+        return Calendar.current.date(from: dateComponents)!
+    }
+}
+
 
 extension BudgetYearlyOverviewViewController {
     func setupTerms() {
@@ -18,20 +27,28 @@ extension BudgetYearlyOverviewViewController {
         labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
         labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
         downloadButton.setTitle("BudgetYearlyOverviewDownloadButton".localized, for: .normal)
+        monthlyBarsHeader.label.text = "BudgetSummaryMonth".localized
+        givtLegendLabel.text = "BudgetYearlyOverviewDetailThroughGivt".localized
+        notGivtLegendLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
+        organisationGivtCardHeader.label.text = "BudgetYearlyOverviewPerOrganisation".localized
+        organisationGivt.text = "BudgetSummaryGivt".localized
+        organisationNotGivt.text = "BudgetSummaryNotGivt".localized
     }
+
     func reloadData() {
         let fromDate = getStartDateForYear(year: year)
         let tillDate = getEndDateForYear(year: year)
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             self.givtModels = givtModels
-            
             try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
                 self.previousYearGivtModels = givtModelsPreviousYear
             }
             
             DispatchQueue.main.async {
                 self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                self.loadGivtModels(givtModels)
+
             }
             
 
@@ -46,6 +63,7 @@ extension BudgetYearlyOverviewViewController {
                     let givtAmountTax = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                     let notGivtAmountTax = notGivtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                     self.amountTax.text = (givtAmountTax + notGivtAmountTax).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.loadNotGivtModels(notGivtModels)
                 }
                 
                 

@@ -21,10 +21,7 @@ class RegNavigationController: UINavigationController {
     var isRegistration = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
-        self.setLogo()
+
         if startPoint == .permission {
             let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
             vc.hasBackButton = true

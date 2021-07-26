@@ -26,7 +26,7 @@ private extension BudgetOverviewViewController {
         } else {
             NavigationManager.shared.executeWithLogin(context: self, completion: {
                 let collections: [AnyObject] = [self.collectGroupsForCurrentMonth as Any, self.notGivtModelsForCurrentMonth as Any, self.fromMonth as Any] as [AnyObject]
-                self.showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget", collections: collections)
+                self.showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget", collections: collections) {}
             })
         }
     }

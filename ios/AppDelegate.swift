@@ -16,7 +16,7 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate, NotificationOpenSummaryDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate, NotificationOpenSummaryDelegate, NotificationOpenYearlySummaryDelegate {
     
     var window: UIWindow?
     var logService: LogService = LogService.shared
@@ -66,16 +66,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         doMagicForPresets()
         
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
+        mixpanel.useIPAddressForGeoLocation = false
+        mixpanel.people.unset(properties: ["$country_code", "$region", "$city", "$email"])
         
         if #available(iOS 10.0, *) {
-            setupNotifications()
+            setupMonthlyOverviewNotification()
+            setupYearlyOverviewNotifications()
         }
         
         return true
     }
     
     @available(iOS 10.0, *)
-    func setupNotifications() {
+    func setupMonthlyOverviewNotification() {
         var dateComponents: DateComponents?
         #if PRODUCTION
         dateComponents = DateComponents(
@@ -93,20 +96,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
         let localNotificationManager = LocalNotificationManager.shared
         
-        localNotificationManager.notifications = [
+        var notifications = localNotificationManager.notifications
+        
+        notifications.append(
             LocalNotification(
-                id: "TestOne",
+                id: "MonthlyOverview",
                 title: "BudgetPushMonthlyBold".localized,
                 subTitle: "BudgetPushMonthly".localized,
                 dateTime: dateComponents!,
                 userInfo: ["Type" : NotificationType.OpenSummaryNotification.rawValue],
                 shouldRepeat: true
-            )
-        ]
+            ))
+        
+        localNotificationManager.notifications = notifications
+        
         if !UserDefaults.standard.isTempUser {
             localNotificationManager.schedule()
         }
     }
+    
+    @available(iOS 10.0, *)
+    func setupYearlyOverviewNotifications() {
+
+        let localNotificationManager = LocalNotificationManager.shared
+        
+        var notifications = localNotificationManager.notifications
+        let now = Date()
+        
+        #if DEBUG
+        notifications.append(
+            LocalNotification(
+                id: "TestYearly",
+                title: "BudgetPushYearlyNearlyEndBold".localized.replacingOccurrences(of: "{0}", with: String(now.getYear())),
+                subTitle: "BudgetPushYearlyNearlyEnd".localized,
+                dateTime: DateComponents(calendar: Calendar.current, month: now.getMonth(), day: now.getDay(), hour: now.getHour(), minute: now.getMinutes() + 1),
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
+                shouldRepeat: true))
+        #endif
+        notifications.append(
+            LocalNotification(
+                id: "YearlyOverviewEnd",
+                title: "BudgetPushYearlyNearlyEndBold".localized.replacingOccurrences(of: "{0}", with: String(now.getYear())),
+                subTitle: "BudgetPushYearlyNearlyEnd".localized,
+                dateTime: DateComponents(calendar: Calendar.current, month: 12, day: 10, hour: 19, minute: 47),
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
+                shouldRepeat: true))
+        notifications.append(
+            LocalNotification(
+                id: "YearlyOverviewBegin",
+                title: "BudgetPushYearlyFinalBold".localized,
+                subTitle: "BudgetPushYearlyFinal".localized,
+                dateTime: DateComponents(calendar: Calendar.current, month: 1, day: 1, hour: 19, minute: 48),
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
+                shouldRepeat: true))
+        notifications.append(
+            LocalNotification(
+                id: "YearlyOverviewTax",
+                title: "BudgetPushYearlyNewYearBold".localized,
+                subTitle: "BudgetPushYearlyNewYear".localized,
+                dateTime: DateComponents(calendar: Calendar.current, month: 3, day: 2, hour: 19, minute: 49),
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
+                shouldRepeat: true))
+        localNotificationManager.notifications = notifications
+        if !UserDefaults.standard.isTempUser {
+            localNotificationManager.schedule()
+        }
+    }
+    
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
@@ -159,6 +215,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: Date()), withContext: mainViewController) { }
         }
     }
+    
+    func onReceiveOpenYearlySummaryNotification() {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let mainViewController = window.rootViewController?.children
+                    .first(where: { (child) -> Bool in child is MainNavigationController })?.children
+                    .first(where: { (child) -> Bool in child is MainViewController }) else { return }
+            
+            if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
+                prentedViewcontroller.dismiss(animated: true, completion: nil)
+            }
+            
+            if !AppServices.shared.isServerReachable {
+                try? Mediater.shared.send(request: NoInternetAlert(), withContext: mainViewController)
+            } else {
+                // TODO => Build the stack nicely so we can go back in the navigation stack
+                NavigationManager.shared.executeWithLogin(context: mainViewController) {
+                    try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: Date(), openYearlyOverview: true), withContext: mainViewController) { }
+                }
+            }
+        }
+    }
+    
     func doMagicForPresets() {
         if(UserDefaults.standard.object(forKey: UserDefaults.UserDefaultsKeys.presetsSet.rawValue) == nil){
             UserDefaults.standard.hasPresetsSet = UserDefaults.standard.userExt?.guid != nil

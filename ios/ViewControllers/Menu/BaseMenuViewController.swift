@@ -24,13 +24,11 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navItem.titleView = UIImageView(image: UIImage(named: "givt20h"))
+        let givtLogo = UIImage(named: "givt20h")
+        let imageView = UIImageView(image: givtLogo?.imageWithInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)))
         
-        /* some how we're not able to set the table first cel right below the navigation bar
-         * there is a hidden table header somewhere.
-         * I haven't found where to change this so, we change the contentinset to -30 */
-        table.tableHeaderView = nil
-        table.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
+        imageView.contentMode = .scaleAspectFit
+        table.tableHeaderView = imageView
         table.dataSource = self
         table.delegate = self
         

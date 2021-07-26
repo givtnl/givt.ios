@@ -11,6 +11,8 @@ import SVProgressHUD
 import UIKit
 
 class BudgetListViewController: BaseTrackingViewController, OverlayViewController {
+    var completion: (() -> Void)?
+    
     override var screenName: String  { return "PersonalSummary" }
 
     var overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9, height: 300.0)

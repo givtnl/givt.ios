@@ -12,11 +12,12 @@ import UIKit
 // inherit from this protocol on the viewcontroller that needs to look like an overlay
 protocol OverlayViewController: AnyObject {
     var overlaySize: CGSize? { get }
+    var completion: (() -> Void)? { get set}
     func presentOverlay(from parentViewController: UIViewController)
     func dismissOverlay()
 }
 
-extension OverlayViewController where Self: UIViewController {
+extension OverlayViewController where Self: UIViewController {    
     var overlaySize: CGSize? {
         return nil
     }
@@ -96,6 +97,9 @@ extension OverlayViewController where Self: UIViewController {
             self.removeFromParent()
             containerView.removeFromSuperview()
             blackOverlayView?.removeFromSuperview()
+        }
+        if let completionHandler = completion {
+            completionHandler()
         }
     }
 

@@ -105,6 +105,7 @@ class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, De
     var amountOutsideLabel: CGRect? = nil
     
     var fromMonth: Date!
+    var shouldShowYearlyOverview: Bool = false
     
     @IBOutlet weak var monthSelectorButtonLeft: UIButton!
     @IBOutlet weak var monthSelectorLabel: UILabel!
@@ -120,6 +121,7 @@ class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, De
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         deltaDelegate = self
+        
         if needsReload {
             if !SVProgressHUD.isVisible() {
                 SVProgressHUD.show()
@@ -181,6 +183,14 @@ class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, De
             
             SVProgressHUD.dismiss()
             hideView(mainView, false)
+            
+            if shouldShowYearlyOverview {
+                SVProgressHUD.show()
+                // What year should we show?
+                let year = Date().getMonth() == 12 ? Date().getYear() - 1 : Date().getYear()
+                try? Mediater.shared.sendAsync(request: OpenYearlyOverviewRoute(year: year), withContext: self, completion: { _ in})
+                shouldShowYearlyOverview = false
+            }
         }
     }
 }

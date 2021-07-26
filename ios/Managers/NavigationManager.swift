@@ -131,7 +131,7 @@ class NavigationManager {
         if let savedVersion = UserDefaults.standard.termsVersion {
             thisVersion = savedVersion
         } else {
-            thisVersion = (AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE")  ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
+            thisVersion = AppServices.isCountryFromSimGB() ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
             UserDefaults.standard.termsVersion = thisVersion
         }
         DispatchQueue.main.async {
@@ -142,7 +142,7 @@ class NavigationManager {
                 let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
                 vc.setViewControllers([welcome], animated: false)
             } else {
-                let onlineVersion = (AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE") ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
+                let onlineVersion = AppServices.isCountryFromSimGB() ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
                 if thisVersion != onlineVersion {
                     let termsUpdateVC = UIStoryboard(name: "UpdatedTermsPage", bundle: nil).instantiateInitialViewController() as! UpdatedTermsPageViewController
                     vc.setViewControllers([termsUpdateVC], animated: false)

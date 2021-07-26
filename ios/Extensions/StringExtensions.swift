@@ -125,6 +125,15 @@ extension String{
         return formatter.date(from: from) 
     }
     
+    func toDateWithFormat(format: String) -> Date? {
+        let from = self.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter.date(from: from)
+    }
+    
     static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""

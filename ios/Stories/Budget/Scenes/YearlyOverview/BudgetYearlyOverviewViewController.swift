@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SVProgressHUD
 
-class BudgetYearlyOverviewViewController: BaseTrackingViewController {
+class BudgetYearlyOverviewViewController: BaseTrackingViewController, OverlayHost {
     override var screenName: String { return "YearlySummary" }
 
     @IBOutlet weak var mainView: UIView!
@@ -61,6 +61,22 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
     @IBOutlet weak var givingGoalPerYearBigStackItem: BackgroundShadowView!
     @IBOutlet weak var givingGoalFinishedStackItem: BackgroundShadowView!
     
+    @IBOutlet weak var monthlyBarsHeader: CardViewHeader!
+    @IBOutlet weak var monthlyBarsStackView: UIStackView!
+    @IBOutlet weak var monthlyBarsStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var givtLegendLabel: UILabel!
+    @IBOutlet weak var notGivtLegendLabel: UILabel!
+    
+    @IBOutlet weak var organisationGivtCardHeader: CardViewHeader!
+    @IBOutlet weak var organisationGivt: UILabel!
+    @IBOutlet weak var organisationGivtStackView: UIStackView!
+    @IBOutlet weak var organisationGivtStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var organisationNotGivt: UILabel!
+    @IBOutlet weak var organisationNotGivtStackView: UIStackView!
+    @IBOutlet weak var organisationNotGivtStackViewHeight: NSLayoutConstraint!
+    
+    
+    
     var currentIndex: Int? = nil
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +100,26 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
         
         if needsReload {
             reloadData()
+            
+            let viewWidth: CGFloat = view.frame.width - CGFloat(80.00)
+            
+            getDataForMonthBars() { bars in
+                DispatchQueue.main.async {
+                    self.monthlyBarsStackView.arrangedSubviews.forEach { view in
+                        view.removeFromSuperview()
+                        self.monthlyBarsStackViewHeight.constant -= 25
+                    }
+                    bars.forEach { bar in
+                        bar.highestAmount = bars.highestBarValue
+                        bar.maxBarWidth = viewWidth
+                    }
+                    self.loadMonthBars(monthBars: bars.sorted(by: { first, second in
+                        first.date! < second.date!
+                    }))
+                }
+            }
         }
+        
+        setupTestimonial()
     }
 }

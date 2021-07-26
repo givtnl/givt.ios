@@ -30,7 +30,8 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         textView.placeholder = NSLocalizedString("TypeMessage", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         giveFeedback.text = NSLocalizedString("FeedbackTitle", comment: "")
-        if let country = AppServices.getCountryFromSim(), (country == "GB" || country == "GG" || country == "JE") {
+        
+        if AppServices.isCountryFromSimGB() || UserDefaults.standard.accountType == .bacs {
             titleText.text = NSLocalizedString("InformationAboutUsGB", comment: "")
         } else {
             titleText.text = NSLocalizedString("InformationAboutUs", comment: "")
