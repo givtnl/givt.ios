@@ -36,14 +36,14 @@ class TestimonialViewController: UIViewController {
     }
     
     @IBAction func closeOverlay(_ sender: Any) {
-        (parent as! TestimonialCarouselViewController).dismissOverlay()
+        (parent as! OverlayViewController).dismissOverlay()
     }
     
     @IBAction func actionButton(_ sender: Any) {
-        (parent as! TestimonialCarouselViewController).dismissOverlay()
+        (parent as! OverlayViewController).dismissOverlay()
         switch content?.id {
         case 1:
-            (parent as! TestimonialCarouselViewController).dismissOverlay()
+            (parent as! OverlayViewController).dismissOverlay()
         case 2:
             if !AppServices.shared.isServerReachable {
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
@@ -63,8 +63,10 @@ class TestimonialViewController: UIViewController {
                     try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)                    
                 }
             }
+        case 4:
+            print("So we dont instantiate the next VC twice")
         default:
-            (parent as! TestimonialCarouselViewController).dismissOverlay()
+            (parent as! OverlayViewController).dismissOverlay()
         }
     }
     

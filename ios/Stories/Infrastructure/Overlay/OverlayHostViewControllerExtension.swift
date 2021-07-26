@@ -11,19 +11,21 @@ import UIKit
 
 // if you want to implement the overlay on a controller, inherit the OverlayHost on that controller
 protocol OverlayHost {
-    func showOverlay<T: OverlayViewController>(type: T.Type, fromStoryboardWithName storyboardName: String, collections: [AnyObject]?) -> T?
-    func showOverlay<T: OverlayViewController>(identifier: String, fromStoryboardWithName storyboardName: String, collections: [AnyObject]?) -> T?
+    func showOverlay<T: OverlayViewController>(type: T.Type, fromStoryboardWithName storyboardName: String, collections: [AnyObject]?, completion: @escaping OverlayHostCompletion) -> T?
+    func showOverlay<T: OverlayViewController>(identifier: String, fromStoryboardWithName storyboardName: String, collections: [AnyObject]?, completion: @escaping OverlayHostCompletion) -> T?
 }
+
+typealias OverlayHostCompletion =  () -> Void
 
 extension OverlayHost where Self: UIViewController {
     @discardableResult
-    func showOverlay<T: OverlayViewController>(type: T.Type, fromStoryboardWithName storyboardName: String, collections: [AnyObject]? = nil) -> T? {
+    func showOverlay<T: OverlayViewController>(type: T.Type, fromStoryboardWithName storyboardName: String, collections: [AnyObject]? = nil, completion: @escaping OverlayHostCompletion) -> T? {
         let identifier = String(describing: T.self)
-        return showOverlay(identifier: identifier, fromStoryboardWithName: storyboardName, collections: collections)
+        return showOverlay(identifier: identifier, fromStoryboardWithName: storyboardName, collections: collections, completion: completion)
     }
 
     @discardableResult
-    func showOverlay<T: OverlayViewController>(identifier: String, fromStoryboardWithName storyboardName: String, collections: [AnyObject]? = nil) -> T? {
+    func showOverlay<T: OverlayViewController>(identifier: String, fromStoryboardWithName storyboardName: String, collections: [AnyObject]? = nil, completion: @escaping OverlayHostCompletion) -> T? {
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         guard let overlay = storyboard.instantiateViewController(withIdentifier: identifier) as? T else { return nil }
         if overlay is BudgetListViewController {
@@ -39,6 +41,7 @@ extension OverlayHost where Self: UIViewController {
                 }
             }
         }
+        overlay.completion = completion
         overlay.presentOverlay(from: self)
         return overlay
     }

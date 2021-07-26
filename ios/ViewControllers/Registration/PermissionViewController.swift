@@ -15,6 +15,9 @@ class PermissionViewController: UIViewController {
     var hasBackButton: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
+
         btnNext.setTitle(NSLocalizedString("PrepareIUnderstand", comment: ""), for: .normal)
         btnNext.accessibilityLabel = NSLocalizedString("PrepareIUnderstand", comment: "")
         titleLabel.text = NSLocalizedString("PrepareMobileTitle", comment: "")

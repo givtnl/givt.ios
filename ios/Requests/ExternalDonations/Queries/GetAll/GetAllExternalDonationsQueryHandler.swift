@@ -14,7 +14,7 @@ class GetAllExternalDonationsQueryHandler: RequestHandlerProtocol {
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         var query = request as! GetAllExternalDonationsQuery
         client.get(url: "/external-donations?fromDate=\(query.fromDate)&tillDate=\(query.tillDate)", data: [:]) { (response) in
-            var responseModel: ExternalDonationGetAllResultModel? = nil
+            var responseModel: ExternalDonationGetAllResultModel = ExternalDonationGetAllResultModel(result: [])
             
             if let response = response, response.isSuccess {
                 if let body = response.text {

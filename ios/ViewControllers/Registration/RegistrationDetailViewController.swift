@@ -47,6 +47,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
+
         MSAnalytics.trackEvent("User entered 2nd step of registration")
         Mixpanel.mainInstance().track(event: "User entered 2nd step of registration")
 

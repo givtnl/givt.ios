@@ -19,6 +19,8 @@ class OpenSummaryRouteHandler: RequestHandlerWithContextProtocol {
         vc?.transitioningDelegate = self.slideFromRightAnimation
         
         ((vc as! BudgetNavigationController).viewControllers[0] as! BudgetOverviewViewController).fromMonth = (request as! OpenSummaryRoute).fromDate
+        ((vc as! BudgetNavigationController).viewControllers[0] as! BudgetOverviewViewController).shouldShowYearlyOverview = (request as! OpenSummaryRoute).openYearlyOverview
+        
         
         DispatchQueue.main.async {
             NavigationManager.shared.pushWithLogin(vc!, context: context)

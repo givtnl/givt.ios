@@ -48,6 +48,7 @@ extension UserDefaults {
         case giftAidSettings
         case toHighlightMenuList
         case testimonialsByUserId
+        case hasSeenYearlyTestimonial
     }
     
     enum Showcase: String {
@@ -509,7 +510,31 @@ extension UserDefaults {
             synchronize()
         }
     }
-    
+    var hasSeenYearlyTestimonial: Bool {
+        get {
+            if let data = data(forKey: UserDefaultsKeys.hasSeenYearlyTestimonial.rawValue) {
+                if let hasSeenByGuid = try? JSONDecoder().decode([String: Bool].self, from: data) {
+                    if let userExt = userExt {
+                        return hasSeenByGuid[userExt.guid] ?? false
+                    }
+                }
+            }
+            return false
+        }
+        set(value) {
+            var hasSeenByGuid: [String: Bool] = [:]
+            if let data = data(forKey: UserDefaultsKeys.hasSeenYearlyTestimonial.rawValue) {
+                if let dict = try? JSONDecoder().decode([String: Bool].self, from: data) {
+                    hasSeenByGuid = dict
+                }
+            }
+            if let userExt = userExt {
+                hasSeenByGuid[userExt.guid] = value
+                set(try? JSONEncoder().encode(hasSeenByGuid), forKey: UserDefaultsKeys.hasSeenYearlyTestimonial.rawValue)
+            }
+            synchronize()
+        }
+    }
     var lastShownTestimonial: TestimonialSetting? {
         get {
             if let data = data(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) {

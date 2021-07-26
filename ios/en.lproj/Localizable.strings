@@ -1081,7 +1081,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetGivingGoalRemove" = "Remove giving goal";
 
 /*Fuzzy*/
-"BudgetSummaryNoGifts" = "You have no donations yet this month";
+"BudgetSummaryNoGifts" = "You have no donations (yet) this month";
 "BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.\"";
 "BudgetTestimonialGivingGoal" = "”My giving goal motivates me to regularly reflect on my giving behaviour.”";
 "BudgetTestimonialExternalGifts" = "\"I like that I can add any external donations to my summary. I can now simply keep track of my giving.\"";
@@ -1127,14 +1127,14 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetYearlyOverviewGivenTotalTax" = "Total tax relief";
-"BudgetYearlyOverviewDetailThroughGivt" = "Through Givt";
+"BudgetYearlyOverviewDetailThroughGivt" = "Within Givt";
 "BudgetYearlyOverviewDetailAmount" = "Amount";
 "BudgetYearlyOverviewDetailDeductable" = "Tax relief";
 "BudgetYearlyOverviewDetailTotal" = "Total";
 "BudgetYearlyOverviewDetailTotalDeductable" = "Total tax relief";
-"BudgetYearlyOverviewDetailNotThroughGivt" = "Not through Givt";
-"BudgetYearlyOverviewDetailTotalThroughGivt" = "(through Givt)";
-"BudgetYearlyOverviewDetailTotalNotThroughGivt" = "(not through Givt)";
+"BudgetYearlyOverviewDetailNotThroughGivt" = "Outside Givt";
+"BudgetYearlyOverviewDetailTotalThroughGivt" = "(within Givt)";
+"BudgetYearlyOverviewDetailTotalNotThroughGivt" = "(outside Givt)";
 "BudgetYearlyOverviewDetailTipBold" = "TIP: add your external donations";
 "BudgetYearlyOverviewDetailTipNormal" = "to get a total overview of what you give, both via the Givt app and not via the Givt app.";
 "BudgetYearlyOverviewDetailReceiveViaMail" = "Receive by email";
@@ -1146,3 +1146,12 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewGivenIn" = "Given in";
 "BudgetYearlyOverviewRelativeTo" = "Relative to the total in";
 "BudgetYearlyOverviewVersus" = "Versus";
+"BudgetYearlyOverviewPerOrganisation" = "Per organisation";
+"BudgetSummaryNoGiftsYearlyOverview" = "You have no donations (yet) this year";
+"BudgetPushYearlyNearlyEndBold" = "{0} is almost over... Have you made up your balance yet?";
+"BudgetPushYearlyNearlyEnd" = "View your annual overview and see what you have given so far.";
+"BudgetPushYearlyNewYearBold" = "Have you made up your balance yet?";
+"BudgetPushYearlyNewYear" = "View your annual overview and see what you have given in the past year.";
+"BudgetPushYearlyFinalBold" = "Your annual overview is now ready!";
+"BudgetPushYearlyFinal" = "View your annual overview and see what you have given in the past year.";
+"BudgetTestimonialYearlyOverviewAction" = "Go to the overview";
