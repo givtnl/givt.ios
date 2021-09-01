@@ -139,15 +139,22 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
                     }
                     
                     if hasError {
-                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(
+                            title: "RequestFailed".localized,
+                            message: "RequestMandateFailed".localized,
+                            preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                             NavigationManager.shared.loadMainPage()
                             self.dismiss(animated: true, completion: {})
                         }))
                         if (r.statusCode == 400) {
-                            alert.title = NSLocalizedString("RequestFailed", comment: "")
-                            alert.message = NSLocalizedString("MandateFailPersonalInformation", comment: "")
+                            alert.title = "RequestFailed".localized
+                            alert.message = "MandateFailPersonalInformation".localized
+                        } else if (r.statusCode == 409) {
+                            alert.title = "RequestFailed".localized
+                            alert.message = "DuplicateAccountOrganisationMessage".localized
                         }
+                        
                         DispatchQueue.main.async {
                             self.present(alert, animated: true, completion: {})
                         }
