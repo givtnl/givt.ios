@@ -1085,10 +1085,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewVersus" = "Versus";
 "BudgetYearlyOverviewPerOrganisation" = "pro Organisation";
 "BudgetSummaryNoGiftsYearlyOverview" = "Du hast diesen Jahr (noch) keine Spenden getätigt";
-"BudgetPushYearlyNearlyEndBold" = "{0} is almost over... Have you made up your balance yet?";
-"BudgetPushYearlyNearlyEnd" = "View your annual overview and see what you have given so far.";
-"BudgetPushYearlyNewYearBold" = "Have you made up your balance yet?";
-"BudgetPushYearlyNewYear" = "View your annual overview and see what you have given in the past year.";
-"BudgetPushYearlyFinalBold" = "Your annual overview is now ready!";
-"BudgetPushYearlyFinal" = "View your annual overview and see what you have given in the past year.";
+"BudgetPushYearlyNearlyEndBold" = "{0} ist fast vorbei... Hast du dein Guthaben schon ausgeglichen?";
+"BudgetPushYearlyNearlyEnd" = "Sieh dir deine Jahresübersicht an und schau, was du bisher gegeben hast.";
+"BudgetPushYearlyNewYearBold" = "Hast du dein Guthaben schon ausgeglichen?";
+"BudgetPushYearlyNewYear" = "Sieh dir deine Jahresübersicht an und schau, was du im letzten Jahr gegeben hast.";
+"BudgetPushYearlyFinalBold" = "Deine Jahresübersicht ist jetzt fertig!";
+"BudgetPushYearlyFinal" = "Sieh dir deine Jahresübersicht an und schau, was du im letzten Jahr gegeben hast.";
 "BudgetTestimonialYearlyOverviewAction" = "Zur Übersicht";
+"DuplicateAccountOrganisationMessage" = "Are you sure you are using your own bank details?";
