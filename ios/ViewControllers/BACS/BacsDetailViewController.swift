@@ -77,7 +77,10 @@ class BacsDetailViewController: UIViewController {
                                 NavigationManager.shared.loadMainPage(animated: false)
                             }
                         }))
-                        if let data = r.data {
+                        if (r.statusCode == 409) {
+                            alert.title = "RequestFailed".localized
+                            alert.message = "DuplicateAccountOrganisationMessage".localized
+                        } else if let data = r.data {
                             do {
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                                 if let additionalInformation = parsedData["AdditionalInformation"] as? Dictionary<String, Any>,
