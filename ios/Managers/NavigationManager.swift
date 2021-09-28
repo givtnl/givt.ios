@@ -274,7 +274,7 @@ class NavigationManager {
                 }
                 DispatchQueue.main.async {
                     context.present(pinVC, animated: true, completion: {
-                        context.hideLeftView(context)
+                        context.sideMenuController?.hideLeftView(sender: context)
                     })
                 }
             } else {
@@ -283,7 +283,7 @@ class NavigationManager {
                 loginVC.emailEditable = emailEditable
                 DispatchQueue.main.async {
                     context.present(loginVC, animated: true, completion: {
-                        context.hideLeftView(context)
+                        context.sideMenuController?.hideLeftView(sender: context)
                     })
                 }
             }

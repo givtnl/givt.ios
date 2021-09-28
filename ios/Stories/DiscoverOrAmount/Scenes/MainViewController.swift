@@ -91,4 +91,8 @@ extension MainViewController: NavigationManagerDelegate, UIPageViewControllerDel
             self._cameFromFAQ = false
         }
     }
+    
+    @IBAction func toggleLeftViewAnimated(sender: Any?) {
+        self.sideMenuController?.toggleLeftViewAnimated(sender: sender)
+    }
 }

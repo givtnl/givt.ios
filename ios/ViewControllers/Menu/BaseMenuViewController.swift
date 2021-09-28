@@ -16,10 +16,8 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var items = [[Setting]]()
     
-    func hideMenuAnimated(completion: @escaping LGSideMenuCompletionHandler) {
-        if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
-            menuCtrl.hideLeftView(animated: true, completionHandler: completion)
-        }
+    func hideMenuAnimated(completion: @escaping LGSideMenuController.Completion) {
+        self.sideMenuController?.hideLeftView(animated: true, completion: completion)
     }
     
     override func viewDidLoad() {
