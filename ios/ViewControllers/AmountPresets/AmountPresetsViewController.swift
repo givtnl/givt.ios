@@ -34,9 +34,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         LogService.shared.info(message: "Saving custom preset amounts")
         MSAnalytics.trackEvent("PRESET_CHANGE")
         Mixpanel.mainInstance().track(event: "PRESET_CHANGE")
-        if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
-            menuCtrl.hideLeftView()
-        }
+        self.sideMenuController?.hideLeftView(sender: self)
         self.backPressed(self)
         NotificationCenter.default.post(name: .GivtDidSavePresets, object: nil)
 

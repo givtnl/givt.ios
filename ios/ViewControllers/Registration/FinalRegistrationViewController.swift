@@ -47,7 +47,7 @@ class FinalRegistrationViewController: UIViewController {
     @IBAction func exit(_ sender: Any) {
         APIClient.shared.head(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)") { response in
             DispatchQueue.main.async {
-                self.hideLeftView(nil)
+                self.sideMenuController?.hideLeftView(sender: self)
                 self.dismiss(animated: true, completion: nil)
                 if let resp = response {
                     if let header = resp.headers.first(where: { (key, value) in
