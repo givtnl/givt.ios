@@ -1035,7 +1035,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "DiscoverOrAmountActionSheetRecurring" = "Terugkerende gift";
 
 /*Fuzzy*/
-"ReccurringGivtIsBeingProcessed" = "Bedankt voor je terugkerende gift aan {0}! \nOm alle informatie hierover te zien, ga naar 'Terugkerende giften' in het menu.";
+"ReccurringGivtIsBeingProcessed" = "Bedankt voor je terugkerende gift aan {0}! \nOm alle informatie hierover te zien, ga je naar 'Terugkerende giften' in het menu.";
 "SetupRecurringGiftText_placeholderDate" = "dd / mm / jj";
 "SetupRecurringGiftText_placeholderTimes" = "x";
 "AmountLimitExceededRecurringDonation" = "Hé gulle gever, dit bedrag is hoger dan je geeflimiet. Wil je toch doorgaan of wil je je gift aanpassen?";
