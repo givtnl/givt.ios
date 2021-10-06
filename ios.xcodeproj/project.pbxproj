@@ -192,6 +192,8 @@
 		32D488AC266A418C00B166B4 /* BackgroundTotalsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D488AB266A418C00B166B4 /* BackgroundTotalsView.xib */; };
 		32D488AE266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */; };
 		32D488B0266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */; };
+		32D9B7E8270DD47700EA83D2 /* GivtCodeShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */; platformFilter = ios; };
+		32D9B7E9270DD47800EA83D2 /* GivtCodeShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */; };
 		32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */; };
 		32DDFB3225F7618400E25AF2 /* OverlayViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */; };
@@ -504,6 +506,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				32D9B7E9270DD47800EA83D2 /* GivtCodeShare.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,6 +711,7 @@
 		32D488AB266A418C00B166B4 /* BackgroundTotalsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundTotalsView.xib; sourceTree = "<group>"; };
 		32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerExtension.swift; sourceTree = "<group>"; };
+		32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GivtCodeShare.framework; path = "givt.apps.shared/GivtCodeShare/build/xcode-frameworks/GivtCodeShare.framework"; sourceTree = "<group>"; };
 		32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
 		32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -1032,6 +1036,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */,
+				32D9B7E8270DD47700EA83D2 /* GivtCodeShare.framework in Frameworks */,
 				320280BC25E0582F006A68CE /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2673,6 +2678,7 @@
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */,
 				320CF46E25DEAB85009D3C5C /* Charts.framework */,
 				D782F2E71F7D37A400348D7A /* NetworkExtension.framework */,
 				FB19533B1F56DDEC00172CD3 /* Fabric.framework */,
@@ -3148,6 +3154,7 @@
 			buildConfigurationList = FB3CE6E91F14CA200055185B /* Build configuration list for PBXNativeTarget "ios" */;
 			buildPhases = (
 				18302013F794B31C0E20167F /* [CP] Check Pods Manifest.lock */,
+				32D9B7E6270DAE1C00EA83D2 /* ShellScript */,
 				FB3CE6CF1F14CA200055185B /* Sources */,
 				FB3CE6D01F14CA200055185B /* Frameworks */,
 				FB3CE6D11F14CA200055185B /* Resources */,
@@ -3351,6 +3358,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		32D9B7E6270DAE1C00EA83D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/givt.apps.shared/\"\n./gradlew :GivtCodeShare:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
 		};
 		B31A8402412C0DD81B9F1453 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4022,11 +4046,75 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MaterialShowcase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PhoneNumberKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftClient\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppCenter\"",
+					"-framework",
+					"\"AppCenterAnalytics\"",
+					"-framework",
+					"\"AppCenterCrashes\"",
+					"-framework",
+					"\"AppCenterPush\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"LGSideMenuController\"",
+					"-framework",
+					"\"MaterialShowcase\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"PhoneNumberKit\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftClient\"",
+					"-framework",
+					"\"SwipeCellKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TrustKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4161,11 +4249,75 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MaterialShowcase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PhoneNumberKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftClient\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppCenter\"",
+					"-framework",
+					"\"AppCenterAnalytics\"",
+					"-framework",
+					"\"AppCenterCrashes\"",
+					"-framework",
+					"\"AppCenterPush\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"LGSideMenuController\"",
+					"-framework",
+					"\"MaterialShowcase\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"PhoneNumberKit\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftClient\"",
+					"-framework",
+					"\"SwipeCellKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TrustKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4190,11 +4342,75 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MaterialShowcase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PhoneNumberKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftClient\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppCenter\"",
+					"-framework",
+					"\"AppCenterAnalytics\"",
+					"-framework",
+					"\"AppCenterCrashes\"",
+					"-framework",
+					"\"AppCenterPush\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"LGSideMenuController\"",
+					"-framework",
+					"\"MaterialShowcase\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"PhoneNumberKit\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftClient\"",
+					"-framework",
+					"\"SwipeCellKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TrustKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
