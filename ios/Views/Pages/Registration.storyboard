@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -429,7 +429,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwX-sd-sq7">
-                                                        <rect key="frame" x="0.0" y="390" width="1284" height="210"/>
+                                                        <rect key="frame" x="0.0" y="390" width="856" height="210"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="210" placeholder="YES" id="wdI-EX-6F0"/>
@@ -463,17 +463,6 @@
                                                                     <action selector="showBacs:" destination="yPe-50-VR6" eventType="touchUpInside" id="Xuu-Ao-o7N"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJQ-0q-CYl">
-                                                                <rect key="frame" x="130" y="0.0" width="60" height="20"/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
-                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                                                <state key="normal" title="$">
-                                                                    <color key="titleColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="showCreditCard:" destination="yPe-50-VR6" eventType="touchUpInside" id="P0a-UM-gRe"/>
-                                                                </connections>
-                                                            </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIj-zl-oxI">
                                                                 <rect key="frame" x="0.0" y="24" width="60" height="4"/>
                                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -486,17 +475,13 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="VIj-zl-oxI" firstAttribute="leading" secondItem="60E-Mu-G3r" secondAttribute="leading" id="AVj-FL-Qhx"/>
-                                                            <constraint firstItem="NJQ-0q-CYl" firstAttribute="width" secondItem="sfT-4Q-qsE" secondAttribute="width" id="IVL-hq-K4Q"/>
                                                             <constraint firstAttribute="bottom" secondItem="VIj-zl-oxI" secondAttribute="bottom" id="Pj1-Dk-B71"/>
-                                                            <constraint firstItem="NJQ-0q-CYl" firstAttribute="leading" secondItem="sfT-4Q-qsE" secondAttribute="trailing" constant="5" id="SUh-xT-ZKA"/>
                                                             <constraint firstItem="sfT-4Q-qsE" firstAttribute="leading" secondItem="vVV-fu-dLm" secondAttribute="trailing" constant="5" id="TZP-Z7-SNr"/>
-                                                            <constraint firstAttribute="bottom" secondItem="NJQ-0q-CYl" secondAttribute="bottom" constant="8" id="cjx-ho-TmE"/>
                                                             <constraint firstItem="sfT-4Q-qsE" firstAttribute="top" secondItem="60E-Mu-G3r" secondAttribute="top" id="e9B-4l-Ck7"/>
                                                             <constraint firstItem="vVV-fu-dLm" firstAttribute="leading" secondItem="60E-Mu-G3r" secondAttribute="leading" id="gdw-Hg-U4B"/>
                                                             <constraint firstItem="vVV-fu-dLm" firstAttribute="top" secondItem="60E-Mu-G3r" secondAttribute="top" id="iaK-nV-Tok"/>
                                                             <constraint firstItem="sfT-4Q-qsE" firstAttribute="width" secondItem="vVV-fu-dLm" secondAttribute="width" id="l2U-jD-1g7"/>
                                                             <constraint firstAttribute="bottom" secondItem="vVV-fu-dLm" secondAttribute="bottom" constant="8" id="ojL-5e-T9t"/>
-                                                            <constraint firstItem="NJQ-0q-CYl" firstAttribute="top" secondItem="60E-Mu-G3r" secondAttribute="top" id="rVl-Q0-1fM"/>
                                                             <constraint firstAttribute="bottom" secondItem="sfT-4Q-qsE" secondAttribute="bottom" constant="8" id="sSp-H9-4K2"/>
                                                         </constraints>
                                                     </view>
@@ -540,7 +525,7 @@
                                             <constraint firstItem="2z2-D3-FKo" firstAttribute="width" secondItem="5IF-pR-M1g" secondAttribute="width" id="2av-hh-aMK"/>
                                             <constraint firstAttribute="trailing" secondItem="2z2-D3-FKo" secondAttribute="trailing" id="GM1-KC-mxU"/>
                                             <constraint firstAttribute="bottom" secondItem="2z2-D3-FKo" secondAttribute="bottom" id="WVG-MI-v0Q"/>
-                                            <constraint firstItem="fwX-sd-sq7" firstAttribute="width" secondItem="5IF-pR-M1g" secondAttribute="width" multiplier="3" id="ktx-aC-mqJ"/>
+                                            <constraint firstItem="fwX-sd-sq7" firstAttribute="width" secondItem="5IF-pR-M1g" secondAttribute="width" multiplier="2" id="ktx-aC-mqJ"/>
                                             <constraint firstItem="2z2-D3-FKo" firstAttribute="top" secondItem="5IF-pR-M1g" secondAttribute="top" id="u0f-2c-NpY"/>
                                         </constraints>
                                     </scrollView>
@@ -1276,20 +1261,20 @@ Veel geefplezier!</string>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="uyv-ul-jwR" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="98.333335876464844"/>
+                                                        <rect key="frame" x="0.0" y="28" width="428" height="95.666664123535156"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyv-ul-jwR" id="Cgh-Vj-uz8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="98.333335876464844"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="396.66666666666669" height="95.666664123535156"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-Ds-PNX">
-                                                                    <rect key="frame" x="20" y="15" width="378.33333333333331" height="68.333333333333329"/>
+                                                                    <rect key="frame" x="20" y="15" width="376.66666666666669" height="65.666666666666671"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33D-uJ-VuA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="68.333333333333329"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="65.666666666666671"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeW-Ug-CTu">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="68.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="65.666666666666671"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1302,10 +1287,10 @@ Veel geefplezier!</string>
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F10-xN-Ybg">
-                                                                            <rect key="frame" x="30" y="0.0" width="348.33333333333331" height="68.333333333333329"/>
+                                                                            <rect key="frame" x="30" y="0.0" width="346.66666666666669" height="65.666666666666671"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-QU-d4n">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="348.33333333333331" height="68.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="346.66666666666669" height="65.666666666666671"/>
                                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
