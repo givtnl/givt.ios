@@ -90,12 +90,13 @@ class AppServices {
     }
     
     static func getCountryFromSim() -> String? {
-        let networkInfo = CTTelephonyNetworkInfo()
-        
-        if let countryCode = networkInfo.subscriberCellularProvider?.isoCountryCode {
-            return countryCode.uppercased()
-        }
-        return nil
+//        let networkInfo = CTTelephonyNetworkInfo()
+//
+//        if let countryCode = networkInfo.subscriberCellularProvider?.isoCountryCode {
+//            return countryCode.uppercased()
+//        }
+//        return nil
+        return "US"
     }
     
     static func isCountryFromSimGB() -> Bool {

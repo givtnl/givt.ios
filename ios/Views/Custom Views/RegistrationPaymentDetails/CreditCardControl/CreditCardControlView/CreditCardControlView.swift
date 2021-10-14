@@ -53,6 +53,14 @@ class CreditCardControlView: UIView {
     }
     
     func initViewModel() {
+        viewModel.updateView = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.viewModel.setExpiryTextField?()
+                self?.viewModel.setCardNumberTextField?()
+                self?.viewModel.setCVVTextField?()
+            }
+        }
+        
         viewModel.setCardNumberTextField = { [weak self] () in
             DispatchQueue.main.async {
                 self?.creditCardNumberTextField.text = self?.viewModel.creditCardValidator.creditCard.formatted
@@ -69,7 +77,11 @@ class CreditCardControlView: UIView {
                 self?.creditCardExpirationDateTextField.text = self?.viewModel.creditCardValidator.creditCard.expiryDate.formatted
             }
         }
-        
+        viewModel.setCVVTextField = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.creditCardCVVTextField.text = self?.viewModel.creditCardValidator.creditCard.securityCode
+            }
+        }
         viewModel.validateCardNumber =  { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.creditCardValidator.cardNumberIsValid() {

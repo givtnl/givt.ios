@@ -156,10 +156,6 @@ extension String{
         return Int(self)!
     }
     
-    var toKotlinInt: Int32? {
-        return Int32(self)
-    }
-    
     func capitalizedByLanguage(_ language: String) -> String {
         if language != "nl" {
             return self.capitalized

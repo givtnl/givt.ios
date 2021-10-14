@@ -28,30 +28,29 @@ extension CreditCardControlView: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard var currentValueInField = textField.text else {
+            return true
+        }
+        if string.isEmpty() {
+            currentValueInField.removeLast()
+        }
         if let controlTag = CreditCardInputFieldType(rawValue: textField.tag) {
             switch(controlTag) {
             case CreditCardInputFieldType.number:
-                if var currentValueInField = textField.text {
-                    if string.isEmpty() {
-                        currentValueInField.removeLast()
-                    }
-                    viewModel.creditCardValidator.creditCard.number = "\(currentValueInField)\(string)"
-                    viewModel.setCreditCardCompanyLogo?()
-                    viewModel.setCardNumberTextField?()
-                }
+                viewModel.creditCardValidator.creditCard.number = "\(currentValueInField)\(string)"
+                viewModel.setCreditCardCompanyLogo?()
+                viewModel.setCardNumberTextField?()
                 break
             case CreditCardInputFieldType.expiration:
-                if var currentValueInField = textField.text {
-                    if string == String.empty {
-                        currentValueInField.removeLast()
-                    }
-                    currentValueInField = currentValueInField.replacingOccurrences(of: "/", with: "")
-                    viewModel.creditCardValidator.creditCard.expiryDate.setValue(inputString: "\(currentValueInField)\(string)")
-                    if currentValueInField.count > 2 {
-                        viewModel.setExpiryTextField?()
-                    }
+                currentValueInField = currentValueInField.replacingOccurrences(of: "/", with: "")
+                viewModel.creditCardValidator.creditCard.expiryDate.setValue(inputString: "\(currentValueInField)\(string)")
+                if currentValueInField.count > 2 {
+                    viewModel.setExpiryTextField?()
                 }
-            default:
+                break
+            case CreditCardInputFieldType.cvv:
+                viewModel.creditCardValidator.creditCard.securityCode = currentValueInField
+                viewModel.setCVVTextField?()
                 break
             }
         }
