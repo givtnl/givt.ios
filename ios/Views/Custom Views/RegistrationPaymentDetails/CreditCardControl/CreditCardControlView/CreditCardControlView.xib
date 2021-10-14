@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditCardControlView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="8N1-Ip-s1V"/>
+                <outlet property="creditCardCVVTextField" destination="LVE-FK-dDb" id="zUS-hg-a1g"/>
+                <outlet property="creditCardCompanyImageView" destination="Nuy-j6-NRX" id="HWo-WB-rqg"/>
+                <outlet property="creditCardExpirationDateTextField" destination="QXe-OJ-FmO" id="fgu-Qs-vLD"/>
+                <outlet property="creditCardNumberTextField" destination="c2g-cf-5MC" id="g0A-8c-ke7"/>
+                <outlet property="creditCardNumberView" destination="EyF-8e-Xdl" id="Egh-Zb-SjH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="651" height="246"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0W-Xk-Opi">
+                    <rect key="frame" x="0.0" y="0.0" width="651" height="246"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyF-8e-Xdl">
+                            <rect key="frame" x="20" y="0.0" width="611" height="48"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nuy-j6-NRX">
+                                    <rect key="frame" x="7" y="7" width="60" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="5ff-xz-iYA"/>
+                                    </constraints>
+                                </imageView>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your credit card number here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2g-cf-5MC" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                    <rect key="frame" x="69" y="2" width="542" height="44"/>
+                                    <accessibility key="accessibilityConfiguration">
+                                        <bool key="isElement" value="NO"/>
+                                    </accessibility>
+                                    <color key="textColor" red="0.18039215689999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="Nuy-j6-NRX" firstAttribute="top" secondItem="EyF-8e-Xdl" secondAttribute="top" constant="7" id="3po-6s-Lmh"/>
+                                <constraint firstAttribute="bottom" secondItem="Nuy-j6-NRX" secondAttribute="bottom" constant="7" id="BcI-r9-5ke"/>
+                                <constraint firstAttribute="trailing" secondItem="c2g-cf-5MC" secondAttribute="trailing" id="Kin-la-hh9"/>
+                                <constraint firstItem="c2g-cf-5MC" firstAttribute="top" secondItem="EyF-8e-Xdl" secondAttribute="top" constant="2" id="Tgm-a0-Ac1"/>
+                                <constraint firstAttribute="height" constant="48" id="WPX-hS-4FL"/>
+                                <constraint firstItem="Nuy-j6-NRX" firstAttribute="leading" secondItem="EyF-8e-Xdl" secondAttribute="leading" constant="7" id="e3i-fi-zsn"/>
+                                <constraint firstAttribute="bottom" secondItem="c2g-cf-5MC" secondAttribute="bottom" constant="2" id="e9i-lN-U5Q"/>
+                                <constraint firstItem="c2g-cf-5MC" firstAttribute="leading" secondItem="Nuy-j6-NRX" secondAttribute="trailing" constant="2" id="tln-9k-pwz"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lbo-vx-8LS">
+                            <rect key="frame" x="20" y="58" width="611" height="44"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiry date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QXe-OJ-FmO" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="300.5" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="ZTK-ph-hg8"/>
+                                    </constraints>
+                                    <color key="textColor" red="0.18039215689999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Security code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LVE-FK-dDb" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                    <rect key="frame" x="310.5" y="0.0" width="300.5" height="44"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="cIq-hu-fSV"/>
+                                    </constraints>
+                                    <color key="textColor" red="0.18039215689999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="hBq-kD-8ZA"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="EyF-8e-Xdl" secondAttribute="trailing" constant="20" id="A2a-tQ-Vqm"/>
+                        <constraint firstItem="lbo-vx-8LS" firstAttribute="top" secondItem="EyF-8e-Xdl" secondAttribute="bottom" constant="10" id="bWb-uR-qyv"/>
+                        <constraint firstItem="EyF-8e-Xdl" firstAttribute="leading" secondItem="c0W-Xk-Opi" secondAttribute="leading" constant="20" id="nOo-BN-KgR"/>
+                        <constraint firstItem="lbo-vx-8LS" firstAttribute="leading" secondItem="c0W-Xk-Opi" secondAttribute="leading" constant="20" id="pR8-NJ-r0y"/>
+                        <constraint firstAttribute="trailing" secondItem="lbo-vx-8LS" secondAttribute="trailing" constant="20" id="suQ-ch-jdy"/>
+                        <constraint firstItem="EyF-8e-Xdl" firstAttribute="top" secondItem="c0W-Xk-Opi" secondAttribute="top" id="wmi-Fr-Ged"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="c0W-Xk-Opi" secondAttribute="bottom" id="Ob3-8V-NRK"/>
+                <constraint firstAttribute="trailing" secondItem="c0W-Xk-Opi" secondAttribute="trailing" id="ivf-9x-dpY"/>
+                <constraint firstItem="c0W-Xk-Opi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rFd-qH-AVl"/>
+                <constraint firstItem="c0W-Xk-Opi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yTL-wG-1JR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="407.97101449275368" y="83.035714285714278"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="LVE-FK-dDb">
+            <size key="intrinsicContentSize" width="124.5" height="34"/>
+        </designable>
+        <designable name="QXe-OJ-FmO">
+            <size key="intrinsicContentSize" width="108" height="34"/>
+        </designable>
+        <designable name="c2g-cf-5MC">
+            <size key="intrinsicContentSize" width="276.5" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="card" width="20" height="14"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
