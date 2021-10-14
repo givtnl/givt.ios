@@ -155,6 +155,11 @@ extension String{
     var toInt: Int {
         return Int(self)!
     }
+    
+    var toKotlinInt: Int32? {
+        return Int32(self)
+    }
+    
     func capitalizedByLanguage(_ language: String) -> String {
         if language != "nl" {
             return self.capitalized
@@ -165,5 +170,17 @@ extension String{
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
         let underlineAttributedString = NSAttributedString(string: self, attributes: underlineAttribute)
         return underlineAttributedString
+    }
+    
+    subscript(_ range: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+        let end = index(start, offsetBy: min(self.count - range.lowerBound,
+                                             range.upperBound - range.lowerBound))
+        return String(self[start..<end])
+    }
+
+    subscript(_ range: CountablePartialRangeFrom<Int>) -> String {
+        let start = index(startIndex, offsetBy: max(0, range.lowerBound))
+         return String(self[start...])
     }
 }

@@ -11,6 +11,7 @@ import PhoneNumberKit
 import SVProgressHUD
 import AppCenterAnalytics
 import Mixpanel
+import GivtCodeShare
 
 class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var _navigationManager = NavigationManager.shared
@@ -134,6 +135,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         if(selectedCountry.shortName == "GB" || selectedCountry.shortName == "GG" || selectedCountry.shortName == "JE") {
             showBacs(sender: self, animated: false)
+        } else if(selectedCountry.shortName == "US"){
+            showCreditCard(sender: self, animated: false)
         } else {
             showSepa(sender: self, animated: false)
         }
@@ -148,6 +151,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet var sepaButton: UIButton!
     @IBOutlet var leadingAnchorLine: NSLayoutConstraint!
     @IBOutlet var leadingAnchorPaymentView: NSLayoutConstraint!
+    
     private func showSepa(sender: Any, animated: Bool) {
         print("pressed sepa")
         leadingAnchorPaymentView.constant = 0
@@ -200,11 +204,28 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             self.view.layoutIfNeeded()
         }
     }
+    
+    
+    private func showCreditCard(sender: Any, animated: Bool) {
+        leadingAnchorPaymentView.constant = -view.frame.width * 2
+        leadingAnchorLine.constant = 130
+        if animated {
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     @IBAction func showSepa(_ sender: Any) {
         showSepa(sender: sender, animated: true)
     }
     @IBAction func showBacs(_ sender: Any) {
         showBacs(sender: sender, animated: true)
+    }
+    @IBAction func showCreditCard(_ sender: Any) {
+        showCreditCard(sender: sender, animated: true)
     }
     
     private var iban: CustomUITextField!
@@ -234,7 +255,26 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         bacsView.topAnchor.constraint(equalTo: paymentView.topAnchor, constant: 0).isActive = true
         bacsView.leadingAnchor.constraint(equalTo: sepaView.trailingAnchor, constant: 0).isActive = true
         bacsView.bottomAnchor.constraint(equalTo: paymentView.bottomAnchor, constant: 0).isActive = true
-        bacsView.trailingAnchor.constraint(equalTo: paymentView.trailingAnchor, constant: 0).isActive = true
+        bacsView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+
+        let creditCardContainerView = CreditCardControlView()
+        creditCardContainerView.isUserInteractionEnabled = true
+        creditCardContainerView.translatesAutoresizingMaskIntoConstraints = false
+        paymentView.addSubview(creditCardContainerView)
+
+        NSLayoutConstraint.activate([
+            creditCardContainerView.topAnchor.constraint(equalTo: paymentView.topAnchor, constant: 0),
+            creditCardContainerView.bottomAnchor.constraint(equalTo: paymentView.bottomAnchor, constant: 0),
+            creditCardContainerView.leadingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: 0),
+            creditCardContainerView.widthAnchor.constraint(equalToConstant: view.frame.width)
+        ])
+
+        NSLayoutConstraint.activate([
+            creditCardContainerView.contentView.topAnchor.constraint(equalTo: creditCardContainerView.topAnchor),
+            creditCardContainerView.contentView.bottomAnchor.constraint(equalTo: paymentView.bottomAnchor),
+            creditCardContainerView.contentView.leadingAnchor.constraint(equalTo: creditCardContainerView.leadingAnchor),
+            creditCardContainerView.contentView.trailingAnchor.constraint(equalTo: creditCardContainerView.trailingAnchor)
+        ])
         
         iban.translatesAutoresizingMaskIntoConstraints = false
         sepaView.addSubview(iban)

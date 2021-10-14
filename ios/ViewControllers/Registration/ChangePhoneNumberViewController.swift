@@ -116,7 +116,7 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
     private func selectedRow(pv: UIPickerView, row: Int){
         selectedMobilePrefix = AppConstants.countries[row]
         mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
-        mobileNumberTextField.isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
+        mobileNumberTextField.setBorders(validatePhoneNumber(number: mobileNumberTextField.text!))
     }
 
     @IBAction func openTelephonePicker(_ sender: Any) {
@@ -193,8 +193,9 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
     }
     
     @objc func textFieldDidChange() {
-        mobileNumberTextField.isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
-        saveBtn.isEnabled = mobileNumberTextField.isValid
+        let isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
+        mobileNumberTextField.setBorders(isValid)
+        saveBtn.isEnabled = isValid
     }
 
 
@@ -202,8 +203,9 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         if !mobileNumberTextField.isDifferentFrom(from: currentPhoneNumber) {
             saveBtn.isEnabled = false
         } else {
-            mobileNumberTextField.isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
-            saveBtn.isEnabled = mobileNumberTextField.isValid
+            let isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
+            mobileNumberTextField.setBorders(isValid)
+            saveBtn.isEnabled = isValid
         }
     }
 }
