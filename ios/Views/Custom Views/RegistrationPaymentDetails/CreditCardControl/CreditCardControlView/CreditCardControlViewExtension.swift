@@ -25,11 +25,5 @@ extension CreditCardControlView {
     
     @objc func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
         self.endEditing(true)
-        if let toolbar = creditCardExpirationDateTextField.inputAccessoryView as? UIToolbar,
-           toolbar.items?.contains(where: { item in item == sender }) == true {
-//            let expiryDate = viewModel.creditCardValidator.creditCard.expiryDate
-//            creditCardExpirationDateTextField.text = "\(String(format: "%02d", selectedMonth))/\(selectedYear)"
-//            creditCardExpirationDateTextField.endedEditing()
-        }
     }
 }

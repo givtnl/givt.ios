@@ -13,13 +13,23 @@ import GivtCodeShare
 class CreditCardControlViewModel: NSObject {
     var creditCardValidator: CreditCardValidator = CreditCardValidator()
     
-    var validateCardNumber:  (()->())?
-    var validateExpiryDate:  (()->())?
-    var validateSecurityCode: (()->())?
+    var validateCardNumber: NillableClosure!
+    var validateExpiryDate: NillableClosure!
+    var validateSecurityCode: NillableClosure!
     
-    var setCardNumberTextField:  (()->())?
-    var setCreditCardCompanyLogo: (()->())?
-    var setExpiryTextField: (() -> ())?
+    var setCardNumberTextField:  NillableClosure!
+    var setCreditCardCompanyLogo: NillableClosure!
+    var setExpiryTextField: NillableClosure!
+    var setCVVTextField: NillableClosure!
+    
+    var updateView: NillableClosure!
+    
+    func setValues(cardNumber: String, expiryDate: String, securityCode: String) {
+        creditCardValidator.creditCard.number = cardNumber
+        creditCardValidator.creditCard.expiryDate.setValue(inputString: expiryDate)
+        creditCardValidator.creditCard.securityCode = securityCode
+        updateView?()
+    }
 }
 
 enum CreditCardInputFieldType: Int {

@@ -11,6 +11,7 @@ import UIKit
 
 extension CreditCardControlView {
     func setupExpiryDate() {
+        creditCardExpirationDateTextField.keyboardType = .numberPad
         creditCardExpirationDateTextField.tag = CreditCardInputFieldType.expiration.rawValue
         creditCardExpirationDateTextField.delegate = self
         createToolbar(creditCardExpirationDateTextField)
