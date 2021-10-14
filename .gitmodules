@@ -1,3 +1,0 @@
-[submodule "givt.apps.shared"]
-	path = givt.apps.shared
-	url = git@github.com:givtnl/givt.apps.shared.git
