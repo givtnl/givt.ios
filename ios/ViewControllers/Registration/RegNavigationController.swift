@@ -40,6 +40,11 @@ class RegNavigationController: UINavigationController {
                 vc.hasBackButton = true
                 self.setViewControllers([vc], animated: false)
             }
+        } else if startPoint == .registration {
+            if (AppServices.getCountryFromSim() == "US") {
+                let vc = storyboard?.instantiateViewController(withIdentifier: "USRegistrationEmailPW") as! USRegistrationViewController
+                self.setViewControllers([vc], animated: false)
+            }
         }
     }
 

@@ -1276,20 +1276,20 @@ Veel geefplezier!</string>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="uyv-ul-jwR" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="105.66666412353516"/>
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="107"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyv-ul-jwR" id="Cgh-Vj-uz8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="105.66666412353516"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="107"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-Ds-PNX">
-                                                                    <rect key="frame" x="20" y="15" width="378.33333333333331" height="75.666666666666671"/>
+                                                                    <rect key="frame" x="20" y="15" width="378.33333333333331" height="77"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33D-uJ-VuA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="75.666666666666671"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="77"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeW-Ug-CTu">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="75.666666666666671"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="77"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1302,10 +1302,10 @@ Veel geefplezier!</string>
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F10-xN-Ybg">
-                                                                            <rect key="frame" x="30" y="0.0" width="348.33333333333331" height="75.666666666666671"/>
+                                                                            <rect key="frame" x="30" y="0.0" width="348.33333333333331" height="77"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-QU-d4n">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="348.33333333333331" height="75.666666666666671"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="348.33333333333331" height="77"/>
                                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1444,9 +1444,6 @@ Veel geefplezier!</string>
                                                                 <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="next:" destination="4zs-Tf-pN5" eventType="touchUpInside" id="zSv-Bg-Eg4"/>
-                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nc-Ll-thb">
                                                         <rect key="frame" x="20" y="352" width="388" height="33"/>
@@ -1611,12 +1608,12 @@ Veel geefplezier!</string>
                         <barButtonItem key="backBarButtonItem" title=" " id="Z2K-6X-QQg"/>
                         <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="w5g-VA-BIC">
                             <connections>
-                                <action selector="exit:" destination="4zs-Tf-pN5" id="WDI-0b-P3g"/>
+                                <action selector="backButtonPressed:" destination="4zs-Tf-pN5" id="qOT-Wh-R6k"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="help" width="50" id="5EL-ob-2uM">
                             <connections>
-                                <action selector="openFAQ:" destination="4zs-Tf-pN5" id="H8t-Ls-XaX"/>
+                                <action selector="faqButtonPressed:" destination="4zs-Tf-pN5" id="Vl8-u6-Cao"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

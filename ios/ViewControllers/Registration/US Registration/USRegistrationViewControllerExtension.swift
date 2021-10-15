@@ -22,8 +22,9 @@ extension USRegistrationViewController {
         setupEmailAddressField()
         setupPasswordField()
         setupTerms()
+        setupBackButton()
         setupNextButton()
-        
+        setupTitle()
         setupDebug()
 
         setupScrollViewFix()
@@ -95,11 +96,13 @@ extension USRegistrationViewController {
     // MARK: Navigation
     func setupBackButton() {
         backButton.accessibilityLabel = "Back".localized
-        titleText.text = "RegisterPage".localized
     }
     func setupNextButton() {
         nextButton.setTitle("Next".localized, for: .normal)
         nextButton.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
+    }
+    func setupTitle() {
+        titleText.text = "RegisterPage".localized
     }
     // MARK: Debug - prefill
     func setupDebug() {
