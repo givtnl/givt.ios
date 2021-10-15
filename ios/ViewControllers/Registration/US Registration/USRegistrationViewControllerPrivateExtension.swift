@@ -18,4 +18,13 @@ extension USRegistrationViewController {
     @IBAction func termsCheckBox(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.endEditing()
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func faqButtonPressed(_ sender: Any) {
+        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        self.present(vc, animated: true, completion: nil)
+    }
 }
