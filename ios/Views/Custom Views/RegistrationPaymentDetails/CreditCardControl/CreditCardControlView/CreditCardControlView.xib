@@ -34,7 +34,7 @@
                                         <constraint firstAttribute="width" constant="60" id="5ff-xz-iYA"/>
                                     </constraints>
                                 </imageView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your credit card number here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2g-cf-5MC" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Credit card number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2g-cf-5MC" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                     <rect key="frame" x="68" y="2" width="543" height="40"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <bool key="isElement" value="NO"/>
@@ -116,7 +116,7 @@
             <size key="intrinsicContentSize" width="108" height="34"/>
         </designable>
         <designable name="c2g-cf-5MC">
-            <size key="intrinsicContentSize" width="276.5" height="34"/>
+            <size key="intrinsicContentSize" width="167" height="34"/>
         </designable>
     </designables>
     <resources>

@@ -17,6 +17,7 @@ extension USRegistrationViewController {
 
     @IBAction func termsCheckBox(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        viewModel.validateAllFields?()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

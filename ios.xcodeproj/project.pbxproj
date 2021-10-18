@@ -1392,7 +1392,7 @@
 			path = DownloadSummary;
 			sourceTree = "<group>";
 		};
-		3256AFE827186F3500D80916 /* US Registration */ = {
+		3256AFE827186F3500D80916 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
 				3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */,
@@ -1401,7 +1401,7 @@
 				3256AFF02718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift */,
 				3256AFEE2718939E00D80916 /* USRegistrationViewModel.swift */,
 			);
-			path = "US Registration";
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		3260CF05254A2E9600BA6BD7 /* BackToMainView */ = {
@@ -1964,6 +1964,14 @@
 			path = CardViewHeader;
 			sourceTree = "<group>";
 		};
+		32EAC76E271D7F470051F8A0 /* US */ = {
+			isa = PBXGroup;
+			children = (
+				3256AFE827186F3500D80916 /* Registration */,
+			);
+			path = US;
+			sourceTree = "<group>";
+		};
 		32EB1CF125D3E3670005CCAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2508,7 +2516,6 @@
 		D7F746D91FD943F6005354A3 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				3256AFE827186F3500D80916 /* US Registration */,
 				D7F131691F7559BD00E25A68 /* RegNavigationController.swift */,
 				D7F131671F75593A00E25A68 /* RegistrationViewController.swift */,
 				D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */,
@@ -2560,6 +2567,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7F746D91FD943F6005354A3 /* Registration */,
 				3290C14B268D9D5200BFED48 /* Tracking */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
@@ -2577,7 +2585,6 @@
 				D7DBED9F1FBC4AB000D78E2A /* Menu */,
 				D7F746D61FD9435C005354A3 /* Modals */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
-				D7F746D91FD943F6005354A3 /* Registration */,
 				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 			);
 			path = ViewControllers;
@@ -3145,6 +3152,7 @@
 		FBC185CE24C6E1C3001A4C6B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				32EAC76E271D7F470051F8A0 /* US */,
 				3215976B25D2FAAC0065C80A /* Budget */,
 				32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */,
 				FB87302C24C88529005FF355 /* Infrastructure */,

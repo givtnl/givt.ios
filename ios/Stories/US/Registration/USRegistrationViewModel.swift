@@ -19,54 +19,45 @@ class USRegistrationViewModel {
     var password: String!
     
     var validatePhoneNumber: NillableClosure!
-    var validateEmailAddress: NillableClosure!
     var validatePassword: NillableClosure!
     var validateAllFields: NillableClosure!
     
     var setPasswordTextField: NillableClosure!
     var setPhoneNumberTextField: NillableClosure!
-    var setEmailAddressTextField: NillableClosure!
     
     var updateView: NillableClosure!
     
-    func setValues(phoneNumber: String, emailAddress: String, password: String) {
+    func setValues(phoneNumber: String, password: String) {
         registrationValidator.phoneNumber = phoneNumber
-        registrationValidator.emailAddress = emailAddress
         registrationValidator.password = password
         updateView?()
     }
     
     var allFieldsValid: Bool {
         get {
-            return creditCardViewModel.creditCardValidator.isValidCreditCard && registrationValidator.isValidRegistrationData
+            return creditCardViewModel.creditCardValidator.isValidCreditCard && registrationValidator.isValidPassword && registrationValidator.isValidPhoneNumber
         }
     }
     
     func handleTextChanged(fieldTypeTag: USRegistrationFieldType, input: String) {
         switch(fieldTypeTag) {
-            case .phoneNumber:
-                phoneNumber = input
-                break
-            case .emailAddress:
-                emailAddress = input
-                break
-            case .password:
-                password = input
-                break
+        case .phoneNumber:
+            registrationValidator.phoneNumber = input
+            break
+        case .password:
+            registrationValidator.password = input
+            break
         }
     }
     
     func handleValidationRequest(fieldTypeTag: USRegistrationFieldType) {
         switch(fieldTypeTag) {
-            case .phoneNumber:
-                validatePhoneNumber?()
-                break
-            case .password:
-                validatePassword?()
-                break
-            case .emailAddress:
-                validatePassword?()
-                break
+        case .phoneNumber:
+            validatePhoneNumber?()
+            break
+        case .password:
+            validatePassword?()
+            break
         }
     }
 }

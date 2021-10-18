@@ -608,6 +608,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         guard let selectedMobilePrefix = selectedMobilePrefix else { return false }
         
         let shortName = selectedMobilePrefix.shortName
+        
         if shortName == "BE" && !(number.starts(with: "4") || number.starts(with: "04")) {
             return false
         } else if shortName == "NL" && !(number.starts(with: "6") || number.starts(with: "06")) {
