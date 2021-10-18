@@ -22,7 +22,7 @@ class SettingsViewController: BaseMenuViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         navItem.leftBarButtonItem = nil

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -192,14 +192,9 @@
                         <viewLayoutGuide key="safeArea" id="Is1-vq-Wjc"/>
                         <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="leftViewPresentationStyle">
-                            <integer key="value" value="1"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="DML-R9-MCL" kind="custom" identifier="root" customClass="LGSideMenuSegue" id="oHp-VB-k7y"/>
-                        <segue destination="Vsc-kz-9SH" kind="custom" identifier="left" customClass="LGSideMenuSegue" id="dNj-Tj-TUl"/>
+                        <segue destination="DML-R9-MCL" kind="custom" identifier="root" customClass="LGSideMenuSegue" customModule="LGSideMenuController" id="oHp-VB-k7y"/>
+                        <segue destination="Vsc-kz-9SH" kind="custom" identifier="left" customClass="LGSideMenuSegue" customModule="LGSideMenuController" id="dNj-Tj-TUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3h-pU-vEd" sceneMemberID="firstResponder"/>
@@ -219,7 +214,7 @@
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="Q4I-eq-bMl" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q4I-eq-bMl" id="X3K-go-zBa">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -282,7 +277,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HighlightedItem" rowHeight="50" id="Bvu-OO-RJJ" customClass="HighlightedItem" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="105.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bvu-OO-RJJ" id="4JS-iY-P5L">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -359,7 +354,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemBadgeAndArrow" rowHeight="50" id="7Av-CL-wkR" customClass="SettingsItemBadgeAndArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="155.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="149.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Av-CL-wkR" id="yP3-qr-vgP">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -460,7 +455,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemArrow" rowHeight="50" id="XTl-wF-4eq" customClass="SettingsItemArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="205.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="199.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XTl-wF-4eq" id="LjQ-zd-DQ8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -1476,16 +1471,16 @@ Kijk voor de status in je overzicht.</string>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Z0c-L7-8Js">
-                                <rect key="frame" x="0.0" y="168" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="168" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yvi-za-LaC">
-                                <rect key="frame" x="0.0" y="224" width="414" height="554"/>
+                                <rect key="frame" x="0.0" y="219" width="414" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ManualGivingOrganisation" editingAccessoryType="checkmark" id="F0W-TX-0za" customClass="ManualGivingOrganisation" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F0W-TX-0za" id="AE4-kG-0vx">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -1770,7 +1765,7 @@ Kijk voor de status in je overzicht.</string>
                                         <color key="separatorColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" id="G9F-zP-LIY" customClass="HistoryTableViewCell" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="50" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G9F-zP-LIY" id="gxf-6X-KZZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -2487,7 +2482,7 @@ best bij jou past.</string>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="HYb-8g-YY6" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HYb-8g-YY6" id="ERf-Nt-uAY">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -2550,7 +2545,7 @@ best bij jou past.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HighlightedItem" rowHeight="50" id="RUr-7G-SHp" customClass="HighlightedItem" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="105.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RUr-7G-SHp" id="sKM-r5-S3D">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -2627,7 +2622,7 @@ best bij jou past.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemBadgeAndArrow" rowHeight="50" id="piw-rY-u0u" customClass="SettingsItemBadgeAndArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="155.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="149.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="piw-rY-u0u" id="5Me-hx-EqI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -2728,7 +2723,7 @@ best bij jou past.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemArrow" rowHeight="50" id="Zxr-kF-Bnv" customClass="SettingsItemArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="205.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="199.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zxr-kF-Bnv" id="DGy-3o-Efo">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -2854,7 +2849,7 @@ best bij jou past.</string>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="77d-rZ-wAi" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="77d-rZ-wAi" id="6Rh-Zw-T5X">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -2917,7 +2912,7 @@ best bij jou past.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HighlightedItem" rowHeight="50" id="iZj-FY-nlG" customClass="HighlightedItem" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="105.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZj-FY-nlG" id="y7l-gg-RD2">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -2994,7 +2989,7 @@ best bij jou past.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemBadgeAndArrow" rowHeight="50" id="eft-es-6OH" customClass="SettingsItemBadgeAndArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="155.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="149.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eft-es-6OH" id="fi6-qG-Vo0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -3095,7 +3090,7 @@ best bij jou past.</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemArrow" rowHeight="50" id="LRh-0N-0Li" customClass="SettingsItemArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="205.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="199.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LRh-0N-0Li" id="xk0-p7-ynX">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -3297,7 +3292,7 @@ best bij jou past.</string>
                     <navigationItem key="navigationItem" title="Hoeveel wil je geven?" id="dgS-Kz-ExX">
                         <barButtonItem key="leftBarButtonItem" image="menu_badge.png" width="50" springLoaded="YES" id="ZL7-Lm-zvM">
                             <connections>
-                                <action selector="toggleLeftViewAnimated:" destination="QDM-To-zi9" id="JU3-5Y-WLv"/>
+                                <action selector="toggleLeftViewAnimatedWithSender:" destination="QDM-To-zi9" id="hgd-se-zim"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="help" width="50" id="8l4-9s-UVm">

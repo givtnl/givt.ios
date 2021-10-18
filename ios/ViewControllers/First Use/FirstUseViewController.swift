@@ -24,7 +24,7 @@ class FirstUseViewController: UIViewController {
     @IBOutlet var getStarted: CustomButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.sideMenuController?.hideLeftView(animated: true, completionHandler: {})
+        self.sideMenuController?.hideLeftViewAnimated(sender: self)
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         getStarted.setTitle(NSLocalizedString("WelcomeContinue", comment: ""), for: .normal)
         // Do any additional setup after loading the view.

@@ -9,8 +9,10 @@
 import UIKit
 import LGSideMenuController
 
-
-class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
+class FirstViewController: LGSideMenuController {
+    func didTransformRootView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
+    func didTransformLeftView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
+    func didTransformRightView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
@@ -24,7 +26,6 @@ class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     }
 
     override func viewDidLoad() {
-        super.delegate = self
         UIApplication.shared.statusBarStyle = .default
         
         super.viewDidLoad()
@@ -41,9 +42,8 @@ class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
         super.viewWillAppear(animated)
-        
+        leftViewPresentationStyle = .slideAside
     }
     
 

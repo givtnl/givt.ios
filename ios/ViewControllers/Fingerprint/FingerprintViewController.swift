@@ -74,7 +74,7 @@ class FingerprintViewController: UIViewController {
                                         sw.isOn = true
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
-                                        self.hideLeftView(self)
+                                        self.sideMenuController?.hideLeftView(sender: self)
                                         self.backPressed(self)
                                     })
                                 }
