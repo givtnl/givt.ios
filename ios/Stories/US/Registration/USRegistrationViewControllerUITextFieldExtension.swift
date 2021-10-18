@@ -11,16 +11,18 @@ import UIKit
 
 enum USRegistrationFieldType: Int {
     case phoneNumber
-    case emailAddress
     case password
 }
 
 extension USRegistrationViewController: UITextFieldDelegate {
     // MARK: During editing
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let currentValueInField = textField.text,
+        guard var currentValueInField = textField.text,
               let fieldTypeTag = USRegistrationFieldType(rawValue: textField.tag) else {
             return true
+        }
+        if (string == String.empty) {
+            currentValueInField.removeLast()
         }
         viewModel.handleTextChanged(fieldTypeTag: fieldTypeTag, input: currentValueInField+string)
         return true
@@ -33,6 +35,7 @@ extension USRegistrationViewController: UITextFieldDelegate {
             return
         }
         viewModel.handleValidationRequest(fieldTypeTag: fieldTypeTag)
+        viewModel.validateAllFields?()
     }
     
     // MARK: When return button is pressed

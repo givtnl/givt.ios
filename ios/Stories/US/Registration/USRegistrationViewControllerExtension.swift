@@ -25,7 +25,7 @@ extension USRegistrationViewController {
         setupBackButton()
         setupNextButton()
         setupTitle()
-        setupDebug()
+//        setupDebug()
 
         setupScrollViewFix()
     }
@@ -44,6 +44,7 @@ extension USRegistrationViewController {
         phoneNumberTextField.delegate = self
         phoneNumberTextField.tag = USRegistrationFieldType.phoneNumber.rawValue
         phoneNumberTextField.keyboardType = .phonePad
+        createToolbar(phoneNumberTextField)
     }
     // MARK: Email address
     func setupEmailAddressField() {
@@ -53,9 +54,6 @@ extension USRegistrationViewController {
             emailAddressTextField.text = settings.email
             emailAddressTextField.isEnabled = false
         }
-        emailAddressTextField.keyboardType = .emailAddress
-        emailAddressTextField.delegate = self
-        emailAddressTextField.tag = USRegistrationFieldType.emailAddress.rawValue
     }
     // MARK: Password
     func setupPasswordField() {
@@ -70,7 +68,7 @@ extension USRegistrationViewController {
         passwordTextField.delegate = self
         passwordTextField.tag = USRegistrationFieldType.password.rawValue
         passwordTextField.setRightPaddingPoints(40)
-
+        createToolbar(passwordTextField)
     }
     // MARK: Terms
     func setupTerms() {
@@ -114,11 +112,11 @@ extension USRegistrationViewController {
         )
         viewModel.setValues(
             phoneNumber: "+1111111111",
-            emailAddress: "testen@givtapp.net",
             password: "Test123"
         )
 
         termsCheckBox.isSelected = true
+        viewModel.validateAllFields?()
         #endif
     }
     // MARK: Scrollview
@@ -127,5 +125,21 @@ extension USRegistrationViewController {
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         tapGesture.cancelsTouchesInView = false
         theScrollView.addGestureRecognizer(tapGesture)
+    }
+    
+    func createToolbar(_ textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(toolbarDoneButtonTapped))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.setItems([flexibleSpace, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
+        self.endEditing()
     }
 }

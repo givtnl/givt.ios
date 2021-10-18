@@ -38,9 +38,6 @@ class USRegistrationViewController : UIViewController {
     @IBOutlet var saveMyData: UILabel!
     @IBOutlet var passwordHint: UILabel!
     @IBOutlet var titleText: UILabel!
-    private var _lastTextField: UITextField = UITextField()
-    private var validationHelper = ValidationHelper.shared
-    private var _isShowingPassword = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +48,6 @@ class USRegistrationViewController : UIViewController {
         
         initViewModel()
         setupUI()
-        
-        viewModel.validateAllFields?()
     }
     
     func initViewModel() {
@@ -68,18 +63,11 @@ class USRegistrationViewController : UIViewController {
                 self?.phoneNumberTextField.text = self?.viewModel.registrationValidator.phoneNumber
             }
         }
-        viewModel.setEmailAddressTextField = { [weak self] () in
-            DispatchQueue.main.async {
-                self?.emailAddressTextField.text = self?.viewModel.registrationValidator.emailAddress
-            }
-        }
-        
         
         viewModel.updateView = { [weak self] () in
             DispatchQueue.main.async {
                 self?.viewModel.setPasswordTextField?()
                 self?.viewModel.setPhoneNumberTextField?()
-                self?.viewModel.setEmailAddressTextField?()
             }
         }
         
@@ -90,6 +78,7 @@ class USRegistrationViewController : UIViewController {
                 }
             }
         }
+        
         viewModel.validatePhoneNumber = { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.registrationValidator.isValidPhoneNumber {
@@ -97,23 +86,28 @@ class USRegistrationViewController : UIViewController {
                 }
             }
         }
-        viewModel.validateEmailAddress = { [weak self] () in
-            DispatchQueue.main.async {
-                if let isValid = self?.viewModel.registrationValidator.isValidEmail {
-                    self?.passwordTextField.setBorders(isValid)
-                }
-            }
-        }
+
         viewModel.validateAllFields = { [weak self] () in
             DispatchQueue.main.async {
-                self?.viewModel.validatePhoneNumber?()
-                self?.viewModel.validateEmailAddress?()
-                self?.viewModel.validatePassword?()
-                self?.viewModel.creditCardViewModel.validateCardNumber?()
-                self?.viewModel.creditCardViewModel.validateExpiryDate?()
-                self?.viewModel.creditCardViewModel.validateSecurityCode?()
-                if let areAllFieldsValid = self?.viewModel.allFieldsValid {
-                    self?.nextButton.isEnabled = areAllFieldsValid
+                if (self?.viewModel.registrationValidator.phoneNumber != "") {
+                    self?.viewModel.validatePhoneNumber?()
+                }
+                if (self?.viewModel.registrationValidator.password != "") {
+                    self?.viewModel.validatePassword?()
+                }
+                if (self?.viewModel.creditCardViewModel.creditCardValidator.creditCard.number != nil) {
+                    self?.viewModel.creditCardViewModel.validateCardNumber?()
+                }
+                if (self?.viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.rawValue != "") {
+                    self?.viewModel.creditCardViewModel.validateExpiryDate?()
+                }
+                if (self?.viewModel.creditCardViewModel.creditCardValidator.creditCard.securityCode != nil) {
+                    self?.viewModel.creditCardViewModel.validateSecurityCode?()
+                }
+                
+                if let areAllFieldsValid = self?.viewModel.allFieldsValid,
+                   let termsChecked = self?.termsCheckBox.isSelected {
+                    self?.nextButton.isEnabled = areAllFieldsValid && termsChecked
                 }
             }
         }

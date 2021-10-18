@@ -26,7 +26,7 @@ class CreditCardControlViewModel: NSObject {
     
     func setValues(cardNumber: String, expiryDate: String, securityCode: String) {
         creditCardValidator.creditCard.number = cardNumber
-        creditCardValidator.creditCard.expiryDate.setValue(inputString: expiryDate)
+        creditCardValidator.creditCard.expiryDate.rawValue = expiryDate
         creditCardValidator.creditCard.securityCode = securityCode
         updateView?()
     }

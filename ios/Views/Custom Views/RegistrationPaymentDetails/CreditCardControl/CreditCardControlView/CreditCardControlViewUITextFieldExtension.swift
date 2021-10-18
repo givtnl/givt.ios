@@ -43,13 +43,14 @@ extension CreditCardControlView: UITextFieldDelegate {
                 break
             case CreditCardInputFieldType.expiration:
                 currentValueInField = currentValueInField.replacingOccurrences(of: "/", with: "")
-                viewModel.creditCardValidator.creditCard.expiryDate.setValue(inputString: "\(currentValueInField)\(string)")
-                if currentValueInField.count > 2 {
+                currentValueInField = currentValueInField + string
+                viewModel.creditCardValidator.creditCard.expiryDate.rawValue = currentValueInField
+                if currentValueInField.count == 4 {
                     viewModel.setExpiryTextField?()
                 }
                 break
             case CreditCardInputFieldType.cvv:
-                viewModel.creditCardValidator.creditCard.securityCode = currentValueInField
+                viewModel.creditCardValidator.creditCard.securityCode = currentValueInField + string
                 viewModel.setCVVTextField?()
                 break
             }

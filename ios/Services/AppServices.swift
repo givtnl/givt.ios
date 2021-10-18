@@ -13,6 +13,7 @@ import CoreLocation
 import AudioToolbox
 import Reachability
 import CoreTelephony
+import GivtCodeShare
 
 class AppServices {
     static let shared = AppServices()
@@ -70,15 +71,13 @@ class AppServices {
         if isReachable {
             //clear cache. response was previously cached
             URLCache.shared.removeAllCachedResponses()
-            APIClient.shared.get(url: "/api/v2/status", data: [:]) { (response) in
-                if let r = response, r.basicStatus == .ok {
-                    //ping success
+            GivtSDK.shared.infraClient().getStatus { result, _ in
+                if let success: Bool = result as? Bool, success {
                     if !self.isConnectable {
-                        self.isConnectable = true
-                        NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: true, userInfo: nil))
+                        self.isConnectable = success
+                        NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: success, userInfo: nil))
                     }
                 } else {
-                    //ping failed
                     if self.isConnectable {
                         self.isConnectable = false
                         NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: false, userInfo: nil))
