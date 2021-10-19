@@ -24,6 +24,8 @@ class CreditCardControlViewModel: NSObject {
     
     var updateView: NillableClosure!
     
+    var validateAllFields: NillableClosure!
+    
     func setValues(cardNumber: String, expiryDate: String, securityCode: String) {
         creditCardValidator.creditCard.number = cardNumber
         creditCardValidator.creditCard.expiryDate.rawValue = expiryDate
