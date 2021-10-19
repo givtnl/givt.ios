@@ -111,5 +111,7 @@ class USRegistrationViewController : UIViewController {
                 }
             }
         }
+        viewModel.creditCardViewModel.validateAllFields = viewModel.validateAllFields
+
     }
 }

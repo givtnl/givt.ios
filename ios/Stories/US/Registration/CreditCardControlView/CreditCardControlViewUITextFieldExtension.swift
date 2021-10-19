@@ -16,12 +16,15 @@ extension CreditCardControlView: UITextFieldDelegate {
             switch(controlTag) {
             case CreditCardInputFieldType.expiration:
                 viewModel.validateExpiryDate?()
+                viewModel.validateAllFields?()
                 break
             case CreditCardInputFieldType.cvv:
                 viewModel.validateSecurityCode?()
+                viewModel.validateAllFields?()
                 break
             case CreditCardInputFieldType.number:
                 viewModel.validateCardNumber?()
+                viewModel.validateAllFields?()
                 break
             }
         }
@@ -45,7 +48,7 @@ extension CreditCardControlView: UITextFieldDelegate {
                 currentValueInField = currentValueInField.replacingOccurrences(of: "/", with: "")
                 currentValueInField = currentValueInField + string
                 viewModel.creditCardValidator.creditCard.expiryDate.rawValue = currentValueInField
-                if currentValueInField.count == 4 {
+                if currentValueInField.count >= 3 {
                     viewModel.setExpiryTextField?()
                 }
                 break

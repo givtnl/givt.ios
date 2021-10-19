@@ -1315,14 +1315,6 @@
 			path = Line;
 			sourceTree = "<group>";
 		};
-		3230684227107D1000591B09 /* RegistrationPaymentDetails */ = {
-			isa = PBXGroup;
-			children = (
-				3261D4982711C9D50026313B /* CreditCardControl */,
-			);
-			path = RegistrationPaymentDetails;
-			sourceTree = "<group>";
-		};
 		3234570525DFB30E00284808 /* BackgroundShadowView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1395,6 +1387,7 @@
 		3256AFE827186F3500D80916 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				3261D4AA2711E7F80026313B /* CreditCardControlView */,
 				3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */,
 				3256AFEA27186F6C00D80916 /* USRegistrationViewControllerExtension.swift */,
 				3256AFEC2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift */,
@@ -1502,20 +1495,12 @@
 			path = OpenRecurringSuccess;
 			sourceTree = "<group>";
 		};
-		3261D4982711C9D50026313B /* CreditCardControl */ = {
-			isa = PBXGroup;
-			children = (
-				3261D4AA2711E7F80026313B /* CreditCardControlView */,
-				3261D4A52711D2690026313B /* CreditCardControlViewModel.swift */,
-			);
-			path = CreditCardControl;
-			sourceTree = "<group>";
-		};
 		3261D4AA2711E7F80026313B /* CreditCardControlView */ = {
 			isa = PBXGroup;
 			children = (
 				3261D4A62711D2690026313B /* CreditCardControlView.xib */,
 				3261D4A42711D2690026313B /* CreditCardControlView.swift */,
+				3261D4A52711D2690026313B /* CreditCardControlViewModel.swift */,
 				3256AFDC2716DEF100D80916 /* CreditCardControlViewExtension.swift */,
 				3256AFE02716E06500D80916 /* CreditCardControlViewCVVExtension.swift */,
 				3256AFDE2716DF6900D80916 /* CreditCardControlViewCardNumberExtension.swift */,
@@ -2349,7 +2334,6 @@
 		D7B715531FD151E800666262 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				3230684227107D1000591B09 /* RegistrationPaymentDetails */,
 				27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */,
 				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
 				D72A89D81FE9164200C06EF6 /* AmountLimit.swift */,
