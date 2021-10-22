@@ -490,6 +490,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
         Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
         
+        //-- USER COMMANDS
+        Mediater.shared.registerHandler(handler: RegisterUserCommandHandler())
+        Mediater.shared.registerHandler(handler: RegisterCreditCardCommandHandler())
+        
         // -- COLLECT GROUPS
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
         Mediater.shared.registerPreProcessor(processor: GetCollectGroupsQueryPreProcessor())

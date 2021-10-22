@@ -8,13 +8,15 @@
 
 import Foundation
 import UIKit
+import SVProgressHUD
+import CoreMedia
 
 extension USRegistrationViewController {
     @IBAction func passwordTextFieldSetVisible(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         passwordTextField.isSecureTextEntry = !sender.isSelected
     }
-
+    
     @IBAction func termsCheckBox(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         viewModel.validateAllFields?()
@@ -27,5 +29,80 @@ extension USRegistrationViewController {
     @IBAction func faqButtonPressed(_ sender: Any) {
         let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        self.endEditing()
+        if !AppServices.shared.isServerReachable {
+            NavigationManager.shared.presentAlertNoConnection(context: self)
+            return
+        }
+        
+        SVProgressHUD.show()
+        
+        guard let userExt = UserDefaults.standard.userExt else { return }
+        
+        let registerUserCommand = RegisterUserCommand(
+            userId: userExt.guid,
+            email: userExt.email,
+            phoneNumber: viewModel.registrationValidator.phoneNumber,
+            password: viewModel.registrationValidator.password,
+            appLanguage: Locale.current.languageCode ?? "EN",
+            deviceOS: "2",
+            country: "US"
+        )
+        
+        let registerCreditCardCommand = RegisterCreditCardCommand(
+            creditCardDetails: CreditCardDetails(
+                cardNumber: viewModel.creditCardViewModel.creditCardValidator.creditCard.number!,
+                expirationMonth: viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.month as! Int,
+                expirationYear: viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.year as! Int
+            )
+        )
+        
+        try? Mediater.shared.sendAsync(request: registerUserCommand, completion: { response in
+            if (response.result) {
+                LoginManager.shared.loginUser(
+                    email: registerUserCommand.email,
+                    password: registerUserCommand.password,
+                    type: .password, completionHandler: { (success, err, descr) in
+                        if success {
+                            UserDefaults.standard.amountLimit = 499
+                            try? Mediater.shared.sendAsync(request: registerCreditCardCommand, completion: { response in
+                                SVProgressHUD.dismiss()
+                                if (response.result) {
+                                    DispatchQueue.main.async {
+                                        UserDefaults.standard.paymentType = .CreditCard
+                                        UserDefaults.standard.mandateSigned = true
+                                        UserDefaults.standard.isTempUser = false
+                                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
+                                        vc.hasBackButton = false
+                                        self.show(vc, sender:nil)
+                                    }
+                                } else {
+                                    self.showRegistrationErrorAlert()
+                                }
+                            })
+                        } else {
+                            self.showRegistrationErrorAlert()
+                        }
+                    })
+            } else {
+                SVProgressHUD.dismiss()
+                self.showRegistrationErrorAlert()
+            }
+        })
+    }
+    private func showRegistrationErrorAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: "SomethingWentWrong".localized,
+                message: "ErrorTextRegister".localized,
+                preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
