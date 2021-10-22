@@ -49,6 +49,7 @@ extension UserDefaults {
         case toHighlightMenuList
         case testimonialsByUserId
         case hasSeenYearlyTestimonial
+        case paymentType
     }
     
     enum Showcase: String {
@@ -113,6 +114,24 @@ extension UserDefaults {
         }
         set(value) {
             set(value.rawValue, forKey: UserDefaultsKeys.accountType.rawValue)
+            synchronize()
+        }
+    }
+    
+    var paymentType: PaymentType { // CreditCard
+        get {
+            if let paymentTypeString = string(forKey: UserDefaultsKeys.paymentType.rawValue)?.lowercased(){
+                if let accType = PaymentType(rawValue: paymentTypeString.toInt){
+                    return accType
+                } else {
+                    return .Undefined
+                }
+            } else {
+                return .Undefined
+            }
+        }
+        set(value) {
+            set(value.rawValue, forKey: UserDefaultsKeys.paymentType.rawValue)
             synchronize()
         }
     }

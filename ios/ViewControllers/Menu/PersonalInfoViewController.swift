@@ -105,9 +105,9 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                     }[0].name
                 
                 self.settings.removeAll()
-                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName! + " " + userExt.LastName!, type: .name))
                 self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
-                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address + "\n" + userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .address))
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address! + "\n" + userExt.PostalCode! + " " + userExt.City! + ", " + self._country, type: .address))
                 //self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .countrycode))
                 self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone_red"), name: userExt.PhoneNumber, type: .phonenumber))
                 if let iban = userExt.IBAN {
