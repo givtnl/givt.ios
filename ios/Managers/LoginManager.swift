@@ -178,11 +178,15 @@ class LoginManager {
                         let userExt = try decoder.decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
                         UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
-                        UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
-                        if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
-                            UserDefaults.standard.accountType = accountType
+                        if UserDefaults.standard.paymentType == .CreditCard {
+                            UserDefaults.standard.mandateSigned = true
+                        } else {
+                            UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
+                            if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
+                                UserDefaults.standard.accountType = accountType
+                            }
+                            UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
                         }
-                        UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -338,6 +342,13 @@ class LoginManager {
     }
     
     func checkMandate(completionHandler: @escaping (String) -> Void) {
+        if UserDefaults.standard.paymentType == .CreditCard {
+            self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
+            !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+            completionHandler("No mandates for credit card, so trick the system we are signed")
+            return
+        }
+        
         if let user = UserDefaults.standard.userExt {
             let data = ["UserID" : user.guid]
             client.get(url: "/api/Mandate", data: data) { (response) in

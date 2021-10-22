@@ -58,7 +58,17 @@ class PermissionViewController: UIViewController {
         UIApplication.shared.registerForRemoteNotifications()
     }
     
-    func determineNextScreen() {
+    func determineNextScreen() {        
+        if (UserDefaults.standard.paymentType == PaymentType.CreditCard){
+            DispatchQueue.main.async {
+                LoginManager.shared.checkMandate { _ in
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                    self.show(vc, sender: nil)
+                }
+            }
+            return
+        }
+        
         if (UserDefaults.standard.accountType == AccountType.bacs) {
             DispatchQueue.main.async {
                 let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController

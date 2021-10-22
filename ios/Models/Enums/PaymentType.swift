@@ -8,7 +8,9 @@
 
 import Foundation
 
-enum PaymentType : Int, Codable{
+enum PaymentType : Int, Codable {
+    case Undefined = -1
     case SEPADirectDebit = 0
     case BACSDirectDebit = 1
+    case CreditCard = 2
 }
