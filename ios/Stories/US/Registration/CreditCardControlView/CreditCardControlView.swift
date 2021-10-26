@@ -69,7 +69,7 @@ class CreditCardControlView: UIView {
         viewModel.setCreditCardCompanyLogo = { [weak self ]() in
             DispatchQueue.main.async {
                 let creditCardCompany = self?.viewModel.creditCardValidator.creditCard.company
-                self?.creditCardCompanyImageView.image = self?.getCreditCardCompanyLogo(creditCardCompany ?? CreditCardCompany.undefined)
+                self?.creditCardCompanyImageView.image = getCreditCardCompanyLogo(creditCardCompany ?? CreditCardCompany.undefined)
             }
         }
         viewModel.setExpiryTextField = { [weak self] () in

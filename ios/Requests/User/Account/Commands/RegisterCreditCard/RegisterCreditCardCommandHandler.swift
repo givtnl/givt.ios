@@ -18,7 +18,7 @@ class RegisterCreditCardCommandHandler: RequestHandlerProtocol {
         }
         
         let command = request as! RegisterCreditCardCommand
-        
+
         let body = try JSONEncoder().encode(command)
         
         do {

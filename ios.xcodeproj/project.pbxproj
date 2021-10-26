@@ -158,6 +158,8 @@
 		32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */; };
 		32810EFA25DF2403004E305C /* ChartViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF925DF2403004E305C /* ChartViewBody.swift */; };
 		32810EFC25DF2410004E305C /* ChartViewBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32810EFB25DF2410004E305C /* ChartViewBody.xib */; };
+		32847A052726FAFB00BB42C8 /* GetAccountsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32847A042726FAFB00BB42C8 /* GetAccountsQuery.swift */; };
+		32847A072726FB0D00BB42C8 /* GetAccountsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32847A062726FB0D00BB42C8 /* GetAccountsQueryHandler.swift */; };
 		328AFC402695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */; };
 		328FB25625EA58A1003E24B7 /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */; };
 		3290C14D268D9D6600BFED48 /* BaseTrackingViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */; };
@@ -695,6 +697,8 @@
 		32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewBody.swift; sourceTree = "<group>"; };
 		32810EF925DF2403004E305C /* ChartViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewBody.swift; sourceTree = "<group>"; };
 		32810EFB25DF2410004E305C /* ChartViewBody.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartViewBody.xib; sourceTree = "<group>"; };
+		32847A042726FAFB00BB42C8 /* GetAccountsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAccountsQuery.swift; sourceTree = "<group>"; };
+		32847A062726FB0D00BB42C8 /* GetAccountsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAccountsQueryHandler.swift; sourceTree = "<group>"; };
 		328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewMonthlyBarViewModel.swift; sourceTree = "<group>"; };
 		328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrackingViewcontroller.swift; sourceTree = "<group>"; };
@@ -1678,6 +1682,40 @@
 			path = ChartViewBody;
 			sourceTree = "<group>";
 		};
+		32847A032726FACB00BB42C8 /* GetAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				32847A042726FAFB00BB42C8 /* GetAccountsQuery.swift */,
+				32847A062726FB0D00BB42C8 /* GetAccountsQueryHandler.swift */,
+			);
+			path = GetAccounts;
+			sourceTree = "<group>";
+		};
+		32847A082726FB1300BB42C8 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				32847A0A2726FB2D00BB42C8 /* Queries */,
+				32847A092726FB2400BB42C8 /* Commands */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		32847A092726FB2400BB42C8 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC7762722A7AD0051F8A0 /* RegisterCreditCard */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		32847A0A2726FB2D00BB42C8 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				32847A032726FACB00BB42C8 /* GetAccounts */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
 		328FB25425EA588C003E24B7 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
@@ -1968,7 +2006,6 @@
 		32EAC7702722A4D80051F8A0 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				32EAC7762722A7AD0051F8A0 /* CreditCard */,
 				32EAC7712722A4E30051F8A0 /* Register */,
 			);
 			path = Commands;
@@ -1983,13 +2020,13 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		32EAC7762722A7AD0051F8A0 /* CreditCard */ = {
+		32EAC7762722A7AD0051F8A0 /* RegisterCreditCard */ = {
 			isa = PBXGroup;
 			children = (
 				32EAC7772722A7BF0051F8A0 /* RegisterCreditCardCommand.swift */,
 				32EAC7792722A7CF0051F8A0 /* RegisterCreditCardCommandHandler.swift */,
 			);
-			path = CreditCard;
+			path = RegisterCreditCard;
 			sourceTree = "<group>";
 		};
 		32EB1CF125D3E3670005CCAC /* Views */ = {
@@ -3107,6 +3144,7 @@
 		FBC185A624C0CD18001A4C6B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				32847A082726FB1300BB42C8 /* Account */,
 				32EAC7702722A4D80051F8A0 /* Commands */,
 				FBC185AC24C0CD89001A4C6B /* Models */,
 				FBC185A824C0CD3D001A4C6B /* Queries */,
@@ -3854,6 +3892,7 @@
 				329C3E8F25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift in Sources */,
 				32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
+				32847A072726FB0D00BB42C8 /* GetAccountsQueryHandler.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
 				32EAC7752722A5050051F8A0 /* RegisterUserCommandHandler.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,
@@ -3899,6 +3938,7 @@
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
 				329D440E266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift in Sources */,
 				323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */,
+				32847A052726FAFB00BB42C8 /* GetAccountsQuery.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
 				32A8AB9525EE377100B96594 /* NotGivtDonationModel.swift in Sources */,
