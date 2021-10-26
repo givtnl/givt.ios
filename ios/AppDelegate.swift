@@ -489,6 +489,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         //-- USER QUERIES
         Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
         Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
+        Mediater.shared.registerHandler(handler: GetAccountsQueryHandler())
         
         //-- USER COMMANDS
         Mediater.shared.registerHandler(handler: RegisterUserCommandHandler())

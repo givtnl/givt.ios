@@ -179,4 +179,14 @@ extension String{
         let start = index(startIndex, offsetBy: max(0, range.lowerBound))
          return String(self[start...])
     }
+    
+    func chunked(by distance: Int) -> String {
+        let stringArray = Array(self)
+        let indicesSequence = stride(from: stringArray.startIndex, to: stringArray.endIndex, by: distance)
+        let string: [String] = indicesSequence.map {
+            let newIndex = $0.advanced(by: distance) > stringArray.endIndex ? stringArray.endIndex : $0.advanced(by: distance)
+            return String(stringArray[$0 ..< newIndex])
+        }
+        return string.joined(separator: " ")
+    }
 }

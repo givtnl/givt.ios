@@ -178,7 +178,7 @@ class LoginManager {
                         let userExt = try decoder.decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
                         UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
-                        if UserDefaults.standard.paymentType == .CreditCard {
+                        if UserDefaults.standard.paymentType == .CreditCard && !userExt.IsTempUser {
                             UserDefaults.standard.mandateSigned = true
                         } else {
                             UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"

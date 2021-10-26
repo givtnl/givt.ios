@@ -51,12 +51,12 @@ extension USRegistrationViewController {
             deviceOS: "2",
             country: "US"
         )
-        
         let registerCreditCardCommand = RegisterCreditCardCommand(
             creditCardDetails: CreditCardDetails(
                 cardNumber: viewModel.creditCardViewModel.creditCardValidator.creditCard.number!,
                 expirationMonth: viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.month as! Int,
-                expirationYear: viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.year as! Int
+                expirationYear:
+                    String(viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.year!.stringValue.suffix(2)).toInt 
             )
         )
         

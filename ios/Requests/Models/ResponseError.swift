@@ -12,4 +12,5 @@ public enum ResponseError {
     case unknown
     case unauthorized
     case duplicate
+    case parseError
 }
