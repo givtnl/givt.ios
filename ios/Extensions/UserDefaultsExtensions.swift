@@ -50,8 +50,22 @@ extension UserDefaults {
         case testimonialsByUserId
         case hasSeenYearlyTestimonial
         case paymentType
+        #if DEBUG
+        case hackForTesting
+        #endif
     }
     
+    #if DEBUG
+    var hackForTesting: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hackForTesting.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hackForTesting.rawValue)
+            synchronize()
+        }
+    }
+    #endif
     enum Showcase: String {
         case cancelGivt
         case taxOverview
