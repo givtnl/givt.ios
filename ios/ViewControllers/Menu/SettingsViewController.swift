@@ -109,7 +109,7 @@ class SettingsViewController: BaseMenuViewController {
                 items[0].append(givtsTaxOverviewAvailable!)
             }
             
-            let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
+            let givingLimitImage = UserDefaults.standard.paymentType.isBacs ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
             items[1].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[1].append(changePersonalInfo)
             items[1].append(turnOnPresets)

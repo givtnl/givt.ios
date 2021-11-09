@@ -48,8 +48,8 @@ extension BudgetExternalGivtsViewController {
         createToolbar(textFieldExternalGivtsAmount)
         createToolbar(textFieldExternalGivtsOrganisation)
         
-        switch UserDefaults.standard.currencySymbol {
-            case "£":
+        switch UserDefaults.standard.paymentType {
+            case .BACSDirectDebit:
                 labelExternalGivtsAmountCurrency.text = "pound-sign"
             default:
                 labelExternalGivtsAmountCurrency.text = "euro-sign"

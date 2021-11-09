@@ -14,3 +14,26 @@ enum PaymentType : Int, Codable {
     case BACSDirectDebit = 1
     case CreditCard = 2
 }
+
+extension PaymentType {
+    var isCreditCard: Bool {
+        return self == PaymentType.CreditCard
+    }
+    var isBacs: Bool {
+        return self == PaymentType.BACSDirectDebit
+    }
+    var isSepa: Bool {
+        return self == PaymentType.SEPADirectDebit
+    }
+    
+    static func fromAccountType(_ accountType: AccountType) -> PaymentType {
+        switch(accountType) {
+        case .sepa:
+            return PaymentType.SEPADirectDebit
+        case .bacs:
+            return PaymentType.BACSDirectDebit
+        default:
+            return PaymentType.Undefined
+        }
+    }
+}
