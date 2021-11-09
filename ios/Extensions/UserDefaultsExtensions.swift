@@ -75,18 +75,6 @@ extension UserDefaults {
         case deleteMultipleCollects
     }
     
-    var currencySymbol: String {
-        get {
-            switch accountType {
-            case AccountType.sepa:
-                return "€"
-            case AccountType.bacs:
-                return "£"
-            case AccountType.undefined:
-                return NSLocale.current.currencySymbol ?? "€"
-            }
-        }
-    }
     
     var badges: [Int] {
         get {

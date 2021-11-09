@@ -38,7 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         if MSCrashes.hasCrashedInLastSession()  {
             logService.error(message: "User had a crash, check AppCenter")
         }
-
+        
+        // This is to convert the accountType setting set on the users their phone
+        // to the new PaymentType so the accountType which is obsolete can be removed soon
+        UserDefaults.standard.paymentType = PaymentType.fromAccountType(UserDefaults.standard.accountType)
+        
         registerHandlers()
         
         logService.info(message: "App started")
