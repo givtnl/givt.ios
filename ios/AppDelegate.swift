@@ -74,6 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             setupYearlyOverviewNotifications()
         }
         
+        // Register the current locale with the currency formatter
+        CurrencyHelper.shared.updateCurrentLocale(Locale.current.identifier)
+        
+        // Register for Locale.autoupdatingCurrent so we always have the user their current preffered Locale.
+        NotificationCenter.default.addObserver(forName: NSLocale.currentLocaleDidChangeNotification, object: self, queue: OperationQueue.main) { _ in
+            CurrencyHelper.shared.updateCurrentLocale(Locale.autoupdatingCurrent.identifier)
+        }
         return true
     }
     

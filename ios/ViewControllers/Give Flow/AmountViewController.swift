@@ -123,7 +123,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         setActiveCollection(collectOne)
         collectionViews.append(collectOne)
         
-        let currency = UserDefaults.standard.currencySymbol
+        let currency = CurrencyHelper.shared.getCurrencySymbol()
         let currencys = [collectOne.currencySign, collectTwo.currencySign, collectThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
         currencys.forEach { (c) in
             c?.text = currency
@@ -494,7 +494,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
     }
 
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
                                       message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
