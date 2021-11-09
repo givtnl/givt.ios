@@ -133,7 +133,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         
             parameters["nativeAppScheme"] = AppConstants.appScheme
             parameters["urlPart"] = AppConstants.returnUrlDir
-            parameters["currency"] = UserDefaults.standard.currencySymbol
+            parameters["currency"] = CurrencyHelper.shared.getCurrencySymbol()
             
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters) else {
                 return

@@ -47,7 +47,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         
         amountControl.collectLabel.isHidden = true
         amountControl.deleteBtn.isHidden = true
-        amountControl.currency = UserDefaults.standard.currencySymbol
+        amountControl.currency = CurrencyHelper.shared.getCurrencySymbol()
         amountControl.isActive = true
         
         giveButton.labelText.text = "Give".localized
@@ -210,7 +210,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     
     fileprivate func showAmountTooLow() {
 
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in

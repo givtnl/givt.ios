@@ -87,6 +87,7 @@
 		3245E13F262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
+		324A0C43273A8A5000FB3E8D /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */; };
 		324BA466267360C2008A8EA8 /* DownloadSummaryCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BA465267360C2008A8EA8 /* DownloadSummaryCommand.swift */; };
 		324BA46826736117008A8EA8 /* DownloadSummaryCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BA46726736117008A8EA8 /* DownloadSummaryCommandHandler.swift */; };
 		3256AFDB2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFDA2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift */; };
@@ -626,6 +627,7 @@
 		3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerTestimonialExtension.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
+		324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
 		324BA465267360C2008A8EA8 /* DownloadSummaryCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSummaryCommand.swift; sourceTree = "<group>"; };
 		324BA46726736117008A8EA8 /* DownloadSummaryCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSummaryCommandHandler.swift; sourceTree = "<group>"; };
 		3256AFDA2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewExpiryDateExtension.swift; sourceTree = "<group>"; };
@@ -2457,6 +2459,7 @@
 				FB58BCD0230AD361001B1B9C /* MediumHelper.swift */,
 				3232450824DB0206003CF5CF /* ColorHelper.swift */,
 				32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */,
+				324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -3861,6 +3864,7 @@
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				324BA466267360C2008A8EA8 /* DownloadSummaryCommand.swift in Sources */,
+				324A0C43273A8A5000FB3E8D /* CurrencyHelper.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				3290C1542690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift in Sources */,
 				32FCF678264180A10094166C /* CreateGivingGoalCommand.swift in Sources */,

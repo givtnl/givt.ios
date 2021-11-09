@@ -275,7 +275,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     private func setupAmountView() {
         // get the currency symbol from user settingsf
-        amountView.currency = UserDefaults.standard.currencySymbol
+        amountView.currency = CurrencyHelper.shared.getCurrencySymbol()
         amountView.bottomBorderColor = UIColor.clear
         
         // setup event handlers
@@ -530,7 +530,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         self.present(alert, animated: true, completion: nil)
     }
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))

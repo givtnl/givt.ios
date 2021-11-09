@@ -15,11 +15,7 @@ extension Decimal {
         return NSDecimalNumber(decimal: self).intValue
     }
     
-    var formattedTwoDigits: String? {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
-        return numberFormatter.string(for: self)
+    var toFloat: Float {
+        return Float(NSDecimalNumber(decimal: self).floatValue)
     }
 }

@@ -536,15 +536,16 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         }
         
         let countryFilteredList = listToLoad.filter({ (orgBeacon) -> Bool in
-            if (UserDefaults.standard.accountType == .undefined){
+            if (UserDefaults.standard.paymentType == .Undefined){
                 if (NSLocale.current.regionCode == "GB" || NSLocale.current.regionCode == "GG" || NSLocale.current.regionCode == "JE" ){
-                    return orgBeacon.accountType == AccountType.bacs
-                }
-                else{
-                    return orgBeacon.accountType == AccountType.sepa            
+                    return orgBeacon.paymentType.isBacs
+                } else if (Locale.current.regionCode == "US") {
+                    return orgBeacon.paymentType.isCreditCard
+                } else{
+                    return orgBeacon.paymentType.isSepa
                 }
             }else{
-                return orgBeacon.accountType == UserDefaults.standard.accountType
+                return orgBeacon.paymentType == UserDefaults.standard.paymentType
             }
         })
         

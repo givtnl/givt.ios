@@ -46,7 +46,7 @@ extension BudgetListViewController {
             collectGroupsForCurrentMonth!.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.Key
-                view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                view.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: model.Value.toFloat, decimals: true)
                 stackViewGivt.addArrangedSubview(view)
                 stackViewGivtHeight.constant += 22
             }
@@ -58,7 +58,7 @@ extension BudgetListViewController {
             notGivtModelsForCurrentMonth!.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.description
-                view.amountLabel.text = model.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                view.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: model.amount.toFloat, decimals: true)
                 stackViewNotGivt.addArrangedSubview(view)
                 stackViewNotGivtHeight.constant += 22
             }
