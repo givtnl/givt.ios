@@ -87,7 +87,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             countryField.text = selectedCountry?.name
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
-            iban.text = "NL20INGB0001234567"
+            iban.text = "NL77AAAA4828721860"
             sortCode.text="000000"
             accountNumber.text = "12345678"
 
