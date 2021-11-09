@@ -108,7 +108,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureR
         nextBtn.addGestureRecognizer(longPress)
     #endif
     }
-    #if !PRODUCTION
+    #if PRODUCTION
+    #else
     @objc func hackFunctionForTesting(_ sender: UILongPressGestureRecognizer) {
         UserDefaults.standard.hackForTesting = true
         let alert = UIAlertController(title: title,
