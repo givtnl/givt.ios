@@ -87,8 +87,19 @@
 		3245E13F262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
+		324A0C43273A8A5000FB3E8D /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */; };
 		324BA466267360C2008A8EA8 /* DownloadSummaryCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BA465267360C2008A8EA8 /* DownloadSummaryCommand.swift */; };
 		324BA46826736117008A8EA8 /* DownloadSummaryCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BA46726736117008A8EA8 /* DownloadSummaryCommandHandler.swift */; };
+		3256AFDB2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFDA2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift */; };
+		3256AFDD2716DEF100D80916 /* CreditCardControlViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFDC2716DEF100D80916 /* CreditCardControlViewExtension.swift */; };
+		3256AFDF2716DF6900D80916 /* CreditCardControlViewCardNumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFDE2716DF6900D80916 /* CreditCardControlViewCardNumberExtension.swift */; };
+		3256AFE12716E06500D80916 /* CreditCardControlViewCVVExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFE02716E06500D80916 /* CreditCardControlViewCVVExtension.swift */; };
+		3256AFE32717828400D80916 /* CreditCardControlViewUITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFE22717828400D80916 /* CreditCardControlViewUITextFieldExtension.swift */; };
+		3256AFE7271861BB00D80916 /* USRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */; };
+		3256AFEB27186F6C00D80916 /* USRegistrationViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFEA27186F6C00D80916 /* USRegistrationViewControllerExtension.swift */; };
+		3256AFED2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFEC2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift */; };
+		3256AFEF2718939E00D80916 /* USRegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFEE2718939E00D80916 /* USRegistrationViewModel.swift */; };
+		3256AFF12718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256AFF02718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift */; };
 		325A7DD8265E73CA00FBAC41 /* BudgetOverviewViewControllerMonthPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325A7DD7265E73CA00FBAC41 /* BudgetOverviewViewControllerMonthPickerExtension.swift */; };
 		325B367826A1B23800B38D44 /* BudgetYearlyOverviewViewControllerTestimonialExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325B367726A1B23800B38D44 /* BudgetYearlyOverviewViewControllerTestimonialExtension.swift */; };
 		325B367A26A1B35A00B38D44 /* YearlyOverviewCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325B367926A1B35A00B38D44 /* YearlyOverviewCarouselViewController.swift */; };
@@ -112,6 +123,9 @@
 		3260CF32254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF31254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift */; };
 		3260CF35254ACFD800BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF34254ACFD800BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRoute.swift */; };
 		3260CF37254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF36254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift */; };
+		3261D4A72711D2690026313B /* CreditCardControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261D4A42711D2690026313B /* CreditCardControlView.swift */; };
+		3261D4A82711D2690026313B /* CreditCardControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3261D4A52711D2690026313B /* CreditCardControlViewModel.swift */; };
+		3261D4A92711D2690026313B /* CreditCardControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3261D4A62711D2690026313B /* CreditCardControlView.xib */; };
 		326B7E7B2602411E000A6239 /* RecurringDonationTurnsOverviewControllerCronExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B7E7A2602411E000A6239 /* RecurringDonationTurnsOverviewControllerCronExtension.swift */; };
 		326B7E7D260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B7E7C260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift */; };
 		326B7E7F26024316000A6239 /* RecurringDonationTurnsOverviewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326B7E7E26024316000A6239 /* RecurringDonationTurnsOverviewControllerPrivateExtension.swift */; };
@@ -145,6 +159,8 @@
 		32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */; };
 		32810EFA25DF2403004E305C /* ChartViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF925DF2403004E305C /* ChartViewBody.swift */; };
 		32810EFC25DF2410004E305C /* ChartViewBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32810EFB25DF2410004E305C /* ChartViewBody.xib */; };
+		32847A052726FAFB00BB42C8 /* GetAccountsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32847A042726FAFB00BB42C8 /* GetAccountsQuery.swift */; };
+		32847A072726FB0D00BB42C8 /* GetAccountsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32847A062726FB0D00BB42C8 /* GetAccountsQueryHandler.swift */; };
 		328AFC402695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */; };
 		328FB25625EA58A1003E24B7 /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */; };
 		3290C14D268D9D6600BFED48 /* BaseTrackingViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */; };
@@ -192,6 +208,8 @@
 		32D488AC266A418C00B166B4 /* BackgroundTotalsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D488AB266A418C00B166B4 /* BackgroundTotalsView.xib */; };
 		32D488AE266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */; };
 		32D488B0266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */; };
+		32D9B7E8270DD47700EA83D2 /* GivtCodeShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */; platformFilter = ios; };
+		32D9B7E9270DD47800EA83D2 /* GivtCodeShare.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */; };
 		32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */; };
 		32DDFB3225F7618400E25AF2 /* OverlayViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */; };
@@ -201,6 +219,10 @@
 		32E506F925DE991C00BC6070 /* CardViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E506F825DE991C00BC6070 /* CardViewHeader.xib */; };
 		32E76C3D252DCFCA005B5CB9 /* TrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */; };
 		32E7C94B257E97170077FB36 /* collectGroupsListDebug.json in Resources */ = {isa = PBXBuildFile; fileRef = 32E7C94A257E97170077FB36 /* collectGroupsListDebug.json */; };
+		32EAC7732722A4F80051F8A0 /* RegisterUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC7722722A4F80051F8A0 /* RegisterUserCommand.swift */; };
+		32EAC7752722A5050051F8A0 /* RegisterUserCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC7742722A5050051F8A0 /* RegisterUserCommandHandler.swift */; };
+		32EAC7782722A7BF0051F8A0 /* RegisterCreditCardCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC7772722A7BF0051F8A0 /* RegisterCreditCardCommand.swift */; };
+		32EAC77A2722A7CF0051F8A0 /* RegisterCreditCardCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC7792722A7CF0051F8A0 /* RegisterCreditCardCommandHandler.swift */; };
 		32EB1CF025D3E1330005CCAC /* BudgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */; };
 		32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */; };
 		32EB1CF525D3E3A80005CCAC /* MonthlySummary.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */; };
@@ -504,6 +526,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				32D9B7E9270DD47800EA83D2 /* GivtCodeShare.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,8 +627,19 @@
 		3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerTestimonialExtension.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
+		324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
 		324BA465267360C2008A8EA8 /* DownloadSummaryCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSummaryCommand.swift; sourceTree = "<group>"; };
 		324BA46726736117008A8EA8 /* DownloadSummaryCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadSummaryCommandHandler.swift; sourceTree = "<group>"; };
+		3256AFDA2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewExpiryDateExtension.swift; sourceTree = "<group>"; };
+		3256AFDC2716DEF100D80916 /* CreditCardControlViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewExtension.swift; sourceTree = "<group>"; };
+		3256AFDE2716DF6900D80916 /* CreditCardControlViewCardNumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewCardNumberExtension.swift; sourceTree = "<group>"; };
+		3256AFE02716E06500D80916 /* CreditCardControlViewCVVExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewCVVExtension.swift; sourceTree = "<group>"; };
+		3256AFE22717828400D80916 /* CreditCardControlViewUITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewUITextFieldExtension.swift; sourceTree = "<group>"; };
+		3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewController.swift; sourceTree = "<group>"; };
+		3256AFEA27186F6C00D80916 /* USRegistrationViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewControllerExtension.swift; sourceTree = "<group>"; };
+		3256AFEC2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewControllerUITextFieldExtension.swift; sourceTree = "<group>"; };
+		3256AFEE2718939E00D80916 /* USRegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewModel.swift; sourceTree = "<group>"; };
+		3256AFF02718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		325A7DD7265E73CA00FBAC41 /* BudgetOverviewViewControllerMonthPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerMonthPickerExtension.swift; sourceTree = "<group>"; };
 		325B367726A1B23800B38D44 /* BudgetYearlyOverviewViewControllerTestimonialExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerTestimonialExtension.swift; sourceTree = "<group>"; };
 		325B367926A1B35A00B38D44 /* YearlyOverviewCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewCarouselViewController.swift; sourceTree = "<group>"; };
@@ -629,6 +663,9 @@
 		3260CF31254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountSuccessViewController.swift; sourceTree = "<group>"; };
 		3260CF34254ACFD800BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenRecurringSuccessRoute.swift; sourceTree = "<group>"; };
 		3260CF36254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift; sourceTree = "<group>"; };
+		3261D4A42711D2690026313B /* CreditCardControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlView.swift; sourceTree = "<group>"; };
+		3261D4A52711D2690026313B /* CreditCardControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardControlViewModel.swift; sourceTree = "<group>"; };
+		3261D4A62711D2690026313B /* CreditCardControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCardControlView.xib; sourceTree = "<group>"; };
 		326B7E7A2602411E000A6239 /* RecurringDonationTurnsOverviewControllerCronExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationTurnsOverviewControllerCronExtension.swift; sourceTree = "<group>"; };
 		326B7E7C260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationTurnsOverviewControllerTableExtension.swift; sourceTree = "<group>"; };
 		326B7E7E26024316000A6239 /* RecurringDonationTurnsOverviewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationTurnsOverviewControllerPrivateExtension.swift; sourceTree = "<group>"; };
@@ -662,6 +699,8 @@
 		32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewBody.swift; sourceTree = "<group>"; };
 		32810EF925DF2403004E305C /* ChartViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewBody.swift; sourceTree = "<group>"; };
 		32810EFB25DF2410004E305C /* ChartViewBody.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartViewBody.xib; sourceTree = "<group>"; };
+		32847A042726FAFB00BB42C8 /* GetAccountsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAccountsQuery.swift; sourceTree = "<group>"; };
+		32847A062726FB0D00BB42C8 /* GetAccountsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAccountsQueryHandler.swift; sourceTree = "<group>"; };
 		328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewMonthlyBarViewModel.swift; sourceTree = "<group>"; };
 		328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrackingViewcontroller.swift; sourceTree = "<group>"; };
@@ -708,6 +747,7 @@
 		32D488AB266A418C00B166B4 /* BackgroundTotalsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundTotalsView.xib; sourceTree = "<group>"; };
 		32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerExtension.swift; sourceTree = "<group>"; };
+		32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GivtCodeShare.framework; path = "givt.apps.shared/GivtCodeShare/build/xcode-frameworks/GivtCodeShare.framework"; sourceTree = "<group>"; };
 		32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
 		32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -717,6 +757,10 @@
 		32E506F825DE991C00BC6070 /* CardViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewHeader.xib; sourceTree = "<group>"; };
 		32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingHelper.swift; sourceTree = "<group>"; };
 		32E7C94A257E97170077FB36 /* collectGroupsListDebug.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = collectGroupsListDebug.json; sourceTree = "<group>"; };
+		32EAC7722722A4F80051F8A0 /* RegisterUserCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserCommand.swift; sourceTree = "<group>"; };
+		32EAC7742722A5050051F8A0 /* RegisterUserCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserCommandHandler.swift; sourceTree = "<group>"; };
+		32EAC7772722A7BF0051F8A0 /* RegisterCreditCardCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCreditCardCommand.swift; sourceTree = "<group>"; };
+		32EAC7792722A7CF0051F8A0 /* RegisterCreditCardCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCreditCardCommandHandler.swift; sourceTree = "<group>"; };
 		32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetNavigationController.swift; sourceTree = "<group>"; };
 		32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummary.swift; sourceTree = "<group>"; };
 		32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlySummary.xib; sourceTree = "<group>"; };
@@ -1032,6 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */,
+				32D9B7E8270DD47700EA83D2 /* GivtCodeShare.framework in Frameworks */,
 				320280BC25E0582F006A68CE /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1353,6 +1398,19 @@
 			path = DownloadSummary;
 			sourceTree = "<group>";
 		};
+		3256AFE827186F3500D80916 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				3261D4AA2711E7F80026313B /* CreditCardControlView */,
+				3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */,
+				3256AFEA27186F6C00D80916 /* USRegistrationViewControllerExtension.swift */,
+				3256AFEC2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift */,
+				3256AFF02718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift */,
+				3256AFEE2718939E00D80916 /* USRegistrationViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		3260CF05254A2E9600BA6BD7 /* BackToMainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1449,6 +1507,21 @@
 				3260CF36254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift */,
 			);
 			path = OpenRecurringSuccess;
+			sourceTree = "<group>";
+		};
+		3261D4AA2711E7F80026313B /* CreditCardControlView */ = {
+			isa = PBXGroup;
+			children = (
+				3261D4A62711D2690026313B /* CreditCardControlView.xib */,
+				3261D4A42711D2690026313B /* CreditCardControlView.swift */,
+				3261D4A52711D2690026313B /* CreditCardControlViewModel.swift */,
+				3256AFDC2716DEF100D80916 /* CreditCardControlViewExtension.swift */,
+				3256AFE02716E06500D80916 /* CreditCardControlViewCVVExtension.swift */,
+				3256AFDE2716DF6900D80916 /* CreditCardControlViewCardNumberExtension.swift */,
+				3256AFDA2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift */,
+				3256AFE22717828400D80916 /* CreditCardControlViewUITextFieldExtension.swift */,
+			);
+			path = CreditCardControlView;
 			sourceTree = "<group>";
 		};
 		326E0971256D42260079B4B0 /* OpenFeatureById */ = {
@@ -1609,6 +1682,40 @@
 				32810EFB25DF2410004E305C /* ChartViewBody.xib */,
 			);
 			path = ChartViewBody;
+			sourceTree = "<group>";
+		};
+		32847A032726FACB00BB42C8 /* GetAccounts */ = {
+			isa = PBXGroup;
+			children = (
+				32847A042726FAFB00BB42C8 /* GetAccountsQuery.swift */,
+				32847A062726FB0D00BB42C8 /* GetAccountsQueryHandler.swift */,
+			);
+			path = GetAccounts;
+			sourceTree = "<group>";
+		};
+		32847A082726FB1300BB42C8 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				32847A0A2726FB2D00BB42C8 /* Queries */,
+				32847A092726FB2400BB42C8 /* Commands */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		32847A092726FB2400BB42C8 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC7762722A7AD0051F8A0 /* RegisterCreditCard */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		32847A0A2726FB2D00BB42C8 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				32847A032726FACB00BB42C8 /* GetAccounts */,
+			);
+			path = Queries;
 			sourceTree = "<group>";
 		};
 		328FB25425EA588C003E24B7 /* Infrastructure */ = {
@@ -1888,6 +1995,40 @@
 				32E506F825DE991C00BC6070 /* CardViewHeader.xib */,
 			);
 			path = CardViewHeader;
+			sourceTree = "<group>";
+		};
+		32EAC76E271D7F470051F8A0 /* US */ = {
+			isa = PBXGroup;
+			children = (
+				3256AFE827186F3500D80916 /* Registration */,
+			);
+			path = US;
+			sourceTree = "<group>";
+		};
+		32EAC7702722A4D80051F8A0 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC7712722A4E30051F8A0 /* Register */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		32EAC7712722A4E30051F8A0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC7722722A4F80051F8A0 /* RegisterUserCommand.swift */,
+				32EAC7742722A5050051F8A0 /* RegisterUserCommandHandler.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		32EAC7762722A7AD0051F8A0 /* RegisterCreditCard */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC7772722A7BF0051F8A0 /* RegisterCreditCardCommand.swift */,
+				32EAC7792722A7CF0051F8A0 /* RegisterCreditCardCommandHandler.swift */,
+			);
+			path = RegisterCreditCard;
 			sourceTree = "<group>";
 		};
 		32EB1CF125D3E3670005CCAC /* Views */ = {
@@ -2318,6 +2459,7 @@
 				FB58BCD0230AD361001B1B9C /* MediumHelper.swift */,
 				3232450824DB0206003CF5CF /* ColorHelper.swift */,
 				32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */,
+				324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2484,6 +2626,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7F746D91FD943F6005354A3 /* Registration */,
 				3290C14B268D9D5200BFED48 /* Tracking */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
@@ -2501,7 +2644,6 @@
 				D7DBED9F1FBC4AB000D78E2A /* Menu */,
 				D7F746D61FD9435C005354A3 /* Modals */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
-				D7F746D91FD943F6005354A3 /* Registration */,
 				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 			);
 			path = ViewControllers;
@@ -2673,6 +2815,7 @@
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				32D9B7E7270DD47700EA83D2 /* GivtCodeShare.framework */,
 				320CF46E25DEAB85009D3C5C /* Charts.framework */,
 				D782F2E71F7D37A400348D7A /* NetworkExtension.framework */,
 				FB19533B1F56DDEC00172CD3 /* Fabric.framework */,
@@ -3004,6 +3147,8 @@
 		FBC185A624C0CD18001A4C6B /* User */ = {
 			isa = PBXGroup;
 			children = (
+				32847A082726FB1300BB42C8 /* Account */,
+				32EAC7702722A4D80051F8A0 /* Commands */,
 				FBC185AC24C0CD89001A4C6B /* Models */,
 				FBC185A824C0CD3D001A4C6B /* Queries */,
 			);
@@ -3068,6 +3213,7 @@
 		FBC185CE24C6E1C3001A4C6B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				32EAC76E271D7F470051F8A0 /* US */,
 				3215976B25D2FAAC0065C80A /* Budget */,
 				32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */,
 				FB87302C24C88529005FF355 /* Infrastructure */,
@@ -3148,6 +3294,7 @@
 			buildConfigurationList = FB3CE6E91F14CA200055185B /* Build configuration list for PBXNativeTarget "ios" */;
 			buildPhases = (
 				18302013F794B31C0E20167F /* [CP] Check Pods Manifest.lock */,
+				32D9B7E6270DAE1C00EA83D2 /* ShellScript */,
 				FB3CE6CF1F14CA200055185B /* Sources */,
 				FB3CE6D01F14CA200055185B /* Frameworks */,
 				FB3CE6D11F14CA200055185B /* Resources */,
@@ -3302,6 +3449,7 @@
 				3274EB6C25E9C32A00FC8D6A /* LineWithIcon.xib in Resources */,
 				27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
+				3261D4A92711D2690026313B /* CreditCardControlView.xib in Resources */,
 				32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
@@ -3351,6 +3499,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		32D9B7E6270DAE1C00EA83D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/givt.apps.shared/\"\n./gradlew :GivtCodeShare:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
 		};
 		B31A8402412C0DD81B9F1453 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3404,6 +3569,8 @@
 				3260CF37254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift in Sources */,
 				322400B9257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift in Sources */,
 				32FCF68B264181490094166C /* DeleteGivingGoalCommandHandler.swift in Sources */,
+				32EAC7732722A4F80051F8A0 /* RegisterUserCommand.swift in Sources */,
+				3256AFEF2718939E00D80916 /* USRegistrationViewModel.swift in Sources */,
 				FBFAF48225669EFE0012E4A6 /* DonationDetailModel.swift in Sources */,
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				32FCF6892641813B0094166C /* DeleteGivingGoalCommand.swift in Sources */,
@@ -3462,6 +3629,7 @@
 				3215977025D2FAEA0065C80A /* BudgetOverviewViewController.swift in Sources */,
 				32D488A4266A2F9E00B166B4 /* OpenYearlyOverviewRoute.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
+				3261D4A72711D2690026313B /* CreditCardControlView.swift in Sources */,
 				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
@@ -3483,6 +3651,7 @@
 				3290C14D268D9D6600BFED48 /* BaseTrackingViewcontroller.swift in Sources */,
 				32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */,
 				326B7E7D260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift in Sources */,
+				3256AFF12718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift in Sources */,
 				327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */,
 				3260CF09254A2EC700BA6BD7 /* BackToMainViewRouteHandler.swift in Sources */,
 				32FCF68E264182C60094166C /* GivingGoal.swift in Sources */,
@@ -3532,6 +3701,7 @@
 				FBC185AB24C0CD6F001A4C6B /* GetLocalUserConfiguration.swift in Sources */,
 				32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
+				3256AFED2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift in Sources */,
 				3290C1592690B22800BFED48 /* YearlyOverviewMonthlyBar.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
 				32FCF67D264180D70094166C /* GetGivingGoalQuery.swift in Sources */,
@@ -3563,6 +3733,7 @@
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				32F270D4267295A300DAC20E /* YearlyOverviewDetailViewControllerExtension.swift in Sources */,
 				329C3E8725F21A8F0037D750 /* ExternalDonationModel.swift in Sources */,
+				3256AFEB27186F6C00D80916 /* USRegistrationViewControllerExtension.swift in Sources */,
 				DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */,
 				32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
@@ -3623,6 +3794,7 @@
 				FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */,
 				32EEB2BC26283F56008EED9A /* TestimonialCarouselViewController.swift in Sources */,
 				DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */,
+				3256AFE32717828400D80916 /* CreditCardControlViewUITextFieldExtension.swift in Sources */,
 				329C3E8525F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift in Sources */,
 				FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
@@ -3659,6 +3831,7 @@
 				32F270C826725B2200DAC20E /* OpenYearlyOverviewDetailRoute.swift in Sources */,
 				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
+				3261D4A82711D2690026313B /* CreditCardControlViewModel.swift in Sources */,
 				FB87300E24C831EA005FF355 /* CoreDataContext.swift in Sources */,
 				FBC1858824C0651D001A4C6B /* RequestPreProcessorProtocol.swift in Sources */,
 				D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */,
@@ -3674,6 +3847,7 @@
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */,
+				3256AFE12716E06500D80916 /* CreditCardControlViewCVVExtension.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
@@ -3690,6 +3864,7 @@
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				324BA466267360C2008A8EA8 /* DownloadSummaryCommand.swift in Sources */,
+				324A0C43273A8A5000FB3E8D /* CurrencyHelper.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				3290C1542690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift in Sources */,
 				32FCF678264180A10094166C /* CreateGivingGoalCommand.swift in Sources */,
@@ -3721,7 +3896,9 @@
 				329C3E8F25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift in Sources */,
 				32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
+				32847A072726FB0D00BB42C8 /* GetAccountsQueryHandler.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
+				32EAC7752722A5050051F8A0 /* RegisterUserCommandHandler.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,
 				DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */,
 				32A67F7A2513946F007EC7EF /* GetCountryQuery.swift in Sources */,
@@ -3744,13 +3921,16 @@
 				FB87303024C885EE005FF355 /* NoInternetAlert.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
 				32BFA7A025DD0F75003AD5FE /* UIViewExtensions.swift in Sources */,
+				3256AFE7271861BB00D80916 /* USRegistrationViewController.swift in Sources */,
 				FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				3273B8AB25359F55003DB100 /* RecurringDonationTurnsResponseModel.swift in Sources */,
+				3256AFDF2716DF6900D80916 /* CreditCardControlViewCardNumberExtension.swift in Sources */,
 				329D440C266655A5003CE5F0 /* GoBackToSummaryRoute.swift in Sources */,
 				FB872FF224C6EC2F005FF355 /* BackToMainRoute.swift in Sources */,
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
 				FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */,
+				3256AFDB2716DD6D00D80916 /* CreditCardControlViewExpiryDateExtension.swift in Sources */,
 				327E34502549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift in Sources */,
 				32207E942641601500A265A4 /* OpenGivingGoalRouteHandler.swift in Sources */,
 				32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */,
@@ -3762,6 +3942,7 @@
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
 				329D440E266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift in Sources */,
 				323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */,
+				32847A052726FAFB00BB42C8 /* GetAccountsQuery.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
 				32A8AB9525EE377100B96594 /* NotGivtDonationModel.swift in Sources */,
@@ -3793,6 +3974,7 @@
 				32D488B0266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift in Sources */,
 				329C3E8925F21F200037D750 /* UpdateExternalDonationCommand.swift in Sources */,
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
+				32EAC77A2722A7CF0051F8A0 /* RegisterCreditCardCommandHandler.swift in Sources */,
 				32A8AB9225EE164200B96594 /* DoubleExtension.swift in Sources */,
 				3260CF14254AB61400BA6BD7 /* DiscoverOrAmountSetupSingleDonationViewController.swift in Sources */,
 				FB87300B24C82CC1005FF355 /* CoreData.xcdatamodeld in Sources */,
@@ -3800,12 +3982,14 @@
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				323F170525ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift in Sources */,
 				32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */,
+				3256AFDD2716DEF100D80916 /* CreditCardControlViewExtension.swift in Sources */,
 				321A21642683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
 				324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
 				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
 				32F528CE25EA9DAE0073C243 /* NSMutableAttributedString.swift in Sources */,
+				32EAC7782722A7BF0051F8A0 /* RegisterCreditCardCommand.swift in Sources */,
 				3273B8AE2535C3D7003DB100 /* RecurringDonationRuleViewModel.swift in Sources */,
 				3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */,
 				3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */,
@@ -4022,11 +4206,75 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MaterialShowcase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PhoneNumberKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftClient\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppCenter\"",
+					"-framework",
+					"\"AppCenterAnalytics\"",
+					"-framework",
+					"\"AppCenterCrashes\"",
+					"-framework",
+					"\"AppCenterPush\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"LGSideMenuController\"",
+					"-framework",
+					"\"MaterialShowcase\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"PhoneNumberKit\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftClient\"",
+					"-framework",
+					"\"SwipeCellKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TrustKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4161,11 +4409,75 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MaterialShowcase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PhoneNumberKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftClient\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppCenter\"",
+					"-framework",
+					"\"AppCenterAnalytics\"",
+					"-framework",
+					"\"AppCenterCrashes\"",
+					"-framework",
+					"\"AppCenterPush\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"LGSideMenuController\"",
+					"-framework",
+					"\"MaterialShowcase\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"PhoneNumberKit\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftClient\"",
+					"-framework",
+					"\"SwipeCellKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TrustKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4190,11 +4502,75 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LGSideMenuController\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MaterialShowcase\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Mixpanel-swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PhoneNumberKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReachabilitySwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SVProgressHUD\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftClient\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
+					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
+					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AppCenter\"",
+					"-framework",
+					"\"AppCenterAnalytics\"",
+					"-framework",
+					"\"AppCenterCrashes\"",
+					"-framework",
+					"\"AppCenterPush\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"LGSideMenuController\"",
+					"-framework",
+					"\"MaterialShowcase\"",
+					"-framework",
+					"\"Mixpanel\"",
+					"-framework",
+					"\"PhoneNumberKit\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftClient\"",
+					"-framework",
+					"\"SwipeCellKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TrustKit\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";

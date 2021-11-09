@@ -65,11 +65,10 @@ extension BudgetOverviewViewController {
             
             if givingGoal!.periodicity == 1 {
                 givingGoalAmount = givingGoal!.amount / 12
-                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-
+                givingGoalPerMonthText.text = CurrencyHelper.shared.getLocalFormat(value: givingGoalAmount!.toFloat, decimals: true)
             } else {
                 givingGoalAmount = givingGoal!.amount
-                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                givingGoalPerMonthText.text = CurrencyHelper.shared.getLocalFormat(value: givingGoalAmount!.toFloat, decimals: true)
             }
         } else {
             givingGoalSetupStackItem.isHidden = false
@@ -93,7 +92,7 @@ extension BudgetOverviewViewController {
             
             remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
             
-            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            givingGoalRemaining.text = CurrencyHelper.shared.getLocalFormat(value: remainingThisMonth.toFloat, decimals: true)
             
             if remainingThisMonth == 0 {
                 remainingGivingGoalStackItem.isHidden = true

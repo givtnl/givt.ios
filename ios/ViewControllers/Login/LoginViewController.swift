@@ -128,7 +128,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
                             print("Logging dashboard user in" )
-                            NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
+                            if (UserDefaults.standard.paymentType == .CreditCard) {
+                                self.dismiss(animated: true, completion: { self.completionHandler() } )
+                            }
+                            else {
+                                NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
+                            }
                         }
                     }
                 }
