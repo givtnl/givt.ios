@@ -30,7 +30,7 @@ class MonthlyCardViewLine : UIView {
     convenience init(description: String, amount: Double) {
         self.init()
         collectGroupLabel.text = description
-        amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: amount.toFloat, decimals: true)
     }
     private func commonInit() {
         let bundle = Bundle(for: MonthlyCardViewLine.self)

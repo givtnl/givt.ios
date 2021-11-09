@@ -33,7 +33,7 @@ extension BudgetOverviewViewController {
                     if count < 2 {
                         let view = MonthlyCardViewLine()
                         view.collectGroupLabel.text = model.Key
-                        view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                        view.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: model.Value.toFloat, decimals: true)
                         stackViewGivt.addArrangedSubview(view)
                         stackViewGivtHeight.constant += 22
                         count += 1
@@ -69,7 +69,7 @@ extension BudgetOverviewViewController {
                         } else {
                             let view = MonthlyCardViewLine()
                             view.collectGroupLabel.text = model.description
-                            view.amountLabel.text = model.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                            view.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: model.amount.toFloat, decimals: true)
                             stackViewNotGivt.addArrangedSubview(view)
                             stackViewNotGivtHeight.constant += 22
                         }

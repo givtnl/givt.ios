@@ -46,7 +46,8 @@ extension BudgetYearlyOverviewViewController {
             }
             
             DispatchQueue.main.async {
-                self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                let totalGivt = givtModels.map { $0.Value }.reduce(0, +)
+                self.amountGivt.text = CurrencyHelper.shared.getLocalFormat(value: totalGivt.toFloat, decimals: true)
                 self.loadGivtModels(givtModels)
 
             }
@@ -58,11 +59,15 @@ extension BudgetYearlyOverviewViewController {
                 }
                 self.notGivtModels = notGivtModels
                 DispatchQueue.main.async {
-                    self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    let totalNotGivt = notGivtModels.map { $0.Value }.reduce(0, +)
+                    let totalGivt = givtModels.map { $0.Value }.reduce(0, +)
+                    let total = totalNotGivt + totalGivt
+                    self.amountNotGivt.text = CurrencyHelper.shared.getLocalFormat(value: totalNotGivt.toFloat, decimals: true)
+                    self.amountTotal.text = CurrencyHelper.shared.getLocalFormat(value: total.toFloat, decimals: true)
                     let givtAmountTax = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                     let notGivtAmountTax = notGivtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
-                    self.amountTax.text = (givtAmountTax + notGivtAmountTax).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    let totalTax = givtAmountTax + notGivtAmountTax
+                    self.amountTax.text = CurrencyHelper.shared.getLocalFormat(value: totalTax.toFloat, decimals: true)
                     self.loadNotGivtModels(notGivtModels)
                 }
                 

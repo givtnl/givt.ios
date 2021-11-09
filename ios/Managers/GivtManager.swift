@@ -26,16 +26,20 @@ struct OrgBeacon: Codable {
     let OrgName: String
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
-    var accountType: AccountType {
+    
+    var paymentType: PaymentType {
         get {
             let start = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 8)
             let end = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 12)
             
             let asciiCountry = EddyNameSpace[start..<end]
-            if (asciiCountry == "4742" || asciiCountry == "4747" || asciiCountry == "4a45"){
-                return AccountType.bacs
-            }else {
-                return AccountType.sepa
+            switch(asciiCountry) {
+            case "4742", "4747", "4a45":
+                return PaymentType.BACSDirectDebit
+            case "5553":
+                return PaymentType.CreditCard
+            default:
+                return PaymentType.SEPADirectDebit
             }
         }
     }

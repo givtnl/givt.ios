@@ -49,8 +49,23 @@ extension UserDefaults {
         case toHighlightMenuList
         case testimonialsByUserId
         case hasSeenYearlyTestimonial
+        case paymentType
+        #if DEBUG
+        case hackForTesting
+        #endif
     }
     
+    #if DEBUG
+    var hackForTesting: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hackForTesting.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hackForTesting.rawValue)
+            synchronize()
+        }
+    }
+    #endif
     enum Showcase: String {
         case cancelGivt
         case taxOverview
@@ -60,18 +75,6 @@ extension UserDefaults {
         case deleteMultipleCollects
     }
     
-    var currencySymbol: String {
-        get {
-            switch accountType {
-            case AccountType.sepa:
-                return "€"
-            case AccountType.bacs:
-                return "£"
-            case AccountType.undefined:
-                return NSLocale.current.currencySymbol ?? "€"
-            }
-        }
-    }
     
     var badges: [Int] {
         get {
@@ -113,6 +116,24 @@ extension UserDefaults {
         }
         set(value) {
             set(value.rawValue, forKey: UserDefaultsKeys.accountType.rawValue)
+            synchronize()
+        }
+    }
+    
+    var paymentType: PaymentType { // CreditCard
+        get {
+            if let paymentTypeString = string(forKey: UserDefaultsKeys.paymentType.rawValue)?.lowercased(){
+                if let accType = PaymentType(rawValue: paymentTypeString.toInt){
+                    return accType
+                } else {
+                    return .Undefined
+                }
+            } else {
+                return .Undefined
+            }
+        }
+        set(value) {
+            set(value.rawValue, forKey: UserDefaultsKeys.paymentType.rawValue)
             synchronize()
         }
     }

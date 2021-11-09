@@ -91,9 +91,9 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
                     }[0].name
                 
                 self.settings.removeAll()
-                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName! + " " + userExt.LastName!, type: .name))
                 self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
-                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address + "\n" + userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .address))
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address! + "\n" + userExt.PostalCode! + " " + userExt.City! + ", " + self._country, type: .address))
                 if let iban = userExt.IBAN {
                     self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: iban.separate(every: 4, with: " "), type: .iban))
                 } else if let sortCode = userExt.SortCode, let accountNumber = userExt.AccountNumber {

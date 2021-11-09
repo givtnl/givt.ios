@@ -25,20 +25,27 @@ extension BudgetYearlyOverviewDetailViewController {
     }
     func setupGivtModels() {
         setupTable(givtModels, givtStack, givtStackHeight)
-        givtTableFooterTotalGivtAmountLabel.text = givtModels.map {$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        givtTableFooterDeductableAmountLabel.text = givtModels.filter {$0.TaxDeductable!}.map {$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        
+        let sumTotal = givtModels.map {$0.Value}.reduce(0, +)
+        let sumTaxDeductable = givtModels.filter {$0.TaxDeductable!}.map {$0.Value}.reduce(0, +)
+        
+        givtTableFooterTotalGivtAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: sumTotal.toFloat, decimals: true)
+        givtTableFooterDeductableAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: sumTaxDeductable.toFloat, decimals: true)
     }
     
     func setupNotGivtModels() {
         setupTable(notGivtModels, notGivtStack, notGivtStackHeight)
-        notGivtTableFooterTotalNotGivtAmountLabel.text = notGivtModels.map{$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        notGivtTableFooterDeductableAmountLabel.text = notGivtModels.filter {$0.TaxDeductable!}.map {$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        let sumTotal = notGivtModels.map{$0.Value}.reduce(0, +)
+        let sumTaxDeductable = notGivtModels.filter {$0.TaxDeductable!}.map {$0.Value}.reduce(0, +)
+        
+        notGivtTableFooterTotalNotGivtAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: sumTotal.toFloat, decimals: true)
+        notGivtTableFooterDeductableAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: sumTaxDeductable.toFloat, decimals: true)
 
     }
     
     func setupTotal() {
         let total = (givtModels.map {$0.Value}.reduce(0, +)) + (notGivtModels.map{$0.Value}.reduce(0, +))
-        tableTotalAmountLabel.text = total.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        tableTotalAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: total.toFloat, decimals: true)
     }
     
     func setupTip() {

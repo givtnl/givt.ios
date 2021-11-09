@@ -38,7 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         if MSCrashes.hasCrashedInLastSession()  {
             logService.error(message: "User had a crash, check AppCenter")
         }
-
+        
+        // This is to convert the accountType setting set on the users their phone
+        // to the new PaymentType so the accountType which is obsolete can be removed soon
+        UserDefaults.standard.paymentType = PaymentType.fromAccountType(UserDefaults.standard.accountType)
+        
         registerHandlers()
         
         logService.info(message: "App started")
@@ -74,6 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             setupYearlyOverviewNotifications()
         }
         
+        // Register the current locale with the currency formatter
+        CurrencyHelper.shared.updateCurrentLocale(Locale.current.identifier)
+        
+        // Register for Locale.autoupdatingCurrent so we always have the user their current preffered Locale.
+        NotificationCenter.default.addObserver(forName: NSLocale.currentLocaleDidChangeNotification, object: self, queue: OperationQueue.main) { _ in
+            CurrencyHelper.shared.updateCurrentLocale(Locale.autoupdatingCurrent.identifier)
+        }
         return true
     }
     
@@ -489,6 +500,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         //-- USER QUERIES
         Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
         Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
+        Mediater.shared.registerHandler(handler: GetAccountsQueryHandler())
+        
+        //-- USER COMMANDS
+        Mediater.shared.registerHandler(handler: RegisterUserCommandHandler())
+        Mediater.shared.registerHandler(handler: RegisterCreditCardCommandHandler())
         
         // -- COLLECT GROUPS
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())

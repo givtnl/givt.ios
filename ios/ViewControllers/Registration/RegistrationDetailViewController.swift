@@ -86,7 +86,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             countryField.text = selectedCountry?.name
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
-            iban.text = "NL20INGB0001234567"
+            iban.text = "NL77AAAA4828721860"
             sortCode.text="000000"
             accountNumber.text = "12345678"
 
@@ -568,6 +568,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         guard let selectedMobilePrefix = selectedMobilePrefix else { return false }
         
         let shortName = selectedMobilePrefix.shortName
+        
         if shortName == "BE" && !(number.starts(with: "4") || number.starts(with: "04")) {
             return false
         } else if shortName == "NL" && !(number.starts(with: "6") || number.starts(with: "06")) {
