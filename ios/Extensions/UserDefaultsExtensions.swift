@@ -50,12 +50,14 @@ extension UserDefaults {
         case testimonialsByUserId
         case hasSeenYearlyTestimonial
         case paymentType
-        #if !PRODUCTION
+        #if PRODUCTION
+        #else
         case hackForTesting
         #endif
     }
     
-    #if !PRODUCTION
+    #if PRODUCTION
+    #else
     var hackForTesting: Bool {
         get {
             return bool(forKey: UserDefaultsKeys.hackForTesting.rawValue)
