@@ -162,7 +162,7 @@ class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, De
             })
             setupCollectGroupsCard()
             
-            let average = CurrencyHelper.shared.getLocalFormat(value: getMonthlySum().toFloat, decimals: false).replacingOccurrences(of: " ", with: "")
+            let average = CurrencyHelper.shared.getLocalFormat(value: getMonthlySum().toFloat, decimals: true)
             
             monthlySummaryTile.amountLabel.text = average
             
