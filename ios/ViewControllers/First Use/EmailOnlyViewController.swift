@@ -99,14 +99,15 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureR
         
         loginButton.setAttributedTitle(attributedString, for: UIControl.State.normal)
         
-    #if DEBUG
+        #if PRODUCTION
+        #else
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(hackFunctionForTesting(_:)))
         longPress.minimumPressDuration = 2
         longPress.delaysTouchesBegan = true
         longPress.delegate = self
         longPress.cancelsTouchesInView = false
         nextBtn.addGestureRecognizer(longPress)
-    #endif
+        #endif
     }
     #if PRODUCTION
     #else
