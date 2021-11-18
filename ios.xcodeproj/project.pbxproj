@@ -41,7 +41,6 @@
 		3215093F2746364000499C3A /* USRegistrationViewControllerPasswordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3215093E2746364000499C3A /* USRegistrationViewControllerPasswordExtension.swift */; };
 		321509412746369B00499C3A /* USRegistrationViewControllerEmailAddressExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321509402746369B00499C3A /* USRegistrationViewControllerEmailAddressExtension.swift */; };
 		321509452746371700499C3A /* CreditCardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321509442746371700499C3A /* CreditCardHelper.swift */; };
-		3215094827463C4100499C3A /* CreditCardDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3215094727463C4100499C3A /* CreditCardDatePicker.swift */; };
 		3215976D25D2FABB0065C80A /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3215976C25D2FABB0065C80A /* Budget.storyboard */; };
 		3215977025D2FAEA0065C80A /* BudgetOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3215976F25D2FAEA0065C80A /* BudgetOverviewViewController.swift */; };
 		3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */; };
@@ -579,7 +578,6 @@
 		3215093E2746364000499C3A /* USRegistrationViewControllerPasswordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewControllerPasswordExtension.swift; sourceTree = "<group>"; };
 		321509402746369B00499C3A /* USRegistrationViewControllerEmailAddressExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USRegistrationViewControllerEmailAddressExtension.swift; sourceTree = "<group>"; };
 		321509442746371700499C3A /* CreditCardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardHelper.swift; sourceTree = "<group>"; };
-		3215094727463C4100499C3A /* CreditCardDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDatePicker.swift; sourceTree = "<group>"; };
 		3215976C25D2FABB0065C80A /* Budget.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Budget.storyboard; sourceTree = "<group>"; };
 		3215976F25D2FAEA0065C80A /* BudgetOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewController.swift; sourceTree = "<group>"; };
 		3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRoute.swift; sourceTree = "<group>"; };
@@ -1182,7 +1180,6 @@
 			isa = PBXGroup;
 			children = (
 				321509442746371700499C3A /* CreditCardHelper.swift */,
-				3215094727463C4100499C3A /* CreditCardDatePicker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3372,7 +3369,7 @@
 			);
 			mainGroup = FB3CE6CA1F14CA1F0055185B;
 			packageReferences = (
-				320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts.git" */,
+				320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = FB3CE6D41F14CA200055185B /* Products */;
 			projectDirPath = "";
@@ -3885,7 +3882,6 @@
 				329C3E7A25F210E60037D750 /* CreateExternalDonationCommandHandler.swift in Sources */,
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
-				3215094827463C4100499C3A /* CreditCardDatePicker.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				A478D1DB2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift in Sources */,
 				328087CA2677A6F900CD5F51 /* GoBackToYearlyOverviewRoute.swift in Sources */,
@@ -4629,7 +4625,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts.git" */ = {
+		320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mikepattyn/Charts.git";
 			requirement = {
@@ -4642,7 +4638,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		320280BB25E0582F006A68CE /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts.git" */;
+			package = 320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */

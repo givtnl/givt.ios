@@ -11,7 +11,11 @@ import UIKit
 import SVProgressHUD
 import CoreMedia
 
-extension USRegistrationViewController {
+private extension USRegistrationViewController {
+    @IBAction func openCreditCardExpiryDatePicker(_ sender: Any) {
+        creditCardExpiryDateTextField.becomeFirstResponder()
+    }
+    
     @IBAction func passwordTextFieldSetVisible(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         passwordTextField.isSecureTextEntry = !sender.isSelected
