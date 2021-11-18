@@ -8,34 +8,45 @@
 
 import Foundation
 import GivtCodeShare
+
 typealias NillableClosure = (()->())?
 
 class USRegistrationViewModel {
     var registrationValidator: RegistrationValidator = RegistrationValidator()
-    var creditCardViewModel: CreditCardControlViewModel!
-    
+    var creditCardValidator: CreditCardValidator = CreditCardValidator()
+
     var phoneNumber: String!
     var emailAddress: String!
     var password: String!
     
+    var validateCardNumber: NillableClosure!
+    var validateExpiryDate: NillableClosure!
+    var validateSecurityCode: NillableClosure!
     var validatePhoneNumber: NillableClosure!
     var validatePassword: NillableClosure!
     var validateAllFields: NillableClosure!
     
+    var setCardNumberTextField:  NillableClosure!
+    var setCreditCardCompanyLogo: NillableClosure!
+    var setExpiryTextField: NillableClosure!
+    var setCVVTextField: NillableClosure!
     var setPasswordTextField: NillableClosure!
     var setPhoneNumberTextField: NillableClosure!
     
     var updateView: NillableClosure!
-    
-    func setValues(phoneNumber: String, password: String) {
+        
+    func setValues(phoneNumber: String, password: String, cardNumber: String, expiryDate: String, securityCode: String) {
         registrationValidator.phoneNumber = phoneNumber
         registrationValidator.password = password
+        creditCardValidator.creditCard.number = cardNumber
+        creditCardValidator.creditCard.expiryDate.rawValue = expiryDate
+        creditCardValidator.creditCard.securityCode = securityCode
         updateView?()
     }
     
     var allFieldsValid: Bool {
         get {
-            return creditCardViewModel.creditCardValidator.isValidCreditCard && registrationValidator.isValidPassword && registrationValidator.isValidPhoneNumber
+            return creditCardValidator.isValidCreditCard && registrationValidator.isValidPassword && registrationValidator.isValidPhoneNumber
         }
     }
     
@@ -47,6 +58,24 @@ class USRegistrationViewModel {
         case .password:
             registrationValidator.password = input
             break
+        case .creditCardNumber:
+            creditCardValidator.creditCard.number = input
+            setCreditCardCompanyLogo?()
+            setCardNumberTextField?()
+            break
+        case .creditCardExpiryDate:
+            if input.count == 5 {
+                return
+            }
+            creditCardValidator.creditCard.expiryDate.rawValue = input
+            if input.count >= 3 {
+                setExpiryTextField?()
+            }
+            break
+        case .creditCardSecurityCode:
+            creditCardValidator.creditCard.securityCode = input
+            setCVVTextField?()
+            break
         }
     }
     
@@ -57,6 +86,15 @@ class USRegistrationViewModel {
             break
         case .password:
             validatePassword?()
+            break
+        case .creditCardNumber:
+            validateCardNumber?()
+            break
+        case .creditCardExpiryDate:
+            validateExpiryDate?()
+            break
+        case .creditCardSecurityCode:
+            validateSecurityCode?()
             break
         }
     }

@@ -53,10 +53,10 @@ extension USRegistrationViewController {
         )
         let registerCreditCardCommand = RegisterCreditCardCommand(
             creditCardDetails: CreditCardDetails(
-                cardNumber: viewModel.creditCardViewModel.creditCardValidator.creditCard.number!,
-                expirationMonth: viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.month as! Int,
+                cardNumber: viewModel.creditCardValidator.creditCard.number!,
+                expirationMonth: viewModel.creditCardValidator.creditCard.expiryDate.month as! Int,
                 expirationYear:
-                    String(viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.year!.stringValue.suffix(2)).toInt 
+                    String(viewModel.creditCardValidator.creditCard.expiryDate.year!.stringValue.suffix(2)).toInt 
             )
         )
         

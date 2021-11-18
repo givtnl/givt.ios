@@ -130,7 +130,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                     let prefferedImageSize = self.settings.first { $0.type == .address }!.image.size
                     if let cardInfo = try? Mediater.shared.send(request: GetAccountsQuery()).result?.accounts?.first?.creditCardDetails  {
                         if let maskedCardNumber = cardInfo.cardNumber, let cardType = cardInfo.cardType {
-                            let cardImage = getCreditCardCompanyLogo(getCreditCardCompanyEnumValue(value: cardType))
+                            let creditCardType = CreditCardHelper.getCreditCardCompanyEnumValue(value: cardType)
+                            let cardImage = CreditCardHelper.getCreditCardCompanyLogo(creditCardType)
                             self.settings.append(
                                 PersonalSetting(
                                     image: cardImage.resized(to: prefferedImageSize)!,
