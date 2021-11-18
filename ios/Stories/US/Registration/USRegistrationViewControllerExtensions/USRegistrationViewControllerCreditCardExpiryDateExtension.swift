@@ -7,11 +7,12 @@
 //
 import Foundation
 import UIKit
+import MonthYearPicker
 
 extension USRegistrationViewController {
     func setupExpiryDate() {
-        creditCardExpiryDatePicker = UIDatePicker()
-        creditCardExpiryDatePicker.datePickerMode = .date
+        creditCardExpiryDatePicker = MonthYearPickerView()
+        creditCardExpiryDatePicker.minimumDate = Date()
         creditCardExpiryDatePicker.addTarget(self, action: #selector(handleExpiryDateChanged(sender:)), for: .valueChanged)
         creditCardExpiryDateTextField.inputView = creditCardExpiryDatePicker
         
