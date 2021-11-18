@@ -11,6 +11,7 @@ import SVProgressHUD
 import AppCenterAnalytics
 import Mixpanel
 import GivtCodeShare
+import MonthYearPicker
 
 class USRegistrationViewController : UIViewController {
     @IBOutlet var theScrollView: UIScrollView!
@@ -23,7 +24,7 @@ class USRegistrationViewController : UIViewController {
     @IBOutlet weak var creditCardNumberTextField: CustomUITextField!
         // MARK: Expiry date
     @IBOutlet weak var creditCardExpiryDateTextField: CustomUITextField!
-    var creditCardExpiryDatePicker: UIDatePicker!
+    var creditCardExpiryDatePicker: MonthYearPickerView!
     @IBAction func openCreditCardExpiryDatePicker(_ sender: Any) {
         creditCardExpiryDateTextField.becomeFirstResponder()
     }

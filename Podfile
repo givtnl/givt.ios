@@ -15,6 +15,8 @@ target 'ios' do
   pod 'ReachabilitySwift'
   pod 'AppCenter/Push'
   pod 'Mixpanel-swift'
+  pod "MonthYearPicker", '~> 4.0.2'
+
   # Pods for ios
   target 'ios.tests' do
     inherit! :search_paths
