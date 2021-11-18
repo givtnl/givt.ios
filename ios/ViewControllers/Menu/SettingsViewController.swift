@@ -108,8 +108,18 @@ class SettingsViewController: BaseMenuViewController {
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
             }
-            
-            let givingLimitImage = UserDefaults.standard.paymentType.isBacs ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
+            let givingLimitImage: UIImage!
+            switch(UserDefaults.standard.paymentType) {
+                case .CreditCard:
+                    givingLimitImage = #imageLiteral(resourceName: "dollar")
+                    break
+                case .BACSDirectDebit:
+                    givingLimitImage = #imageLiteral(resourceName: "pound")
+                    break
+                default:
+                    givingLimitImage = #imageLiteral(resourceName: "euro")
+                    break
+            }
             items[1].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[1].append(changePersonalInfo)
             items[1].append(turnOnPresets)

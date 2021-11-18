@@ -157,7 +157,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
 
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        decimalNotation = NSLocale.current.decimalSeparator! as String
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        let locale = Locale(identifier: "\(Locale.current.languageCode!)-\(country!)")
+        decimalNotation = locale.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         navigationController?.navigationBar.isTranslucent = false
         let backItem = UIBarButtonItem()

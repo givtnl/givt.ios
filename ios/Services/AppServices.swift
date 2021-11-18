@@ -100,8 +100,14 @@ class AppServices {
         #else
         if UserDefaults.standard.hackForTesting == true {
             return "US"
+        } else {
+            let networkInfo = CTTelephonyNetworkInfo()
+
+            if let countryCode = networkInfo.subscriberCellularProvider?.isoCountryCode {
+                return countryCode.uppercased()
+            }
+            return nil
         }
-        return nil
         #endif
     }
     
