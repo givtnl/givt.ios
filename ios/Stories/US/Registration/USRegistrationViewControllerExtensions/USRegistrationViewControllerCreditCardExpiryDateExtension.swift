@@ -11,18 +11,19 @@ import MonthYearPicker
 
 extension USRegistrationViewController {
     func setupExpiryDate() {
-        creditCardExpiryDatePicker = MonthYearPickerView()
+
+        creditCardExpiryDatePicker = MonthYearPickerView(frame: CGRect(origin: CGPoint(x: 0, y: (view.bounds.height - 216) / 2), size: CGSize(width: view.bounds.width, height: 216)))
         creditCardExpiryDatePicker.minimumDate = Date()
-        creditCardExpiryDatePicker.addTarget(self, action: #selector(handleExpiryDateChanged(sender:)), for: .valueChanged)
+        creditCardExpiryDatePicker.addTarget(self, action: #selector(handleExpiryDateChanged(_:)), for: .valueChanged)
         creditCardExpiryDateTextField.inputView = creditCardExpiryDatePicker
         
         creditCardExpiryDateTextField.tag = USRegistrationFieldType.creditCardExpiryDate.rawValue
         creditCardExpiryDateTextField.delegate = self
         createToolbar(creditCardExpiryDateTextField)
     }
-    @objc func handleExpiryDateChanged(sender: UIDatePicker){
+    @objc func handleExpiryDateChanged(_ sender: MonthYearPickerView){
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/yyyy"
+        dateFormatter.dateFormat = "MM/yy"
         creditCardExpiryDateTextField.text = dateFormatter.string(from: sender.date)
     }
 }

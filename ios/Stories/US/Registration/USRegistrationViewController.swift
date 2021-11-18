@@ -25,10 +25,7 @@ class USRegistrationViewController : UIViewController {
         // MARK: Expiry date
     @IBOutlet weak var creditCardExpiryDateTextField: CustomUITextField!
     var creditCardExpiryDatePicker: MonthYearPickerView!
-    @IBAction func openCreditCardExpiryDatePicker(_ sender: Any) {
-        creditCardExpiryDateTextField.becomeFirstResponder()
-    }
-    
+
     @IBOutlet weak var creditCardCVVTextField: CustomUITextField!
     // MARK: Phone number
     @IBOutlet weak var phoneNumberTextField: CustomUITextField!
@@ -39,9 +36,7 @@ class USRegistrationViewController : UIViewController {
     // MARK: Password
     @IBOutlet weak var passwordTextField: CustomUITextField!
     @IBOutlet weak var passwordTextFieldVisible: UIButton!
-    
-    var datePicker: UIDatePicker!
-    
+        
     var setPassword: String? = nil
     
     // MARK: Terms permission
