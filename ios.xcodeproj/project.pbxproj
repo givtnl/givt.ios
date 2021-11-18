@@ -1184,7 +1184,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		321509462746377D00499C3A /* Extensions */ = {
+		321509462746377D00499C3A /* USRegistrationViewControllerExtensions */ = {
 			isa = PBXGroup;
 			children = (
 				321509362746352100499C3A /* USRegistrationViewControllerCreditCardNumberExtension.swift */,
@@ -1197,7 +1197,7 @@
 				3256AFEC2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift */,
 				3256AFF02718A83C00D80916 /* USRegistrationViewControllerPrivateExtension.swift */,
 			);
-			path = Extensions;
+			path = USRegistrationViewControllerExtensions;
 			sourceTree = "<group>";
 		};
 		3215976B25D2FAAC0065C80A /* Budget */ = {
@@ -1423,9 +1423,9 @@
 		3256AFE827186F3500D80916 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				321509462746377D00499C3A /* Extensions */,
-				3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */,
 				3256AFEE2718939E00D80916 /* USRegistrationViewModel.swift */,
+				3256AFE6271861BB00D80916 /* USRegistrationViewController.swift */,
+				321509462746377D00499C3A /* USRegistrationViewControllerExtensions */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
