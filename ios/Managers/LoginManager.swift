@@ -687,6 +687,7 @@ class LoginManager {
         UserDefaults.standard.lastGivtToOrganisationName = nil
         UserDefaults.standard.isTempUser = false
         UserDefaults.standard.accountType = .undefined
+        UserDefaults.standard.paymentType = .Undefined
     }
 }
 

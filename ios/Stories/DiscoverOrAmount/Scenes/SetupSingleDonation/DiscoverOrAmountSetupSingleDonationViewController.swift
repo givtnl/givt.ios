@@ -67,8 +67,9 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        decimalNotation = NSLocale.current.decimalSeparator! as String
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        let locale = Locale(identifier: "\(Locale.current.languageCode!)-\(country!)")
+        decimalNotation = locale.decimalSeparator! as String
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }

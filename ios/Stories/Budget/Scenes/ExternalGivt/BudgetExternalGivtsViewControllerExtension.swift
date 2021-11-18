@@ -47,12 +47,13 @@ extension BudgetExternalGivtsViewController {
         createToolbar(textFieldExternalGivtsTime)
         createToolbar(textFieldExternalGivtsAmount)
         createToolbar(textFieldExternalGivtsOrganisation)
-        
-        switch UserDefaults.standard.paymentType {
-            case .BACSDirectDebit:
-                labelExternalGivtsAmountCurrency.text = "pound-sign"
-            default:
-                labelExternalGivtsAmountCurrency.text = "euro-sign"
+
+        if UserDefaults.standard.paymentType == .CreditCard {
+            labelExternalGivtsAmountCurrency.text = "dollar-sign"
+        } else if UserDefaults.standard.paymentType == .BACSDirectDebit {
+            labelExternalGivtsAmountCurrency.text = "pound-sign"
+        } else {
+            labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
         
         switchTaxDeductable.isOn = false

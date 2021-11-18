@@ -81,12 +81,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         }
         
         // Register the current locale with the currency formatter
-        CurrencyHelper.shared.updateCurrentLocale(Locale.current.identifier)
         
-        // Register for Locale.autoupdatingCurrent so we always have the user their current preffered Locale.
-        NotificationCenter.default.addObserver(forName: NSLocale.currentLocaleDidChangeNotification, object: self, queue: OperationQueue.main) { _ in
-            CurrencyHelper.shared.updateCurrentLocale(Locale.autoupdatingCurrent.identifier)
+        var localeString: String!
+        
+        switch(UserDefaults.standard.paymentType) {
+            case .CreditCard:
+                localeString = "en-US"
+                break
+            case .BACSDirectDebit:
+                localeString = "en-GB"
+                break
+            default:
+                let country = try? Mediater.shared.send(request: GetCountryQuery())
+                localeString = "\(Locale.current.languageCode!)-\(country!)"
+                break
         }
+        CurrencyHelper.shared.updateCurrentLocale(localeString)
+
         return true
     }
     
