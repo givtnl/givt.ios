@@ -17,10 +17,13 @@ extension USRegistrationViewController {
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         
-        setupCreditCardControl()
+        setupCreditCardNumber()
+        setupExpiryDate()
+        setupCVV()
         setupPhoneNumberField()
         setupEmailAddressField()
         setupPasswordField()
+        
         setupTerms()
         setupBackButton()
         setupNextButton()
@@ -29,47 +32,7 @@ extension USRegistrationViewController {
 
         setupScrollViewFix()
     }
-    // MARK: Creditcard
-    func setupCreditCardControl() {
-        NSLayoutConstraint.activate([
-            creditCardControl.contentView.topAnchor.constraint(equalTo: creditCardControl.topAnchor),
-            creditCardControl.contentView.bottomAnchor.constraint(equalTo: creditCardControl.bottomAnchor),
-            creditCardControl.contentView.leadingAnchor.constraint(equalTo: creditCardControl.leadingAnchor),
-            creditCardControl.contentView.trailingAnchor.constraint(equalTo: creditCardControl.trailingAnchor)
-        ])
-    }
-    // MARK: Phone number
-    func setupPhoneNumberField() {
-        phoneNumberTextField.placeholder = "+1"
-        phoneNumberTextField.delegate = self
-        phoneNumberTextField.tag = USRegistrationFieldType.phoneNumber.rawValue
-        phoneNumberTextField.keyboardType = .phonePad
-        createToolbar(phoneNumberTextField)
-    }
-    // MARK: Email address
-    func setupEmailAddressField() {
-        emailAddressTextField.placeholder = "Email".localized
-        
-        if let settings = UserDefaults.standard.userExt {
-            emailAddressTextField.text = settings.email
-            emailAddressTextField.isEnabled = false
-        }
-    }
-    // MARK: Password
-    func setupPasswordField() {
-        passwordTextField.placeholder = "Password".localized
-        passwordHint.text = "PasswordRule".localized
-        
-        if let passwordField = setPassword {
-            passwordTextField.text = passwordField
-            passwordTextField.isEnabled = false
-            passwordTextField.textColor = UIColor.gray
-        }
-        passwordTextField.delegate = self
-        passwordTextField.tag = USRegistrationFieldType.password.rawValue
-        passwordTextField.setRightPaddingPoints(40)
-        createToolbar(passwordTextField)
-    }
+
     // MARK: Terms
     func setupTerms() {
         let attachment: NSTextAttachment = NSTextAttachment()
@@ -105,14 +68,12 @@ extension USRegistrationViewController {
     // MARK: Debug - prefill
     func setupDebug() {
         #if DEBUG
-        viewModel.creditCardViewModel.setValues(
-            cardNumber: "370000000000002",
-            expiryDate: "0330",
-            securityCode: "7373"
-        )
         viewModel.setValues(
             phoneNumber: "+1111111111",
-            password: "Test123"
+            password: "Test123",
+            cardNumber: "370000000000002",
+            expiryDate: "03/30",
+            securityCode: "7373"
         )
 
         termsCheckBox.isSelected = true

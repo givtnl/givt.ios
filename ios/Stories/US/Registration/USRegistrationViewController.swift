@@ -10,14 +10,25 @@ import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
 import Mixpanel
+import GivtCodeShare
 
 class USRegistrationViewController : UIViewController {
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
     // MARK: Creditcard
-    @IBOutlet var creditCardControl: CreditCardControlView!
+        // MARK: Card number
+    @IBOutlet weak var creditCardNumberView: UIView!
+    @IBOutlet weak var creditCardCompanyLogoImageView: UIImageView!
+    @IBOutlet weak var creditCardNumberTextField: CustomUITextField!
+        // MARK: Expiry date
+    @IBOutlet weak var creditCardExpiryDateTextField: CustomUITextField!
+    var creditCardExpiryDatePicker: UIDatePicker!
+    @IBAction func openCreditCardExpiryDatePicker(_ sender: Any) {
+        creditCardExpiryDateTextField.becomeFirstResponder()
+    }
     
+    @IBOutlet weak var creditCardCVVTextField: CustomUITextField!
     // MARK: Phone number
     @IBOutlet weak var phoneNumberTextField: CustomUITextField!
     
@@ -27,6 +38,9 @@ class USRegistrationViewController : UIViewController {
     // MARK: Password
     @IBOutlet weak var passwordTextField: CustomUITextField!
     @IBOutlet weak var passwordTextFieldVisible: UIButton!
+    
+    var datePicker: UIDatePicker!
+    
     var setPassword: String? = nil
     
     // MARK: Terms permission
@@ -51,8 +65,48 @@ class USRegistrationViewController : UIViewController {
     }
     
     func initViewModel() {
-        viewModel.creditCardViewModel = creditCardControl.viewModel
-        
+        viewModel.setCardNumberTextField = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.creditCardNumberTextField.text = self?.viewModel.creditCardValidator.creditCard.formatted
+            }
+        }
+        viewModel.setCreditCardCompanyLogo = { [weak self ]() in
+            DispatchQueue.main.async {
+                let creditCardCompany = self?.viewModel.creditCardValidator.creditCard.company
+                self?.creditCardCompanyLogoImageView.image = CreditCardHelper.getCreditCardCompanyLogo(creditCardCompany ?? CreditCardCompany.undefined)
+            }
+        }
+        viewModel.setExpiryTextField = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.creditCardExpiryDateTextField.text = self?.viewModel.creditCardValidator.creditCard.expiryDate.formatted
+            }
+        }
+        viewModel.setCVVTextField = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.creditCardCVVTextField.text = self?.viewModel.creditCardValidator.creditCard.securityCode
+            }
+        }
+        viewModel.validateCardNumber =  { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.creditCardValidator.cardNumberIsValid() {
+                    self?.creditCardNumberView.setBorders(isValid)
+                }
+            }
+        }
+        viewModel.validateExpiryDate = { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.creditCardValidator.expiryDateIsValid() {
+                    self?.creditCardExpiryDateTextField.setBorders(isValid)
+                }
+            }
+        }
+        viewModel.validateSecurityCode = { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.creditCardValidator.securityCodeIsValid() {
+                    self?.creditCardCVVTextField.setBorders(isValid)
+                }
+            }
+        }
         viewModel.setPasswordTextField = { [weak self] () in
             DispatchQueue.main.async {
                 self?.passwordTextField.text = self?.viewModel.registrationValidator.password
@@ -68,6 +122,9 @@ class USRegistrationViewController : UIViewController {
             DispatchQueue.main.async {
                 self?.viewModel.setPasswordTextField?()
                 self?.viewModel.setPhoneNumberTextField?()
+                self?.viewModel.setExpiryTextField?()
+                self?.viewModel.setCardNumberTextField?()
+                self?.viewModel.setCVVTextField?()
             }
         }
         
@@ -95,14 +152,14 @@ class USRegistrationViewController : UIViewController {
                 if (self?.viewModel.registrationValidator.password != "") {
                     self?.viewModel.validatePassword?()
                 }
-                if (self?.viewModel.creditCardViewModel.creditCardValidator.creditCard.number != nil) {
-                    self?.viewModel.creditCardViewModel.validateCardNumber?()
+                if (self?.viewModel.creditCardValidator.creditCard.number != nil) {
+                    self?.viewModel.validateCardNumber?()
                 }
-                if (self?.viewModel.creditCardViewModel.creditCardValidator.creditCard.expiryDate.rawValue != "") {
-                    self?.viewModel.creditCardViewModel.validateExpiryDate?()
+                if (self?.viewModel.creditCardValidator.creditCard.expiryDate.rawValue != "") {
+                    self?.viewModel.validateExpiryDate?()
                 }
-                if (self?.viewModel.creditCardViewModel.creditCardValidator.creditCard.securityCode != nil) {
-                    self?.viewModel.creditCardViewModel.validateSecurityCode?()
+                if (self?.viewModel.creditCardValidator.creditCard.securityCode != nil) {
+                    self?.viewModel.validateSecurityCode?()
                 }
                 
                 if let areAllFieldsValid = self?.viewModel.allFieldsValid,
@@ -111,7 +168,5 @@ class USRegistrationViewController : UIViewController {
                 }
             }
         }
-        viewModel.creditCardViewModel.validateAllFields = viewModel.validateAllFields
-
     }
 }

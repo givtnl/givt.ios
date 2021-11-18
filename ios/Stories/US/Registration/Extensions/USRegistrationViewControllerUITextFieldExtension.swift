@@ -12,6 +12,9 @@ import UIKit
 enum USRegistrationFieldType: Int {
     case phoneNumber
     case password
+    case creditCardNumber
+    case creditCardExpiryDate
+    case creditCardSecurityCode
 }
 
 extension USRegistrationViewController: UITextFieldDelegate {
