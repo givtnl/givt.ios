@@ -74,6 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             setupYearlyOverviewNotifications()
         }
         
+        loadAdvertisements()
+
         return true
     }
     
@@ -304,6 +306,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
         NotificationManager.shared.resume()
+        loadAdvertisements()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -556,5 +559,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
         Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())
         
+        //-- Advertisements
+        Mediater.shared.registerHandler(handler: GetAdvertismentListQueryHandler())
+        Mediater.shared.registerHandler(handler: GetAdvertisementsLastDateQueryHandler())
+        Mediater.shared.registerHandler(handler: ImportAdvertisementsCommandHandler())
     }
 }
