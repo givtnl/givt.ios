@@ -444,6 +444,11 @@
 		FB87303524C88AF8005FF355 /* FinalizeGivingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87303424C88AF8005FF355 /* FinalizeGivingRoute.swift */; };
 		FB87303724C88B21005FF355 /* FinalizeGivingRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87303624C88B21005FF355 /* FinalizeGivingRouteHandler.swift */; };
 		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
+		FB93042A274D4A40007D5300 /* ThreadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB930429274D4A40007D5300 /* ThreadError.swift */; };
+		FB93042D274E3129007D5300 /* GetRandomAdvertisementQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93042C274E3129007D5300 /* GetRandomAdvertisementQuery.swift */; };
+		FB93042F274E317C007D5300 /* LocalizedAdvertisementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93042E274E317C007D5300 /* LocalizedAdvertisementModel.swift */; };
+		FB930431274E31C9007D5300 /* GetRandomAdvertisementQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB930430274E31C9007D5300 /* GetRandomAdvertisementQueryHandler.swift */; };
+		FB930433274E7D79007D5300 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB930432274E7D79007D5300 /* GenericError.swift */; };
 		FB94D1CB24EBD26200C61ECE /* CollectGroupLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB94D1CA24EBD26200C61ECE /* CollectGroupLabel.swift */; };
 		FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB94D1C924EBD20900C61ECE /* CollectGroupLabel.xib */; };
 		FBA0894A21C7DE18001DD889 /* Features.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0894921C7DE18001DD889 /* Features.storyboard */; };
@@ -980,6 +985,11 @@
 		FB87303424C88AF8005FF355 /* FinalizeGivingRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeGivingRoute.swift; sourceTree = "<group>"; };
 		FB87303624C88B21005FF355 /* FinalizeGivingRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizeGivingRouteHandler.swift; sourceTree = "<group>"; };
 		FB8A610A20A049B400696D20 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
+		FB930429274D4A40007D5300 /* ThreadError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadError.swift; sourceTree = "<group>"; };
+		FB93042C274E3129007D5300 /* GetRandomAdvertisementQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomAdvertisementQuery.swift; sourceTree = "<group>"; };
+		FB93042E274E317C007D5300 /* LocalizedAdvertisementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAdvertisementModel.swift; sourceTree = "<group>"; };
+		FB930430274E31C9007D5300 /* GetRandomAdvertisementQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRandomAdvertisementQueryHandler.swift; sourceTree = "<group>"; };
+		FB930432274E7D79007D5300 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		FB94D1C924EBD20900C61ECE /* CollectGroupLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectGroupLabel.xib; sourceTree = "<group>"; };
 		FB94D1CA24EBD26200C61ECE /* CollectGroupLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectGroupLabel.swift; sourceTree = "<group>"; };
 		FBA0894921C7DE18001DD889 /* Features.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Features.storyboard; sourceTree = "<group>"; };
@@ -2928,6 +2938,15 @@
 			path = FinalizeGiving;
 			sourceTree = "<group>";
 		};
+		FB93042B274E3116007D5300 /* GetRandom */ = {
+			isa = PBXGroup;
+			children = (
+				FB93042C274E3129007D5300 /* GetRandomAdvertisementQuery.swift */,
+				FB930430274E31C9007D5300 /* GetRandomAdvertisementQueryHandler.swift */,
+			);
+			path = GetRandom;
+			sourceTree = "<group>";
+		};
 		FB9C412B2746AAFC00375345 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -3002,6 +3021,8 @@
 				FB872FFE24C809EF005FF355 /* DonationError.swift */,
 				FB87302924C881D9005FF355 /* SafariError.swift */,
 				32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */,
+				FB930429274D4A40007D5300 /* ThreadError.swift */,
+				FB930432274E7D79007D5300 /* GenericError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -3142,6 +3163,7 @@
 		FBD44E372746807400B5E558 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				FB93042B274E3116007D5300 /* GetRandom */,
 				FBA61F76274BD04800523A21 /* GetLastDate */,
 				FBD44E382746808700B5E558 /* GetList */,
 			);
@@ -3161,6 +3183,7 @@
 			isa = PBXGroup;
 			children = (
 				FBD44E3C2746811900B5E558 /* AdvertisementDetailModel.swift */,
+				FB93042E274E317C007D5300 /* LocalizedAdvertisementModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3625,6 +3648,7 @@
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				FBFAF47F25669D3D0012E4A6 /* GetAllDonationsQueryHandler.swift in Sources */,
+				FB930433274E7D79007D5300 /* GenericError.swift in Sources */,
 				32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */,
 				326B7E7F26024316000A6239 /* RecurringDonationTurnsOverviewControllerPrivateExtension.swift in Sources */,
 				FBA61F75274BAB7900523A21 /* ImportAdvertisementsCommandHandler.swift in Sources */,
@@ -3726,6 +3750,7 @@
 				32F528CC25EA9BA90073C243 /* BudgetExternalGivtsViewController.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
+				FB93042F274E317C007D5300 /* LocalizedAdvertisementModel.swift in Sources */,
 				3260CF12254A31D700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRouteHandler.swift in Sources */,
 				32207E8F26415F1A00A265A4 /* BudgetGivingGoalViewController.swift in Sources */,
 				FB872FF924C80581005FF355 /* CreateDonationCommand.swift in Sources */,
@@ -3762,12 +3787,14 @@
 				3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
+				FB93042D274E3129007D5300 /* GetRandomAdvertisementQuery.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
 				A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */,
 				3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */,
 				3260CF2A254ABF6900BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				3260CF32254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift in Sources */,
+				FB93042A274D4A40007D5300 /* ThreadError.swift in Sources */,
 				32AA42AD263FFFA3000BF0EC /* TestimonialManager.swift in Sources */,
 				326E0979256D64310079B4B0 /* ShowUpdateAlertHandler.swift in Sources */,
 				325A7DD8265E73CA00FBAC41 /* BudgetOverviewViewControllerMonthPickerExtension.swift in Sources */,
@@ -3889,6 +3916,7 @@
 				323F170525ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift in Sources */,
 				32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */,
 				321A21642683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift in Sources */,
+				FB930431274E31C9007D5300 /* GetRandomAdvertisementQueryHandler.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
 				324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
@@ -4087,7 +4115,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
@@ -4174,7 +4202,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -4226,7 +4254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;

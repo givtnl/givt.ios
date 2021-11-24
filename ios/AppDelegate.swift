@@ -563,5 +563,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GetAdvertismentListQueryHandler())
         Mediater.shared.registerHandler(handler: GetAdvertisementsLastDateQueryHandler())
         Mediater.shared.registerHandler(handler: ImportAdvertisementsCommandHandler())
+        Mediater.shared.registerHandler(handler: GetRandomAdvertisementQueryHandler())
     }
 }

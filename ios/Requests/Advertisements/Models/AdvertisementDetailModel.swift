@@ -9,6 +9,17 @@
 import Foundation
 import CoreData
 
+struct AdvertisementMetaInfo : Codable {
+    var creationDate: Date
+    var changedDate: Date
+    var featured: Bool
+    var availableLanguages: String
+    var country: String?
+}
+
 struct AdvertisementDetailModel : Codable {
-    var imageUrl : String
+    var title: [String: String]
+    var text: [String: String]
+    var imageUrl: [String: String]
+    var metaInfo: AdvertisementMetaInfo
 }
