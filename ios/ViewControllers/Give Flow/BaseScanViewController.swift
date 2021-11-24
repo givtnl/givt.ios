@@ -112,6 +112,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             } else {
                 message = NSLocalizedString("Safari_GivtTransaction", comment: "")
             }
+            
             var parameters: [String: Any]
             parameters = ["Collect" : NSLocalizedString("Collect", comment: ""),
                           "AreYouSureToCancelGivts" :  NSLocalizedString("CancelGiftAlertMessage", comment: ""),
@@ -134,6 +135,12 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             parameters["nativeAppScheme"] = AppConstants.appScheme
             parameters["urlPart"] = AppConstants.returnUrlDir
             parameters["currency"] = UserDefaults.standard.currencySymbol
+            
+            if let ad = try? Mediater.shared.send(request: GetRandomAdvertisementQuery()) {
+                parameters["advertisementText"] = ad.text
+                parameters["advertisementTitle"] = ad.title
+                parameters["advertisementImageUrl"] = ad.imageUrl
+            }
             
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters) else {
                 return

@@ -14,12 +14,12 @@ extension AppDelegate {
             static var initialLoadAdvertisement = true
         }
         
-        DispatchQueue.global(qos: .utility).async {
+        DispatchQueue.main.async {
             do {
                 let lastDate = try Mediater.shared.send(request: GetAdvertisementsLastDateQuery())
                 try Mediater.shared.sendAsync(request: ImportAdvertisementsCommand(lastChangedDate: lastDate)) { }
             } catch {
-                print("Error happened while trying to update advertisements")
+                print("Error happened while trying to update advertisements: \(error)")
             }
         }
     

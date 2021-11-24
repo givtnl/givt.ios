@@ -23,10 +23,12 @@ class GetAdvertisementsLastDateQueryHandler : RequestHandlerProtocol {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Advertisement")
         let ads = try dataContext.objectContext.fetch(fetchRequest)
         for ad in ads {
-            if let adDate = ad.value(forKey: "createdDate") as? Date, adDate > date {
+            if let adDate = ad.value(forKey: "changedDate") as? Date, adDate > date {
                 date = adDate
             }
         }
+        // need to add a second, since in the server database there may be milliseconds
+        date.addTimeInterval(1)
         try? completion(date as! R.TResponse)
     }
     
