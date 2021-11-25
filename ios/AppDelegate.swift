@@ -92,12 +92,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 localeString = "en-GB"
                 break
             default:
-                let country = try? Mediater.shared.send(request: GetCountryQuery())
+            try? Mediater.shared.sendAsync(request: GetCountryQuery()) { country in
                 localeString = "\(Locale.current.languageCode!)-\(country!)"
-                break
+            }
+            break
         }
         CurrencyHelper.shared.updateCurrentLocale(localeString)
-
         return true
     }
     
