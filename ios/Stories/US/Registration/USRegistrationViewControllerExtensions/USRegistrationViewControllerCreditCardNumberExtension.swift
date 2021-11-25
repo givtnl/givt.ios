@@ -19,6 +19,9 @@ extension USRegistrationViewController {
         creditCardNumberTextField.borderStyle = .none
         creditCardNumberTextField.tag = USRegistrationFieldType.creditCardNumber.rawValue
         creditCardNumberTextField.delegate = self
+        // For autofill
+        creditCardNumberTextField.textContentType = UITextContentType.creditCardNumber
+        
         createToolbar(creditCardNumberTextField)
     }
 }

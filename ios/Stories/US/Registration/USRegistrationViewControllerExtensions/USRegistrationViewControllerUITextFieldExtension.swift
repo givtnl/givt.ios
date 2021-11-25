@@ -25,7 +25,15 @@ extension USRegistrationViewController: UITextFieldDelegate {
             return true
         }
         if (string == String.empty) {
-            currentValueInField.removeLast()
+            if (range.location == 0 && range.length == currentValueInField.count) {
+                // All the text in a field has been selected and user pressed backspace/delete
+                if(fieldTypeTag == .phoneNumber) {
+                    currentValueInField = String.empty
+                }
+            } else {
+                currentValueInField.removeLast()
+                return true
+            }
         }
         if (fieldTypeTag == .creditCardNumber) {
             // Creditcards are maximum 19 digits long
