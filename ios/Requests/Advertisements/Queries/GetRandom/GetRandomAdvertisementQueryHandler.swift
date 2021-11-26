@@ -20,11 +20,10 @@ class GetRandomAdvertisementQueryHandler : RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! GetRandomAdvertisementQuery
-        var langCode = Locale.current.languageCode ?? "en"
-        let regionCode = Locale.current.regionCode?.lowercased() ?? "eu"
+        var langCode = request.localeLanguageCode
         if langCode == "en" {
-            if ["us, gb"].contains(regionCode) {
-                langCode = "\(langCode)-\(regionCode)"
+            if ["us, gb"].contains(request.localeRegionCode) {
+                langCode = "\(langCode)-\(request.localeRegionCode)"
             } else {
                 langCode = "en-eu"
             }
@@ -37,6 +36,13 @@ class GetRandomAdvertisementQueryHandler : RequestHandlerProtocol {
                 || $0.value(forKey: "country") == nil
                 || ($0.value(forKey: "country") as! [String]).contains(request.country!))
         }
+        
+        if ads.count == 0 {
+            let result: LocalizedAdvertisementModel? = nil
+            try completion(result as! R.TResponse)
+            return
+        }
+        
         var ad = ads.first {
             ($0.value(forKey: "featured") as! Bool)
         }
