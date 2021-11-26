@@ -20,10 +20,10 @@ class GetRandomAdvertisementQueryHandler : RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! GetRandomAdvertisementQuery
-        var langCode = request.localeLanguageCode
+        var langCode = request.localeLanguageCode.lowercased()
         if langCode == "en" {
-            if ["us, gb"].contains(request.localeRegionCode) {
-                langCode = "\(langCode)-\(request.localeRegionCode)"
+            if ["us","gb"].contains(request.localeRegionCode.lowercased()) {
+                langCode = "\(langCode)-\(request.localeRegionCode.lowercased())"
             } else {
                 langCode = "en-eu"
             }
