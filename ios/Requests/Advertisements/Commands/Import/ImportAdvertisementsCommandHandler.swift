@@ -32,6 +32,7 @@ class ImportAdvertisementsCommandHandler : RequestHandlerProtocol {
                             self.saveData(data: (response?.data)!)
                             try? completion(() as! R.TResponse)
                         } else {
+                            LogService.shared.error(message: "GET on advertisements returned: \(String(describing: response?.statusCode))")
                             try? completion(() as! R.TResponse)
                         }
                     }
