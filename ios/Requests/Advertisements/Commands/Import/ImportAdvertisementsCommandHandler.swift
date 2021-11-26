@@ -12,6 +12,7 @@ import UIKit
 
 class ImportAdvertisementsCommandHandler : RequestHandlerProtocol {
     let dataContext: CoreDataContext
+    let apiClient = APIClient(url: "https://d34v1i03her6z.cloudfront.net")
     
     init () {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -23,9 +24,9 @@ class ImportAdvertisementsCommandHandler : RequestHandlerProtocol {
         guard Thread.isMainThread else { throw ThreadError.notOnMainThread }
 
         let formatter = ISO8601DateFormatter()
-        APIClient.cloud.head(url: "/advertisements", headers: ["If-Modified-Since": formatter.string(from: request.lastChangedDate)]) { response in
+        apiClient.head(url: "/advertisements", headers: ["If-Modified-Since": formatter.string(from: request.lastChangedDate)]) { response in
             if response?.statusCode == 200 {
-                APIClient.cloud.get(url: "/advertisements", data: [:]) { response in
+                self.apiClient.get(url: "/advertisements", data: [:]) { response in
                     DispatchQueue.main.async {
                         if response?.statusCode == 200 {
                             self.saveData(data: (response?.data)!)
