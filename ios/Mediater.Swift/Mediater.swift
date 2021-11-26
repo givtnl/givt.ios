@@ -37,8 +37,7 @@ final class Mediater : MediaterProtocol {
         }
         semaphore.wait()
         if response is ()? {
-            let x: R.TResponse? = nil
-            return x as! R.TResponse //ignore the warning because this is the only way we can allow optionals as return values for requests
+            return () as! R.TResponse
         }
         if response == nil {
             throw MediaterError.handlerNotFound
