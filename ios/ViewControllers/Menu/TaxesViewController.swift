@@ -9,20 +9,20 @@
 import UIKit
 import SVProgressHUD
 
-class TaxesViewController: UIViewController, UIPickerViewDelegate {
+class TaxesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var currentYear: Int?
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return UserDefaults.standard.yearsWithGivts.count
+        UserDefaults.standard.yearsWithGivts.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(UserDefaults.standard.yearsWithGivts[row])
+        String(UserDefaults.standard.yearsWithGivts[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -61,6 +61,7 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
         
         let yearPicker = UIPickerView()
         yearPicker.delegate = self
+        yearPicker.dataSource = self
         yearField.inputView = yearPicker
         yearField.text = UserDefaults.standard.yearsWithGivts.count >= 1 ? String(UserDefaults.standard.yearsWithGivts.first!) : ""
         createToolbar(yearField)
