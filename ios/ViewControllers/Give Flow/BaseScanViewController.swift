@@ -137,7 +137,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             parameters["currency"] = UserDefaults.standard.currencySymbol
             
             if let ad = try? Mediater.shared.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en",
-                                                                                       localeRegionCode: Locale.current.regionCode ?? "eu")) {
+                                                                                       localeRegionCode: Locale.current.regionCode ?? "eu",
+                                                                                       country: UserDefaults.standard.userExt?.country)) {
                 parameters["advertisementText"] = ad.text
                 parameters["advertisementTitle"] = ad.title
                 parameters["advertisementImageUrl"] = ad.imageUrl
