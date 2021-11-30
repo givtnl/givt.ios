@@ -17,6 +17,8 @@ class DiscoverOrAmountOpenSafariRoute : NoResponseRequest {
     var userId: UUID
     
     var delegate: SFSafariViewControllerDelegate
+    
+    var advertisement: LocalizedAdvertisementModel?
 
     internal init(donations: [Transaction], canShare: Bool, userId: UUID, delegate: SFSafariViewControllerDelegate, collectGroupName: String? = nil, mandateUrl: String? = nil) {
         self.mandateUrl = mandateUrl
