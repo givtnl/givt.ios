@@ -114,12 +114,13 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
                         }
                     }
                 }
-                try mediater.send(request: DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
-                                                           canShare: false,
-                                                           userId: userId,
-                                                           delegate: self,
-                                                           collectGroupName: input.name),
-                                       withContext: self)
+                let route = DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
+                    canShare: false,
+                    userId: userId,
+                    delegate: self,
+                    collectGroupName: input.name)
+                route.advertisement = try? mediater.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en", localeRegionCode: Locale.current.regionCode ?? "eu", country: UserDefaults.standard.userExt?.country))
+                try mediater.send(request: route, withContext: self)
             } else {
                 try mediater.send(request: DiscoverOrAmountOpenOfflineSuccessRoute(collectGroupName: input.name), withContext: self)
             }

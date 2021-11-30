@@ -21,7 +21,7 @@ class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol
             message = "SafariGivingToOrganisation".localized.replacingOccurrences(of:"{0}", with: cgName)
         }
         
-        let safariModel = OpenSafariRouteInputModel(message: message,
+        var safariModel = OpenSafariRouteInputModel(message: message,
                                            Collect: "Collect".localized,
                                            AreYouSureToCancelGivts: "AreYouSureToCancelGivts".localized,
                                            ConfirmBtn: request.mandateUrl == nil ? "Confirm".localized : "Next".localized,
@@ -41,6 +41,12 @@ class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol
                                            nativeAppScheme: AppConstants.appScheme,
                                            urlPart: AppConstants.returnUrlDir,
                                            currency: UserDefaults.standard.currencySymbol)
+        if let ad = request.advertisement {
+            safariModel.advertisementText = ad.text
+            safariModel.advertisementTitle = ad.title
+            safariModel.advertisementImageUrl = ad.imageUrl
+        }
+        
         let plainTextBytes = try JSONEncoder().encode(safariModel).base64EncodedString()
         let gotoUrl = URL(string: "\(AppConstants.apiUri)/confirm.html?msg=\(plainTextBytes)")!;
         LogService.shared.info(message: "Going to Safari")
