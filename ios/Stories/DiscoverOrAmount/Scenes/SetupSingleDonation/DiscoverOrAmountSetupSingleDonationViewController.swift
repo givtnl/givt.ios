@@ -16,7 +16,8 @@ import SafariServices
 
 class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGestureRecognizerDelegate, SFSafariViewControllerDelegate {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
-
+    private var safariViewController: SFSafariViewController? = nil
+    
     var input: DiscoverOrAmountOpenSetupSingleDonationRoute!
     
     @IBOutlet var giveButton: CustomButtonWithRightArrow!
@@ -114,13 +115,13 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
                         }
                     }
                 }
-                let route = DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
+                let route = OpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
                     canShare: false,
                     userId: userId,
                     delegate: self,
                     collectGroupName: input.name)
                 route.advertisement = try? mediater.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en", localeRegionCode: Locale.current.regionCode ?? "eu", country: UserDefaults.standard.userExt?.country))
-                try mediater.send(request: route, withContext: self)
+                safariViewController = try mediater.send(request: route, withContext: self)
             } else {
                 try mediater.send(request: DiscoverOrAmountOpenOfflineSuccessRoute(collectGroupName: input.name), withContext: self)
             }
@@ -252,5 +253,9 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         if let _ = URL.absoluteString.index(of: "cloud.givtapp.net") {
             try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
         }
+    }
+    
+    internal func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
     }
 }

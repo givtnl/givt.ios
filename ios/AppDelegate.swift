@@ -523,7 +523,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupSingleDonationRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupRecurringDonationRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSafariRouteHandler())
+        Mediater.shared.registerHandler(handler: OpenSafariRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
         Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())

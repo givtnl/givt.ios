@@ -9,7 +9,9 @@
 import Foundation
 import SafariServices
 
-class DiscoverOrAmountOpenSafariRoute : NoResponseRequest {
+class OpenSafariRoute : RequestProtocol {
+    typealias TResponse = SFSafariViewController //to retain the viewcontroller
+    
     var mandateUrl: String?
     var donations: [Transaction]
     var canShare: Bool
