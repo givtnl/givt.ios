@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 import SafariServices
 
-class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol {
+class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! DiscoverOrAmountOpenSafariRoute
+        let request = request as! OpenSafariRoute
         
         var message = "SafariGiving".localized
         if let _ = request.mandateUrl {
@@ -55,10 +55,10 @@ class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol
         safariViewController.delegate = request.delegate
         safariViewController.modalPresentationStyle = .popover
         context.show(safariViewController, sender: context)
-        try completion(() as! R.TResponse)
+        try completion(safariViewController as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is DiscoverOrAmountOpenSafariRoute
+        return request is OpenSafariRoute
     }
 }
