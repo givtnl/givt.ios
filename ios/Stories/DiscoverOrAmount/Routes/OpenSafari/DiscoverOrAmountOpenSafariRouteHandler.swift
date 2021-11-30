@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
 class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
@@ -43,15 +44,12 @@ class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol
         let plainTextBytes = try JSONEncoder().encode(safariModel).base64EncodedString()
         let gotoUrl = URL(string: "\(AppConstants.apiUri)/confirm.html?msg=\(plainTextBytes)")!;
         LogService.shared.info(message: "Going to Safari")
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(gotoUrl, options: [:]) { _ in
-                try? completion(() as! R.TResponse)
-            }
-        } else {
-            // Fallback on earlier versions
-            UIApplication.shared.openURL(gotoUrl)
-            try completion(() as! R.TResponse)
-        }
+        
+        let safariViewController = SFSafariViewController(url: gotoUrl)
+        safariViewController.delegate = request.delegate
+        safariViewController.modalPresentationStyle = .popover
+        context.show(safariViewController, sender: context)
+        try completion(() as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
