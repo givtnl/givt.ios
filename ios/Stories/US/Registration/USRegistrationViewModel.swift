@@ -8,6 +8,7 @@
 
 import Foundation
 import GivtCodeShare
+import UIKit
 
 typealias NillableClosure = (()->())?
 
@@ -53,10 +54,16 @@ class USRegistrationViewModel {
     func handleTextChanged(fieldTypeTag: USRegistrationFieldType, input: String) {
         switch(fieldTypeTag) {
         case .phoneNumber:
+            var input = input
+            if input == "" {
+                input = "+1"
+            }
             registrationValidator.phoneNumber = input
+            setPhoneNumberTextField?()
             break
         case .password:
             registrationValidator.password = input
+            setPasswordTextField?()
             break
         case .creditCardNumber:
             creditCardValidator.creditCard.number = input

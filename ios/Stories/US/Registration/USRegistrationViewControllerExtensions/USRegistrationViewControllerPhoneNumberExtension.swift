@@ -6,13 +6,17 @@
 //  Copyright © 2021 Givt. All rights reserved.
 //
 import Foundation
+import UIKit
 
 extension USRegistrationViewController {
     func setupPhoneNumberField() {
-        phoneNumberTextField.placeholder = "+1"
+        phoneNumberTextField.text = "+1"
         phoneNumberTextField.delegate = self
         phoneNumberTextField.tag = USRegistrationFieldType.phoneNumber.rawValue
         phoneNumberTextField.keyboardType = .phonePad
+        
+        phoneNumberTextField.textContentType = UITextContentType.telephoneNumber
+        
         createToolbar(phoneNumberTextField)
     }
 }
