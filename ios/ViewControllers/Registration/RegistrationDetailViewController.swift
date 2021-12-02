@@ -143,7 +143,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         super.viewDidAppear(animated)
     }
 
-    private var paymentType: AccountType = .sepa
+    private var currentPaymentType: PaymentType = .SEPADirectDebit
+    
     @IBOutlet var bacsButton: UIButton!
     @IBOutlet var sepaButton: UIButton!
     @IBOutlet var leadingAnchorLine: NSLayoutConstraint!
@@ -154,7 +155,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         leadingAnchorLine.constant = 0
         sepaButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 14)
         bacsButton.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14)
-        self.paymentType = .sepa
+        
+        currentPaymentType = .SEPADirectDebit
+        
         self.checkAll(self.iban)
         self.checkAll(self.sortCode)
         if animated {
@@ -180,7 +183,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         leadingAnchorLine.constant = 65
         sepaButton.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14)
         bacsButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 14)
-        self.paymentType = .bacs
+        self.currentPaymentType = .BACSDirectDebit
         self.checkAll(self.iban)
         self.checkAll(self.sortCode)
         if animated {
@@ -454,13 +457,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).capitalized
         var userData: RegistrationUser!
-        if paymentType == .sepa {
-            UserDefaults.standard.accountType = AccountType.sepa
+        if currentPaymentType == .SEPADirectDebit {
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
         } else {
-            UserDefaults.standard.accountType = AccountType.bacs
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
         }
+        UserDefaults.standard.paymentType = currentPaymentType
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
                 if success {
@@ -560,7 +562,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             break
         }
         
-        let isBankDataCorrect = (isIbanValid && paymentType == .sepa) || (isBacsValid && paymentType == .bacs)
+        let isBankDataCorrect = (isIbanValid && currentPaymentType == .SEPADirectDebit) || (isBacsValid && currentPaymentType == .BACSDirectDebit)
         nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isBankDataCorrect && isMobilePrefixValid
     }
 

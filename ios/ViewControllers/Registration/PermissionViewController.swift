@@ -59,7 +59,7 @@ class PermissionViewController: UIViewController {
     }
     
     func determineNextScreen() {        
-        if (UserDefaults.standard.paymentType == PaymentType.CreditCard){
+        if (UserDefaults.standard.paymentType == .CreditCard){
             DispatchQueue.main.async {
                 LoginManager.shared.checkMandate { _ in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
@@ -69,12 +69,12 @@ class PermissionViewController: UIViewController {
             return
         }
         
-        if (UserDefaults.standard.paymentType.isBacs) {
+        if (UserDefaults.standard.paymentType == .BACSDirectDebit) {
             DispatchQueue.main.async {
                 let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
                 self.show(vc, sender: nil)
             }
-        } else if (UserDefaults.standard.paymentType.isSepa) {
+        } else if (UserDefaults.standard.paymentType == .SEPADirectDebit) {
             DispatchQueue.main.async {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
                 self.show(vc, sender: nil)
