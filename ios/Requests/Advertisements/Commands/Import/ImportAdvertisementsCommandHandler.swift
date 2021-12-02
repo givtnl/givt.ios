@@ -12,7 +12,7 @@ import UIKit
 
 class ImportAdvertisementsCommandHandler : RequestHandlerProtocol {
     let dataContext: CoreDataContext
-    let apiClient = APIClient(url: "https://d34v1i03her6z.cloudfront.net")
+    let apiClient = APIClient(url: AppConstants.advertisementsApiUrl)
     
     init () {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
