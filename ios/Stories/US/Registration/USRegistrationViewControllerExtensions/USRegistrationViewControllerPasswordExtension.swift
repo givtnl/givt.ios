@@ -21,6 +21,12 @@ extension USRegistrationViewController {
         passwordTextField.delegate = self
         passwordTextField.tag = USRegistrationFieldType.password.rawValue
         passwordTextField.setRightPaddingPoints(40)
+        
+        if #available(iOS 12.0, *) {
+            passwordTextField.textContentType = .newPassword
+        } else {
+            passwordTextField.textContentType = .password
+        }
         createToolbar(passwordTextField)
     }
 }

@@ -6,12 +6,14 @@
 //  Copyright © 2021 Givt. All rights reserved.
 //
 import Foundation
+import UIKit
 
 extension USRegistrationViewController {
     func setupCVV() {
         creditCardCVVTextField.keyboardType = .numberPad
         creditCardCVVTextField.tag = USRegistrationFieldType.creditCardSecurityCode.rawValue
         creditCardCVVTextField.delegate = self
+        creditCardCVVTextField.textContentType = UITextContentType.securityCode
         createToolbar(creditCardCVVTextField)
     }
 }
