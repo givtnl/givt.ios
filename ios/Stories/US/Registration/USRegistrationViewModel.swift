@@ -72,7 +72,9 @@ class USRegistrationViewModel {
             break
         case .creditCardExpiryDate:
             creditCardValidator.creditCard.expiryDate.rawValue = input
-            setExpiryTextField?()
+            if (input.replacingOccurrences(of: "/", with: "").count >= 4) {
+                setExpiryTextField?()
+            }
             break
         case .creditCardSecurityCode:
             creditCardValidator.creditCard.securityCode = input
