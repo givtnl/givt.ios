@@ -28,7 +28,7 @@ extension USRegistrationViewController {
         setupBackButton()
         setupNextButton()
         setupTitle()
-        setupDebug()
+//        setupDebug()
 
         setupScrollViewFix()
     }
@@ -75,7 +75,6 @@ extension USRegistrationViewController {
             expiryDate: "03/30",
             securityCode: "7373"
         )
-        creditCardExpiryDatePicker.date = Calendar.current.date(from: DateComponents(year: 2030, month: 4))!
         termsCheckBox.isSelected = true
         viewModel.validateAllFields?()
         #endif

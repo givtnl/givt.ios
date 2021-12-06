@@ -24,7 +24,6 @@ class USRegistrationViewController : UIViewController {
     @IBOutlet weak var creditCardNumberTextField: CustomUITextField!
         // MARK: Expiry date
     @IBOutlet weak var creditCardExpiryDateTextField: CustomUITextField!
-    var creditCardExpiryDatePicker: MonthYearPickerView!
 
     @IBOutlet weak var creditCardCVVTextField: CustomUITextField!
     // MARK: Phone number
@@ -90,9 +89,11 @@ class USRegistrationViewController : UIViewController {
             }
         }
         viewModel.validateExpiryDate = { [weak self] () in
-            DispatchQueue.main.async {
-                if let isValid = self?.viewModel.creditCardValidator.expiryDateIsValid() {
-                    self?.creditCardExpiryDateTextField.setBorders(isValid)
+            if self?.creditCardExpiryDateTextField.text?.count ?? 0 >= 4 {
+                DispatchQueue.main.async {
+                    if let isValid = self?.viewModel.creditCardValidator.expiryDateIsValid() {
+                        self?.creditCardExpiryDateTextField.setBorders(isValid)
+                    }
                 }
             }
         }
