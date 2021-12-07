@@ -13,6 +13,7 @@ import AppCenterAnalytics
 import SVProgressHUD
 
 class USSecondRegistrationViewController: UIViewController {
+    @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
@@ -48,6 +49,7 @@ class USSecondRegistrationViewController: UIViewController {
 // Privates
 private extension USSecondRegistrationViewController {
     @IBAction func registerPressed(_ sender: Any) {
+        
         SVProgressHUD.show()
         
         self.registerUserCommand.firstName = self.firstNameTextField.text
@@ -83,8 +85,12 @@ private extension USSecondRegistrationViewController {
 // Infrastructure
 extension USSecondRegistrationViewController {
     func setupUI() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
         setupFirstNameTextField()
         setupLastNameTextField()
+        setupScrollViewFix()
     }
     
     func initViewModel() {
