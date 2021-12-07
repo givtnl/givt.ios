@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Mixpanel
 import AppCenterAnalytics
+import SVProgressHUD
 
 class USSecondRegistrationViewController: UIViewController {
     @IBOutlet var theScrollView: UIScrollView!
@@ -22,21 +23,32 @@ class USSecondRegistrationViewController: UIViewController {
     
     var viewModel = USSecondRegistrationViewModel()
 
+    // user details from previous screen
+    var registerUserCommand: RegisterUserCommand!
+    var registerCreditCardCommand: RegisterCreditCardCommand!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
-
-        MSAnalytics.trackEvent("US User started second registration")
-        Mixpanel.mainInstance().track(event: "US User started second registration")
         
-        initViewModel()
-        setupUI()
+        SVProgressHUD.dismiss { [self] in
+            initViewModel()
+            setupUI()
+            
+            MSAnalytics.trackEvent("US User started second registration")
+            Mixpanel.mainInstance().track(event: "US User started second registration")
+        }
+        
+        
+        SVProgressHUD.dismiss()
     }
+    
 }
 
 // Privates
 private extension USSecondRegistrationViewController {
-    
+    @IBAction func registerPressed(_ sender: Any) {
+    }
 }
 
 // Infrastructure
