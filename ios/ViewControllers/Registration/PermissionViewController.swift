@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import SVProgressHUD
 
 class PermissionViewController: UIViewController {
 
@@ -28,8 +29,9 @@ class PermissionViewController: UIViewController {
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
             self.backButton.image = UIImage()
-            
         }
+        
+        SVProgressHUD.dismiss()
     }
     
     @IBOutlet var backButton: UIBarButtonItem!

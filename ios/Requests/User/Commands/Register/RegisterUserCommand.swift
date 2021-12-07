@@ -18,6 +18,8 @@ internal struct RegisterUserCommand : RequestProtocol, Codable {
     var appLanguage: String
     var deviceOS: String
     var country: String
+    var firstName: String? = nil
+    var lastName: String? = nil
     
     internal init(userId: String,
                   email: String,

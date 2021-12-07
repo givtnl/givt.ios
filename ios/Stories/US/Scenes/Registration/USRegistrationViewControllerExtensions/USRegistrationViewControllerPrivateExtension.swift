@@ -55,6 +55,7 @@ private extension USRegistrationViewController {
             deviceOS: "2",
             country: "US"
         )
+        
         let registerCreditCardCommand = RegisterCreditCardCommand(
             creditCardDetails: CreditCardDetails(
                 cardNumber: viewModel.creditCardValidator.creditCard.number!,
@@ -64,49 +65,9 @@ private extension USRegistrationViewController {
             )
         )
         
-        try? Mediater.shared.sendAsync(request: registerUserCommand, completion: { response in
-            if (response.result) {
-                LoginManager.shared.loginUser(
-                    email: registerUserCommand.email,
-                    password: registerUserCommand.password,
-                    type: .password, completionHandler: { (success, err, descr) in
-                        if success {
-                            UserDefaults.standard.amountLimit = 499
-                            try? Mediater.shared.sendAsync(request: registerCreditCardCommand, completion: { response in
-                                SVProgressHUD.dismiss()
-                                if (response.result) {
-                                    DispatchQueue.main.async {
-                                        UserDefaults.standard.paymentType = .CreditCard
-                                        UserDefaults.standard.mandateSigned = true
-                                        UserDefaults.standard.isTempUser = false
-                                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
-                                        vc.hasBackButton = false
-                                        self.show(vc, sender:nil)
-                                    }
-                                } else {
-                                    self.showRegistrationErrorAlert()
-                                }
-                            })
-                        } else {
-                            self.showRegistrationErrorAlert()
-                        }
-                    })
-            } else {
-                SVProgressHUD.dismiss()
-                self.showRegistrationErrorAlert()
-            }
-        })
-    }
-    private func showRegistrationErrorAlert() {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(
-                title: "SomethingWentWrong".localized,
-                message: "ErrorTextRegister".localized,
-                preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
-        }
+        let routeRequest = FromFirstToSecondRegistrationRoute(registerUserCommand: registerUserCommand, registerCreditCardCommand: registerCreditCardCommand)
+        
+        try! Mediater.shared.send(request: routeRequest, withContext: self)
+        
     }
 }
