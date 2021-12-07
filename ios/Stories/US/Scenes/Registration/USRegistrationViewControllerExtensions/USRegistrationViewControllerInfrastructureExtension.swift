@@ -113,12 +113,10 @@ extension USRegistrationViewController {
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        if #available(iOS 11.0, *) {
-            bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom - 64
-        } else {
-            bottomScrollViewConstraint.constant = keyboardFrame.size.height - 64
-        }
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom - 64
+        
         UIView.animate(withDuration: 0.3, animations: {
+            self.theScrollView.scrollToBottom()
             self.view.layoutIfNeeded()
         })
     }
@@ -129,4 +127,5 @@ extension USRegistrationViewController {
             self.view.layoutIfNeeded()
         })
     }
+    
 }
