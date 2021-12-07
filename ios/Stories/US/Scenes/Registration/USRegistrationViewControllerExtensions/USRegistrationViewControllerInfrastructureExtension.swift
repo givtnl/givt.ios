@@ -28,7 +28,7 @@ extension USRegistrationViewController {
         setupBackButton()
         setupNextButton()
         setupTitle()
-//        setupDebug()
+        setupDebug()
 
         setupScrollViewFix()
     }

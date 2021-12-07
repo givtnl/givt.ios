@@ -22,19 +22,12 @@ extension USSecondRegistrationViewController: UITextFieldDelegate {
             return true
         }
         if (string == String.empty) {
-            currentValueInField.removeLast()
+            if (currentValueInField.count >= 1) {
+                currentValueInField.removeLast()
+            }
             return true
         }
-        if (fieldTypeTag == .firstName) {
-            if (String(currentValueInField+string).count >= 2) {
-                return false
-            }
-        }
-        if (fieldTypeTag == .lastName) {
-            if (String(currentValueInField+string).count >= 2) {
-                return false
-            }
-        }
+        
         viewModel.handleTextChanged(fieldTypeTag: fieldTypeTag, input: currentValueInField+string)
         return true
     }
@@ -51,16 +44,12 @@ extension USSecondRegistrationViewController: UITextFieldDelegate {
     
     // MARK: When return button is pressed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.returnKeyType != .done {
+        if textField.returnKeyType != .done || textField.superview?.viewWithTag(textField.tag + 1) == nil {
             textField.resignFirstResponder()
             return false
         }
         
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        return false //prevents adding line break
+        textField.superview?.viewWithTag(textField.tag + 1)?.becomeFirstResponder()
+        return true
     }
 }

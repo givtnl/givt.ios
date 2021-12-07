@@ -48,6 +48,35 @@ class USSecondRegistrationViewController: UIViewController {
 // Privates
 private extension USSecondRegistrationViewController {
     @IBAction func registerPressed(_ sender: Any) {
+        SVProgressHUD.show()
+        
+        self.registerUserCommand.firstName = self.firstNameTextField.text
+        self.registerUserCommand.lastName = self.lastNameTextField.text
+        
+        try! Mediater.shared.sendAsync(request: self.registerUserCommand, completion: { response in
+            if (response.result) {
+                LoginManager.shared.loginUser(email: self.registerUserCommand.email, password: self.registerUserCommand.password, type: .password) { success, error, description in
+                    if (success) {
+                        try? Mediater.shared.sendAsync(request: self.registerCreditCardCommand, completion: { response in
+                            UserDefaults.standard.amountLimit = 499
+                            UserDefaults.standard.paymentType = .CreditCard
+                            UserDefaults.standard.mandateSigned = true
+                            UserDefaults.standard.isTempUser = false
+                            if (response.result) {
+                                DispatchQueue.main.async {
+                                    UserDefaults.standard.paymentType = .CreditCard
+                                    UserDefaults.standard.mandateSigned = true
+                                    UserDefaults.standard.isTempUser = false
+                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
+                                    vc.hasBackButton = false
+                                    self.show(vc, sender:nil)
+                                }
+                            }
+                        })
+                    }
+                }
+            }
+        })
     }
 }
 
@@ -73,16 +102,17 @@ extension USSecondRegistrationViewController {
         }
         viewModel.setLastNameTextField = { [weak self] () in
             DispatchQueue.main.async {
-                self?.firstNameTextField.text = self?.viewModel.registrationValidator.firstName
+                self?.lastNameTextField.text = self?.viewModel.registrationValidator.lastName
             }
         }
-        viewModel.setLastNameTextField =  { [weak self] () in
+        viewModel.validateLastName =  { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.registrationValidator.isValidLastName {
                     self?.lastNameTextField.setBorders(isValid)
                 }
             }
         }
+        
         viewModel.validateAllFields = { [weak self] () in
             DispatchQueue.main.async {
                 if (self?.viewModel.registrationValidator.firstName != "") {

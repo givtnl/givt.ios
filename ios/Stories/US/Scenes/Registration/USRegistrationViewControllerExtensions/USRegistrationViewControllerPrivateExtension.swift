@@ -55,6 +55,7 @@ private extension USRegistrationViewController {
             deviceOS: "2",
             country: "US"
         )
+        
         let registerCreditCardCommand = RegisterCreditCardCommand(
             creditCardDetails: CreditCardDetails(
                 cardNumber: viewModel.creditCardValidator.creditCard.number!,
