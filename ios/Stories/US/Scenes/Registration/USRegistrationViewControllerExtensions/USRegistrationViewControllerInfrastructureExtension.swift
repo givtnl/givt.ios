@@ -12,7 +12,11 @@ import SVProgressHUD
 import GivtCodeShare
 
 extension USRegistrationViewController {
+    
     func setupUI() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -28,7 +32,7 @@ extension USRegistrationViewController {
         setupBackButton()
         setupNextButton()
         setupTitle()
-//        setupDebug()
+        setupDebug()
 
         setupScrollViewFix()
     }
@@ -101,5 +105,28 @@ extension USRegistrationViewController {
     
     @objc func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
         self.endEditing()
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        if #available(iOS 11.0, *) {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom - 64
+        } else {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height - 64
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        bottomScrollViewConstraint.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }

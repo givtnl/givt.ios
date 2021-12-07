@@ -14,6 +14,7 @@ import GivtCodeShare
 import MonthYearPicker
 
 class USRegistrationViewController : UIViewController {
+    @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
@@ -57,6 +58,7 @@ class USRegistrationViewController : UIViewController {
         
         initViewModel()
         setupUI()
+        
     }
     
     func initViewModel() {
