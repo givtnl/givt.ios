@@ -11,7 +11,6 @@ import UIKit
 
 extension USSecondRegistrationViewController {
     func setupFirstNameTextField() {
-        firstNameTextField.text = "+1"
         firstNameTextField.delegate = self
         firstNameTextField.tag = USSecondRegistrationFieldType.firstName.rawValue
         firstNameTextField.keyboardType = .default

@@ -13,8 +13,9 @@ class FromFirstToSecondRegistrationRouteHandler: RequestHandlerWithContextProtoc
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let vc = UIStoryboard.init(name: "Registration", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: USSecondRegistrationViewController.self)) as! USSecondRegistrationViewController
-        //let route = (request as! FromFirstToSecondRegistrationRoute)
-        
+        let route = (request as! FromFirstToSecondRegistrationRoute)
+        vc.registerUserCommand = route.registerUserCommand
+        vc.registerCreditCardCommand = route.registerCreditCardCommand
         context.navigationController?.pushViewController(vc, animated: true)
         
         try completion(() as! R.TResponse)
