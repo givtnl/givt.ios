@@ -554,6 +554,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GoToAboutViewRouteHandler())
         Mediater.shared.registerHandler(handler: OpenRecurringDonationOverviewListRouteHandler())
         Mediater.shared.registerHandler(handler: OpenRecurringRuleDetailFromNotificationRouteHandler())
+        Mediater.shared.registerHandler(handler: FromFirstToSecondRegistrationRouteHandler())
+
         
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
