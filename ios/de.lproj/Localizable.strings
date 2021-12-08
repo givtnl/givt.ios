@@ -1093,3 +1093,12 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetPushYearlyFinal" = "Sieh dir deine Jahresübersicht an und schau, was du im letzten Jahr gegeben hast.";
 "BudgetTestimonialYearlyOverviewAction" = "Zur Übersicht";
 "DuplicateAccountOrganisationMessage" = "Bist du sicher, dass du deine eigenen Bankdaten verwendest?";
+"US.Registration.CreditCard.Details.Number.Placeholder" = "Credit card number";
+"US.Registration.CreditCard.Details.ExpiryDate.Placeholder" = "MM/YY";
+"US.Registration.CreditCard.Details.SecurityCode.Placeholder" = "CVV";
+"US.Registration.Personal.Details.PhoneNumber.Placeholder" = "Mobile number (+1)";
+"US.Registration.Personal.Details.Password.Placeholder" = "Password";
+"US.Registration.Personal.Details.Firstname.Placeholder" = "First name";
+"US.Registration.Personal.Details.Lastname.Placeholder" = "Last name";
+"US.Registration.Tax.Title" = "To create your annual statement, we need your full name.";
+"US.Registration.Tax.Subtitle" = "Your name will only be used to create your overview. You will always remain anonymous to the recipient.";
