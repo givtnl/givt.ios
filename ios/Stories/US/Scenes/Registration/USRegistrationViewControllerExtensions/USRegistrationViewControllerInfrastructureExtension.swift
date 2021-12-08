@@ -62,6 +62,7 @@ extension USRegistrationViewController {
     func setupBackButton() {
         backButton.accessibilityLabel = "Back".localized
     }
+    
     func setupNextButton() {
         nextButton.setTitle("Next".localized, for: .normal)
         nextButton.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)

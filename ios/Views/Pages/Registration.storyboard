@@ -1261,20 +1261,20 @@ Veel geefplezier!</string>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="uyv-ul-jwR" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="118.33333587646484"/>
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="119.66666412353516"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyv-ul-jwR" id="Cgh-Vj-uz8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="118.33333587646484"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="119.66666412353516"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-Ds-PNX">
-                                                                    <rect key="frame" x="20" y="15" width="378.33333333333331" height="88.333333333333329"/>
+                                                                    <rect key="frame" x="20" y="15" width="378.33333333333331" height="89.666666666666671"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33D-uJ-VuA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="88.333333333333329"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="89.666666666666671"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeW-Ug-CTu">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="88.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="89.666666666666671"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1287,10 +1287,10 @@ Veel geefplezier!</string>
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F10-xN-Ybg">
-                                                                            <rect key="frame" x="30" y="0.0" width="348.33333333333331" height="88.333333333333329"/>
+                                                                            <rect key="frame" x="30" y="0.0" width="348.33333333333331" height="89.666666666666671"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-QU-d4n">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="348.33333333333331" height="88.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="348.33333333333331" height="89.666666666666671"/>
                                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1506,7 +1506,7 @@ Veel geefplezier!</string>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-UK-gS6">
                                                                         <rect key="frame" x="0.0" y="0.0" width="189" height="44"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiry date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWK-5e-NST" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWK-5e-NST" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="189" height="44"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="44" id="zdX-dd-bUm"/>
@@ -1515,41 +1515,16 @@ Veel geefplezier!</string>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="uFb-gw-gM0">
-                                                                                <rect key="frame" x="158" y="18" width="13" height="8"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" constant="13" id="3c1-lC-6vk"/>
-                                                                                    <constraint firstAttribute="height" constant="8" id="D5B-ed-oUM"/>
-                                                                                </constraints>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-aG-NFZ">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="189" height="44"/>
-                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                <state key="normal">
-                                                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                </state>
-                                                                                <connections>
-                                                                                    <action selector="openCreditCardExpiryDatePicker:" destination="4zs-Tf-pN5" eventType="touchUpInside" id="rqX-rO-wEO"/>
-                                                                                </connections>
-                                                                            </button>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="uFb-gw-gM0" firstAttribute="top" secondItem="pcb-UK-gS6" secondAttribute="top" constant="18" id="0pY-TS-bSC"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="OeC-aG-NFZ" secondAttribute="trailing" id="4iR-ei-POv"/>
                                                                             <constraint firstItem="vWK-5e-NST" firstAttribute="leading" secondItem="pcb-UK-gS6" secondAttribute="leading" id="ABb-xJ-DE1"/>
-                                                                            <constraint firstItem="OeC-aG-NFZ" firstAttribute="leading" secondItem="pcb-UK-gS6" secondAttribute="leading" id="Dnd-28-4ws"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="uFb-gw-gM0" secondAttribute="bottom" constant="18" id="Rl1-97-dNE"/>
                                                                             <constraint firstAttribute="bottom" secondItem="vWK-5e-NST" secondAttribute="bottom" id="cV5-y9-5XA"/>
                                                                             <constraint firstAttribute="trailing" secondItem="vWK-5e-NST" secondAttribute="trailing" id="fbp-6C-ZOu"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="OeC-aG-NFZ" secondAttribute="bottom" id="j2L-kx-RSl"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="uFb-gw-gM0" secondAttribute="trailing" constant="18" id="kyX-uy-js2"/>
                                                                             <constraint firstItem="vWK-5e-NST" firstAttribute="top" secondItem="pcb-UK-gS6" secondAttribute="top" id="pNm-Ix-aAp"/>
-                                                                            <constraint firstItem="OeC-aG-NFZ" firstAttribute="top" secondItem="pcb-UK-gS6" secondAttribute="top" id="ycs-tG-ADQ"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Security code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-cV-w2C" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC/CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-cV-w2C" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                                         <rect key="frame" x="199" y="0.0" width="189" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="ks5-jl-xWv"/>
@@ -1611,13 +1586,13 @@ Veel geefplezier!</string>
                                         </constraints>
                                     </scrollView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zd4-6J-UeL">
-                                        <rect key="frame" x="20" y="709" width="388" height="119"/>
+                                        <rect key="frame" x="20" y="734" width="388" height="94"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfX-TO-FHr" userLabel="acceptView">
-                                                <rect key="frame" x="0.0" y="0.0" width="388" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="388" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmw-hx-7hD">
-                                                        <rect key="frame" x="0.0" y="15.666666666666629" width="24" height="24"/>
+                                                        <rect key="frame" x="0.0" y="8" width="24" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="24" id="cdT-tg-Kko"/>
                                                             <constraint firstAttribute="height" constant="24" id="laO-ZB-cap"/>
@@ -1629,7 +1604,7 @@ Veel geefplezier!</string>
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mijn persoonsgegevens mogen door Givt worden vastgelegd." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvo-6f-K19">
-                                                        <rect key="frame" x="39" y="7" width="349" height="41"/>
+                                                        <rect key="frame" x="39" y="-0.33333333333337123" width="349" height="41"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                                         <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1637,7 +1612,7 @@ Veel geefplezier!</string>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="55" id="16R-Z3-MdD"/>
+                                                    <constraint firstAttribute="height" constant="40" id="16R-Z3-MdD"/>
                                                     <constraint firstItem="wmw-hx-7hD" firstAttribute="centerY" secondItem="VfX-TO-FHr" secondAttribute="centerY" id="1U5-B2-9th"/>
                                                     <constraint firstAttribute="trailing" secondItem="jvo-6f-K19" secondAttribute="trailing" id="DWd-sT-X8D"/>
                                                     <constraint firstItem="jvo-6f-K19" firstAttribute="centerY" secondItem="VfX-TO-FHr" secondAttribute="centerY" id="Heg-sC-hkE"/>
@@ -1646,7 +1621,7 @@ Veel geefplezier!</string>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gn-gj-rSb" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="75" width="348" height="44"/>
+                                                <rect key="frame" x="0.0" y="50" width="388" height="44"/>
                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="wce-vy-Qgn"/>
@@ -1678,9 +1653,9 @@ Veel geefplezier!</string>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="VfX-TO-FHr" secondAttribute="trailing" id="50E-xw-QR7"/>
                                             <constraint firstAttribute="bottom" secondItem="2gn-gj-rSb" secondAttribute="bottom" id="5Hl-sj-Txa"/>
-                                            <constraint firstItem="2gn-gj-rSb" firstAttribute="top" secondItem="VfX-TO-FHr" secondAttribute="bottom" constant="20" id="Inq-QQ-7u4"/>
-                                            <constraint firstItem="2gn-gj-rSb" firstAttribute="leading" secondItem="zd4-6J-UeL" secondAttribute="leading" constant="20" id="fiN-Y7-iMK"/>
-                                            <constraint firstAttribute="trailing" secondItem="2gn-gj-rSb" secondAttribute="trailing" constant="20" id="fzN-sZ-plq"/>
+                                            <constraint firstItem="2gn-gj-rSb" firstAttribute="top" secondItem="VfX-TO-FHr" secondAttribute="bottom" constant="10" id="Inq-QQ-7u4"/>
+                                            <constraint firstItem="2gn-gj-rSb" firstAttribute="leading" secondItem="zd4-6J-UeL" secondAttribute="leading" id="fiN-Y7-iMK"/>
+                                            <constraint firstAttribute="trailing" secondItem="2gn-gj-rSb" secondAttribute="trailing" id="fzN-sZ-plq"/>
                                             <constraint firstItem="VfX-TO-FHr" firstAttribute="top" secondItem="zd4-6J-UeL" secondAttribute="top" id="uDX-pe-XRo"/>
                                             <constraint firstItem="VfX-TO-FHr" firstAttribute="leading" secondItem="zd4-6J-UeL" secondAttribute="leading" id="x8o-sR-hOQ"/>
                                         </constraints>
@@ -1881,12 +1856,21 @@ Veel geefplezier!</string>
                     </view>
                     <navigationItem key="navigationItem" id="rYC-N4-gfM">
                         <barButtonItem key="backBarButtonItem" title=" " id="NwI-pZ-gb7"/>
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="Jio-Xl-KTH"/>
-                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="H14-ih-mGG"/>
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="Jio-Xl-KTH">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="Qe6-CD-FFL" id="pim-Tm-Lhs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="H14-ih-mGG">
+                            <connections>
+                                <action selector="faqButtonPressed:" destination="Qe6-CD-FFL" id="bIh-Rv-008"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="Jio-Xl-KTH" id="omg-m2-nkr"/>
+                        <outlet property="backButton" destination="Jio-Xl-KTH" id="QDr-m2-ZXk"/>
                         <outlet property="bottomScrollViewConstraint" destination="QbW-Xv-yVn" id="QSb-Iv-rgc"/>
+                        <outlet property="faqButton" destination="H14-ih-mGG" id="NeY-qJ-5z9"/>
                         <outlet property="firstNameTextField" destination="Fcs-UJ-yd6" id="8fB-UR-NmX"/>
                         <outlet property="lastNameTextField" destination="mf7-tD-2Ug" id="EsY-EL-9If"/>
                         <outlet property="registerButton" destination="sI0-nr-vSj" id="Tu2-w4-jf7"/>
@@ -1942,7 +1926,7 @@ Veel geefplezier!</string>
             <size key="intrinsicContentSize" width="81" height="37"/>
         </designable>
         <designable name="WW5-cV-w2C">
-            <size key="intrinsicContentSize" width="124.33333333333333" height="34"/>
+            <size key="intrinsicContentSize" width="96.333333333333329" height="34"/>
         </designable>
         <designable name="X5X-RH-tAB">
             <size key="intrinsicContentSize" width="167" height="34"/>
@@ -1978,7 +1962,7 @@ Veel geefplezier!</string>
             <size key="intrinsicContentSize" width="27.333333333333332" height="23.666666666666668"/>
         </designable>
         <designable name="vWK-5e-NST">
-            <size key="intrinsicContentSize" width="108" height="34"/>
+            <size key="intrinsicContentSize" width="81" height="34"/>
         </designable>
     </designables>
     <resources>

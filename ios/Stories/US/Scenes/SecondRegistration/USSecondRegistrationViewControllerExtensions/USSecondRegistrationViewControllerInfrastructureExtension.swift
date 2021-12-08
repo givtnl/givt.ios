@@ -10,7 +10,60 @@ import Foundation
 import UIKit
 
 extension USSecondRegistrationViewController {
-    // MARK: Scrollview
+    func setupUI() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
+        setupFirstNameTextField()
+        setupLastNameTextField()
+        setupScrollViewFix()
+        setupBackButton()
+        setupRegisterButton()
+        
+    }
+
+    func initViewModel() {
+        viewModel.setFirstNameTextField = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.firstNameTextField.text = self?.viewModel.registrationValidator.firstName
+            }
+        }
+        viewModel.validateFirstName =  { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.registrationValidator.isValidFirstName {
+                    self?.firstNameTextField.setBorders(isValid)
+                }
+            }
+        }
+        viewModel.setLastNameTextField = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.lastNameTextField.text = self?.viewModel.registrationValidator.lastName
+            }
+        }
+        viewModel.validateLastName =  { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.registrationValidator.isValidLastName {
+                    self?.lastNameTextField.setBorders(isValid)
+                }
+            }
+        }
+        
+        viewModel.validateAllFields = { [weak self] () in
+            DispatchQueue.main.async {
+                if (self?.viewModel.registrationValidator.firstName != "") {
+                    self?.viewModel.validateFirstName?()
+                }
+                if (self?.viewModel.registrationValidator.lastName != "") {
+                    self?.viewModel.validateLastName?()
+                }
+                
+                if let areAllFieldsValid = self?.viewModel.allFieldsValid {
+                    self?.registerButton.isEnabled = areAllFieldsValid
+                }
+            }
+        }
+    }
+    
     func setupScrollViewFix() {
         // Prevents the scroll view from swallowing up the touch event of child buttons
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))

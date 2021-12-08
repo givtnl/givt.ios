@@ -207,6 +207,8 @@
 		32CA17A724CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17A624CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift */; };
 		32CA17B324CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17B224CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift */; };
 		32CA17B524CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */; };
+		32CF87BF27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF87BE27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift */; };
+		32CF87C12760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */; };
 		32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */; };
 		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
@@ -755,6 +757,8 @@
 		32CA17A624CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationViewController.swift; sourceTree = "<group>"; };
 		32CA17B224CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationRoute.swift; sourceTree = "<group>"; };
 		32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationRouteHandler.swift; sourceTree = "<group>"; };
+		32CF87BE27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USSecondRegistrationViewControllerRegisterButtonExtension.swift; sourceTree = "<group>"; };
+		32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USSecondRegistrationViewControllerBackButtonExtension.swift; sourceTree = "<group>"; };
 		32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
@@ -1891,6 +1895,8 @@
 				32ABDD7B275E76DA00544BCF /* USSecondRegistrationViewControllerLastNameExtension.swift */,
 				32ABDD7D275E76E800544BCF /* USSecondRegistrationViewControllerPrivateExtension.swift */,
 				32ABDD7F275E76F600544BCF /* USSecondRegistrationViewControllerInfrastructureExtension.swift */,
+				32CF87BE27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift */,
+				32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */,
 			);
 			path = USSecondRegistrationViewControllerExtensions;
 			sourceTree = "<group>";
@@ -3701,6 +3707,7 @@
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
 				DF05015424F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift in Sources */,
 				32111D6D25E556B900DB775C /* GetMonthlySummaryQueryHandler.swift in Sources */,
+				32CF87BF27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift in Sources */,
 				FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */,
 				32F528D825EAA4C20073C243 /* BudgetExternalGivtsInfoView.swift in Sources */,
 				324BA46826736117008A8EA8 /* DownloadSummaryCommandHandler.swift in Sources */,
@@ -3855,6 +3862,7 @@
 				27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */,
 				FBC185CC24C6CCD2001A4C6B /* MediaterError.swift in Sources */,
 				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
+				32CF87C12760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
 				32DDFB3625F7F52900E25AF2 /* BindableGestureRecognizer.swift in Sources */,
