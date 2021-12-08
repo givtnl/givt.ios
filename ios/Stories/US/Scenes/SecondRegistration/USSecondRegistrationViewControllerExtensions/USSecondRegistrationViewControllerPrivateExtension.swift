@@ -11,6 +11,11 @@ import SVProgressHUD
 import Algorithms
 
 private extension USSecondRegistrationViewController {
+    @IBAction func faqButtonPressed(_ sender: Any) {
+        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     private func showRegistrationErrorAlert() {
         DispatchQueue.main.async {
             let alert = UIAlertController(
