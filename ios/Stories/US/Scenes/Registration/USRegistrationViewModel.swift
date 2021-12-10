@@ -71,7 +71,7 @@ class USRegistrationViewModel {
             setCardNumberTextField?()
             break
         case .creditCardExpiryDate:
-            creditCardValidator.creditCard.expiryDate.rawValue = input
+            creditCardValidator.creditCard.expiryDate.rawValue = input.replacingOccurrences(of: "/", with: "")
             if (input.replacingOccurrences(of: "/", with: "").count >= 4) {
                 setExpiryTextField?()
             }

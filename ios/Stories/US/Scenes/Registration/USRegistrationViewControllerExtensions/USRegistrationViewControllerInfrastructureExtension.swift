@@ -77,7 +77,7 @@ extension USRegistrationViewController {
             phoneNumber: "+1111111111",
             password: "Test123",
             cardNumber: "370000000000002",
-            expiryDate: "03/30",
+            expiryDate: "0330",
             securityCode: "7373"
         )
         termsCheckBox.isSelected = true
