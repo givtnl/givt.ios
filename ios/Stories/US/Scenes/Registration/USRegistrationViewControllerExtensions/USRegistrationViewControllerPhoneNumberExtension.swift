@@ -14,7 +14,7 @@ extension USRegistrationViewController {
         phoneNumberTextField.delegate = self
         phoneNumberTextField.tag = USRegistrationFieldType.phoneNumber.rawValue
         phoneNumberTextField.keyboardType = .phonePad
-        
+        phoneNumberTextField.placeholder = "US.Registration.Personal.Details.PhoneNumber.Placeholder".localized
         phoneNumberTextField.textContentType = UITextContentType.telephoneNumber
         
         createToolbar(phoneNumberTextField)

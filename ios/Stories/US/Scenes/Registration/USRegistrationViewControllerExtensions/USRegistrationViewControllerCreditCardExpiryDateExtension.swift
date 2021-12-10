@@ -15,6 +15,7 @@ extension USRegistrationViewController {
         creditCardExpiryDateTextField.delegate = self
         creditCardExpiryDateTextField.textContentType = UITextContentType.expiryDate
         creditCardExpiryDateTextField.keyboardType = .numberPad
+        creditCardExpiryDateTextField.placeholder = "US.Registration.CreditCard.Details.ExpiryDate.Placeholder".localized
         createToolbar(creditCardExpiryDateTextField)
     }
 }

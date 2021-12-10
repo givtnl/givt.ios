@@ -20,6 +20,9 @@ extension USSecondRegistrationViewController {
         setupBackButton()
         setupRegisterButton()
         
+        titleLabel.text = "US.Registration.Tax.Title".localized
+        subtitleLabel.text = "US.Registration.Tax.Subtitle".localized
+        
     }
 
     func initViewModel() {

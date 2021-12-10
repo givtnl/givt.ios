@@ -14,7 +14,8 @@ extension USSecondRegistrationViewController {
         lastNameTextField.delegate = self
         lastNameTextField.tag = USSecondRegistrationFieldType.lastName.rawValue
         lastNameTextField.keyboardType = .default
-        
+        lastNameTextField.placeholder = "US.Registration.Personal.Details.Lastname.Placeholder".localized
+
         lastNameTextField.textContentType = UITextContentType.familyName
         
         createToolbar(lastNameTextField)
