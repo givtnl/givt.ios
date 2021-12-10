@@ -22,6 +22,8 @@ extension USRegistrationViewController {
         // For autofill
         creditCardNumberTextField.textContentType = UITextContentType.creditCardNumber
         
+        creditCardNumberTextField.placeholder = "US.Registration.CreditCard.Details.Number.Placeholder".localized
+        
         createToolbar(creditCardNumberTextField)
     }
 }

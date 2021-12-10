@@ -16,7 +16,7 @@ extension USSecondRegistrationViewController {
         firstNameTextField.keyboardType = .default
         
         firstNameTextField.textContentType = UITextContentType.givenName
-        
+        firstNameTextField.placeholder = "US.Registration.Personal.Details.Firstname.Placeholder".localized
         createToolbar(firstNameTextField)
     }
 }

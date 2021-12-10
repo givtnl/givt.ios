@@ -27,6 +27,8 @@ extension USRegistrationViewController {
         } else {
             passwordTextField.textContentType = .password
         }
+        
+        passwordTextField.placeholder = "US.Registration.Personal.Details.Password.Placeholder".localized
         createToolbar(passwordTextField)
     }
 }

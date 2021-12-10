@@ -14,6 +14,7 @@ extension USRegistrationViewController {
         creditCardCVVTextField.tag = USRegistrationFieldType.creditCardSecurityCode.rawValue
         creditCardCVVTextField.delegate = self
         creditCardCVVTextField.textContentType = UITextContentType.securityCode
+        creditCardCVVTextField.placeholder = "US.Registration.CreditCard.Details.SecurityCode.Placeholder".localized
         createToolbar(creditCardCVVTextField)
     }
 }

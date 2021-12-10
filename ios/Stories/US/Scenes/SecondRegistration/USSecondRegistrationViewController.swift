@@ -20,6 +20,8 @@ class USSecondRegistrationViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: CustomUITextField!
     
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     
     var viewModel = USSecondRegistrationViewModel()
 
