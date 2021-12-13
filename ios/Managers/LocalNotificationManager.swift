@@ -35,7 +35,11 @@ class LocalNotificationManager {
         }
     }
     
+    
     private func scheduleNotifications() {
+        // Clear all previously scheduled notifications
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         for notification in notifications {
             let content = UNMutableNotificationContent()
             content.title = notification.title
