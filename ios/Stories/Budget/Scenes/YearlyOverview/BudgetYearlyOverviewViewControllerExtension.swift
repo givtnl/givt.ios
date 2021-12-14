@@ -9,6 +9,7 @@
 import Foundation
 import SVProgressHUD
 import UIKit
+
 extension MonthlySummaryKey {
     func toDate() -> Date {
         var dateComponents = DateComponents()
@@ -36,8 +37,8 @@ extension BudgetYearlyOverviewViewController {
     }
 
     func reloadData() {
-        let fromDate = getStartDateForYear(year: year)
-        let tillDate = getEndDateForYear(year: year)
+        let fromDate = getUTCDateForYear(year: year, type: .start)
+        let tillDate = getUTCDateForYear(year: year, type: .end)
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             self.givtModels = givtModels
@@ -81,25 +82,19 @@ extension BudgetYearlyOverviewViewController {
             }
         }
     }
-    func getStartDateForYear(year: Int) -> String {
-        var componentsForYearlySummaryComponents = DateComponents()
-        componentsForYearlySummaryComponents.day = 1
-        componentsForYearlySummaryComponents.month = 1
-        componentsForYearlySummaryComponents.year = year
-        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
     
-    func getEndDateForYear(year: Int) -> String {
+    enum DateType {
+        case start
+        case end
+    }
+    func getUTCDateForYear(year: Int, type: DateType) -> String {
         var componentsForYearlySummaryComponents = DateComponents()
         componentsForYearlySummaryComponents.day = 1
         componentsForYearlySummaryComponents.month = 1
-        componentsForYearlySummaryComponents.year = year + 1
+        componentsForYearlySummaryComponents.year = [DateType.start: year, DateType.end: year+1][type]
         let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         return dateFormatter.string(from: date)
     }
 }
