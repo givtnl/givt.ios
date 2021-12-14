@@ -42,7 +42,7 @@ extension BudgetYearlyOverviewViewController {
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             self.givtModels = givtModels
-            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
+            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getUTCDateForYear(year: self.year-1, type: .start), tillDate: self.getUTCDateForYear(year: self.year-1, type: .end), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
                 self.previousYearGivtModels = givtModelsPreviousYear
             }
             
@@ -54,7 +54,7 @@ extension BudgetYearlyOverviewViewController {
             
 
             try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
-                try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { previousNotGivtModels in
+                try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: self.getUTCDateForYear(year: self.year-1, type: .start), tillDate: self.getUTCDateForYear(year: self.year-1, type: .end), groupType: 2, orderType: 3)) { previousNotGivtModels in
                     self.previousYearNotGivtModels = previousNotGivtModels
                 }
                 self.notGivtModels = notGivtModels
