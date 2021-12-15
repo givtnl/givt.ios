@@ -948,7 +948,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "RecurringGiftsSetupRecurringGift" = "wiederkehrende Spende";
 "RecurringDonationYouGive" = "Du gibst";
 "RecurringDonationStops" = "Diese enden am {0}";
-"SelectRecipient" = "Empfänger/-in auswählen";
+"SelectRecipient" = "Empfänger auswählen";
 "SetupRecurringDonationFailed" = "Die wiederkehrende Spende wurde nicht erfolgreich eingerichtet. Bitte versuche es später noch einmal.";
 "EmptyRecurringDonationList" = "Alle deine wiederkehrenden Spenden werden hier angezeigt.";
 "CancelRecurringDonationAlertTitle" = "Bist du sicher, dass du an {0} nicht mehr spenden willst?";

@@ -58,14 +58,14 @@ class APIClient: NSObject, URLSessionDelegate {
             }
     }
     
-    func head(url: String, timeout: Double = 60, callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
+    func head(url: String, headers: [String: String] = [:], timeout: Double = 60, callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
         if url != "/api/v2/status" {
             log.info(message: "HEAD on " + url)
         }
         
         var retries = retryCount
         
-        var headers: [String: String] = [:]
+        var headers = headers
         if let bearerToken = UserDefaults.standard.bearerToken {
             headers["Authorization"] = "Bearer " + bearerToken
         }

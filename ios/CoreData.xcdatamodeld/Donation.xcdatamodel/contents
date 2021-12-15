@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E232" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Advertisement" representedClassName="Advertisement" syncable="YES" codeGenerationType="class">
+        <attribute name="availableLanguages" optional="YES" attributeType="Transformable" customClassName="NSArray"/>
+        <attribute name="changedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="country" optional="YES" attributeType="Transformable" customClassName="NSArray"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="featured" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="Transformable" customClassName="NSDictionary"/>
+        <attribute name="text" optional="YES" attributeType="Transformable" customClassName="NSDictionary"/>
+        <attribute name="title" optional="YES" attributeType="Transformable" customClassName="NSDictionary"/>
+    </entity>
     <entity name="Donation" representedClassName="Donation" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="collectId" optional="YES" attributeType="String"/>
@@ -14,6 +24,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="Advertisement" positionX="-63" positionY="27" width="128" height="149"/>
         <element name="Donation" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="ExternalDonation" positionX="-63" positionY="18" width="128" height="89"/>
     </elements>

@@ -187,6 +187,12 @@ class LoginManager {
                             }
                             UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
                         }
+                        UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
+                        
+                        if let newConfig = UserDefaults.standard.userExt {
+                            newConfig.country = userExt.Country
+                            UserDefaults.standard.userExt = newConfig
+                        }
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
