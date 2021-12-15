@@ -81,11 +81,11 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     @IBAction func sendOverview(_ sender: Any) {
         SVProgressHUD.show()
-        GivtManager.shared.sendGivtOverview(year: Int(yearField.text!)!) { (status) in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-            }
-            if status {
+        
+        let command = DownloadSummaryCommand(fromDate: "", tillDate: "", year: Int(yearField.text!))
+        
+        try! Mediater.shared.sendAsync(request: command) { response in
+            if response.result {
                 let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("GiftsOverviewSent", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
                     self.navigationController?.popViewController(animated: true)
@@ -93,7 +93,6 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 DispatchQueue.main.async {
                     self.present(alert, animated: true, completion: nil)
                 }
-                
             } else {
                 let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in

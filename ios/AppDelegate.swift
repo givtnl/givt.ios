@@ -553,6 +553,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
         Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
         Mediater.shared.registerHandler(handler: DownloadSummaryCommandHandler())
+        Mediater.shared.registerPreProcessor(processor: DownloadSummaryCommandPreHandler())
         
         //-- Giving Goal
         Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
