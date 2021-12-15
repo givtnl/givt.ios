@@ -37,12 +37,15 @@ extension BudgetYearlyOverviewViewController {
     }
 
     func reloadData() {
-        let fromDate = getUTCDateForYear(year: year, type: .start)
-        let tillDate = getUTCDateForYear(year: year, type: .end)
+        let fromDate = year.getUTCDateForYear(type: .start)
+        let tillDate = year.getUTCDateForYear(type: .end)
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             self.givtModels = givtModels
-            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getUTCDateForYear(year: self.year-1, type: .start), tillDate: self.getUTCDateForYear(year: self.year-1, type: .end), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
+            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(
+                fromDate: (self.year-1).getUTCDateForYear(type: .start),
+                tillDate: (self.year-1).getUTCDateForYear(type: .end),
+                groupType: 2, orderType: 3)) { givtModelsPreviousYear in
                 self.previousYearGivtModels = givtModelsPreviousYear
             }
             
@@ -54,7 +57,10 @@ extension BudgetYearlyOverviewViewController {
             
 
             try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
-                try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: self.getUTCDateForYear(year: self.year-1, type: .start), tillDate: self.getUTCDateForYear(year: self.year-1, type: .end), groupType: 2, orderType: 3)) { previousNotGivtModels in
+                try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(
+                    fromDate: (self.year-1).getUTCDateForYear(type: .start),
+                    tillDate: (self.year-1).getUTCDateForYear(type: .end),
+                    groupType: 2, orderType: 3)) { previousNotGivtModels in
                     self.previousYearNotGivtModels = previousNotGivtModels
                 }
                 self.notGivtModels = notGivtModels
@@ -81,20 +87,5 @@ extension BudgetYearlyOverviewViewController {
                 })
             }
         }
-    }
-    
-    enum DateType {
-        case start
-        case end
-    }
-    func getUTCDateForYear(year: Int, type: DateType) -> String {
-        var componentsForYearlySummaryComponents = DateComponents()
-        componentsForYearlySummaryComponents.day = 1
-        componentsForYearlySummaryComponents.month = 1
-        componentsForYearlySummaryComponents.year = [DateType.start: year, DateType.end: year+1][type]
-        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        return dateFormatter.string(from: date)
     }
 }

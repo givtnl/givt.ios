@@ -17,23 +17,12 @@ class DownloadSummaryCommandPreHandler : RequestPreProcessorProtocol {
             return
         }
         
-        command.fromDate = getUTCDateForYear(year: year)
-        command.tillDate = getUTCDateForYear(year: year + 1)
+        command.fromDate = year.getUTCDateForYear(type: .start)
+        command.tillDate = year.getUTCDateForYear(type: .end)
         try! completion(command as! R)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
         request is DownloadSummaryCommand
-    }
-    
-    fileprivate func getUTCDateForYear(year: Int) -> String {
-        var componentsForYearlySummaryComponents = DateComponents()
-        componentsForYearlySummaryComponents.day = 1
-        componentsForYearlySummaryComponents.month = 1
-        componentsForYearlySummaryComponents.year = year
-        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        return dateFormatter.string(from: date)
     }
 }
