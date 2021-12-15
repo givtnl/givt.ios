@@ -81,9 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         }
         
         // Register the current locale with the currency formatter
-        
         var localeString: String!
-        
         switch(UserDefaults.standard.paymentType) {
             case .CreditCard:
                 localeString = "en-US"
@@ -98,6 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             break
         }
         CurrencyHelper.shared.updateCurrentLocale(localeString)
+
+        loadAdvertisements()
+
         return true
     }
     
@@ -345,6 +346,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
         NotificationManager.shared.resume()
+        loadAdvertisements()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -598,11 +600,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
         Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
         Mediater.shared.registerHandler(handler: DownloadSummaryCommandHandler())
+        Mediater.shared.registerPreProcessor(processor: DownloadSummaryCommandPreHandler())
         
         //-- Giving Goal
         Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
         Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
         Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())
         
+        //-- Advertisements
+        Mediater.shared.registerHandler(handler: GetAdvertismentListQueryHandler())
+        Mediater.shared.registerHandler(handler: GetAdvertisementsLastDateQueryHandler())
+        Mediater.shared.registerHandler(handler: ImportAdvertisementsCommandHandler())
+        Mediater.shared.registerHandler(handler: GetRandomAdvertisementQueryHandler())
     }
 }

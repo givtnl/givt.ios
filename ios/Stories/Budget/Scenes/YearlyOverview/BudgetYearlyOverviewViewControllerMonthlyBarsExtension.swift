@@ -15,8 +15,8 @@ extension BudgetYearlyOverviewViewController {
     func getDataForMonthBars(completionHandler: @escaping GetBarsCompletionHandler) {
         let numberOfMonthsToFetch: Int = year == Date().getYear() ? Date().getMonth() : 12
         var retArray: [MonthlySummaryKey: YearlyOverviewMonthlyBarViewModel] = [:]
-        let fromDate = getStartDateForYear(year: year)
-        let tillDate = getEndDateForYear(year: year)
+        let fromDate = getUTCDateForYear(year: year, type: .start)
+        let tillDate = getUTCDateForYear(year: year, type: .end)
                 
         for int in 1...numberOfMonthsToFetch {
             let keyValues = MonthlySummaryKey(Year: year, Month: int)
@@ -50,6 +50,5 @@ extension BudgetYearlyOverviewViewController {
             monthlyBarsStackViewHeight.constant += 25
             monthlyBar.monthlyBarViewModel = monthBars[int]
         }
-        
     }
 }

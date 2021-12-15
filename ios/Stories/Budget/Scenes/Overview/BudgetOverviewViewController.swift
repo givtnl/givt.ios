@@ -189,8 +189,7 @@ class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, De
             if shouldShowYearlyOverview {
                 SVProgressHUD.show()
                 // What year should we show?
-                let year = Date().getMonth() == 12 ? Date().getYear() - 1 : Date().getYear()
-                try? Mediater.shared.sendAsync(request: OpenYearlyOverviewRoute(year: year), withContext: self, completion: { _ in})
+                try? Mediater.shared.sendAsync(request: OpenYearlyOverviewRoute(year: Date().getYear()), withContext: self, completion: { _ in})
                 shouldShowYearlyOverview = false
             }
         }

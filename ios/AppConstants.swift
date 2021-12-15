@@ -120,11 +120,20 @@ class AppConstants {
             //return "http://localhost:5000"
         #endif
     }()
+    
     static var cloudApiUri: String = {
         #if PRODUCTION
             return "https://api.production.givtapp.net"
         #else
             return "https://api.development.givtapp.net"
+        #endif
+    }()
+    
+    static var advertisementsApiUrl: String = {
+        #if PRODUCTION
+            return "https://advertisements.givtapp.net"
+        #else
+            return "https://advertisements-develop.givtapp.net"
         #endif
     }()
     
@@ -142,27 +151,35 @@ class AppConstants {
         let trustKitConfig = [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
+                "advertisements-develop.givtapp.net": [
+                    kTSKPublicKeyHashes: [
+                        "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]
+                ],
+                "advertisements.givtapp.net": [
+                    kTSKPublicKeyHashes: [
+                        "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]
+                ],
                 "api.production.givtapp.net" : [
-                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
                         "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]],
                 "api.development.givtapp.net" : [
-                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
                         "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]],
                 "api.givtapp.net": [
-                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
                         "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]],
                 "api.logit.io": [
                     kTSKExpirationDate: "2019-10-12",
-                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
                         "/JvZY7DBIDt5NylYRKjYP76G3E0F/6C4X6u0bqosQok=",
                         "Slt48iBVTjuRQJTjbzopminRrHSGtndY0/sj0lFf9Qk="

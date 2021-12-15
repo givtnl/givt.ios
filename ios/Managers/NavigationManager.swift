@@ -297,6 +297,7 @@ class NavigationManager {
             print(isUpdateDialogOpen)
         }
     }
+    
     public func resume() {
         if !isUpdateDialogOpen {
             showUpdateAlert()
@@ -406,9 +407,7 @@ class NavigationManager {
                     self.showUpdate(critical: true)
                 }
             }
-            
         }
-        
     }
     
     private func permissionAsked(completionHandler: @escaping (Bool) -> Void) {
