@@ -17,8 +17,8 @@ class DownloadSummaryCommandPreHandler : RequestPreProcessorProtocol {
             return
         }
         
-        command.fromDate = getStartDate(year: year)
-        command.tillDate = getEndDate(year: year)
+        command.fromDate = getUTCDateForYear(year: year)
+        command.tillDate = getUTCDateForYear(year: year + 1)
         try! completion(command as! R)
     }
     
@@ -26,26 +26,14 @@ class DownloadSummaryCommandPreHandler : RequestPreProcessorProtocol {
         request is DownloadSummaryCommand
     }
     
-    fileprivate func getDateForYearlyOverview(dateComponents: DateComponents) -> String {
-        let date = Calendar.current.date(from: dateComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    fileprivate func getUTCDateForYear(year: Int) -> String {
+        var componentsForYearlySummaryComponents = DateComponents()
+        componentsForYearlySummaryComponents.day = 1
+        componentsForYearlySummaryComponents.month = 1
+        componentsForYearlySummaryComponents.year = year
+        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         return dateFormatter.string(from: date)
-    }
-    
-    fileprivate func getStartDate(year: Int) -> String {
-        var dateComponents = DateComponents()
-        dateComponents.day = 1
-        dateComponents.month = 1
-        dateComponents.year = year
-        return getDateForYearlyOverview(dateComponents: dateComponents)
-    }
-    
-    fileprivate func getEndDate(year: Int) -> String {
-        var dateComponents = DateComponents()
-        dateComponents.day = 31
-        dateComponents.month = 12
-        dateComponents.year = year
-        return getDateForYearlyOverview(dateComponents: dateComponents)
     }
 }
