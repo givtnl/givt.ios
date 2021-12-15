@@ -85,6 +85,9 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let command = DownloadSummaryCommand(fromDate: "", tillDate: "", year: Int(yearField.text!))
         
         try! Mediater.shared.sendAsync(request: command) { response in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
             if response.result {
                 let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("GiftsOverviewSent", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
