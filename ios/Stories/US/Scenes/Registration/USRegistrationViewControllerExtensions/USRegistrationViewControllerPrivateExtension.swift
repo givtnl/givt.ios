@@ -51,10 +51,10 @@ private extension USRegistrationViewController {
             email: userExt.email,
             phoneNumber: viewModel.registrationValidator.phoneNumber,
             password: viewModel.registrationValidator.password,
-            appLanguage: Locale.current.languageCode ?? "EN",
+            appLanguage: Locale.current.languageCode ?? "en",
             deviceOS: 2,
             country: "US",
-            timeZoneId: "America/Chicago"
+            timeZoneId: Calendar.current.timeZone.identifier
         )
         
         let registerCreditCardCommand = RegisterCreditCardCommand(
