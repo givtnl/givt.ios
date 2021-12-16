@@ -238,7 +238,8 @@ class LoginManager {
             "City":  user.city,
             "PostalCode":  user.postalCode,
             "Country":  user.country,
-            "AmountLimit": "499"]
+            "AmountLimit": "499",
+            "TimeZoneId": user.timeZoneId]
         
         if !user.iban.isEmpty {
             params["IBAN"] = user.iban.replacingOccurrences(of: " ", with: "")
@@ -382,7 +383,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "", timeZoneId: TimeZone.current.identifier)
         
         if let countryCode = AppServices.getCountryFromSim() {
             regUser.country = countryCode

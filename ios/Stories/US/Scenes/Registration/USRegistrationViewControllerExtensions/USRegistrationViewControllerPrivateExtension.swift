@@ -52,8 +52,9 @@ private extension USRegistrationViewController {
             phoneNumber: viewModel.registrationValidator.phoneNumber,
             password: viewModel.registrationValidator.password,
             appLanguage: Locale.current.languageCode ?? "EN",
-            deviceOS: "2",
-            country: "US"
+            deviceOS: 2,
+            country: "US",
+            timeZoneId: "America/Chicago"
         )
         
         let registerCreditCardCommand = RegisterCreditCardCommand(

@@ -91,11 +91,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 break
             default:
             try? Mediater.shared.sendAsync(request: GetCountryQuery()) { country in
-                localeString = "\(Locale.current.languageCode!)-\(country!)"
+                DispatchQueue.main.async {
+                    localeString = "\(Locale.current.languageCode!)-\(country!)"
+                    CurrencyHelper.shared.updateCurrentLocale(localeString)
+                }
             }
             break
         }
-        CurrencyHelper.shared.updateCurrentLocale(localeString)
 
         loadAdvertisements()
 

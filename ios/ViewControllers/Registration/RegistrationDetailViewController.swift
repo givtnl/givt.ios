@@ -458,9 +458,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).capitalized
         var userData: RegistrationUser!
         if currentPaymentType == .SEPADirectDebit {
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "", timeZoneId: TimeZone.current.identifier)
         } else {
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber, timeZoneId: TimeZone.current.identifier)
         }
         UserDefaults.standard.paymentType = currentPaymentType
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
