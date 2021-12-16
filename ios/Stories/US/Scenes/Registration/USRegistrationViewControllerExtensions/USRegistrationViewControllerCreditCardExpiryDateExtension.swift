@@ -7,7 +7,6 @@
 //
 import Foundation
 import UIKit
-import MonthYearPicker
 
 extension USRegistrationViewController {
     func setupExpiryDate() {

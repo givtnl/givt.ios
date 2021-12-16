@@ -11,7 +11,6 @@ import SVProgressHUD
 import AppCenterAnalytics
 import Mixpanel
 import GivtCodeShare
-import MonthYearPicker
 
 class USRegistrationViewController : UIViewController {
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
