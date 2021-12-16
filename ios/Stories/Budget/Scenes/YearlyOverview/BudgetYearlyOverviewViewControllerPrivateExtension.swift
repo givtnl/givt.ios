@@ -26,7 +26,7 @@ private extension BudgetYearlyOverviewViewController {
             if !AppServices.shared.isServerReachable {
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
             } else {
-                try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: self.year, self.givtModels!, self.notGivtModels!, self.getStartDateForYear(year: self.year), self.getEndDateForYear(year: self.year)) , withContext: self)
+                try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: self.year, self.givtModels!, self.notGivtModels!, self.year.getUTCDateForYear(type: .start), self.year.getUTCDateForYear(type: .end)) , withContext: self)
             }
         }
     }
