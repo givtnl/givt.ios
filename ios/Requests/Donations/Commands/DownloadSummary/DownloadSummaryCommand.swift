@@ -13,8 +13,12 @@ class DownloadSummaryCommand: RequestProtocol {
 
     var fromDate: String
     var tillDate: String
-    init(fromDate: String, tillDate: String) {
+    
+    var year: Int?
+    
+    init(fromDate: String, tillDate: String, year: Int? = nil) {
         self.fromDate = fromDate
         self.tillDate = tillDate
+        self.year = year
     }
 }
