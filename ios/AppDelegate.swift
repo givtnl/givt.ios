@@ -98,6 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             }
             break
         }
+        
+        CurrencyHelper.shared.updateCurrentLocale(localeString)
 
         loadAdvertisements()
 
