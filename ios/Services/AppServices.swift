@@ -65,6 +65,31 @@ class AppServices {
         notificationLocker.unlock()
     }
     
+    func setLocale() {
+        if (UserDefaults.standard.hackForTesting) {
+            CurrencyHelper.shared.updateCurrentLocale("en-US")
+        } else {
+            CurrencyHelper.shared.updateCurrentLocale(determineLocale(UserDefaults.standard.paymentType))
+        }
+    }
+    
+    private func determineLocale(_ paymentType: PaymentType) -> String {
+        switch(paymentType) {
+            case .SEPADirectDebit: return "nl-NL"
+            case .BACSDirectDebit: return "en-GB"
+            case .CreditCard: return "en-US"
+            case .Undefined: return getFromSimOrLocale()
+        }
+    }
+    
+    private func getFromSimOrLocale() -> String {
+        if let countryFromSim = AppServices.getCountryFromSim() {
+            return "\(Locale.current.languageCode ?? "en")-\(countryFromSim)"
+        } else {
+            return "\(Locale.current.languageCode ?? "en")-\(Locale.current.regionCode ?? "NL")"
+        }
+    }
+    
     @objc private func fetchInternetConnection() {
         notificationLocker.lock()
         if isReachable {
