@@ -20,7 +20,7 @@
 		27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC59F922255DEE00163BF4 /* SelectContextView.swift */; };
 		27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */; };
 		27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */; };
-		320280BC25E0582F006A68CE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 320280BB25E0582F006A68CE /* Charts */; };
+		320280BC25E0582F006A68CE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 320280BB25E0582F006A68CE /* Charts */; settings = {ATTRIBUTES = (Required, ); }; };
 		320B7FBD255B020A00779B1D /* RecurringCustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320B7FBC255B020A00779B1D /* RecurringCustomUITextField.swift */; };
 		320B7FBF255B03E300779B1D /* RecurringCustomUITextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320B7FBE255B03E300779B1D /* RecurringCustomUITextField.xib */; };
 		320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift */; };
