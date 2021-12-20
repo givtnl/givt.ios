@@ -80,34 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             setupYearlyOverviewNotifications()
         }
         
-        // Register the current locale with the currency formatter
-        
-        if (UserDefaults.standard.hackForTesting) {
-            CurrencyHelper.shared.updateCurrentLocale("en-US")
-        } else {
-            CurrencyHelper.shared.updateCurrentLocale(determineLocale(UserDefaults.standard.paymentType))
-        }
+        appService.setLocale()
 
         loadAdvertisements()
 
         return true
-    }
-    
-    func determineLocale(_ paymentType: PaymentType) -> String {
-        switch(paymentType) {
-            case .SEPADirectDebit: return "nl-NL"
-            case .BACSDirectDebit: return "en-GB"
-            case .CreditCard: return "en-US"
-            case .Undefined: return getFromSimOrLocale()
-        }
-    }
-    
-    func getFromSimOrLocale() -> String {
-        if let countryFromSim = AppServices.getCountryFromSim() {
-            return "\(Locale.current.languageCode ?? "en")-\(countryFromSim)"
-        } else {
-            return "\(Locale.current.languageCode ?? "en")-\(Locale.current.regionCode ?? "NL")"
-        }
     }
     
     @available(iOS 10.0, *)

@@ -183,12 +183,12 @@ class LoginManager {
                         } else {
                             UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
                             if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
-                                UserDefaults.standard.accountType = accountType
+                                UserDefaults.standard.paymentType = PaymentType.fromAccountType(accountType)
                             }
                             UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
                         }
                         UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
-                        
+                        AppServices.shared.setLocale()
                         if let newConfig = UserDefaults.standard.userExt {
                             newConfig.country = userExt.Country
                             UserDefaults.standard.userExt = newConfig
