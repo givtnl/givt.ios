@@ -19,7 +19,7 @@ internal struct GetCountryQueryHandler : RequestHandlerProtocol {
                 if let userExt = userExtObject {
                     try? completion(userExt.Country as! R.TResponse)
                 } else {
-                    try? completion(Locale.current.regionCode! as! R.TResponse)
+                    try? completion((Locale.current.regionCode ?? "NL") as! R.TResponse)
                 }
             }            
         }
