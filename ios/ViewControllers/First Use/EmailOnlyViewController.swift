@@ -99,18 +99,16 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureR
         
         loginButton.setAttributedTitle(attributedString, for: UIControl.State.normal)
         
-        #if PRODUCTION
-        #else
+#if !PRODUCTION
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(hackFunctionForTesting(_:)))
         longPress.minimumPressDuration = 2
         longPress.delaysTouchesBegan = true
         longPress.delegate = self
         longPress.cancelsTouchesInView = false
         nextBtn.addGestureRecognizer(longPress)
-        #endif
+#endif
     }
-    #if PRODUCTION
-    #else
+#if !PRODUCTION
     @objc func hackFunctionForTesting(_ sender: UILongPressGestureRecognizer) {
         UserDefaults.standard.hackForTesting = true
         let alert = UIAlertController(title: title,
@@ -121,7 +119,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureR
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
-    #endif
+#endif
     func openLogin(emailEditable: Bool = false) {
         DispatchQueue.main.async {
             self.hideLoader()
