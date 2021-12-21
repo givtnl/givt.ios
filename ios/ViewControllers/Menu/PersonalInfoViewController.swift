@@ -108,6 +108,13 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 case "US":
                     self.settings.append(
                         PersonalSetting(
+                            image: #imageLiteral(resourceName: "personal_gray"),
+                            name: "\(userExt.FirstName!) \(userExt.LastName!)",
+                            type: .name
+                        )
+                    )
+                    self.settings.append(
+                        PersonalSetting(
                             image: #imageLiteral(resourceName: "house"),
                             name: "United States",
                             type: .address
@@ -200,6 +207,12 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                     cell.img.image = cell.img.image!.noir.alpha(0.5)
                     cell.isUserInteractionEnabled = false
                 break
+                case .name:
+                    cell.accessoryType = .none
+                    cell.labelView.alpha = 0.5
+                    cell.selectionStyle = .none
+                    cell.img.image = cell.img.image!.noir
+                    cell.isUserInteractionEnabled = false
                 default:
                     cell.accessoryType = .disclosureIndicator
                     cell.labelView.alpha = 1
