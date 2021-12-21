@@ -22,13 +22,17 @@ extension USSecondRegistrationViewController: UITextFieldDelegate {
             return true
         }
         if (string == String.empty) {
-            if (currentValueInField.count >= 1) {
-                currentValueInField.removeLast()
+            if (range.location == 0 && range.length == currentValueInField.count) {
+                currentValueInField = String.empty
             }
-            return true
+            else {
+                currentValueInField.remove(at: currentValueInField.index(currentValueInField.startIndex, offsetBy: range.location))
+            }
+        } else {
+            currentValueInField.insert(contentsOf: Array(string), at: currentValueInField.index(currentValueInField.startIndex, offsetBy: range.location))
         }
         
-        viewModel.handleTextChanged(fieldTypeTag: fieldTypeTag, input: currentValueInField+string)
+        viewModel.handleTextChanged(fieldTypeTag: fieldTypeTag, input: currentValueInField)
         return true
     }
     

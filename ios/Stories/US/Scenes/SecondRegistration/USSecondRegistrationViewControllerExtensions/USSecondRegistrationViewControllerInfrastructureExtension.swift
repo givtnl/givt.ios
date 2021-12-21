@@ -26,11 +26,7 @@ extension USSecondRegistrationViewController {
     }
 
     func initViewModel() {
-        viewModel.setFirstNameTextField = { [weak self] () in
-            DispatchQueue.main.async {
-                self?.firstNameTextField.text = self?.viewModel.registrationValidator.firstName
-            }
-        }
+        viewModel.setFirstNameTextField = { }
         viewModel.validateFirstName =  { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.registrationValidator.isValidFirstName {
@@ -38,11 +34,7 @@ extension USSecondRegistrationViewController {
                 }
             }
         }
-        viewModel.setLastNameTextField = { [weak self] () in
-            DispatchQueue.main.async {
-                self?.lastNameTextField.text = self?.viewModel.registrationValidator.lastName
-            }
-        }
+        viewModel.setLastNameTextField = { }
         viewModel.validateLastName =  { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.registrationValidator.isValidLastName {
@@ -105,7 +97,7 @@ extension USSecondRegistrationViewController {
     }
     
     @objc func keyboardWillHide(notification:NSNotification){
-        bottomScrollViewConstraint.constant = 0
+        bottomScrollViewConstraint.constant = 20
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
