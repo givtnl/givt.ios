@@ -237,8 +237,9 @@ class SettingsViewController: BaseMenuViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.transitioningDelegate = self.slideFromRightAnimation
         if UserDefaults.standard.isTempUser { //temp users can screw their account without authentication
-            self.present(vc, animated: true, completion: {
-            })
+            hideMenuAnimated() {
+                self.present(vc, animated: true)
+            }
         } else {
             hideMenuAnimated() {
                 NavigationManager.shared.pushWithLogin(vc, context: self)
