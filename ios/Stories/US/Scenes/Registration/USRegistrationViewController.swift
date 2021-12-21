@@ -90,11 +90,9 @@ class USRegistrationViewController : UIViewController {
             }
         }
         viewModel.validateExpiryDate = { [weak self] () in
-            if self?.creditCardExpiryDateTextField.text?.count ?? 0 >= 4 {
-                DispatchQueue.main.async {
-                    if let isValid = self?.viewModel.creditCardValidator.expiryDateIsValid() {
-                        self?.creditCardExpiryDateTextField.setBorders(isValid)
-                    }
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.creditCardValidator.expiryDateIsValid() {
+                    self?.creditCardExpiryDateTextField.setBorders(isValid)
                 }
             }
         }

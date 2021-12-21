@@ -26,13 +26,9 @@ extension USRegistrationViewController: UITextFieldDelegate {
         }
         if (string == String.empty) {
             if (range.location == 0 && range.length == currentValueInField.count) {
-                // All the text in a field has been selected and user pressed backspace/delete
-                if(fieldTypeTag == .phoneNumber) {
-                    currentValueInField = String.empty
-                }
+                currentValueInField = String.empty
             } else {
                 currentValueInField.removeLast()
-                return true
             }
         }
         
@@ -44,7 +40,7 @@ extension USRegistrationViewController: UITextFieldDelegate {
         }
         if (fieldTypeTag == .creditCardExpiryDate) {
             // Credit card expiration date can only be 5 characters, EG: 12/23
-            if (String(currentValueInField+string).count == 2) {
+            if (string != String.empty && String(currentValueInField+string).count == 2) {
                 if (!String(currentValueInField+string).contains("/")) {
                     creditCardExpiryDateTextField.text = currentValueInField+string+"/"
                     return false
