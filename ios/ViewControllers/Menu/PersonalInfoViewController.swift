@@ -163,7 +163,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                         self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: NSLocalizedString("BacsSortcodeAccountnumber", comment: "").replacingOccurrences(of: "{0}", with: sortCode).replacingOccurrences(of: "{1}", with: accountNumber), type: .bacs))
                     }
                     
-                    if UserDefaults.standard.accountType == AccountType.bacs {
+                    if UserDefaults.standard.paymentType == .BACSDirectDebit {
                         self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "Giftaid_Icon-yellow"), name: "Gift Aid", type: .giftaid))
                     }
                     break
