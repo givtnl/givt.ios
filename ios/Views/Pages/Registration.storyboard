@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1261,20 +1261,20 @@ Veel geefplezier!</string>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="uyv-ul-jwR" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="120.33333587646484"/>
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="120.66666412353516"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyv-ul-jwR" id="Cgh-Vj-uz8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="398.33333333333331" height="120.33333587646484"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="120.66666412353516"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-Ds-PNX">
-                                                                    <rect key="frame" x="20" y="15" width="378.33333333333331" height="90.333333333333329"/>
+                                                                    <rect key="frame" x="20" y="15" width="379.33333333333331" height="90.666666666666671"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33D-uJ-VuA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="90.333333333333329"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="90.666666666666671"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeW-Ug-CTu">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="90.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="90.666666666666671"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1287,10 +1287,10 @@ Veel geefplezier!</string>
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F10-xN-Ybg">
-                                                                            <rect key="frame" x="30" y="0.0" width="348.33333333333331" height="90.333333333333329"/>
+                                                                            <rect key="frame" x="30" y="0.0" width="349.33333333333331" height="90.666666666666671"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-QU-d4n">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="348.33333333333331" height="90.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="90.666666666666671"/>
                                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1394,7 +1394,7 @@ Veel geefplezier!</string>
                                 <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eyh-yI-WRh">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="405"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="734"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z28-SE-gKz" userLabel="InnerView">
                                                 <rect key="frame" x="0.0" y="0.0" width="428" height="405"/>
@@ -1665,6 +1665,7 @@ Veel geefplezier!</string>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Eyh-yI-WRh" secondAttribute="trailing" id="PMA-Rk-0Ju"/>
                                     <constraint firstItem="zd4-6J-UeL" firstAttribute="leading" secondItem="PZu-ig-qA3" secondAttribute="leading" constant="20" id="SZw-HI-uzs"/>
+                                    <constraint firstItem="zd4-6J-UeL" firstAttribute="top" secondItem="Eyh-yI-WRh" secondAttribute="bottom" id="YkK-SR-shh"/>
                                     <constraint firstAttribute="trailing" secondItem="zd4-6J-UeL" secondAttribute="trailing" constant="20" id="jWp-ka-qvo"/>
                                     <constraint firstItem="Eyh-yI-WRh" firstAttribute="top" secondItem="PZu-ig-qA3" secondAttribute="top" id="meJ-73-dC0"/>
                                     <constraint firstAttribute="bottom" secondItem="zd4-6J-UeL" secondAttribute="bottom" constant="20" id="tWa-C4-Q4T"/>
