@@ -16,7 +16,7 @@ extension USRegistrationViewController {
     func setupUI() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -128,5 +128,8 @@ extension USRegistrationViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        theScrollView.contentInset.bottom -= 20
+        theScrollView.scrollIndicatorInsets.bottom -= 20
+    }
 }
