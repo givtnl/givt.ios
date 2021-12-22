@@ -3365,11 +3365,11 @@
 		FBC185CE24C6E1C3001A4C6B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				32EAC76E271D7F470051F8A0 /* US */,
 				3215976B25D2FAAC0065C80A /* Budget */,
 				32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */,
 				FB87302C24C88529005FF355 /* Infrastructure */,
 				32CA179B24CECAB900248053 /* SetupRecurringDonation */,
+				32EAC76E271D7F470051F8A0 /* US */,
 			);
 			path = Stories;
 			sourceTree = "<group>";

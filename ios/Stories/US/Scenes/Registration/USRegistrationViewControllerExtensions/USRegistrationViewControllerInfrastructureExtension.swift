@@ -16,7 +16,7 @@ extension USRegistrationViewController {
     func setupUI() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -111,25 +111,14 @@ extension USRegistrationViewController {
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
-        bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom - 64
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.theScrollView.scrollToBottom()
-            self.view.layoutIfNeeded()
-        })
+        let keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrame.height, right: 0)
+        theScrollView.contentInset.bottom = contentInsets.bottom - 40
+        theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom - 40
     }
     
     @objc func keyboardWillHide(notification:NSNotification){
-        bottomScrollViewConstraint.constant = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
-    @objc func keyboardDidShow(notification: NSNotification) {
-        theScrollView.contentInset.bottom -= 20
-        theScrollView.scrollIndicatorInsets.bottom -= 20
+        theScrollView.contentInset = .zero
+        theScrollView.scrollIndicatorInsets = .zero
     }
 }
