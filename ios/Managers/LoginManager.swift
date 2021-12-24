@@ -684,6 +684,7 @@ class LoginManager {
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false
         userClaim = .startedApp
+        UserDefaults.standard.hackForTesting = false
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
         BadgeService.shared.removeAllBadges()
