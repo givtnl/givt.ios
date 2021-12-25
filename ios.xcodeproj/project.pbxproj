@@ -114,8 +114,8 @@
 		3260CF14254AB61400BA6BD7 /* DiscoverOrAmountSetupSingleDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF13254AB61400BA6BD7 /* DiscoverOrAmountSetupSingleDonationViewController.swift */; };
 		3260CF17254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF16254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift */; };
 		3260CF19254AB72800BA6BD7 /* DiscoverOrAmountSetupSingleDonationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF18254AB72800BA6BD7 /* DiscoverOrAmountSetupSingleDonationRouteHandler.swift */; };
-		3260CF1C254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF1B254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift */; };
-		3260CF1E254ABC5200BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF1D254ABC5100BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift */; };
+		3260CF1C254ABC4500BA6BD7 /* OpenSafariRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF1B254ABC4500BA6BD7 /* OpenSafariRoute.swift */; };
+		3260CF1E254ABC5200BA6BD7 /* OpenSafariRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF1D254ABC5100BA6BD7 /* OpenSafariRouteHandler.swift */; };
 		3260CF21254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF20254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift */; };
 		3260CF23254ABCDB00BA6BD7 /* OpenSafariRouteTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF22254ABCDB00BA6BD7 /* OpenSafariRouteTransactionModel.swift */; };
 		3260CF26254ABF4F00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF25254ABF4F00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoute.swift */; };
@@ -680,8 +680,8 @@
 		3260CF13254AB61400BA6BD7 /* DiscoverOrAmountSetupSingleDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountSetupSingleDonationViewController.swift; sourceTree = "<group>"; };
 		3260CF16254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountSetupSingleDonationRoute.swift; sourceTree = "<group>"; };
 		3260CF18254AB72800BA6BD7 /* DiscoverOrAmountSetupSingleDonationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountSetupSingleDonationRouteHandler.swift; sourceTree = "<group>"; };
-		3260CF1B254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenSafariRoute.swift; sourceTree = "<group>"; };
-		3260CF1D254ABC5100BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenSafariRouteHandler.swift; sourceTree = "<group>"; };
+		3260CF1B254ABC4500BA6BD7 /* OpenSafariRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSafariRoute.swift; sourceTree = "<group>"; };
+		3260CF1D254ABC5100BA6BD7 /* OpenSafariRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSafariRouteHandler.swift; sourceTree = "<group>"; };
 		3260CF20254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSafariRouteInputModel.swift; sourceTree = "<group>"; };
 		3260CF22254ABCDB00BA6BD7 /* OpenSafariRouteTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSafariRouteTransactionModel.swift; sourceTree = "<group>"; };
 		3260CF25254ABF4F00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenChangeAmountLimitRoute.swift; sourceTree = "<group>"; };
@@ -1532,8 +1532,8 @@
 			isa = PBXGroup;
 			children = (
 				3260CF1F254ABC5600BA6BD7 /* Models */,
-				3260CF1B254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift */,
-				3260CF1D254ABC5100BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift */,
+				3260CF1B254ABC4500BA6BD7 /* OpenSafariRoute.swift */,
+				3260CF1D254ABC5100BA6BD7 /* OpenSafariRouteHandler.swift */,
 			);
 			path = OpenSafari;
 			sourceTree = "<group>";
@@ -1697,7 +1697,6 @@
 				3260CF24254ABE8400BA6BD7 /* OpenChangeAmountLimit */,
 				FB42C2FB25666EAB0011012C /* OpenOfflineSuccess */,
 				3260CF33254ACFBE00BA6BD7 /* OpenRecurringSuccess */,
-				3260CF1A254ABC1900BA6BD7 /* OpenSafari */,
 				327E34552549FEC900314BFD /* OpenSelectDestination */,
 				3260CF0E254A31AD00BA6BD7 /* OpenSetupRecurringDonation */,
 				3260CF15254AB6E200BA6BD7 /* OpenSetupSingleDonation */,
@@ -2960,6 +2959,7 @@
 		FB2CFAE524EC157B003E096D /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				3260CF1A254ABC1900BA6BD7 /* OpenSafari */,
 				326E0971256D42260079B4B0 /* OpenFeatureById */,
 				FB243BDB2553F2D200C6F768 /* GoBackOneController */,
 				FB872FF024C6EBC8005FF355 /* BackToMain */,
@@ -3994,7 +3994,7 @@
 				FB87301B24C845E0005FF355 /* DeleteDonationCommandHandler.swift in Sources */,
 				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
 				32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */,
-				3260CF1C254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift in Sources */,
+				3260CF1C254ABC4500BA6BD7 /* OpenSafariRoute.swift in Sources */,
 				FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */,
 				32EEB2BC26283F56008EED9A /* TestimonialCarouselViewController.swift in Sources */,
 				DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */,
@@ -4150,7 +4150,7 @@
 				32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */,
 				32ABDD7E275E76E800544BCF /* USSecondRegistrationViewControllerPrivateExtension.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
-				3260CF1E254ABC5200BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift in Sources */,
+				3260CF1E254ABC5200BA6BD7 /* OpenSafariRouteHandler.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */,
 				329C3E8D25F21F3E0037D750 /* DeleteExternalDonationCommand.swift in Sources */,
 				32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */,
