@@ -7,19 +7,27 @@
 //
 
 import Foundation
+import SafariServices
 
-class DiscoverOrAmountOpenSafariRoute : NoResponseRequest {
+class OpenSafariRoute : RequestProtocol {
+    typealias TResponse = SFSafariViewController //to retain the viewcontroller
+    
     var mandateUrl: String?
     var donations: [Transaction]
     var canShare: Bool
     var collectGroupName: String?
     var userId: UUID
+    
+    var delegate: SFSafariViewControllerDelegate
+    
+    var advertisement: LocalizedAdvertisementModel?
 
-    internal init(donations: [Transaction], canShare: Bool, userId: UUID, collectGroupName: String? = nil, mandateUrl: String? = nil) {
+    internal init(donations: [Transaction], canShare: Bool, userId: UUID, delegate: SFSafariViewControllerDelegate, collectGroupName: String? = nil, mandateUrl: String? = nil) {
         self.mandateUrl = mandateUrl
         self.donations = donations
         self.canShare = canShare
         self.collectGroupName = collectGroupName
         self.userId = userId
+        self.delegate = delegate
     }
 }
