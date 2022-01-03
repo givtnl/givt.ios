@@ -52,6 +52,8 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         if setting.showArrow {
             if setting.showBadge {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemBadgeAndArrow", for: indexPath) as? SettingsItemBadgeAndArrow
+            } else if setting.isSpecialItem {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SpecialItemArrow", for: indexPath) as? SettingsItemArrow
             } else {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
             }
@@ -62,21 +64,7 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell //normal cell
             }
         }
-        
-        if setting.isSpecialItem {
-            cell?.settingImageView.leftAnchor.constraint(equalTo: (cell?.leftAnchor)!, constant: 30).isActive = true
-            cell?.settingImageView.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
-
-            cell?.settingLabel.leftAnchor.constraint(equalTo: (cell?.settingImageView.rightAnchor)!, constant: 50).isActive = true
-            cell?.settingLabel.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
-            cell?.settingLabel.numberOfLines = 2
-
-            (cell! as! SettingsItemArrow).arrow.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
-
-            cell?.settingLabel.font = UIFont(name: "Avenir-Black", size: 16)
-            cell?.settingLabel.numberOfLines = 2
-        }
-        
+                
         cell!.settingLabel.text = setting.name
         cell!.settingImageView.image = setting.image
         return cell!
