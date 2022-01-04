@@ -81,29 +81,43 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     @IBAction func sendOverview(_ sender: Any) {
         SVProgressHUD.show()
-        
-        let command = DownloadSummaryCommand(fromDate: "", tillDate: "", year: Int(yearField.text!))
-        
-        try! Mediater.shared.sendAsync(request: command) { response in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
+
+        if (UserDefaults.standard.accountType == .bacs) {
+            GivtManager.shared.sendGivtOverview(year: Int(yearField.text!)!) { (status) in
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                self.showAlert(success: status)
             }
-            if response.result {
-                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("GiftsOverviewSent", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
-                    self.navigationController?.popViewController(animated: true)
-                }))
+        }
+        else {
+            let command = DownloadSummaryCommand(fromDate: "", tillDate: "", year: Int(yearField.text!))
+            
+            try! Mediater.shared.sendAsync(request: command) { response in
                 DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
+                    SVProgressHUD.dismiss()
                 }
-            } else {
-                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
-                }
+                self.showAlert(success: response.result)
+            }
+        }
+    }
+    
+    func showAlert(success: Bool) {
+        if success {
+            let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("GiftsOverviewSent", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                
+            }))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
