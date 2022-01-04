@@ -9,7 +9,7 @@
 import UIKit
 import LGSideMenuController
 
-class FirstViewController: LGSideMenuController {
+class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     func didTransformRootView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
     func didTransformLeftView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
     func didTransformRightView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
