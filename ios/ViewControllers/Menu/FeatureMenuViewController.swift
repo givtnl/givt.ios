@@ -15,15 +15,6 @@ class FeatureMenuViewController: BaseMenuViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navItem.titleView = UIImageView(image: UIImage(named: "givt20h"))
-        
-        /* some how we're not able to set the table first cel right below the navigation bar
-         * there is a hidden table header somewhere.
-         * I haven't found where to change this so, we change the contentinset to -30 */
-        table.tableHeaderView = nil
-        table.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
-        table.dataSource = self
-        table.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(didShowFeature), name: .GivtDidShowFeature, object: nil)
     }

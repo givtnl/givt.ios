@@ -25,7 +25,9 @@ class SettingsViewController: BaseMenuViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        navItem.leftBarButtonItem = nil
+        
+        navigationItem.leftBarButtonItem = nil
+        
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
