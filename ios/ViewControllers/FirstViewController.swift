@@ -15,21 +15,22 @@ class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     func didTransformLeftView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
     func didTransformRightView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
-        UIApplication.shared.statusBarStyle = .default
-//        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingsViewController {
-//            vc.loadItems()()
-//        }
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     func willHideLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
-        UIApplication.shared.statusBarStyle = .default
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     override func viewDidLoad() {
         super.delegate = self
-        UIApplication.shared.statusBarStyle = .default
-        
+        setNeedsStatusBarAppearanceUpdate()
+
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
