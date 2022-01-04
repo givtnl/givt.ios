@@ -14,8 +14,17 @@ class MenuNavigationViewController: UINavigationController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.barTintColor = #colorLiteral(red: 0.9370916486, green: 0.9369438291, blue: 0.9575446248, alpha: 1)
-        self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationBar.shadowImage = UIImage()
+        if #available(iOS 13, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor.groupTableViewBackground
+            appearance.shadowColor = UIColor.groupTableViewBackground
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+            navigationBar.compactAppearance = appearance
+        } else {
+            navigationBar.barTintColor = UIColor.groupTableViewBackground
+            navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            navigationBar.shadowImage = UIImage()
+        }
     }
 }

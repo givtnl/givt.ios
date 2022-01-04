@@ -22,11 +22,16 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let givtLogo = UIImage(named: "givt20h")
-        let imageView = UIImageView(image: givtLogo?.imageWithInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)))
+
         
-        imageView.contentMode = .scaleAspectFit
-        table.tableHeaderView = imageView
+        
+        navigationItem.titleView = UIImageView(image: UIImage(named: "givt20h"))
+
+        /* some how we're not able to set the table first cel right below the navigation bar
+         * there is a hidden table header somewhere.
+         * I haven't found where to change this so, we change the contentinset to -30 */
+        table.tableHeaderView = nil
+        table.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
         table.dataSource = self
         table.delegate = self
         
@@ -52,6 +57,8 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         if setting.showArrow {
             if setting.showBadge {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemBadgeAndArrow", for: indexPath) as? SettingsItemBadgeAndArrow
+            } else if setting.isSpecialItem {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SpecialItemArrow", for: indexPath) as? SettingsItemArrow
             } else {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
             }
@@ -62,21 +69,7 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell //normal cell
             }
         }
-        
-        if setting.isSpecialItem {
-            cell?.settingImageView.leftAnchor.constraint(equalTo: (cell?.leftAnchor)!, constant: 30).isActive = true
-            cell?.settingImageView.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
-
-            cell?.settingLabel.leftAnchor.constraint(equalTo: (cell?.settingImageView.rightAnchor)!, constant: 50).isActive = true
-            cell?.settingLabel.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
-            cell?.settingLabel.numberOfLines = 2
-
-            (cell! as! SettingsItemArrow).arrow.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
-
-            cell?.settingLabel.font = UIFont(name: "Avenir-Black", size: 16)
-            cell?.settingLabel.numberOfLines = 2
-        }
-        
+                
         cell!.settingLabel.text = setting.name
         cell!.settingImageView.image = setting.image
         return cell!
