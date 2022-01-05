@@ -94,14 +94,16 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol, SFSafariV
 
         UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
         UserDefaults.standard.lastGivtToOrganisationName = orgName
-        
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+
         shouldShowMandate { (url) in
             let route = OpenSafariRoute(donations: transactions,
                                         canShare: false,
                                         userId: UUID(uuidString: UserDefaults.standard.userExt!.guid)!,
                                         delegate: self,
                                         collectGroupName: orgName,
-                                        mandateUrl: url)
+                                        mandateUrl: url,
+                                        country: country ?? "NL")
             route.advertisement = try? Mediater.shared.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en",
                                                                                                  localeRegionCode: Locale.current.regionCode ?? "eu",
                                                                                                  country: UserDefaults.standard.userExt?.country))
