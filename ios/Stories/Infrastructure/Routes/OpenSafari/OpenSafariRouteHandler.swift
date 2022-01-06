@@ -21,26 +21,29 @@ class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
             message = "SafariGivingToOrganisation".localized.replacingOccurrences(of:"{0}", with: cgName)
         }
         
-        var safariModel = OpenSafariRouteInputModel(message: message,
-                                           Collect: "Collect".localized,
-                                           AreYouSureToCancelGivts: "AreYouSureToCancelGivts".localized,
-                                           ConfirmBtn: request.mandateUrl == nil ? "Confirm".localized : "Next".localized,
-                                           Cancel: "Cancel".localized,
-                                           SlimPayInformation: "SlimPayInformation".localized,
-                                           SlimPayInformationPart2: "SlimPayInformationPart2".localized,
-                                           Close: "Close".localized,
-                                           ShareGivt: "ShareTheGivtButton".localized,
-                                           Thanks: "GivtIsBeingProcessed".localized.replacingOccurrences(of: "{0}", with: request.collectGroupName ?? ""),
-                                           YesSuccess: "YesSuccess".localized,
-                                           GUID: request.userId.uuidString,
-                                           givtObj: request.donations.map { OpenSafariRouteTransactionModel(Amount: $0.amount, CollectId: $0.collectId, Timestamp: $0.timeStamp, BeaconId: $0.beaconId)},
-                                           apiUrl: "\(AppConstants.apiUri)/",
-                                           organisation: request.collectGroupName,
-                                           spUrl: request.mandateUrl,
-                                           canShare: true,
-                                           nativeAppScheme: AppConstants.appScheme,
-                                           urlPart: AppConstants.returnUrlDir,
-                                           currency: CurrencyHelper.shared.getCurrencySymbol())
+        var safariModel = OpenSafariRouteInputModel(
+            message: message,
+            Collect: "Collect".localized,
+            AreYouSureToCancelGivts: "AreYouSureToCancelGivts".localized,
+            ConfirmBtn: request.mandateUrl == nil ? "Confirm".localized : "Next".localized,
+            Cancel: "Cancel".localized,
+            SlimPayInformation: "SlimPayInformation".localized,
+            SlimPayInformationPart2: "SlimPayInformationPart2".localized,
+            Close: "Close".localized,
+            ShareGivt: "ShareTheGivtButton".localized,
+            Thanks: "GivtIsBeingProcessed".localized.replacingOccurrences(of: "{0}", with: request.collectGroupName ?? ""),
+            YesSuccess: "YesSuccess".localized,
+            GUID: request.userId.uuidString,
+            givtObj: request.donations.map { OpenSafariRouteTransactionModel(Amount: $0.amount, CollectId: $0.collectId, Timestamp: $0.timeStamp, BeaconId: $0.beaconId)},
+            apiUrl: "\(AppConstants.apiUri)/",
+            organisation: request.collectGroupName,
+            spUrl: request.mandateUrl,
+            canShare: true,
+            nativeAppScheme: AppConstants.appScheme,
+            urlPart: AppConstants.returnUrlDir,
+            currency: CurrencyHelper.shared.getCurrencySymbol(),
+            country: request.country
+        )
         if let ad = request.advertisement {
             safariModel.advertisementText = ad.text
             safariModel.advertisementTitle = ad.title
