@@ -22,12 +22,15 @@ class OpenSafariRoute : RequestProtocol {
     
     var advertisement: LocalizedAdvertisementModel?
 
-    internal init(donations: [Transaction], canShare: Bool, userId: UUID, delegate: SFSafariViewControllerDelegate, collectGroupName: String? = nil, mandateUrl: String? = nil) {
+    var country: String
+    
+    internal init(donations: [Transaction], canShare: Bool, userId: UUID, delegate: SFSafariViewControllerDelegate, collectGroupName: String? = nil, mandateUrl: String? = nil, country: String) {
         self.mandateUrl = mandateUrl
         self.donations = donations
         self.canShare = canShare
         self.collectGroupName = collectGroupName
         self.userId = userId
         self.delegate = delegate
+        self.country = country
     }
 }
