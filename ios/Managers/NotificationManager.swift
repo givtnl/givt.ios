@@ -225,6 +225,7 @@ final class NotificationManager : NSObject {
                 }
             case NotificationType.ProcessCachedGivts.rawValue:
                 print("process cached givts action")
+                LogService.shared.info(message: "Starting process cached givts through push notification")
                 GivtManager.shared.processCachedGivts()
             case NotificationType.RecurringDonationTurnCreated.rawValue, NotificationType.RecurringDonationAboutToExpire.rawValue:
                 if let recurringDonationId = pushNotificationInfo["RecurringDonationId"] as? String {
