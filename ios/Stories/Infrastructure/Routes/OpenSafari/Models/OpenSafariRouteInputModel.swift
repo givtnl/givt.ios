@@ -32,4 +32,5 @@ struct OpenSafariRouteInputModel : Codable {
     var advertisementTitle: String?
     var advertisementImageUrl: String?
     var shouldShowCreditCard: Bool
+    var isProduction: Bool
 }

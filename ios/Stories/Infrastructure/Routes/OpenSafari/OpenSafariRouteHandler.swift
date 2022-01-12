@@ -20,6 +20,12 @@ class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
         } else if let cgName = request.collectGroupName {
             message = "SafariGivingToOrganisation".localized.replacingOccurrences(of:"{0}", with: cgName)
         }
+
+#if PRODUCTION
+        let isProduction = true
+#else
+        let isProduction = false
+#endif
         
         var safariModel = OpenSafariRouteInputModel(
             message: message,
@@ -42,7 +48,8 @@ class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
             nativeAppScheme: AppConstants.appScheme,
             urlPart: AppConstants.returnUrlDir,
             currency: CurrencyHelper.shared.getCurrencySymbol(),
-            shouldShowCreditCard: request.country == "US" && !UserDefaults.standard.mandateSigned
+            shouldShowCreditCard: request.country == "US" && !UserDefaults.standard.mandateSigned,
+            isProduction: isProduction
         )
         
         if let ad = request.advertisement {

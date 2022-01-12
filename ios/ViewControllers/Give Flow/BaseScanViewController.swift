@@ -105,8 +105,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol, SFSafariV
                                         mandateUrl: url,
                                         country: country ?? "NL")
             route.advertisement = try? Mediater.shared.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en",
-                                                                                                 localeRegionCode: Locale.current.regionCode ?? "eu",
-                                                                                                 country: UserDefaults.standard.userExt?.country))
+                localeRegionCode: Locale.current.regionCode ?? "eu",
+                country: country))
 
             DispatchQueue.main.async {
                 AppServices.shared.vibrate()
