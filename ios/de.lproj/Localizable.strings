@@ -1092,7 +1092,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetPushYearlyFinalBold" = "Deine Jahresübersicht ist jetzt fertig!";
 "BudgetPushYearlyFinal" = "Sieh dir deine Jahresübersicht an und schau, was du im letzten Jahr gegeben hast.";
 "BudgetTestimonialYearlyOverviewAction" = "Zur Übersicht";
-"DuplicateAccountOrganisationMessage" = "Bist du sicher, dass du deine eigenen Bankdaten verwendest?";
+"DuplicateAccountOrganisationMessage" = "Bist du sicher, dass du deine eigenen Bankdaten verwendest? Könntest du bitte im Menü unter \"Persönliche Informationen\" nachsehen? Bei Bedarf kannst du sie dort auch gleich ändern.";
 "US.Registration.CreditCard.Details.Number.Placeholder" = "Credit card number";
 "US.Registration.CreditCard.Details.ExpiryDate.Placeholder" = "MM/YY";
 "US.Registration.CreditCard.Details.SecurityCode.Placeholder" = "CVV";
