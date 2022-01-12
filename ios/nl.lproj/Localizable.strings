@@ -1161,7 +1161,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetPushYearlyFinalBold" = "Je jaaroverzicht is nu finaal!";
 "BudgetPushYearlyFinal" = "Bekijk je jaaroverzicht en zie wat je het afgelopen jaar gegeven hebt.";
 "BudgetTestimonialYearlyOverviewAction" = "Ga naar het overzicht";
-"DuplicateAccountOrganisationMessage" = "Ben je zeker dat je jouw persoonlijke rekeningnummer gebruikt?";
+"DuplicateAccountOrganisationMessage" = "Weet je zeker dat je jouw persoonlijke rekeningnummer gebruikt? Controleer even in het menu onder 'Mijn gegevens'. Daar kun je je gegevens ook aanpassen.";
 "US.Registration.CreditCard.Details.Number.Placeholder" = "Credit card number";
 "US.Registration.CreditCard.Details.ExpiryDate.Placeholder" = "MM/YY";
 "US.Registration.CreditCard.Details.SecurityCode.Placeholder" = "CVV";
