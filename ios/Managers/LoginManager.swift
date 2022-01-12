@@ -191,6 +191,11 @@ class LoginManager {
                         AppServices.shared.setLocale()
                         if let newConfig = UserDefaults.standard.userExt {
                             newConfig.country = userExt.Country
+#if !PRODUCTION
+                            if UserDefaults.standard.hackForTesting {
+                                newConfig.country = "US"
+                            }
+#endif
                             UserDefaults.standard.userExt = newConfig
                         }
                         completion(userExt)

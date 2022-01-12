@@ -2735,13 +2735,10 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D7F746D91FD943F6005354A3 /* Registration */,
-				3290C14B268D9D5200BFED48 /* Tracking */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
 				FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */,
 				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
-				D721F1991F7E2D4B000B9546 /* MainNavigationController.swift */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				FBA0894821C7DD14001DD889 /* Features */,
 				D7F3A8462148016C008B65AE /* Fingerprint */,
@@ -2749,10 +2746,13 @@
 				D761E99F1F167798002B849B /* FirstViewController.swift */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
+				D721F1991F7E2D4B000B9546 /* MainNavigationController.swift */,
 				D75F2CCD1FAC69B400F40827 /* Manual giving */,
 				D7DBED9F1FBC4AB000D78E2A /* Menu */,
 				D7F746D61FD9435C005354A3 /* Modals */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
+				D7F746D91FD943F6005354A3 /* Registration */,
+				3290C14B268D9D5200BFED48 /* Tracking */,
 				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 			);
 			path = ViewControllers;
@@ -3276,10 +3276,10 @@
 			isa = PBXGroup;
 			children = (
 				FBD44E352746802C00B5E558 /* Advertisements */,
-				32FCF675264180820094166C /* GivingGoal */,
-				329C3E7525F210B90037D750 /* ExternalDonations */,
 				FBC185A524C0CD11001A4C6B /* CollectGroups */,
 				FB87300724C818FA005FF355 /* Donations */,
+				329C3E7525F210B90037D750 /* ExternalDonations */,
+				32FCF675264180820094166C /* GivingGoal */,
 				FBC41A23253486230047C706 /* Models */,
 				32D4852A24D0442800F821A5 /* RecurringDonations */,
 				FBC185A624C0CD18001A4C6B /* User */,

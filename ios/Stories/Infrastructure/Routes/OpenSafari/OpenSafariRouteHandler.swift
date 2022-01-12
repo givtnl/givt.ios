@@ -42,8 +42,9 @@ class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
             nativeAppScheme: AppConstants.appScheme,
             urlPart: AppConstants.returnUrlDir,
             currency: CurrencyHelper.shared.getCurrencySymbol(),
-            country: request.country
+            shouldShowCreditCard: request.country == "US" && !UserDefaults.standard.mandateSigned
         )
+        
         if let ad = request.advertisement {
             safariModel.advertisementText = ad.text
             safariModel.advertisementTitle = ad.title
