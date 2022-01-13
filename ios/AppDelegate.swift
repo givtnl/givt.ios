@@ -237,7 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                     // What year should we show to the user?
                     // if in december show current year otherwise show last year
                     var date = Date()
-                    if (Date().getMonth() != 11){
+                    if (Date().getMonth() != 12){
                         date = Calendar.current.date(byAdding: .year, value: -1, to: date)!
                     }
                     try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: date, openYearlyOverview: true), withContext: mainViewController) { }
