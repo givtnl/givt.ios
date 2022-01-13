@@ -19,4 +19,8 @@ extension Double {
     var toFloat: Float {
         return Float(self)
     }
+    
+    func getFormattedWithoutCurrency(decimals: Int) -> String {
+        return "\(String(format: "%.\(decimals)f", self))".replacingOccurrences(of: ".", with: Locale.current.decimalSeparator!)
+    }
 }
