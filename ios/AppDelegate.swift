@@ -234,7 +234,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             } else {
                 // TODO => Build the stack nicely so we can go back in the navigation stack
                 NavigationManager.shared.executeWithLogin(context: mainViewController) {
-                    try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: Date(), openYearlyOverview: true), withContext: mainViewController) { }
+                    // What year should we show to the user?
+                    // if in december show current year otherwise show last year
+                    var date = Date()
+                    if (Date().getMonth() != 11){
+                        date = Calendar.current.date(byAdding: .year, value: -1, to: date)!
+                    }
+                    try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: date, openYearlyOverview: true), withContext: mainViewController) { }
                 }
             }
         }
