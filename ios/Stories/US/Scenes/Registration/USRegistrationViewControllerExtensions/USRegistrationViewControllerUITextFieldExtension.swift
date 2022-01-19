@@ -32,30 +32,6 @@ extension USRegistrationViewController: UITextFieldDelegate {
             }
         }
         
-        if (fieldTypeTag == .creditCardNumber) {
-            // Creditcards are maximum 19 digits long
-            if (String(currentValueInField+string).filter({ char in char != " " }).count > 19) {
-                return false
-            }
-        }
-        if (fieldTypeTag == .creditCardExpiryDate) {
-            // Credit card expiration date can only be 5 characters, EG: 12/23
-            if (string != String.empty && String(currentValueInField+string).count == 2) {
-                if (!String(currentValueInField+string).contains("/")) {
-                    creditCardExpiryDateTextField.text = currentValueInField+string+"/"
-                    return false
-                }
-            }
-            if (String(currentValueInField+string).count > 5) {
-                return false
-            }
-        }
-        if (fieldTypeTag == .creditCardSecurityCode) {
-            // Credit card expiration date can have a maximum of 4 digits
-            if (String(currentValueInField+string).count > 4) {
-                return false
-            }
-        }
         viewModel.handleTextChanged(fieldTypeTag: fieldTypeTag, input: currentValueInField+string)
         return true
     }

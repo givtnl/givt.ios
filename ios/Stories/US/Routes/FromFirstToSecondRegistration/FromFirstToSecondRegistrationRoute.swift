@@ -10,10 +10,10 @@ import Foundation
 
 
 class FromFirstToSecondRegistrationRoute: NoResponseRequest {
-    var registerUserCommand: RegisterUserCommand!
-    var registerCreditCardCommand: RegisterCreditCardCommand!
-    init(registerUserCommand: RegisterUserCommand, registerCreditCardCommand: RegisterCreditCardCommand!) {
+    var registerUserCommand: RegisterUserCommand
+    var registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand
+    init(registerUserCommand: RegisterUserCommand, registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand) {
         self.registerUserCommand = registerUserCommand
-        self.registerCreditCardCommand = registerCreditCardCommand
+        self.registerCreditCardByTokenCommand = registerCreditCardByTokenCommand
     }
 }

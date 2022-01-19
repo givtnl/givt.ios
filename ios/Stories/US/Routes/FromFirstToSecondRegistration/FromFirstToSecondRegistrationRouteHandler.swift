@@ -15,7 +15,7 @@ class FromFirstToSecondRegistrationRouteHandler: RequestHandlerWithContextProtoc
             .instantiateViewController(withIdentifier: String(describing: USSecondRegistrationViewController.self)) as! USSecondRegistrationViewController
         let route = (request as! FromFirstToSecondRegistrationRoute)
         vc.registerUserCommand = route.registerUserCommand
-        vc.registerCreditCardCommand = route.registerCreditCardCommand
+        vc.registerCreditCardByTokenCommand = route.registerCreditCardByTokenCommand
         context.navigationController?.pushViewController(vc, animated: true)
         
         try completion(() as! R.TResponse)

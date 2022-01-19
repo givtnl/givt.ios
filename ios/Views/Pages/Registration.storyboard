@@ -1261,20 +1261,20 @@ Veel geefplezier!</string>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="uyv-ul-jwR" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="123.33333587646484"/>
+                                                        <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="131"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uyv-ul-jwR" id="Cgh-Vj-uz8">
-                                                            <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="123.33333587646484"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="399.33333333333331" height="131"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XwS-Ds-PNX">
-                                                                    <rect key="frame" x="20" y="15" width="379.33333333333331" height="93.333333333333329"/>
+                                                                    <rect key="frame" x="20" y="15" width="379.33333333333331" height="101"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33D-uJ-VuA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="93.333333333333329"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="101"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WeW-Ug-CTu">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="93.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="101"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1287,10 +1287,10 @@ Veel geefplezier!</string>
                                                                             </constraints>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F10-xN-Ybg">
-                                                                            <rect key="frame" x="30" y="0.0" width="349.33333333333331" height="93.333333333333329"/>
+                                                                            <rect key="frame" x="30" y="0.0" width="349.33333333333331" height="101"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zr-QU-d4n">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="93.333333333333329"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="101"/>
                                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -1405,24 +1405,18 @@ Veel geefplezier!</string>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nc-Ll-thb">
-                                                        <rect key="frame" x="20" y="352" width="388" height="33"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
-                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="J99-rn-l7X" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="246" width="388" height="44"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ha-Xa-NdO">
+                                                        <rect key="frame" x="20" y="77" width="389" height="110"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="27f-z7-TLT"/>
+                                                            <constraint firstAttribute="height" constant="110" id="vsM-Rq-c66"/>
                                                         </constraints>
-                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
-                                                    </textField>
+                                                        <wkWebViewConfiguration key="configuration">
+                                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                            <wkPreferences key="preferences"/>
+                                                        </wkWebViewConfiguration>
+                                                    </wkWebView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XsS-Qg-vf7" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="192" width="388" height="44"/>
+                                                        <rect key="frame" x="20" y="194" width="388" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="d4w-Bc-8GH"/>
@@ -1431,8 +1425,18 @@ Veel geefplezier!</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="family-name"/>
                                                     </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="J99-rn-l7X" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="250" width="388" height="44"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="27f-z7-TLT"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                                    </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvN-yy-YhR">
-                                                        <rect key="frame" x="20" y="300" width="388" height="44"/>
+                                                        <rect key="frame" x="20" y="306" width="388" height="44"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A7k-Mq-5oG" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="388" height="44"/>
@@ -1466,112 +1470,33 @@ Veel geefplezier!</string>
                                                             <constraint firstAttribute="height" constant="44" id="uMq-2q-s9W"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGP-HC-I2y">
-                                                        <rect key="frame" x="0.0" y="84" width="428" height="98"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7i-In-vfS">
-                                                                <rect key="frame" x="20" y="0.0" width="388" height="44"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dS-KT-mtI">
-                                                                        <rect key="frame" x="6" y="6" width="60" height="32"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="60" id="nn2-0S-WuN"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Credit card number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5X-RH-tAB" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="68" y="2" width="320" height="40"/>
-                                                                        <accessibility key="accessibilityConfiguration">
-                                                                            <bool key="isElement" value="NO"/>
-                                                                        </accessibility>
-                                                                        <color key="textColor" red="0.18039215689999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="3dS-KT-mtI" firstAttribute="leading" secondItem="q7i-In-vfS" secondAttribute="leading" constant="6" id="6aR-eA-E3Q"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="X5X-RH-tAB" secondAttribute="trailing" id="PoX-Kh-gfu"/>
-                                                                    <constraint firstItem="3dS-KT-mtI" firstAttribute="top" secondItem="q7i-In-vfS" secondAttribute="top" constant="6" id="Pst-ln-Oyk"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="X5X-RH-tAB" secondAttribute="bottom" constant="2" id="ZED-FV-qhe"/>
-                                                                    <constraint firstItem="X5X-RH-tAB" firstAttribute="top" secondItem="q7i-In-vfS" secondAttribute="top" constant="2" id="dDf-Yl-jtm"/>
-                                                                    <constraint firstItem="X5X-RH-tAB" firstAttribute="leading" secondItem="3dS-KT-mtI" secondAttribute="trailing" constant="2" id="v99-N0-Ya4"/>
-                                                                    <constraint firstAttribute="height" constant="44" id="wUo-fd-Yu4"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="3dS-KT-mtI" secondAttribute="bottom" constant="6" id="yaN-vm-Ogt"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hDl-Kr-QLi">
-                                                                <rect key="frame" x="20" y="54" width="388" height="44"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcb-UK-gS6">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="189" height="44"/>
-                                                                        <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWK-5e-NST" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="189" height="44"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="44" id="zdX-dd-bUm"/>
-                                                                                </constraints>
-                                                                                <color key="textColor" red="0.18039215689999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                                <textInputTraits key="textInputTraits"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="vWK-5e-NST" firstAttribute="leading" secondItem="pcb-UK-gS6" secondAttribute="leading" id="ABb-xJ-DE1"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="vWK-5e-NST" secondAttribute="bottom" id="cV5-y9-5XA"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="vWK-5e-NST" secondAttribute="trailing" id="fbp-6C-ZOu"/>
-                                                                            <constraint firstItem="vWK-5e-NST" firstAttribute="top" secondItem="pcb-UK-gS6" secondAttribute="top" id="pNm-Ix-aAp"/>
-                                                                        </constraints>
-                                                                    </view>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC/CVV" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-cV-w2C" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="199" y="0.0" width="189" height="44"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="44" id="ks5-jl-xWv"/>
-                                                                        </constraints>
-                                                                        <color key="textColor" red="0.18039215689999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="44" id="Vid-sB-Nyx"/>
-                                                                </constraints>
-                                                            </stackView>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="hDl-Kr-QLi" secondAttribute="bottom" id="7dU-Vo-fCY"/>
-                                                            <constraint firstItem="hDl-Kr-QLi" firstAttribute="top" secondItem="q7i-In-vfS" secondAttribute="bottom" constant="10" id="CJY-Rw-qmw"/>
-                                                            <constraint firstAttribute="height" constant="98" id="NTS-4m-J2j"/>
-                                                            <constraint firstAttribute="trailing" secondItem="q7i-In-vfS" secondAttribute="trailing" constant="20" id="U76-uz-P6c"/>
-                                                            <constraint firstItem="hDl-Kr-QLi" firstAttribute="leading" secondItem="PGP-HC-I2y" secondAttribute="leading" constant="20" id="fPO-aF-hpc"/>
-                                                            <constraint firstAttribute="trailing" secondItem="hDl-Kr-QLi" secondAttribute="trailing" constant="20" id="iEg-uH-u49"/>
-                                                            <constraint firstItem="q7i-In-vfS" firstAttribute="leading" secondItem="PGP-HC-I2y" secondAttribute="leading" constant="20" id="mAg-iL-15D"/>
-                                                            <constraint firstItem="q7i-In-vfS" firstAttribute="top" secondItem="PGP-HC-I2y" secondAttribute="top" id="ogh-5U-qaS"/>
-                                                        </constraints>
-                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nc-Ll-thb">
+                                                        <rect key="frame" x="20" y="358" width="388" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
+                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="XsS-Qg-vf7" firstAttribute="top" secondItem="PGP-HC-I2y" secondAttribute="bottom" constant="10" id="2f8-9X-aUn"/>
                                                     <constraint firstAttribute="trailing" secondItem="J99-rn-l7X" secondAttribute="trailing" constant="20" id="7eX-6g-JZO"/>
                                                     <constraint firstItem="3rJ-2P-LbY" firstAttribute="top" secondItem="z28-SE-gKz" secondAttribute="top" constant="20" id="AUy-YX-CZH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4ha-Xa-NdO" secondAttribute="trailing" constant="19" id="Gkf-3V-xa3"/>
+                                                    <constraint firstItem="4ha-Xa-NdO" firstAttribute="top" secondItem="3rJ-2P-LbY" secondAttribute="bottom" constant="13" id="HYd-Ce-ylN"/>
                                                     <constraint firstAttribute="trailing" secondItem="5nc-Ll-thb" secondAttribute="trailing" constant="20" id="HqZ-d8-z9o"/>
                                                     <constraint firstAttribute="trailing" secondItem="XsS-Qg-vf7" secondAttribute="trailing" constant="20" id="IJn-b2-AbQ"/>
                                                     <constraint firstItem="xvN-yy-YhR" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" constant="20" id="IWc-QH-ui8"/>
                                                     <constraint firstAttribute="trailing" secondItem="xvN-yy-YhR" secondAttribute="trailing" constant="20" id="K4s-Ky-iZg"/>
                                                     <constraint firstAttribute="trailing" secondItem="3rJ-2P-LbY" secondAttribute="trailing" constant="20" id="VK9-Bh-8xT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="PGP-HC-I2y" secondAttribute="trailing" id="VYN-eu-rLf"/>
-                                                    <constraint firstItem="J99-rn-l7X" firstAttribute="top" secondItem="XsS-Qg-vf7" secondAttribute="bottom" constant="10" id="Yjd-Ug-wYv"/>
-                                                    <constraint firstItem="PGP-HC-I2y" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" id="ebU-5z-wai"/>
+                                                    <constraint firstItem="J99-rn-l7X" firstAttribute="top" secondItem="XsS-Qg-vf7" secondAttribute="bottom" constant="12" id="Yjd-Ug-wYv"/>
+                                                    <constraint firstItem="XsS-Qg-vf7" firstAttribute="top" secondItem="4ha-Xa-NdO" secondAttribute="bottom" constant="7" id="ZuZ-iY-bt7"/>
                                                     <constraint firstItem="5nc-Ll-thb" firstAttribute="top" secondItem="xvN-yy-YhR" secondAttribute="bottom" constant="8" id="gkb-ij-FM0"/>
-                                                    <constraint firstItem="xvN-yy-YhR" firstAttribute="top" secondItem="J99-rn-l7X" secondAttribute="bottom" constant="10" id="kwJ-Gd-50c"/>
+                                                    <constraint firstItem="4ha-Xa-NdO" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" constant="20" id="iKh-cB-kc0"/>
+                                                    <constraint firstItem="xvN-yy-YhR" firstAttribute="top" secondItem="J99-rn-l7X" secondAttribute="bottom" constant="12" id="kwJ-Gd-50c"/>
                                                     <constraint firstItem="J99-rn-l7X" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" constant="20" id="mei-Bv-5qa"/>
                                                     <constraint firstItem="3rJ-2P-LbY" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" constant="20" id="mq8-vy-WuJ"/>
                                                     <constraint firstItem="XsS-Qg-vf7" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" constant="20" id="nyb-gW-07x"/>
                                                     <constraint firstItem="5nc-Ll-thb" firstAttribute="leading" secondItem="z28-SE-gKz" secondAttribute="leading" constant="20" id="y5c-vU-tug"/>
-                                                    <constraint firstItem="PGP-HC-I2y" firstAttribute="top" secondItem="3rJ-2P-LbY" secondAttribute="bottom" constant="20" id="zdi-MI-KlO"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1697,12 +1622,9 @@ Veel geefplezier!</string>
                     <connections>
                         <outlet property="backButton" destination="w5g-VA-BIC" id="Ev0-95-T5w"/>
                         <outlet property="bottomScrollViewConstraint" destination="bnv-Bq-FVr" id="4OK-HD-dR5"/>
-                        <outlet property="creditCardCVVTextField" destination="WW5-cV-w2C" id="8Qb-Am-rpR"/>
-                        <outlet property="creditCardCompanyLogoImageView" destination="3dS-KT-mtI" id="8uu-n0-Qzj"/>
-                        <outlet property="creditCardExpiryDateTextField" destination="vWK-5e-NST" id="XWz-sg-b1a"/>
-                        <outlet property="creditCardNumberTextField" destination="X5X-RH-tAB" id="wAW-Oe-Bfe"/>
-                        <outlet property="creditCardNumberView" destination="q7i-In-vfS" id="Clk-ZZ-Kx4"/>
+                        <outlet property="creditCardWebView" destination="4ha-Xa-NdO" id="afV-Ut-qoG"/>
                         <outlet property="emailAddressTextField" destination="J99-rn-l7X" id="vcP-mv-AgR"/>
+                        <outlet property="mainView" destination="PZu-ig-qA3" id="opE-4Q-Hxz"/>
                         <outlet property="nextButton" destination="2gn-gj-rSb" id="48J-Rc-UiX"/>
                         <outlet property="passwordHint" destination="5nc-Ll-thb" id="YhQ-PI-ACi"/>
                         <outlet property="passwordTextField" destination="A7k-Mq-5oG" id="Rz6-ud-tLa"/>
@@ -1729,11 +1651,11 @@ Veel geefplezier!</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WO7-LJ-P4m">
                                 <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6b-p6-zlV">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="505"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6b-p6-zlV">
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBr-Nq-9CF" userLabel="InnerView">
-                                                <rect key="frame" x="0.0" y="0.0" width="428" height="505"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="428" height="559"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To create your annual statement we need your fullname." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0I-EU-csZ">
                                                         <rect key="frame" x="20" y="20" width="388" height="44"/>
@@ -1747,17 +1669,7 @@ Veel geefplezier!</string>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lastname" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mf7-tD-2Ug" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="441" width="388" height="44"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="OuU-We-BvB"/>
-                                                        </constraints>
-                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="email"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Firstname" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fcs-UJ-yd6" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fcs-UJ-yd6" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="387" width="388" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -1767,24 +1679,46 @@ Veel geefplezier!</string>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="family-name"/>
                                                     </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mf7-tD-2Ug" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="441" width="388" height="44"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="OuU-We-BvB"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="email"/>
+                                                    </textField>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_tax" translatesAutoresizingMaskIntoConstraints="NO" id="T15-9o-igt">
                                                         <rect key="frame" x="40" y="127" width="348" height="240"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="240" id="8Bf-qj-ks4"/>
                                                         </constraints>
                                                     </imageView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postal code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WMp-BN-S7w" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="495" width="388" height="44"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="07B-I0-dTM"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="email"/>
+                                                    </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="T15-9o-igt" firstAttribute="top" secondItem="Ekt-fR-0lh" secondAttribute="bottom" constant="20" id="0Du-u9-hgA"/>
                                                     <constraint firstAttribute="trailing" secondItem="mf7-tD-2Ug" secondAttribute="trailing" constant="20" id="3Cb-On-Quk"/>
                                                     <constraint firstItem="mf7-tD-2Ug" firstAttribute="top" secondItem="Fcs-UJ-yd6" secondAttribute="bottom" constant="10" id="7hU-Ot-Lj5"/>
-                                                    <constraint firstAttribute="bottom" secondItem="mf7-tD-2Ug" secondAttribute="bottom" constant="20" id="BLK-kI-T2h"/>
                                                     <constraint firstItem="T15-9o-igt" firstAttribute="leading" secondItem="LBr-Nq-9CF" secondAttribute="leading" constant="40" id="CTT-Lw-Ext"/>
                                                     <constraint firstItem="Fcs-UJ-yd6" firstAttribute="leading" secondItem="LBr-Nq-9CF" secondAttribute="leading" constant="20" id="Fez-tm-Gvr"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WMp-BN-S7w" secondAttribute="trailing" constant="20" id="OlD-6S-JPr"/>
                                                     <constraint firstItem="Ekt-fR-0lh" firstAttribute="top" secondItem="S0I-EU-csZ" secondAttribute="bottom" constant="10" id="Pme-k8-ufA"/>
                                                     <constraint firstAttribute="trailing" secondItem="S0I-EU-csZ" secondAttribute="trailing" constant="20" id="WEV-ry-fZf"/>
+                                                    <constraint firstItem="WMp-BN-S7w" firstAttribute="top" secondItem="mf7-tD-2Ug" secondAttribute="bottom" constant="10" id="WlD-7y-p6r"/>
                                                     <constraint firstAttribute="trailing" secondItem="Fcs-UJ-yd6" secondAttribute="trailing" constant="20" id="Ycn-Ae-AWK"/>
+                                                    <constraint firstItem="WMp-BN-S7w" firstAttribute="leading" secondItem="LBr-Nq-9CF" secondAttribute="leading" constant="20" id="Ygk-UI-TzA"/>
                                                     <constraint firstItem="mf7-tD-2Ug" firstAttribute="leading" secondItem="LBr-Nq-9CF" secondAttribute="leading" constant="20" id="aqB-0N-PYa"/>
                                                     <constraint firstItem="Fcs-UJ-yd6" firstAttribute="top" secondItem="T15-9o-igt" secondAttribute="bottom" constant="20" id="ehx-7x-XmF"/>
                                                     <constraint firstAttribute="trailing" secondItem="T15-9o-igt" secondAttribute="trailing" constant="40" id="eo6-mZ-J8F"/>
@@ -1792,6 +1726,7 @@ Veel geefplezier!</string>
                                                     <constraint firstItem="S0I-EU-csZ" firstAttribute="leading" secondItem="LBr-Nq-9CF" secondAttribute="leading" constant="20" id="lnC-HG-YfK"/>
                                                     <constraint firstItem="S0I-EU-csZ" firstAttribute="top" secondItem="LBr-Nq-9CF" secondAttribute="top" constant="20" id="nCP-sn-vOl"/>
                                                     <constraint firstItem="Ekt-fR-0lh" firstAttribute="leading" secondItem="LBr-Nq-9CF" secondAttribute="leading" constant="20" id="qXt-UT-6ZA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WMp-BN-S7w" secondAttribute="bottom" constant="20" id="zhI-yX-pwK"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -1873,6 +1808,7 @@ Veel geefplezier!</string>
                         <outlet property="faqButton" destination="H14-ih-mGG" id="NeY-qJ-5z9"/>
                         <outlet property="firstNameTextField" destination="Fcs-UJ-yd6" id="8fB-UR-NmX"/>
                         <outlet property="lastNameTextField" destination="mf7-tD-2Ug" id="EsY-EL-9If"/>
+                        <outlet property="postalCodeTextField" destination="WMp-BN-S7w" id="5F8-BT-AhR"/>
                         <outlet property="registerButton" destination="sI0-nr-vSj" id="Tu2-w4-jf7"/>
                         <outlet property="subtitleLabel" destination="Ekt-fR-0lh" id="Oq9-Az-7Xb"/>
                         <outlet property="theScrollView" destination="w6b-p6-zlV" id="e9f-SI-WZI"/>
@@ -1907,7 +1843,7 @@ Veel geefplezier!</string>
             <size key="intrinsicContentSize" width="72.333333333333329" height="23.666666666666668"/>
         </designable>
         <designable name="Fcs-UJ-yd6">
-            <size key="intrinsicContentSize" width="70" height="23.666666666666668"/>
+            <size key="intrinsicContentSize" width="74.333333333333329" height="23.666666666666668"/>
         </designable>
         <designable name="J99-rn-l7X">
             <size key="intrinsicContentSize" width="78" height="23.666666666666668"/>
@@ -1927,11 +1863,8 @@ Veel geefplezier!</string>
         <designable name="Roi-DX-91v">
             <size key="intrinsicContentSize" width="81" height="37"/>
         </designable>
-        <designable name="WW5-cV-w2C">
-            <size key="intrinsicContentSize" width="96.333333333333329" height="34"/>
-        </designable>
-        <designable name="X5X-RH-tAB">
-            <size key="intrinsicContentSize" width="167" height="34"/>
+        <designable name="WMp-BN-S7w">
+            <size key="intrinsicContentSize" width="83.333333333333329" height="23.666666666666668"/>
         </designable>
         <designable name="XsS-Qg-vf7">
             <size key="intrinsicContentSize" width="105" height="23.666666666666668"/>
@@ -1949,7 +1882,7 @@ Veel geefplezier!</string>
             <size key="intrinsicContentSize" width="81" height="37"/>
         </designable>
         <designable name="mf7-tD-2Ug">
-            <size key="intrinsicContentSize" width="68.333333333333329" height="23.666666666666668"/>
+            <size key="intrinsicContentSize" width="72.666666666666671" height="23.666666666666668"/>
         </designable>
         <designable name="r31-cv-Adj">
             <size key="intrinsicContentSize" width="69" height="37"/>
@@ -1963,15 +1896,11 @@ Veel geefplezier!</string>
         <designable name="ufs-FW-R8y">
             <size key="intrinsicContentSize" width="27.333333333333332" height="23.666666666666668"/>
         </designable>
-        <designable name="vWK-5e-NST">
-            <size key="intrinsicContentSize" width="81" height="34"/>
-        </designable>
     </designables>
     <resources>
         <image name="active_eye.png" width="16" height="12"/>
         <image name="backbtn" width="15" height="24"/>
         <image name="backbtn.png" width="15" height="24"/>
-        <image name="card" width="20" height="14"/>
         <image name="checked.png" width="24" height="24"/>
         <image name="closewhite" width="23" height="24"/>
         <image name="decrease.png" width="40" height="40"/>

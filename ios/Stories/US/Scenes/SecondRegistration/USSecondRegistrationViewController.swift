@@ -18,6 +18,7 @@ class USSecondRegistrationViewController: UIViewController {
     
     @IBOutlet weak var firstNameTextField: CustomUITextField!
     @IBOutlet weak var lastNameTextField: CustomUITextField!
+    @IBOutlet weak var postalCodeTextField: CustomUITextField!
     
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +28,7 @@ class USSecondRegistrationViewController: UIViewController {
 
     // user details from previous screen
     var registerUserCommand: RegisterUserCommand!
-    var registerCreditCardCommand: RegisterCreditCardCommand!
+    var registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var faqButton: UIBarButtonItem!

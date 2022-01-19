@@ -21,17 +21,18 @@ extension USSecondRegistrationViewController {
         
         self.registerUserCommand.firstName = self.firstNameTextField.text
         self.registerUserCommand.lastName = self.lastNameTextField.text
+        self.registerUserCommand.postalCode = self.postalCodeTextField.text
         
         try! Mediater.shared.sendAsync(request: self.registerUserCommand, completion: { response in
             if (response.result) {
                 LoginManager.shared.loginUser(email: self.registerUserCommand.email, password: self.registerUserCommand.password, type: .password) { success, error, description in
                     if (success) {
-                        try? Mediater.shared.sendAsync(request: self.registerCreditCardCommand, completion: { response in
-                            UserDefaults.standard.amountLimit = 25000
-                            UserDefaults.standard.paymentType = .CreditCard
-                            UserDefaults.standard.mandateSigned = true
-                            UserDefaults.standard.isTempUser = false
-                            if (response.result) {
+                        try? Mediater.shared.sendAsync(request: self.registerCreditCardByTokenCommand) { response in
+                            if response.result {
+                                UserDefaults.standard.amountLimit = 25000
+                                UserDefaults.standard.paymentType = .CreditCard
+                                UserDefaults.standard.mandateSigned = true
+                                UserDefaults.standard.isTempUser = false
                                 DispatchQueue.main.async {
                                     UserDefaults.standard.paymentType = .CreditCard
                                     UserDefaults.standard.mandateSigned = true
@@ -40,8 +41,11 @@ extension USSecondRegistrationViewController {
                                     vc.hasBackButton = false
                                     self.show(vc, sender:nil)
                                 }
+                            } else {
+                                //show alert
+                                print(String(describing: response.error))
                             }
-                        })
+                        }
                     }
                 }
             }

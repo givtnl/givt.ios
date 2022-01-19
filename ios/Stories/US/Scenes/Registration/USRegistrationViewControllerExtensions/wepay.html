@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src='https://cdn.wepay.com/wepay.min.js'></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color:#FFFFFF
+            text-align: center;
+            box-sizing: border-box;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow-y: hidden !important;
+            overflow-x: hidden !important;
+            position: relative;
+        }
+        
+        #credit-card-iframe {
+            overflow-y: hidden !important;
+            overflow-x: hidden !important;
+        }
+    </style>
+</head>
+<body>
+<!-- credit-card-iframe id will be the location for appending the credit card iframe -->
+<div id="credit-card-iframe"></div>
+<script type="text/javascript">
+    window.wkVars = {}
+    
+    if (!window.webkit || !window.webkit.messageHandlers || !window.webkit.messageHandlers.registrationMessageHandler) {
+        console.log('error', 'Cannot find the messageHandler')
+    }
+    
+    wkVars.messageHandler = window.webkit.messageHandlers.registrationMessageHandler;
+    
+    const custom_style = {
+        'styles': {
+            'cvv-icon': {
+                'base': {
+                    'display': 'none'
+                }
+            },
+            'base': {
+                'height': '44px',
+                'margin': '0',
+                'border-radius': '4px',
+                'font-family': 'Avenir',
+                'font-size': '16px',
+                'color': '#2C2B57',
+                '::placeholder': {
+                    'color': '#BCB9C8'
+                },
+                ':focus': {
+                    'border': '1px solid #2C2B57'
+                }
+            },
+            'invalid': {
+                'border':'2px solid #D73C49'
+            },
+            'valid': {
+                'border':'1px solid #41C98E'
+            },
+            'errors': {
+                'invalid': {
+                    'color': '#D73C49'
+                }
+            }
+        }
+    };
+
+    const options = {
+        custom_style: custom_style,
+        show_labels:false,
+        show_placeholders:true,
+        show_error_messages:false,
+        show_error_messages_when_unfocused:false
+    };
+    const appId = "537744";
+    const apiVersion = "3.0";
+
+    let error = WePay.configure("stage", appId, apiVersion);
+    if (error) {
+        wkVars.messageHandler.postMessage(error)
+    };
+
+    const iframe_container_id = "credit-card-iframe";
+    wkVars.creditCard = WePay.createCreditCardIframe(iframe_container_id, options);
+    document.getElementById(iframe_container_id).children[0].onload = function() {
+        wkVars.messageHandler.postMessage({'event': 'iFrameLoaded'});
+    };
+</script>
+</body>
+</html>
