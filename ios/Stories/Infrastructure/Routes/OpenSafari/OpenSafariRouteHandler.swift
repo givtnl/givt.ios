@@ -48,7 +48,7 @@ class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
             nativeAppScheme: AppConstants.appScheme,
             urlPart: AppConstants.returnUrlDir,
             currency: CurrencyHelper.shared.getCurrencySymbol(),
-            shouldShowCreditCard: request.country == "US" && !UserDefaults.standard.mandateSigned,
+            shouldShowCreditCard: false,
             isProduction: isProduction
         )
         

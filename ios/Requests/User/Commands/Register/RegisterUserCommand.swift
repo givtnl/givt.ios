@@ -18,7 +18,8 @@ internal struct RegisterUserCommand : RequestProtocol, Codable {
     var appLanguage: String
     var deviceOS: Int
     var country: String
+    var timeZoneId: String
+    var postalCode: String? = nil
     var firstName: String? = nil
     var lastName: String? = nil
-    var timeZoneId: String
 }

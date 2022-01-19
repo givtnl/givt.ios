@@ -20,34 +20,24 @@ class USRegistrationViewModel {
     var emailAddress: String!
     var password: String!
     
-    var validateCardNumber: NillableClosure!
-    var validateExpiryDate: NillableClosure!
-    var validateSecurityCode: NillableClosure!
     var validatePhoneNumber: NillableClosure!
     var validatePassword: NillableClosure!
     var validateAllFields: NillableClosure!
     
-    var setCardNumberTextField:  NillableClosure!
-    var setCreditCardCompanyLogo: NillableClosure!
-    var setExpiryTextField: NillableClosure!
-    var setCVVTextField: NillableClosure!
     var setPasswordTextField: NillableClosure!
     var setPhoneNumberTextField: NillableClosure!
     
     var updateView: NillableClosure!
         
-    func setValues(phoneNumber: String, password: String, cardNumber: String, expiryDate: String, securityCode: String) {
+    func setValues(phoneNumber: String, password: String) {
         registrationValidator.phoneNumber = phoneNumber
         registrationValidator.password = password
-        creditCardValidator.creditCard.number = cardNumber
-        creditCardValidator.creditCard.expiryDate.rawValue = expiryDate
-        creditCardValidator.creditCard.securityCode = securityCode
         updateView?()
     }
     
     var allFieldsValid: Bool {
         get {
-            return creditCardValidator.isValidCreditCard && registrationValidator.isValidPassword && registrationValidator.isValidPhoneNumber
+            return registrationValidator.isValidPassword && registrationValidator.isValidPhoneNumber
         }
     }
     
@@ -65,20 +55,7 @@ class USRegistrationViewModel {
             registrationValidator.password = input
             setPasswordTextField?()
             break
-        case .creditCardNumber:
-            creditCardValidator.creditCard.number = input
-            setCreditCardCompanyLogo?()
-            setCardNumberTextField?()
-            break
-        case .creditCardExpiryDate:
-            creditCardValidator.creditCard.expiryDate.rawValue = input.replacingOccurrences(of: "/", with: "")
-            if (input.replacingOccurrences(of: "/", with: "").count >= 4) {
-                setExpiryTextField?()
-            }
-            break
-        case .creditCardSecurityCode:
-            creditCardValidator.creditCard.securityCode = input
-            setCVVTextField?()
+        default:
             break
         }
     }
@@ -91,14 +68,7 @@ class USRegistrationViewModel {
         case .password:
             validatePassword?()
             break
-        case .creditCardNumber:
-            validateCardNumber?()
-            break
-        case .creditCardExpiryDate:
-            validateExpiryDate?()
-            break
-        case .creditCardSecurityCode:
-            validateSecurityCode?()
+        default:
             break
         }
     }

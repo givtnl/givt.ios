@@ -11,11 +11,8 @@ import UIKit
 import SVProgressHUD
 import CoreMedia
 
-private extension USRegistrationViewController {
-    @IBAction func openCreditCardExpiryDatePicker(_ sender: Any) {
-        creditCardExpiryDateTextField.becomeFirstResponder()
-    }
-    
+extension USRegistrationViewController {
+   
     @IBAction func passwordTextFieldSetVisible(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         passwordTextField.isSecureTextEntry = !sender.isSelected
@@ -42,10 +39,13 @@ private extension USRegistrationViewController {
             return
         }
         
-        SVProgressHUD.show()
-        
+        showLoader()
+        tokenize()
+    }
+    
+    func handleTokenizeFinished(token: String) {
         guard let userExt = UserDefaults.standard.userExt else { return }
-        
+
         let registerUserCommand = RegisterUserCommand(
             userId: userExt.guid,
             email: userExt.email,
@@ -56,19 +56,13 @@ private extension USRegistrationViewController {
             country: "US",
             timeZoneId: Calendar.current.timeZone.identifier
         )
-        
-        let registerCreditCardCommand = RegisterCreditCardCommand(
-            creditCardDetails: CreditCardDetails(
-                cardNumber: viewModel.creditCardValidator.creditCard.number!,
-                expirationMonth: viewModel.creditCardValidator.creditCard.expiryDate.month as! Int,
-                expirationYear:
-                    String(viewModel.creditCardValidator.creditCard.expiryDate.year!.stringValue.suffix(2)).toInt 
-            )
-        )
-        
-        let routeRequest = FromFirstToSecondRegistrationRoute(registerUserCommand: registerUserCommand, registerCreditCardCommand: registerCreditCardCommand)
-        
-        try! Mediater.shared.send(request: routeRequest, withContext: self)
-        
+
+        let registerCreditCardByTokenCommand = RegisterCreditCardByTokenCommand(userId: userExt.guid, PaymentMethodToken: token)
+
+        let routeRequest = FromFirstToSecondRegistrationRoute(registerUserCommand: registerUserCommand, registerCreditCardByTokenCommand: registerCreditCardByTokenCommand)
+
+        try! Mediater.shared.sendAsync(request: routeRequest, withContext: self) {
+            self.hideLoader()
+        }
     }
 }

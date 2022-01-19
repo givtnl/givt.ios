@@ -21,9 +21,8 @@ extension USRegistrationViewController {
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         
-        setupCreditCardNumber()
-        setupExpiryDate()
-        setupCVV()
+        loadWebview()
+        
         setupPhoneNumberField()
         setupEmailAddressField()
         setupPasswordField()
@@ -75,10 +74,7 @@ extension USRegistrationViewController {
         #if DEBUG
         viewModel.setValues(
             phoneNumber: "+1111111111",
-            password: "Test123",
-            cardNumber: "370000000000002",
-            expiryDate: "0330",
-            securityCode: "7373"
+            password: "Test123"
         )
         termsCheckBox.isSelected = true
         viewModel.validateAllFields?()
