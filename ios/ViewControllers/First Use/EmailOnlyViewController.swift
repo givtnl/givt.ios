@@ -211,8 +211,23 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureR
                 } else if status == "false" { //email is completely new
                     self.registerTempUser()
                 } else if status == "temp" { //email is in db but not succesfully registered
-                    self.hideLoader()
-                    NavigationHelper.showRegistration(context: self, email: email)
+                    let country = try? Mediater.shared.send(request: GetCountryQuery())
+                    if country == "US" {
+                        self._loginManager.loginUser(email: email, password: AppConstants.tempUserPassword, type: .password) { (success, error) in
+                            if success,
+                               let hasDonations = try? Mediater.shared.send(request: GetUserHasDonations(userId: UserDefaults.standard.userExt!.guid)),
+                               hasDonations {
+                                self.hideLoader()
+                                NavigationHelper.showRegistration(context: self, email: email)
+                            } else {
+                                self.hideLoader()
+                                self._navigationManager.loadMainPage()
+                            }
+                        }
+                    } else {
+                        self.hideLoader()
+                        NavigationHelper.showRegistration(context: self, email: email)
+                    }
                 } else {
                     //strange response from server. internet connection err/ssl pin err
                     self.hideLoader()

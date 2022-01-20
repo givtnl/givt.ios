@@ -64,7 +64,7 @@ class LoginManager {
         }
     }
     
-    public func loginUser(email: String, password: String, type: AuthenticationType, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
+    public func loginUser(email: String, password: String, type: AuthenticationType, completionHandler: @escaping (Bool, String?) -> Void ) {
         var params: [String : String] = [:]
         switch type {
         case .fingerprint:
@@ -111,39 +111,49 @@ class LoginManager {
                             
                                 self.getUserExt(completion: { (obj) in
                                     if obj != nil {
-                                        self.userClaim = self.isFullyRegistered ? .give : .giveOnce
-                                        !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+                                        if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
+                                            if (try? Mediater.shared.send(request: GetUserHasDonations(userId: guid))) ?? false {
+                                                self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+                                                !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+                                            } else {
+                                                self.userClaim = .giveOnce
+                                                BadgeService.shared.removeBadge(badge: .completeRegistration)
+                                            }
+                                        } else {
+                                            self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+                                            !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+                                        }
                                     } else {
                                         self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
                                     }
                                     self.log.info(message: "User logged in")
                                     NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
                                     
-                                    completionHandler(true, nil, nil)
+                                    completionHandler(true, nil)
                                 })
                             } else {
                                 self.log.error(message: "Could not parse access_token/.expires field")
-                                completionHandler(false, nil, nil)
+                                completionHandler(false, nil)
                             }
                         } catch let error as NSError {
                             self.log.error(message: "Could not parse data")
                             print(error)
-                            completionHandler(false, nil, nil)
+                            completionHandler(false, nil)
                         }
                     } else if temp.basicStatus == .serverError {
                         self.log.error(message: "Server error when trying to log in. Timeout? Microsoft 🙃")
-                        completionHandler(false, nil, "ServerError")
+                        completionHandler(false, "ServerError")
                     } else {
                         if let dataString = String(data: data, encoding: String.Encoding.utf8),
                             let dict = self.convertToDictionary(text: dataString),
                             let err_description = dict["error_description"] as? String {
-                            completionHandler(false, nil, err_description)
+                            completionHandler(false, err_description)
                         } else {
-                            completionHandler(false, nil, nil)
+                            completionHandler(false, nil)
                         }
                     }
                 } else {
-                    completionHandler(false, nil, "NoInternet")
+                    completionHandler(false, "NoInternet")
                 }
             }
         } catch {
@@ -267,7 +277,7 @@ class LoginManager {
                         let newConfig = UserDefaults.standard.userExt!
                         newConfig.guid = guid
                         UserDefaults.standard.userExt = newConfig
-                        self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, err, descr) in
+                        self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, descr) in
                             if success {
                                 if let limit = params["AmountLimit"] {
                                     UserDefaults.standard.amountLimit = Int(limit) ?? 499
@@ -369,7 +379,15 @@ class LoginManager {
                         let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                         UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
                         self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-                        !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+                        if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
+                            if (try? Mediater.shared.send(request: GetUserHasDonations(userId: user.guid))) ?? false {
+                                !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+                            } else {
+                                BadgeService.shared.removeBadge(badge: .completeRegistration)
+                            }
+                        } else {
+                            !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+                        }
                         if let status = parsedData["PayProvMandateStatus"] as? String {
                             completionHandler(status)
                         } else {
@@ -390,7 +408,7 @@ class LoginManager {
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
         let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "", timeZoneId: TimeZone.current.identifier)
         
-        if let countryCode = AppServices.getCountryFromSim() {
+        if let countryCode = try? Mediater.shared.send(request: GetCountryQuery()) {
             regUser.country = countryCode
         }
         
@@ -406,7 +424,7 @@ class LoginManager {
                     config.isTemp = true
                     UserDefaults.standard.userExt = config
                     UserDefaults.standard.isTempUser = config.isTemp
-                    BadgeService.shared.addBadge(badge: .completeRegistration)
+                    if regUser.country != "US" { BadgeService.shared.addBadge(badge: .completeRegistration) }
                     completionHandler(true)
                 } else {
                     completionHandler(false)
@@ -631,7 +649,7 @@ class LoginManager {
                         completion(false, status)
                         return
                 }
-                self.loginUser(email: UserDefaults.standard.userExt!.email, password: password, type: LoginManager.AuthenticationType.fingerprint, completionHandler: { (success, err, str) in
+                self.loginUser(email: UserDefaults.standard.userExt!.email, password: password, type: LoginManager.AuthenticationType.fingerprint, completionHandler: { (success, str) in
                     if success {
                         self.log.info(message: "Succesfully logged in with biometrics")
                         completion(true, status)
@@ -701,6 +719,7 @@ class LoginManager {
         UserDefaults.standard.isTempUser = false
         UserDefaults.standard.accountType = .undefined
         UserDefaults.standard.paymentType = .Undefined
+        UserDefaults.standard.hasDonations = nil
     }
 }
 

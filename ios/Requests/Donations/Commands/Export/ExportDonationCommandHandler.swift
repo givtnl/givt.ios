@@ -44,6 +44,8 @@ class ExportDonationCommandHandler : RequestHandlerProtocol {
                 switch response.status {
                 case .created:
                     LogService.shared.info(message: "Posted givt to server")
+                    //Make sure we retrieve the public-meta when checking for existence of donations
+                    UserDefaults.standard.hasDonations = nil
                     retVal = true
                 case .expectationFailed:
                     LogService.shared.warning(message: "Received expectation failed from server. Removing donation from cache")

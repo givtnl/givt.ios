@@ -457,6 +457,9 @@
 		FB4C5DF62798593D0045E653 /* RegisterCreditCardByTokenCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C5DF52798593D0045E653 /* RegisterCreditCardByTokenCommand.swift */; };
 		FB4C5DF8279859C50045E653 /* RegisterCreditCardByTokenCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C5DF7279859C50045E653 /* RegisterCreditCardByTokenCommandHandler.swift */; };
 		FB4C5DFA27985A0F0045E653 /* AppDelegateMediaterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C5DF927985A0F0045E653 /* AppDelegateMediaterExtension.swift */; };
+		FB4C5DFD27994BF30045E653 /* GetUserHasDonationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C5DFC27994BF30045E653 /* GetUserHasDonationsQuery.swift */; };
+		FB4C5DFF27994CEC0045E653 /* DonationMetaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C5DFE27994CEC0045E653 /* DonationMetaModel.swift */; };
+		FB4C5E0127994DB40045E653 /* GetUserHasDonationsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C5E0027994DB40045E653 /* GetUserHasDonationsQueryHandler.swift */; };
 		FB56C560251100050099EC62 /* BackToRecurringDonationOverviewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56C55F251100050099EC62 /* BackToRecurringDonationOverviewRoute.swift */; };
 		FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56C5612511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift */; };
 		FB58BCD1230AD361001B1B9C /* MediumHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB58BCD0230AD361001B1B9C /* MediumHelper.swift */; };
@@ -1035,6 +1038,9 @@
 		FB4C5DF52798593D0045E653 /* RegisterCreditCardByTokenCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCreditCardByTokenCommand.swift; sourceTree = "<group>"; };
 		FB4C5DF7279859C50045E653 /* RegisterCreditCardByTokenCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCreditCardByTokenCommandHandler.swift; sourceTree = "<group>"; };
 		FB4C5DF927985A0F0045E653 /* AppDelegateMediaterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateMediaterExtension.swift; sourceTree = "<group>"; };
+		FB4C5DFC27994BF30045E653 /* GetUserHasDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserHasDonationsQuery.swift; sourceTree = "<group>"; };
+		FB4C5DFE27994CEC0045E653 /* DonationMetaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationMetaModel.swift; sourceTree = "<group>"; };
+		FB4C5E0027994DB40045E653 /* GetUserHasDonationsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserHasDonationsQueryHandler.swift; sourceTree = "<group>"; };
 		FB56C55F251100050099EC62 /* BackToRecurringDonationOverviewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToRecurringDonationOverviewRoute.swift; sourceTree = "<group>"; };
 		FB56C5612511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToRecurringDonationOverviewRouteHandler.swift; sourceTree = "<group>"; };
 		FB58BCD0230AD361001B1B9C /* MediumHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumHelper.swift; sourceTree = "<group>"; };
@@ -1654,6 +1660,7 @@
 			isa = PBXGroup;
 			children = (
 				3273B8B52535D267003DB100 /* DonationResponseModel.swift */,
+				FB4C5DFE27994CEC0045E653 /* DonationMetaModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2779,11 +2786,14 @@
 			isa = PBXGroup;
 			children = (
 				D782089E2008BE6000AB6DC1 /* ArrayExtensions.swift */,
+				323F16EC25EAC12A00B12049 /* CALayerExtension.swift */,
 				D78208A02008BE7900AB6DC1 /* CollectionExtensions.swift */,
 				D77511BA1F711231004F91F6 /* DateExtensions.swift */,
 				32C2D8212522087000832444 /* DecimalExtension.swift */,
+				32A8AB9125EE164200B96594 /* DoubleExtension.swift */,
 				32C2D83025221D6B00832444 /* IntExtension.swift */,
 				D7F0D2A421639544004770F8 /* NotificationExtensions.swift */,
+				32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */,
 				3274566C2500D704006F0C60 /* ResponseExtension.swift */,
 				D761E9B91F18C5C6002B849B /* StringExtensions.swift */,
 				D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */,
@@ -2791,14 +2801,11 @@
 				D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */,
 				D7335B2D1F45923F00B57AE0 /* UIImageExtensions.swift */,
 				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */,
+				321509492747B0B900499C3A /* UITextContentTypeExtensions.swift */,
 				D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */,
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
-				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
 				32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */,
-				32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */,
-				323F16EC25EAC12A00B12049 /* CALayerExtension.swift */,
-				32A8AB9125EE164200B96594 /* DoubleExtension.swift */,
-				321509492747B0B900499C3A /* UITextContentTypeExtensions.swift */,
+				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3044,6 +3051,15 @@
 				FB4C5DF7279859C50045E653 /* RegisterCreditCardByTokenCommandHandler.swift */,
 			);
 			path = RegisterCreditCardByToken;
+			sourceTree = "<group>";
+		};
+		FB4C5DFB27994BCD0045E653 /* GetUserHasDonations */ = {
+			isa = PBXGroup;
+			children = (
+				FB4C5DFC27994BF30045E653 /* GetUserHasDonationsQuery.swift */,
+				FB4C5E0027994DB40045E653 /* GetUserHasDonationsQueryHandler.swift */,
+			);
+			path = GetUserHasDonations;
 			sourceTree = "<group>";
 		};
 		FB51CC4222BB784E0082776F /* Gift Aid */ = {
@@ -3438,6 +3454,7 @@
 		FBFAF47925669C3F0012E4A6 /* ServerQueries */ = {
 			isa = PBXGroup;
 			children = (
+				FB4C5DFB27994BCD0045E653 /* GetUserHasDonations */,
 				32111D6925E5568C00DB775C /* GetMonthlySummary */,
 				3273B8B42535D258003DB100 /* Models */,
 				3273B8AF2535CB21003DB100 /* GetByIds */,
@@ -4081,6 +4098,7 @@
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				3260CF32254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift in Sources */,
 				3215093F2746364000499C3A /* USRegistrationViewControllerPasswordExtension.swift in Sources */,
+				FB4C5DFD27994BF30045E653 /* GetUserHasDonationsQuery.swift in Sources */,
 				FB93042A274D4A40007D5300 /* ThreadError.swift in Sources */,
 				32AA42AD263FFFA3000BF0EC /* TestimonialManager.swift in Sources */,
 				326E0979256D64310079B4B0 /* ShowUpdateAlertHandler.swift in Sources */,
@@ -4107,6 +4125,7 @@
 				328087CA2677A6F900CD5F51 /* GoBackToYearlyOverviewRoute.swift in Sources */,
 				FB872FFB24C8072A005FF355 /* CreateDonationCommandHandler.swift in Sources */,
 				32ABDD73275E765600544BCF /* USSecondRegistrationViewController.swift in Sources */,
+				FB4C5DFF27994CEC0045E653 /* DonationMetaModel.swift in Sources */,
 				FBC1857C24C06507001A4C6B /* GetCollectGroupsQueryHandler.swift in Sources */,
 				3273B90C25374B69003DB100 /* RecurringDonationTurnTableCell.swift in Sources */,
 				FBD44E3A274680A800B5E558 /* GetAdvertisementListQuery.swift in Sources */,
@@ -4187,6 +4206,7 @@
 				323F16F825EBB90D00B12049 /* BudgetExternalGivtsViewControllerExtension.swift in Sources */,
 				32EEB2BE262842D5008EED9A /* TestimonialViewController.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
+				FB4C5E0127994DB40045E653 /* GetUserHasDonationsQueryHandler.swift in Sources */,
 				32207E96264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift in Sources */,
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,

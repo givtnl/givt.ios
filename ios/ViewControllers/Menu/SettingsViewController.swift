@@ -68,11 +68,8 @@ class SettingsViewController: BaseMenuViewController {
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
-        var appInfo: Setting? = nil
+        let appInfo = Setting(name: "FeatureMenuText".localized, image: #imageLiteral(resourceName: "givt_atoz"), showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
         
-        if (FeatureManager.shared.features.count != 0) {
-            appInfo = Setting(name: "FeatureMenuText".localized, image: #imageLiteral(resourceName: "givt_atoz"), showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
-        }
         let aboutGivt = Setting(name: "TitleAboutGivt".localized, image: #imageLiteral(resourceName: "info24"), callback: { self.about() })
         
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
@@ -137,32 +134,22 @@ class SettingsViewController: BaseMenuViewController {
                 items[1].append(fingerprint)
             }
             items[2] = [changeAccount, screwAccount]
-            if let info = appInfo {
-                items[3] = [info, aboutGivt, shareGivt]
-            } else {
-                items[3] = [aboutGivt, shareGivt]
-            }
+            items[3] = [appInfo, aboutGivt, shareGivt]
             
             if !LoginManager.shared.isFullyRegistered {
                 items.insert([finishRegistration], at: 0)
             }
-        } else {            
-            if let info = appInfo {
-                items =
-                    [
-                        [finishRegistration],
-                        [turnOnPresets],
-                        [changeAccount, screwAccount],
-                        [info, aboutGivt, shareGivt],
-                ]
+        } else {
+            items = [[turnOnPresets],
+                [changeAccount, screwAccount],
+                [appInfo, aboutGivt, shareGivt]]
+            
+            if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
+                if (try? Mediater.shared.send(request: GetUserHasDonations(userId: UserDefaults.standard.userExt!.guid))) ?? false {
+                    items.insert([finishRegistration], at: 0)
+                }
             } else {
-                items =
-                    [
-                        [finishRegistration],
-                        [turnOnPresets],
-                        [changeAccount, screwAccount],
-                        [aboutGivt, shareGivt],
-                ]
+                items.insert([finishRegistration], at: 0)
             }
         }
     }
