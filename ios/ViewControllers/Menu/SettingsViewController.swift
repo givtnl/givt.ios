@@ -145,7 +145,8 @@ class SettingsViewController: BaseMenuViewController {
                 [appInfo, aboutGivt, shareGivt]]
             
             if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
-                if (try? Mediater.shared.send(request: GetUserHasDonations(userId: UserDefaults.standard.userExt!.guid))) ?? false {
+                if let guid = UserDefaults.standard.userExt?.guid,
+                   (try? Mediater.shared.send(request: GetUserHasDonations(userId: guid))) ?? false {
                     items.insert([finishRegistration], at: 0)
                 }
             } else {
