@@ -153,7 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func doLogin(email: String, completion: @escaping (Bool) -> Void) {
         DispatchQueue.main.async {
-            _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
+            _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, description in
                 if b {
                     completion(true)
                 } else {

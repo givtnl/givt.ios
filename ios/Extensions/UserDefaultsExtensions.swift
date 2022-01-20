@@ -50,14 +50,30 @@ extension UserDefaults {
         case testimonialsByUserId
         case hasSeenYearlyTestimonial
         case paymentType
-        #if PRODUCTION
-        #else
+        case hasDonations
+        #if !PRODUCTION
         case hackForTesting
         #endif
     }
+
+    var hasDonations : Bool? {
+        get {
+            if let str = string(forKey: UserDefaultsKeys.hasDonations.rawValue) {
+                return str == "true"
+            }
+            return nil
+        }
+        set(value) {
+            if let value = value {
+                set(value.description, forKey: UserDefaultsKeys.hasDonations.rawValue)
+            } else {
+                removeObject(forKey: UserDefaultsKeys.hasDonations.rawValue)
+            }
+            synchronize()
+        }
+    }
     
-    #if PRODUCTION
-    #else
+    #if !PRODUCTION
     var hackForTesting: Bool {
         get {
             return bool(forKey: UserDefaultsKeys.hackForTesting.rawValue)
@@ -68,6 +84,7 @@ extension UserDefaults {
         }
     }
     #endif
+    
     enum Showcase: String {
         case cancelGivt
         case taxOverview
@@ -76,7 +93,6 @@ extension UserDefaults {
         case multipleCollects
         case deleteMultipleCollects
     }
-    
     
     var badges: [Int] {
         get {

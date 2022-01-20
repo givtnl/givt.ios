@@ -25,7 +25,7 @@ extension USSecondRegistrationViewController {
         
         try! Mediater.shared.sendAsync(request: self.registerUserCommand, completion: { response in
             if (response.result) {
-                LoginManager.shared.loginUser(email: self.registerUserCommand.email, password: self.registerUserCommand.password, type: .password) { success, error, description in
+                LoginManager.shared.loginUser(email: self.registerUserCommand.email, password: self.registerUserCommand.password, type: .password) { success, description in
                     if (success) {
                         try? Mediater.shared.sendAsync(request: self.registerCreditCardByTokenCommand) { response in
                             if response.result {

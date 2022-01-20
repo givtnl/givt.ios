@@ -16,6 +16,8 @@ extension AppDelegate {
         Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
         Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
         Mediater.shared.registerHandler(handler: GetDonationsByIdsQueryHandler())
+        Mediater.shared.registerHandler(handler: GetUserHasDonationsQueryHandler())
+        
         // -- RECURRING DONATIONS
         Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
         Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
