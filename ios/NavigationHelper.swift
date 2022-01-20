@@ -16,7 +16,7 @@ class NavigationHelper {
             userExt?.email = email
             UserDefaults.standard.userExt = userExt
             let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            if let countryFromSim = AppServices.getCountryFromSim() {
+            if let countryFromSim = try? Mediater.shared.send(request: GetCountryQuery()) {
                 switch(countryFromSim) {
                 case "US":
                     let registrationViewController = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "USRegistrationEmailPW") as! USRegistrationViewController

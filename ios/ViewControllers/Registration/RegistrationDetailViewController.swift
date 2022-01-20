@@ -101,7 +101,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(accountNumber)
         #endif
         
-        if let currentRegionCode = AppServices.getCountryFromSim() {
+        if let currentRegionCode = try? Mediater.shared.send(request: GetCountryQuery()) {
             print(currentRegionCode)
             let filteredCountries = AppConstants.countries.filter {
                 $0.shortName == currentRegionCode
