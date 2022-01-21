@@ -27,7 +27,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationToken
     
     override func viewDidLoad() {
         LogService.shared.info(message: "CELEBRATE_QUEUE")
-        MSAnalytics.trackEvent("CELEBRATE_QUEUE")
+        Analytics.trackEvent("CELEBRATE_QUEUE")
         Mixpanel.mainInstance().track(event: "CELEBRATE_QUEUE")
 
         UIApplication.shared.isIdleTimerDisabled = true
@@ -78,7 +78,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationToken
         let alert = UIAlertController(title: NSLocalizedString("CelebrationQueueCancelAlertTitle", comment: ""), message: NSLocalizedString("CelebrationQueueCancelAlertBody", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
             LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
-            MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
+            Analytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
             Mixpanel.mainInstance().track(event: "CELEBRATE_QUEUE_CANCEL")
             self.onGivtProcessed(transactions: self.transactions, organisationName: self.organisation, canShare: true)
         }))

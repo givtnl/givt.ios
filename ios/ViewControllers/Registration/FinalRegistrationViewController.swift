@@ -19,7 +19,7 @@ class FinalRegistrationViewController: UIViewController {
     @IBOutlet var gif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        MSAnalytics.trackEvent("User finished registration")
+        Analytics.trackEvent("User finished registration")
         Mixpanel.mainInstance().track(event: "User finished registration")
 
         gif.loadGif(name: "givt_registration")

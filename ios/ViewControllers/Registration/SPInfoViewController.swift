@@ -26,7 +26,7 @@ class SPInfoViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
 
-        MSAnalytics.trackEvent("User started SEPA mandate flow")
+        Analytics.trackEvent("User started SEPA mandate flow")
         Mixpanel.mainInstance().track(event: "User started SEPA mandate flow")
         
         backButton.isEnabled = false

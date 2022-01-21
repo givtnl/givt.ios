@@ -110,7 +110,7 @@ class GiftAidViewController: UIViewController {
                         self.hideLoader()
                     }
                     if success {
-                        MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties:["state": (userExt.GiftAidEnabled).description])
+                        Analytics.trackEvent("GIFTAID_CHANGED", withProperties:["state": (userExt.GiftAidEnabled).description])
                         Mixpanel.mainInstance().track(event: "GIFTAID_CHANGED", properties: ["state": (userExt.GiftAidEnabled).description])
                         DispatchQueue.main.async {
                             if(self.comingFromRegistration){

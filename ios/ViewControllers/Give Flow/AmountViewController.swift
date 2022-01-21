@@ -287,7 +287,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         if Decimal(string: (collectOne.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 666
             && Decimal(string: (collectTwo.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
             && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
-            MSCrashes.generateTestCrash()
+            Crashes.generateTestCrash()
         }
 
         var numberOfZeroAmounts = 0
@@ -321,7 +321,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         
         let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
         let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
-        MSAnalytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
+        Analytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         Mixpanel.mainInstance().track(event: "GIVING_STARTED", properties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
