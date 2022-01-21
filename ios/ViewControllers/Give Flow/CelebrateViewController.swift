@@ -25,7 +25,7 @@ class CelebrateViewController: BaseScanViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LogService.shared.info(message: "CELEBRATE_COUNTDOWN")
-        MSAnalytics.trackEvent("CELEBRATE_COUNTDOWN")
+        Analytics.trackEvent("CELEBRATE_COUNTDOWN")
         Mixpanel.mainInstance().track(event: "CELEBRATE_COUNTDOWN")
         
         UIApplication.shared.isIdleTimerDisabled = true
@@ -64,7 +64,7 @@ class CelebrateViewController: BaseScanViewController {
         secondsLeft = secondsLeft - 1
         if secondsLeft <= 0 {
             LogService.shared.info(message: "CELEBRATE_FLASH")
-            MSAnalytics.trackEvent("CELEBRATE_FLASH")
+            Analytics.trackEvent("CELEBRATE_FLASH")
             Mixpanel.mainInstance().track(event: "CELEBRATE_FLASH")
             countdownTimer.invalidate()
             title = NSLocalizedString("AfterCelebrationTitle", comment: "")

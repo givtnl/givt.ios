@@ -117,7 +117,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: GoBackOneControllerRoute(), withContext: self)
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_DISMISSED")
     }
     
@@ -130,7 +130,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
             makeDonation()
         }
         
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
     }
 }

@@ -53,7 +53,7 @@ class USRegistrationViewController : UIViewController {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
                 
-        MSAnalytics.trackEvent("US User started registration")
+        Analytics.trackEvent("US User started registration")
         Mixpanel.mainInstance().track(event: "US User started registration")
         
         initViewModel()

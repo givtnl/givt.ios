@@ -41,7 +41,7 @@ class USSecondRegistrationViewController: UIViewController {
             initViewModel()
             setupUI()
             
-            MSAnalytics.trackEvent("US User started second registration")
+            Analytics.trackEvent("US User started second registration")
             Mixpanel.mainInstance().track(event: "US User started second registration")
         }
         

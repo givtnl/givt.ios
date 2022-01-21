@@ -32,7 +32,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
              self.getDecimalValue(text: secondTextField.text!)!,
              self.getDecimalValue(text: thirdTextField.text!)!]
         LogService.shared.info(message: "Saving custom preset amounts")
-        MSAnalytics.trackEvent("PRESET_CHANGE")
+        Analytics.trackEvent("PRESET_CHANGE")
         Mixpanel.mainInstance().track(event: "PRESET_CHANGE")
         self.sideMenuController?.hideLeftView(sender: self)
         self.backPressed(self)

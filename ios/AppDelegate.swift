@@ -10,7 +10,6 @@ import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
-import AppCenterPush
 import TrustKit
 import UserNotifications
 import Mixpanel
@@ -30,12 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
-        MSAppCenter.start(AppConstants.appcenterId, withServices:[
-                MSAnalytics.self,
-                MSCrashes.self
+        AppCenter.start(withAppSecret: AppConstants.appcenterId, services:[
+                Analytics.self,
+                Crashes.self
             ])
         
-        if MSCrashes.hasCrashedInLastSession()  {
+        if Crashes.hasCrashedInLastSession  {
             logService.error(message: "User had a crash, check AppCenter")
         }
         
