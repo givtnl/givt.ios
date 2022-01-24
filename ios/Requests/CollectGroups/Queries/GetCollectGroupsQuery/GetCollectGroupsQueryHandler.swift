@@ -17,7 +17,7 @@ internal struct GetCollectGroupsQueryHandler : RequestHandlerProtocol {
             return CollectGroupDetailModel(namespace: orgBeacon.EddyNameSpace,
                                     name: orgBeacon.OrgName,
                                     type: orgType,
-                                    paymentType: orgBeacon.accountType == AccountType.sepa ? PaymentType.SEPADirectDebit : PaymentType.BACSDirectDebit)
+                                           paymentType: orgBeacon.paymentType)
             
         }
         

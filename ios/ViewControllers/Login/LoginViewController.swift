@@ -128,7 +128,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
                             print("Logging dashboard user in" )
-                            NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
+                            if (UserDefaults.standard.paymentType == .CreditCard) {
+                                self.dismiss(animated: true, completion: { self.completionHandler() } )
+                            }
+                            else {
+                                NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
+                            }
                         }
                     }
                 }
@@ -148,7 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func doLogin(email: String, completion: @escaping (Bool) -> Void) {
         DispatchQueue.main.async {
-            _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
+            LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, description in
                 if b {
                     completion(true)
                 } else {

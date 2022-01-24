@@ -49,7 +49,41 @@ extension UserDefaults {
         case toHighlightMenuList
         case testimonialsByUserId
         case hasSeenYearlyTestimonial
+        case paymentType
+        case hasDonations
+        #if !PRODUCTION
+        case hackForTesting
+        #endif
     }
+
+    var hasDonations : Bool? {
+        get {
+            if let str = string(forKey: UserDefaultsKeys.hasDonations.rawValue) {
+                return str == "true"
+            }
+            return nil
+        }
+        set(value) {
+            if let value = value {
+                set(value.description, forKey: UserDefaultsKeys.hasDonations.rawValue)
+            } else {
+                removeObject(forKey: UserDefaultsKeys.hasDonations.rawValue)
+            }
+            synchronize()
+        }
+    }
+    
+    #if !PRODUCTION
+    var hackForTesting: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hackForTesting.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hackForTesting.rawValue)
+            synchronize()
+        }
+    }
+    #endif
     
     enum Showcase: String {
         case cancelGivt
@@ -58,19 +92,6 @@ extension UserDefaults {
         case giveSituation
         case multipleCollects
         case deleteMultipleCollects
-    }
-    
-    var currencySymbol: String {
-        get {
-            switch accountType {
-            case AccountType.sepa:
-                return "€"
-            case AccountType.bacs:
-                return "£"
-            case AccountType.undefined:
-                return NSLocale.current.currencySymbol ?? "€"
-            }
-        }
     }
     
     var badges: [Int] {
@@ -113,6 +134,24 @@ extension UserDefaults {
         }
         set(value) {
             set(value.rawValue, forKey: UserDefaultsKeys.accountType.rawValue)
+            synchronize()
+        }
+    }
+    
+    var paymentType: PaymentType { // CreditCard
+        get {
+            if let paymentTypeString = string(forKey: UserDefaultsKeys.paymentType.rawValue)?.lowercased(){
+                if let accType = PaymentType(rawValue: paymentTypeString.toInt){
+                    return accType
+                } else {
+                    return .Undefined
+                }
+            } else {
+                return .Undefined
+            }
+        }
+        set(value) {
+            set(value.rawValue, forKey: UserDefaultsKeys.paymentType.rawValue)
             synchronize()
         }
     }

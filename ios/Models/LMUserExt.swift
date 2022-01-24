@@ -11,16 +11,16 @@ import Foundation
 struct LMUserExt: Codable {
     var GUID: String
     var PhoneNumber: String
-    var FirstName: String
-    var LastName: String
+    var FirstName: String?
+    var LastName: String?
     var Email: String
-    var Address: String
-    var PostalCode: String
+    var Address: String?
+    var PostalCode: String?
     var Country: String
     var IBAN: String?
     var SortCode: String?
     var AccountNumber: String?
-    var City: String
+    var City: String?
     var IsTempUser: Bool
     var AmountLimit: Int
     var PayProvMandateStatus: String?

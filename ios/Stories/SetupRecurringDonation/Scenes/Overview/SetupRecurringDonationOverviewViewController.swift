@@ -55,7 +55,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         tableView.dataSource = self
         recurringDonationsRuleOverview.layer.cornerRadius = 8
         
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_OPENED")
+        Analytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_OPENED")
         
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_OVERVIEW_OPENED")
     }
@@ -110,14 +110,14 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
         resetSelectedIndex()
         try? mediater.send(request: GoToChooseRecurringDonationRoute(), withContext: self)
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATE_CLICKED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATE_CLICKED")
     }
     
     @IBAction func backButton(_ sender: Any) {
         resetSelectedIndex()
         try? mediater.send(request: BackToMainRoute(), withContext: self)
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_DISMISSED")
+        Analytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_DISMISSED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_OVERVIEW_DISMISSED")
     }
 }

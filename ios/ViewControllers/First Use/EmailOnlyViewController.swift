@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
+class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     let subtiel : [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.font : UIFont(name: "Avenir-Light", size: 17)!,
         NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
@@ -98,9 +98,28 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         attributedString.append(NSMutableAttributedString(string: NSLocalizedString("Login", comment: ""), attributes: focus))
         
         loginButton.setAttributedTitle(attributedString, for: UIControl.State.normal)
-    
+        
+#if !PRODUCTION
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(hackFunctionForTesting(_:)))
+        longPress.minimumPressDuration = 2
+        longPress.delaysTouchesBegan = true
+        longPress.delegate = self
+        longPress.cancelsTouchesInView = false
+        nextBtn.addGestureRecognizer(longPress)
+#endif
     }
-    
+#if !PRODUCTION
+    @objc func hackFunctionForTesting(_ sender: UILongPressGestureRecognizer) {
+        UserDefaults.standard.hackForTesting = true
+        let alert = UIAlertController(title: title,
+                                      message: "Succesfully set CountryFromSim to US for testing.",
+                                      preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+#endif
     func openLogin(emailEditable: Bool = false) {
         DispatchQueue.main.async {
             self.hideLoader()
@@ -192,8 +211,23 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
                 } else if status == "false" { //email is completely new
                     self.registerTempUser()
                 } else if status == "temp" { //email is in db but not succesfully registered
-                    self.hideLoader()
-                    NavigationHelper.showRegistration(context: self, email: email)
+                    let country = try? Mediater.shared.send(request: GetCountryQuery())
+                    if country == "US" {
+                        self._loginManager.loginUser(email: email, password: AppConstants.tempUserPassword, type: .password) { (success, error) in
+                            if success,
+                               let hasDonations = try? Mediater.shared.send(request: GetUserHasDonations(userId: UserDefaults.standard.userExt!.guid)),
+                               hasDonations {
+                                self.hideLoader()
+                                NavigationHelper.showRegistration(context: self, email: email)
+                            } else {
+                                self.hideLoader()
+                                self._navigationManager.loadMainPage()
+                            }
+                        }
+                    } else {
+                        self.hideLoader()
+                        NavigationHelper.showRegistration(context: self, email: email)
+                    }
                 } else {
                     //strange response from server. internet connection err/ssl pin err
                     self.hideLoader()

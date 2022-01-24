@@ -39,16 +39,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     
     private var giftAidGroupList: [Int:Double] = [:]
     
-    lazy var fmt: NumberFormatter = {
-        let nf = NumberFormatter()
-        nf.locale = NSLocale.current
-        nf.currencySymbol = UserDefaults.standard.currencySymbol;
-        nf.minimumFractionDigits = 2
-        nf.maximumFractionDigits = 2
-        nf.positiveFormat = "¤ #,##0.00"
-        return nf
-    }()
-    
     lazy var timeFormatter: DateFormatter = {
         var formatter = DateFormatter()
         formatter.dateFormat = "H:mm"
@@ -121,9 +111,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                                 total += collecte.amount
                                             })
                                         }
-                                        DispatchQueue.main.async {
-                                            section.amountLabel.text = self.fmt.string(from: total as NSNumber)
-                                        }
+                                        section.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: total.toFloat, decimals: true)
                                     }
                                     if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
                                         self.givyContainer.isHidden = false
@@ -197,7 +185,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
         givyContainer.isHidden = false
         
-        if(UserDefaults.standard.accountType != AccountType.bacs || !UserDefaults.standard.giftAidEnabled) {
+        if(!UserDefaults.standard.paymentType.isBacs || !UserDefaults.standard.giftAidEnabled) {
             self.giftAidView.isHidden = true
             self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
             self.view.layoutIfNeeded()
@@ -243,7 +231,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderView")
         let header = cell as! TableSectionHeader
         header.titleLabel.text = title
-        header.amountLabel.text = fmt.string(from: total as NSNumber)
+        header.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: total.toFloat, decimals: true)
         
         return cell
     }
@@ -285,11 +273,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         
         if let giftAidYearAmount = self.giftAidGroupList[tx.taxYear] {
             giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: "\'\(String(tx.taxYear).suffix(2))")
-            giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
+            giftAidYearAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: giftAidYearAmount.toFloat, decimals: true)
         } else {
             giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: "\'\(String(tx.taxYear).suffix(2))")
             let total = 0.00
-            giftAidYearAmountLabel.text = fmt.string(from: total as NSNumber)
+            giftAidYearAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: total.toFloat, decimals: true)
         }
         
         return cell
@@ -428,7 +416,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             statusLabel.leadingAnchor.constraint(equalTo: bolleke.trailingAnchor, constant: 22).isActive = true
         }
         
-        if UserDefaults.standard.accountType == AccountType.bacs {
+        if UserDefaults.standard.paymentType.isBacs {
             let empty_row = UIView()
             empty_row.translatesAutoresizingMaskIntoConstraints = false
             empty_row.layer.borderWidth = 1
@@ -527,11 +515,12 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             p.orgName == tx.orgName &&
                                 p.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") == tx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") &&
                                 p.status == tx.status {
-                            p.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
+                            p.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: CurrencyHelper.shared.getLocalFormat(value: tx.amount.toFloat, decimals: true)))
+                            
                         } else {
                             // does not exist
                             var collections = [Collecte]()
-                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
+                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: CurrencyHelper.shared.getLocalFormat(value: tx.amount.toFloat, decimals: true)))
                             let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAidEnabled: tx.giftAidEnabled, taxYear: tx.taxYear)
                             newTransactions.append(newTx)
                             prevTransaction = newTx
@@ -539,7 +528,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     } else {
                         // first time
                         var collections = [Collecte]()
-                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
+                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: CurrencyHelper.shared.getLocalFormat(value: tx.amount.toFloat, decimals: true)))
+                        
                         let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAidEnabled: tx.giftAidEnabled, taxYear: tx.taxYear)
                         newTransactions.append(newTx)
                         prevTransaction = newTx

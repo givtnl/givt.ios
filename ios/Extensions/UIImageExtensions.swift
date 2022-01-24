@@ -23,16 +23,16 @@ extension UIImageView {
 
 extension UIImage {
     func imageWithInsets(insets: UIEdgeInsets) -> UIImage? {
-            UIGraphicsBeginImageContextWithOptions(
-                CGSize(width: self.size.width + insets.left + insets.right,
-                       height: self.size.height + insets.top + insets.bottom), false, self.scale)
-            let _ = UIGraphicsGetCurrentContext()
-            let origin = CGPoint(x: insets.left, y: insets.top)
-            self.draw(at: origin)
-            let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return imageWithInsets
-        }
+        UIGraphicsBeginImageContextWithOptions(
+            CGSize(width: self.size.width + insets.left + insets.right,
+                   height: self.size.height + insets.top + insets.bottom), false, self.scale)
+        let _ = UIGraphicsGetCurrentContext()
+        let origin = CGPoint(x: insets.left, y: insets.top)
+        self.draw(at: origin)
+        let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return imageWithInsets
+    }
     var noir: UIImage {
         let context = CIContext(options: nil)
         let currentFilter = CIFilter(name: "CIPhotoEffectNoir")!
@@ -41,6 +41,13 @@ extension UIImage {
         let cgImage = context.createCGImage(output, from: output.extent)!
         let processedImage = UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
         return processedImage
+    }
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
     
     public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
@@ -84,10 +91,10 @@ extension UIImage {
     public class func gif(name: String) -> UIImage? {
         // Check for existance of gif
         guard let bundleURL = Bundle.main
-            .url(forResource: name, withExtension: "gif") else {
-                print("SwiftGif: This image named \"\(name)\" does not exist")
-                return nil
-        }
+                .url(forResource: name, withExtension: "gif") else {
+                    print("SwiftGif: This image named \"\(name)\" does not exist")
+                    return nil
+                }
         
         // Validate data
         guard let imageData = try? Data(contentsOf: bundleURL) else {
@@ -228,5 +235,32 @@ extension UIImage {
         
         return animation
     }
+    private func resizedImage(newSize: CGSize) -> UIImage? {
+        guard size != newSize else { return self }
+        
+        let hasAlpha = false
+        let scale: CGFloat = 0.0
+        UIGraphicsBeginImageContextWithOptions(newSize, !hasAlpha, scale)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        
+        draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
     
+    func resized(to newSize: CGSize) -> UIImage? {
+        let widthFactor = size.width / newSize.width
+        let heightFactor = size.height / newSize.height
+        
+        var resizeFactor = widthFactor
+        if size.height > size.width {
+            resizeFactor = heightFactor
+        }
+        
+        let newSize = CGSize(width: size.width / resizeFactor, height: size.height / resizeFactor)
+        let resized = resizedImage(newSize: newSize)
+        
+        return resized
+    }
 }

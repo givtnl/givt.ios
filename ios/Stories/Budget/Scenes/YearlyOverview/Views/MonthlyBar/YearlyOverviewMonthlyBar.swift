@@ -57,7 +57,8 @@ class YearlyOverviewMonthlyBar: UIView {
                 givtAmountWidthConstraint.constant = givtAmountWidth > 0 ? givtAmountWidth : 0
                 notGivtAmountWidthConstraint.constant = notGivtAmountWidth > 0 ? notGivtAmountWidth : 0
                 monthLabel.text = getMonthString(model.date!)
-                totalAmountLabel.text = (model.givtAmount + model.notGivtAmount).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                var totalAmount = model.givtAmount + model.notGivtAmount
+                totalAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: totalAmount.toFloat, decimals: true)
             }
         }
     }

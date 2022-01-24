@@ -30,7 +30,7 @@ class BudgetExternalGivtsEditRow: UIView {
         self.init()
         self.id = id
         self.collectGroupLabel.text = description
-        self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        self.amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: amount.toFloat, decimals: true)
     }
     
     override init(frame: CGRect) {

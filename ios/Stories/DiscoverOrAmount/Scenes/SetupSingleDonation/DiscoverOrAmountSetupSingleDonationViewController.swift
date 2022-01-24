@@ -12,10 +12,12 @@ import AppCenterCrashes
 import AppCenterAnalytics
 import SVProgressHUD
 import Mixpanel
+import SafariServices
 
-class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGestureRecognizerDelegate {
+class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGestureRecognizerDelegate, SFSafariViewControllerDelegate {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
-
+    private var safariViewController: SFSafariViewController? = nil
+    
     var input: DiscoverOrAmountOpenSetupSingleDonationRoute!
     
     @IBOutlet var giveButton: CustomButtonWithRightArrow!
@@ -47,7 +49,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         
         amountControl.collectLabel.isHidden = true
         amountControl.deleteBtn.isHidden = true
-        amountControl.currency = UserDefaults.standard.currencySymbol
+        amountControl.currency = CurrencyHelper.shared.getCurrencySymbol()
         amountControl.isActive = true
         
         giveButton.labelText.text = "Give".localized
@@ -67,8 +69,9 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        decimalNotation = NSLocale.current.decimalSeparator! as String
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        let locale = Locale(identifier: "\(Locale.current.languageCode!)-\(country!)")
+        decimalNotation = locale.decimalSeparator! as String
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -108,18 +111,22 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
                 try mediater.sendAsync(request: exportCommand) { isSuccessful in
                     if isSuccessful {
                         try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
-                        try? (UIApplication.shared.delegate as? AppDelegate)?.coreDataContext.objectContext.save()
+                        DispatchQueue.main.async {
+                            try? (UIApplication.shared.delegate as? AppDelegate)?.coreDataContext.objectContext.save()
+                        }
                     }
                 }
-                try mediater.sendAsync(request: DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
-                                                           canShare: false,
-                                                           userId: userId,
-                                                           collectGroupName: input.name),
-                                       withContext: self)
-                {
-                    usleep(500000)
-                    try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
-                }
+                let country = try? mediater.send(request: GetCountryQuery())
+                let route = OpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
+                    canShare: false,
+                    userId: userId,
+                    delegate: self,
+                    collectGroupName: input.name,
+                    country: country ?? "NL")
+                route.advertisement = try? mediater.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en", localeRegionCode: Locale.current.regionCode ?? "eu", country: UserDefaults.standard.userExt?.country))
+                
+                
+                safariViewController = try mediater.send(request: route, withContext: self)
             } else {
                 try mediater.send(request: DiscoverOrAmountOpenOfflineSuccessRoute(collectGroupName: input.name), withContext: self)
             }
@@ -210,7 +217,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     
     fileprivate func showAmountTooLow() {
 
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
@@ -245,5 +252,15 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         amountControl.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25 || parsedDecimal == 0
         amountControl.activeMarker.backgroundColor = amountControl.isActive ? amountControl.isValid ? #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1) : #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         giveButton.isEnabled = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25
+    }
+    
+    internal func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        if let _ = URL.absoluteString.index(of: "cloud.givtapp.net") {
+            try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
+        }
+    }
+    
+    internal func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
     }
 }

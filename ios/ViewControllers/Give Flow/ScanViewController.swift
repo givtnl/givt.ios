@@ -26,7 +26,7 @@ class ScanViewController: BaseScanViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MSAnalytics.trackEvent("GIVE_SCANNING_START")
+        Analytics.trackEvent("GIVE_SCANNING_START")
         Mixpanel.mainInstance().track(event: "GIVE_SCANNING_START")
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
@@ -63,7 +63,7 @@ class ScanViewController: BaseScanViewController {
         if let nameSpace = GivtManager.shared.bestBeacon?.namespace {
             GivtManager.shared.giveManually(antennaId: nameSpace)
         }
-        MSAnalytics.trackEvent("GIVE_TO_SUGGESTION")
+        Analytics.trackEvent("GIVE_TO_SUGGESTION")
         Mixpanel.mainInstance().track(event: "GIVE_TO_SUGGESTION")
     }
     
@@ -132,7 +132,7 @@ class ScanViewController: BaseScanViewController {
     }
 
     @IBAction func giveDifferently(_ sender: Any) {
-        MSAnalytics.trackEvent("GIVE_FROM_LIST")
+        Analytics.trackEvent("GIVE_FROM_LIST")
         Mixpanel.mainInstance().track(event: "GIVE_FROM_LIST")
 
         btnGive.isEnabled = false
