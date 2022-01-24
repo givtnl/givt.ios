@@ -8,13 +8,15 @@
 
 import UIKit
 import SVProgressHUD
+import SafariServices
 
-class BaseScanViewController: UIViewController, GivtProcessedProtocol {
+class BaseScanViewController: UIViewController, GivtProcessedProtocol, SFSafariViewControllerDelegate {
     private var log = LogService.shared
     var bluetoothAlert: UIAlertController?
     private var isBacs = false
     
     private var bluetoothAsked = false
+    private var safariViewController: SFSafariViewController? = nil
     
     func didUpdateBluetoothState(bluetoothState: BluetoothState) {
         DispatchQueue.main.async {
@@ -67,16 +69,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             bluetoothAsked = true
         }
     }
-    
-    fileprivate func popToRootWithDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-            if let amountVC = self.navigationController?.children[0].children[0].children[0] as? AmountViewController {
-                amountVC.clearAmounts()
-            }
-            self.navigationController?.popToRootViewController(animated: false)
-        }
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         SVProgressHUD.setDefaultMaskType(.black)
@@ -101,57 +94,20 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
 
         UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
         UserDefaults.standard.lastGivtToOrganisationName = orgName
-        
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+
         shouldShowMandate { (url) in
-            var message = NSLocalizedString("SafariGiving", comment: "")
-            if url == "" {
-                //temp or has signed mandate
-                if !orgName.isEmpty {
-                    message = NSLocalizedString("SafariGivingToOrganisation", comment: "").replacingOccurrences(of:"{0}", with: orgName)
-                }
-            } else {
-                message = NSLocalizedString("Safari_GivtTransaction", comment: "")
-            }
-            
-            var parameters: [String: Any]
-            parameters = ["Collect" : NSLocalizedString("Collect", comment: ""),
-                          "AreYouSureToCancelGivts" :  NSLocalizedString("CancelGiftAlertMessage", comment: ""),
-                          "ConfirmBtn" : url.count > 0 ? NSLocalizedString("Confirm", comment: "") : NSLocalizedString("Next", comment: ""),
-                          "Cancel": NSLocalizedString("Cancel", comment: ""),
-                          "SlimPayInformation": NSLocalizedString("SlimPayInformation", comment: ""),
-                          "SlimPayInformationPart2" : NSLocalizedString("SlimPayInformationPart2", comment: ""),
-                          "message" : message,
-                          "Close": NSLocalizedString("Close", comment: ""),
-                          "ShareGivt" : NSLocalizedString("ShareTheGivtButton", comment: ""),
-                          "Thanks": NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: orgName),
-                          "YesSuccess": NSLocalizedString("YesSuccess", comment: ""),
-                          "GUID" : UserDefaults.standard.userExt!.guid,
-                          "givtObj" : trs,
-                          "apiUrl" : AppConstants.apiUri + "/",
-                          "organisation" : orgName,
-                          "spUrl" : url,
-                          "canShare" : canShare]
-        
-            parameters["nativeAppScheme"] = AppConstants.appScheme
-            parameters["urlPart"] = AppConstants.returnUrlDir
-            parameters["currency"] = UserDefaults.standard.currencySymbol
-            
-            if let ad = try? Mediater.shared.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en",
-                                                                                       localeRegionCode: Locale.current.regionCode ?? "eu",
-                                                                                       country: UserDefaults.standard.userExt?.country)) {
-                parameters["advertisementText"] = ad.text
-                parameters["advertisementTitle"] = ad.title
-                parameters["advertisementImageUrl"] = ad.imageUrl
-            }
-            
-            guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters) else {
-                return
-            }
-            
-            print(jsonParameters.description)
-            let plainTextBytes = jsonParameters.base64EncodedString()
-            let formatted = String(format: AppConstants.apiUri + "/confirm.html?msg=%@", plainTextBytes);
-            
+            let route = OpenSafariRoute(donations: transactions,
+                                        canShare: false,
+                                        userId: UUID(uuidString: UserDefaults.standard.userExt!.guid)!,
+                                        delegate: self,
+                                        collectGroupName: orgName,
+                                        mandateUrl: url,
+                                        country: country ?? "NL")
+            route.advertisement = try? Mediater.shared.send(request: GetRandomAdvertisementQuery(localeLanguageCode: Locale.current.languageCode ?? "en",
+                localeRegionCode: Locale.current.regionCode ?? "eu",
+                country: country))
+
             DispatchQueue.main.async {
                 AppServices.shared.vibrate()
             }
@@ -167,7 +123,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                 }
                 return
             } else {
-                self.showWebsite(url: formatted)
+                self.safariViewController = try? Mediater.shared.send(request: route, withContext: self)
             }
         }
     }
@@ -212,20 +168,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         }
     }
     
-    func showWebsite(url: String){
-        guard let url = URL(string: url) else {
-            return //be safe
-        }
-        self.log.info(message: "Going to safari")
-        DispatchQueue.main.async {
-            if !NavigationHelper.openUrl(url: url, completion: { (status) in
-                self.popToRootWithDelay()
-            }) {
-                self.popToRootWithDelay()
-            }
-        }
-    }
-    
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
         GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, queueSet, transactions, orgName) in
@@ -261,5 +203,22 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         })
     }
     
+    internal func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        if let _ = URL.absoluteString.index(of: "cloud.givtapp.net") {
+            popToRootAfterSafari()
+        }
+    }
     
+    internal func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        popToRootAfterSafari()
+    }
+    
+    fileprivate func popToRootAfterSafari() {
+        DispatchQueue.main.async {
+            if let amountVC = self.navigationController?.children[0].children[0].children[0] as? AmountViewController {
+                amountVC.clearAmounts()
+            }
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
 }

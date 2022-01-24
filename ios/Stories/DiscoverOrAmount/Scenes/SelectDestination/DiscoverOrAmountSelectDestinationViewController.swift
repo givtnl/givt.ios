@@ -266,8 +266,19 @@ extension DiscoverOrAmountSelectDestinationViewController {
     private func loadDestinations() {
         let userDetail = try? mediater.send(request: GetLocalUserConfiguration())
         try? mediater.sendAsync(request: GetCollectGroupsQuery()) { response in
-            self.destinations = response
-                .filter { $0.paymentType == userDetail?.paymentType } // only show destinations that the user can give to with his account
+            self.destinations = response.filter({ (orgBeacon) -> Bool in
+                    if (UserDefaults.standard.paymentType == .Undefined){
+                        if (NSLocale.current.regionCode == "GB" || NSLocale.current.regionCode == "GG" || NSLocale.current.regionCode == "JE" ){
+                            return orgBeacon.paymentType.isBacs
+                        } else if (Locale.current.regionCode == "US") {
+                            return orgBeacon.paymentType.isCreditCard
+                        } else{
+                            return orgBeacon.paymentType.isSepa
+                        }
+                    }else{
+                        return orgBeacon.paymentType == UserDefaults.standard.paymentType
+                    }
+                }) // only show destinations that the user can give to with his account
                 .map { cg in
                     let destination = DestinationViewModel()
                     destination.name = cg.name

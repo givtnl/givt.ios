@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import SVProgressHUD
 
 class PermissionViewController: UIViewController {
 
@@ -28,8 +29,9 @@ class PermissionViewController: UIViewController {
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
             self.backButton.image = UIImage()
-            
         }
+        
+        SVProgressHUD.dismiss()
     }
     
     @IBOutlet var backButton: UIBarButtonItem!
@@ -58,13 +60,23 @@ class PermissionViewController: UIViewController {
         UIApplication.shared.registerForRemoteNotifications()
     }
     
-    func determineNextScreen() {
-        if (UserDefaults.standard.accountType == AccountType.bacs) {
+    func determineNextScreen() {        
+        if (UserDefaults.standard.paymentType == .CreditCard){
+            DispatchQueue.main.async {
+                LoginManager.shared.checkMandate { _ in
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                    self.show(vc, sender: nil)
+                }
+            }
+            return
+        }
+        
+        if (UserDefaults.standard.paymentType == .BACSDirectDebit) {
             DispatchQueue.main.async {
                 let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
                 self.show(vc, sender: nil)
             }
-        } else {
+        } else if (UserDefaults.standard.paymentType == .SEPADirectDebit) {
             DispatchQueue.main.async {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
                 self.show(vc, sender: nil)

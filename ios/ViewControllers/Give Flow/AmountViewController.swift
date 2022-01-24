@@ -123,7 +123,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         setActiveCollection(collectOne)
         collectionViews.append(collectOne)
         
-        let currency = UserDefaults.standard.currencySymbol
+        let currency = CurrencyHelper.shared.getCurrencySymbol()
         let currencys = [collectOne.currencySign, collectTwo.currencySign, collectThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
         currencys.forEach { (c) in
             c?.text = currency
@@ -157,7 +157,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
 
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        decimalNotation = NSLocale.current.decimalSeparator! as String
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        let locale = Locale(identifier: "\(Locale.current.languageCode!)-\(country!)")
+        decimalNotation = locale.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         navigationController?.navigationBar.isTranslucent = false
         let backItem = UIBarButtonItem()
@@ -285,7 +287,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         if Decimal(string: (collectOne.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 666
             && Decimal(string: (collectTwo.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
             && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
-            MSCrashes.generateTestCrash()
+            Crashes.generateTestCrash()
         }
 
         var numberOfZeroAmounts = 0
@@ -319,7 +321,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         
         let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
         let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
-        MSAnalytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
+        Analytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         Mixpanel.mainInstance().track(event: "GIVING_STARTED", properties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
@@ -494,7 +496,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
     }
 
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
                                       message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))

@@ -116,13 +116,13 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
 
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_DISMISSED")
     }
 
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         
         if amountView.amount > UserDefaults.standard.amountLimit.decimal {
@@ -249,7 +249,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
 
 
     func collectGroupLabelTapped() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
         view.endEditing(true)
         try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
@@ -275,7 +275,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     private func setupAmountView() {
         // get the currency symbol from user settingsf
-        amountView.currency = UserDefaults.standard.currencySymbol
+        amountView.currency = CurrencyHelper.shared.getCurrencySymbol()
         amountView.bottomBorderColor = UIColor.clear
         
         // setup event handlers
@@ -530,7 +530,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         self.present(alert, animated: true, completion: nil)
     }
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))

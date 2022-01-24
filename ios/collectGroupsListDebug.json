@@ -1,1 +1,2767 @@
-
+{
+    "OrgBeacons": [
+        {
+            "EddyNameSpace": "61f7ed014e4c0817a000",
+            "OrgName": "Achterlandkerk-actie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": "Test",
+                    "Latitude": 52.5038772,
+                    "Longitude": 5.4414099,
+                    "Radius": 10000,
+                    "BeaconId": "61f7ed014e4c0817a000.000000000013",
+                    "dtBegin": "2019-06-06T08:20:12.887Z",
+                    "dtEnd": "2022-06-06T09:20:12Z"
+                },
+                {
+                    "Name": "Test",
+                    "Latitude": 50.841162,
+                    "Longitude": 3.238404,
+                    "Radius": 2500,
+                    "BeaconId": "61f7ed014e4c0817a000.000000000013",
+                    "dtBegin": "2019-06-06T10:20:12.887Z",
+                    "dtEnd": "2019-06-06T11:20:12.887Z"
+                },
+                {
+                    "Name": "Test",
+                    "Latitude": 50.841162,
+                    "Longitude": 3.238404,
+                    "Radius": 2500,
+                    "BeaconId": "61f7ed014e4c0817a000.000000000013",
+                    "dtBegin": "2019-06-06T12:20:12.887Z",
+                    "dtEnd": "2019-06-06T14:20:12.887Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c003",
+            "OrgName": "AJW",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c004",
+            "OrgName": "Alice Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c002",
+            "OrgName": "Alices Test Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c001",
+            "OrgName": "Andy test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1018b002",
+            "OrgName": "Appelboom-pjé",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0521c000",
+            "OrgName": "Bassie&Adriaan",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0121c005",
+            "OrgName": "Bjorn mandaat testen",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421021c000",
+            "OrgName": "Bjorn Test Church 1910",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420121c000",
+            "OrgName": "Bjorn uk test for real",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0817c002",
+            "OrgName": "Brood en wijn (R-West)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921c001",
+            "OrgName": "Christ Pres Church Tulsa",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "Christ Pres Church Tulsa",
+                    "Latitude": 39.655771491843595,
+                    "Longitude": -96.70760330352662,
+                    "Radius": 500000,
+                    "BeaconId": "61f7ed0155530921c001.ac0000000001",
+                    "dtBegin": "2021-05-17T13:31:00Z",
+                    "dtEnd": "2031-05-17T13:31:00Z"
+                },
+                {
+                    "Name": "Christ Pres Church Tulsa",
+                    "Latitude": 18.066755642212694,
+                    "Longitude": -63.05167973960827,
+                    "Radius": 500000,
+                    "BeaconId": "61f7ed0155530921c001.ac0000000001",
+                    "dtBegin": "2021-05-17T13:31:00Z",
+                    "dtEnd": "2031-05-17T13:31:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0218c000",
+            "OrgName": "Christengemeente Huizen",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450717c000",
+            "OrgName": "Church - Debug East",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420321c001",
+            "OrgName": "Church of Tine (ImportantCity)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c003",
+            "OrgName": "Colorful Church Lelytown",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c001",
+            "OrgName": "Dave Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0144450321c000",
+            "OrgName": "DE - Evangelische Kirche",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0519c014",
+            "OrgName": "De Stroom Kampen",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0916c000",
+            "OrgName": "Debug 1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a003",
+            "OrgName": "Debug 1 - Kantoor",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": "Kantoor Heule",
+                    "Latitude": 50.841326,
+                    "Longitude": 3.238613,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014e4c0518a003.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2019-01-25T23:59:59Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a002",
+            "OrgName": "Debug 1 - LEL",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": "Brug",
+                    "Latitude": 50.840993,
+                    "Longitude": 3.238466,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014e4c0518a002.000000000001",
+                    "dtBegin": "2019-05-16T09:00:00Z",
+                    "dtEnd": "2019-05-16T16:00:00Z"
+                },
+                {
+                    "Name": "Brug",
+                    "Latitude": 50.841,
+                    "Longitude": 3.238,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014e4c0518a002.000000000001",
+                    "dtBegin": "2019-08-05T09:00:00Z",
+                    "dtEnd": "2019-09-06T16:00:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1016c000",
+            "OrgName": "Debug Kerk met Lange Naam 30ch",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0816db01",
+            "OrgName": "Debug LEL",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116de00",
+            "OrgName": "Demo Kerk 1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116de01",
+            "OrgName": "Demo Kerk 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420721c001",
+            "OrgName": "Donna Church UK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420721c002",
+            "OrgName": "Donna Church UK 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0144451121c000",
+            "OrgName": "DonnaGerman",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c005",
+            "OrgName": "DonnaOnline Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1121c000",
+            "OrgName": "DonnaTestKerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717d000",
+            "OrgName": "Dorcas",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0817a001",
+            "OrgName": "Dorcas Voedselactie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c003",
+            "OrgName": "East test kerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421220d000",
+            "OrgName": "Everything is 4",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921a001",
+            "OrgName": "Example Action",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921b001",
+            "OrgName": "Example Artist",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921d001",
+            "OrgName": "Example Charity",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c006",
+            "OrgName": "Flash 2.0",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717c007",
+            "OrgName": "Followers of Christ",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0620d000",
+            "OrgName": "Gamers4Life Lelytown",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [
+                {
+                    "Name": "Gamers4Life Lelytown",
+                    "Latitude": 52.502536,
+                    "Longitude": 5.4281481,
+                    "Radius": 100,
+                    "BeaconId": "61f7ed014e4c0620d000.ac0000000001",
+                    "dtBegin": "2020-07-01T09:38:00Z",
+                    "dtEnd": "2020-07-31T09:38:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c005",
+            "OrgName": "Givt HQ One",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "Givt HQ One",
+                    "Latitude": 50.842746064608114,
+                    "Longitude": 3.2319269946594176,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147420620c005.ac0000000001",
+                    "dtBegin": "2020-07-06T21:00:00Z",
+                    "dtEnd": "2020-07-07T21:00:00Z"
+                },
+                {
+                    "Name": "Givt HQ One",
+                    "Latitude": 50.83958893177568,
+                    "Longitude": 3.243728714324945,
+                    "Radius": 10,
+                    "BeaconId": "61f7ed0147420620c005.ac0000000003",
+                    "dtBegin": "2020-07-01T10:52:00Z",
+                    "dtEnd": "2020-07-30T10:52:00Z"
+                },
+                {
+                    "Name": "Givt HQ One",
+                    "Latitude": 33.6580674,
+                    "Longitude": -117.7671531,
+                    "Radius": 20,
+                    "BeaconId": "61f7ed0147420620c005.ac0000000004",
+                    "dtBegin": "2020-07-01T11:00:00Z",
+                    "dtEnd": "2020-07-30T11:00:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c000",
+            "OrgName": "Givt HQ Two",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c001",
+            "OrgName": "Givt HQ2 Kortrijk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c003",
+            "OrgName": "Givt HQ3 Lelytown",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c006",
+            "OrgName": "Givt London One",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c011",
+            "OrgName": "GivtTeam",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0318c007",
+            "OrgName": "GKV de Rank Zuidhorn",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017a000",
+            "OrgName": "GNR - 10 Jaar",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017a001",
+            "OrgName": "GNR - Kerstgroet",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0817c004",
+            "OrgName": "Herderkerk de Lage Landen +3",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c064",
+            "OrgName": "Hervormde Gemeente Oude-Tonge",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c002",
+            "OrgName": "HQ Givt Three",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142451017a000",
+            "OrgName": "Ijselse Grachtkerk - kerstactie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c000",
+            "OrgName": "Inverness Moravian Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014f4c1016c000",
+            "OrgName": "J Sees A Victory Everytime",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617aff0",
+            "OrgName": "Jezus leeft ",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014a451119c009",
+            "OrgName": "Jonas Jerseys Testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c004",
+            "OrgName": "Jonas Test Bankaccount",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c003",
+            "OrgName": "Jonas Test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0720c000",
+            "OrgName": "Jonas Test zonder Anthony",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c005",
+            "OrgName": "Jonas' testbedrijfje 4",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0620c001",
+            "OrgName": "Jonas UK Test",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0818b000",
+            "OrgName": "Le bartiest",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c001",
+            "OrgName": "Levend water (A-West) - Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420321d001",
+            "OrgName": "Maarten's charity UK",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0620c002",
+            "OrgName": "Maartens testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "Maartens testkerk",
+                    "Latitude": 50.949209,
+                    "Longitude": 3.148389,
+                    "Radius": 1000,
+                    "BeaconId": "61f7ed014e4c0620c002.ac0000000003",
+                    "dtBegin": "2020-07-07T08:28:00Z",
+                    "dtEnd": "2020-07-07T08:30:00Z"
+                },
+                {
+                    "Name": "Maartens testkerk",
+                    "Latitude": 50.8318116,
+                    "Longitude": 3.2845057,
+                    "Radius": 1000,
+                    "BeaconId": "61f7ed014e4c0620c002.ac0000000004",
+                    "dtBegin": "2020-07-07T08:28:00Z",
+                    "dtEnd": "2022-07-07T08:30:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1016c001",
+            "OrgName": "Maastricht-Noord kerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0921c001",
+            "OrgName": "Michiel's naam in de app",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420220b001",
+            "OrgName": "Mike's Onboarding Test",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420921d000",
+            "OrgName": "Mike's Special Grants",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0920c000",
+            "OrgName": "Nico Testkerk NL - re-request",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c002",
+            "OrgName": "Nico UK Dbg Church (noChar.)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c004",
+            "OrgName": "Nieuwe testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450816db00",
+            "OrgName": "Nieuwe testkerk 1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450121c000",
+            "OrgName": "Nog eentje",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0221c000",
+            "OrgName": "Nog eentje meer",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420220c002",
+            "OrgName": "Onboarding Test 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116c000",
+            "OrgName": "Orginos",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617a000",
+            "OrgName": "Pescha Rotterdam-Zuid",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0721c002",
+            "OrgName": "Preboarding Donna",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0721c000",
+            "OrgName": "Preboarding test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0721c001",
+            "OrgName": "PreboardingTest3",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017a002",
+            "OrgName": "Prod.GLS VoorTestgebruik",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450420d001",
+            "OrgName": "Q yeeet",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017d000",
+            "OrgName": "QR-kerk",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c004",
+            "OrgName": "Reminder Church Lelystad",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c006",
+            "OrgName": "Renzes Testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0720c001",
+            "OrgName": "Resistance (SEPA)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450817db00",
+            "OrgName": "Rest",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420819b000",
+            "OrgName": "Save the whales (UK)",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c001",
+            "OrgName": "SEPA 4 DEMO",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c002",
+            "OrgName": "SEPA 4 DEMO 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c003",
+            "OrgName": "SEPA 4 DEMO 3",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c000",
+            "OrgName": "Simon's Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c002",
+            "OrgName": "Simons Church 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420321c000",
+            "OrgName": "Simons Test Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116c001",
+            "OrgName": "Sint Ansfriduskerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617c001",
+            "OrgName": "Sint-Maartensdijk - NC",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0121c001",
+            "OrgName": "SlimPay-Weg-is-weg_TC1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450121d000",
+            "OrgName": "Soulbinders EU",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420121d000",
+            "OrgName": "Soulbinders GB",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621d000",
+            "OrgName": "Stichting Colorful",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0317d000",
+            "OrgName": "Stichting Opwekking",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c019",
+            "OrgName": "Team Givt",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420520c000",
+            "OrgName": "Test 1138",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c001",
+            "OrgName": "Test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421118c001",
+            "OrgName": "Test Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0517de03",
+            "OrgName": "Test Church 2(Oud DemoK3)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c005",
+            "OrgName": "Test Church Tine",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1018a000",
+            "OrgName": "Test Collect Groep",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014f4c0320db01",
+            "OrgName": "Test CreateColl. Nico",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420520b001",
+            "OrgName": "TEST SQL GROUP",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420721c000",
+            "OrgName": "Test using Martino UK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450118a000",
+            "OrgName": "Test-actie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c003",
+            "OrgName": "Testbedrijfje Jonas V2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0818c001",
+            "OrgName": "Testbedrijfje4",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717c008",
+            "OrgName": "Testen UTC-time",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c001",
+            "OrgName": "Testje",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0921c000",
+            "OrgName": "Testkerk 2 Michiel",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c002",
+            "OrgName": "Testkerk Lars",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450521c000",
+            "OrgName": "Testkerk Maarten BE",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c004",
+            "OrgName": "Testkerk Maarten NL",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450520c001",
+            "OrgName": "Testkerkwantartiestluktniet",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1021c000",
+            "OrgName": "TestPreboarding",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c003",
+            "OrgName": "The Givt Crew",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c003",
+            "OrgName": "Tine test de kerk 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0221c003",
+            "OrgName": "Tines testkerk Lelystad",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0421c000",
+            "OrgName": "TinesHippeOnline kerk NL",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c001",
+            "OrgName": "TinetestdekerkinLelystad",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420919a001",
+            "OrgName": "Tony's Test Campaign",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421018c001",
+            "OrgName": "UK First Demo Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 53.5337498,
+                    "Longitude": -0.8220119,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000001",
+                    "dtBegin": "2021-05-17T12:08:00Z",
+                    "dtEnd": "2031-05-17T12:08:00Z"
+                },
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 50.7915715,
+                    "Longitude": -1.167367,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000002",
+                    "dtBegin": "2021-05-17T13:29:00Z",
+                    "dtEnd": "2031-05-17T13:29:00Z"
+                },
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 51.5156702,
+                    "Longitude": -0.2003712,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000003",
+                    "dtBegin": "2021-05-17T13:30:00Z",
+                    "dtEnd": "2031-05-17T13:30:00Z"
+                },
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 57.4771442,
+                    "Longitude": -4.2120247,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000004",
+                    "dtBegin": "2021-05-17T13:31:00Z",
+                    "dtEnd": "2031-05-17T13:31:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014f4c0119c001",
+            "OrgName": "UK Test Artist",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "TestLocatieVanMike",
+                    "Latitude": 51.750927,
+                    "Longitude": -0.3323727,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014f4c0119c001.000000000033",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2018-11-28T23:59:59Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421118de00",
+            "OrgName": "UK Testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0517c000",
+            "OrgName": "Utrecht testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1018b001",
+            "OrgName": "Walvisgeluiden (ex-Save the Whales) 08-19",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450621c000",
+            "OrgName": "wann",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1217c004",
+            "OrgName": "Wijngaard - TK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c005",
+            "OrgName": "Wupsekee",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c005",
+            "OrgName": "X-bridge",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717c006",
+            "OrgName": "Young CFC-church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617c000",
+            "OrgName": "Zaanstreek-West TK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a005",
+            "OrgName": "ZU - Bwefar",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": " ",
+                    "Latitude": 52.514035,
+                    "Longitude": 6.094652,
+                    "Radius": 1000,
+                    "BeaconId": "61f7ed014e4c0518a005.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2019-05-25T23:59:59Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a006",
+            "OrgName": "ZU - Hoofdtrein",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": " ",
+                    "Latitude": 52.508581,
+                    "Longitude": 5.475289,
+                    "Radius": 15000,
+                    "BeaconId": "61f7ed014e4c0518a006.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2018-11-28T23:59:59Z"
+                },
+                {
+                    "Name": " ",
+                    "Latitude": 50.8318067,
+                    "Longitude": 3.2845114,
+                    "Radius": 15000,
+                    "BeaconId": "61f7ed014e4c0518a006.000000000001",
+                    "dtBegin": "2019-08-01T00:00:00Z",
+                    "dtEnd": "2021-08-01T00:00:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a004",
+            "OrgName": "ZU - Piste 2",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": " ",
+                    "Latitude": 52.514027,
+                    "Longitude": 6.095958,
+                    "Radius": 24,
+                    "BeaconId": "61f7ed014e4c0518a004.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2018-06-12T07:38:40.29Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        }
+    ],
+    "LastChanged": "2021-12-24T12:22:05.0103974Z"
+}{
+    "OrgBeacons": [
+        {
+            "EddyNameSpace": "61f7ed014e4c0817a000",
+            "OrgName": "Achterlandkerk-actie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": "Test",
+                    "Latitude": 52.5038772,
+                    "Longitude": 5.4414099,
+                    "Radius": 10000,
+                    "BeaconId": "61f7ed014e4c0817a000.000000000013",
+                    "dtBegin": "2019-06-06T08:20:12.887Z",
+                    "dtEnd": "2022-06-06T09:20:12Z"
+                },
+                {
+                    "Name": "Test",
+                    "Latitude": 50.841162,
+                    "Longitude": 3.238404,
+                    "Radius": 2500,
+                    "BeaconId": "61f7ed014e4c0817a000.000000000013",
+                    "dtBegin": "2019-06-06T10:20:12.887Z",
+                    "dtEnd": "2019-06-06T11:20:12.887Z"
+                },
+                {
+                    "Name": "Test",
+                    "Latitude": 50.841162,
+                    "Longitude": 3.238404,
+                    "Radius": 2500,
+                    "BeaconId": "61f7ed014e4c0817a000.000000000013",
+                    "dtBegin": "2019-06-06T12:20:12.887Z",
+                    "dtEnd": "2019-06-06T14:20:12.887Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c003",
+            "OrgName": "AJW",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c004",
+            "OrgName": "Alice Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c002",
+            "OrgName": "Alices Test Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c001",
+            "OrgName": "Andy test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1018b002",
+            "OrgName": "Appelboom-pjé",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0521c000",
+            "OrgName": "Bassie&Adriaan",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0121c005",
+            "OrgName": "Bjorn mandaat testen",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421021c000",
+            "OrgName": "Bjorn Test Church 1910",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420121c000",
+            "OrgName": "Bjorn uk test for real",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0817c002",
+            "OrgName": "Brood en wijn (R-West)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921c001",
+            "OrgName": "Christ Pres Church Tulsa",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "Christ Pres Church Tulsa",
+                    "Latitude": 39.655771491843595,
+                    "Longitude": -96.70760330352662,
+                    "Radius": 500000,
+                    "BeaconId": "61f7ed0155530921c001.ac0000000001",
+                    "dtBegin": "2021-05-17T13:31:00Z",
+                    "dtEnd": "2031-05-17T13:31:00Z"
+                },
+                {
+                    "Name": "Christ Pres Church Tulsa",
+                    "Latitude": 18.066755642212694,
+                    "Longitude": -63.05167973960827,
+                    "Radius": 500000,
+                    "BeaconId": "61f7ed0155530921c001.ac0000000001",
+                    "dtBegin": "2021-05-17T13:31:00Z",
+                    "dtEnd": "2031-05-17T13:31:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0218c000",
+            "OrgName": "Christengemeente Huizen",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450717c000",
+            "OrgName": "Church - Debug East",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420321c001",
+            "OrgName": "Church of Tine (ImportantCity)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c003",
+            "OrgName": "Colorful Church Lelytown",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c001",
+            "OrgName": "Dave Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0144450321c000",
+            "OrgName": "DE - Evangelische Kirche",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0519c014",
+            "OrgName": "De Stroom Kampen",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0916c000",
+            "OrgName": "Debug 1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a003",
+            "OrgName": "Debug 1 - Kantoor",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": "Kantoor Heule",
+                    "Latitude": 50.841326,
+                    "Longitude": 3.238613,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014e4c0518a003.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2019-01-25T23:59:59Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a002",
+            "OrgName": "Debug 1 - LEL",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": "Brug",
+                    "Latitude": 50.840993,
+                    "Longitude": 3.238466,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014e4c0518a002.000000000001",
+                    "dtBegin": "2019-05-16T09:00:00Z",
+                    "dtEnd": "2019-05-16T16:00:00Z"
+                },
+                {
+                    "Name": "Brug",
+                    "Latitude": 50.841,
+                    "Longitude": 3.238,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014e4c0518a002.000000000001",
+                    "dtBegin": "2019-08-05T09:00:00Z",
+                    "dtEnd": "2019-09-06T16:00:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1016c000",
+            "OrgName": "Debug Kerk met Lange Naam 30ch",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0816db01",
+            "OrgName": "Debug LEL",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116de00",
+            "OrgName": "Demo Kerk 1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116de01",
+            "OrgName": "Demo Kerk 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420721c001",
+            "OrgName": "Donna Church UK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420721c002",
+            "OrgName": "Donna Church UK 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0144451121c000",
+            "OrgName": "DonnaGerman",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c005",
+            "OrgName": "DonnaOnline Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1121c000",
+            "OrgName": "DonnaTestKerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717d000",
+            "OrgName": "Dorcas",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0817a001",
+            "OrgName": "Dorcas Voedselactie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c003",
+            "OrgName": "East test kerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421220d000",
+            "OrgName": "Everything is 4",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921a001",
+            "OrgName": "Example Action",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921b001",
+            "OrgName": "Example Artist",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0155530921d001",
+            "OrgName": "Example Charity",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c006",
+            "OrgName": "Flash 2.0",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717c007",
+            "OrgName": "Followers of Christ",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0620d000",
+            "OrgName": "Gamers4Life Lelytown",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [
+                {
+                    "Name": "Gamers4Life Lelytown",
+                    "Latitude": 52.502536,
+                    "Longitude": 5.4281481,
+                    "Radius": 100,
+                    "BeaconId": "61f7ed014e4c0620d000.ac0000000001",
+                    "dtBegin": "2020-07-01T09:38:00Z",
+                    "dtEnd": "2020-07-31T09:38:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c005",
+            "OrgName": "Givt HQ One",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "Givt HQ One",
+                    "Latitude": 50.842746064608114,
+                    "Longitude": 3.2319269946594176,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147420620c005.ac0000000001",
+                    "dtBegin": "2020-07-06T21:00:00Z",
+                    "dtEnd": "2020-07-07T21:00:00Z"
+                },
+                {
+                    "Name": "Givt HQ One",
+                    "Latitude": 50.83958893177568,
+                    "Longitude": 3.243728714324945,
+                    "Radius": 10,
+                    "BeaconId": "61f7ed0147420620c005.ac0000000003",
+                    "dtBegin": "2020-07-01T10:52:00Z",
+                    "dtEnd": "2020-07-30T10:52:00Z"
+                },
+                {
+                    "Name": "Givt HQ One",
+                    "Latitude": 33.6580674,
+                    "Longitude": -117.7671531,
+                    "Radius": 20,
+                    "BeaconId": "61f7ed0147420620c005.ac0000000004",
+                    "dtBegin": "2020-07-01T11:00:00Z",
+                    "dtEnd": "2020-07-30T11:00:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c000",
+            "OrgName": "Givt HQ Two",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c001",
+            "OrgName": "Givt HQ2 Kortrijk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c003",
+            "OrgName": "Givt HQ3 Lelytown",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c006",
+            "OrgName": "Givt London One",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c011",
+            "OrgName": "GivtTeam",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0318c007",
+            "OrgName": "GKV de Rank Zuidhorn",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017a000",
+            "OrgName": "GNR - 10 Jaar",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017a001",
+            "OrgName": "GNR - Kerstgroet",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0817c004",
+            "OrgName": "Herderkerk de Lage Landen +3",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c064",
+            "OrgName": "Hervormde Gemeente Oude-Tonge",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420720c002",
+            "OrgName": "HQ Givt Three",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142451017a000",
+            "OrgName": "Ijselse Grachtkerk - kerstactie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c000",
+            "OrgName": "Inverness Moravian Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014f4c1016c000",
+            "OrgName": "J Sees A Victory Everytime",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617aff0",
+            "OrgName": "Jezus leeft ",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014a451119c009",
+            "OrgName": "Jonas Jerseys Testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c004",
+            "OrgName": "Jonas Test Bankaccount",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420620c003",
+            "OrgName": "Jonas Test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0720c000",
+            "OrgName": "Jonas Test zonder Anthony",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c005",
+            "OrgName": "Jonas' testbedrijfje 4",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0620c001",
+            "OrgName": "Jonas UK Test",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0818b000",
+            "OrgName": "Le bartiest",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c001",
+            "OrgName": "Levend water (A-West) - Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420321d001",
+            "OrgName": "Maarten's charity UK",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0620c002",
+            "OrgName": "Maartens testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "Maartens testkerk",
+                    "Latitude": 50.949209,
+                    "Longitude": 3.148389,
+                    "Radius": 1000,
+                    "BeaconId": "61f7ed014e4c0620c002.ac0000000003",
+                    "dtBegin": "2020-07-07T08:28:00Z",
+                    "dtEnd": "2020-07-07T08:30:00Z"
+                },
+                {
+                    "Name": "Maartens testkerk",
+                    "Latitude": 50.8318116,
+                    "Longitude": 3.2845057,
+                    "Radius": 1000,
+                    "BeaconId": "61f7ed014e4c0620c002.ac0000000004",
+                    "dtBegin": "2020-07-07T08:28:00Z",
+                    "dtEnd": "2022-07-07T08:30:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1016c001",
+            "OrgName": "Maastricht-Noord kerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0921c001",
+            "OrgName": "Michiel's naam in de app",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420220b001",
+            "OrgName": "Mike's Onboarding Test",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420921d000",
+            "OrgName": "Mike's Special Grants",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0920c000",
+            "OrgName": "Nico Testkerk NL - re-request",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c002",
+            "OrgName": "Nico UK Dbg Church (noChar.)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c004",
+            "OrgName": "Nieuwe testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450816db00",
+            "OrgName": "Nieuwe testkerk 1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450121c000",
+            "OrgName": "Nog eentje",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0221c000",
+            "OrgName": "Nog eentje meer",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420220c002",
+            "OrgName": "Onboarding Test 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116c000",
+            "OrgName": "Orginos",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617a000",
+            "OrgName": "Pescha Rotterdam-Zuid",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0721c002",
+            "OrgName": "Preboarding Donna",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0721c000",
+            "OrgName": "Preboarding test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0721c001",
+            "OrgName": "PreboardingTest3",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017a002",
+            "OrgName": "Prod.GLS VoorTestgebruik",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450420d001",
+            "OrgName": "Q yeeet",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017d000",
+            "OrgName": "QR-kerk",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c004",
+            "OrgName": "Reminder Church Lelystad",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c006",
+            "OrgName": "Renzes Testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0720c001",
+            "OrgName": "Resistance (SEPA)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450817db00",
+            "OrgName": "Rest",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420819b000",
+            "OrgName": "Save the whales (UK)",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c001",
+            "OrgName": "SEPA 4 DEMO",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c002",
+            "OrgName": "SEPA 4 DEMO 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0320c003",
+            "OrgName": "SEPA 4 DEMO 3",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c000",
+            "OrgName": "Simon's Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c002",
+            "OrgName": "Simons Church 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420321c000",
+            "OrgName": "Simons Test Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1116c001",
+            "OrgName": "Sint Ansfriduskerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617c001",
+            "OrgName": "Sint-Maartensdijk - NC",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0121c001",
+            "OrgName": "SlimPay-Weg-is-weg_TC1",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450121d000",
+            "OrgName": "Soulbinders EU",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420121d000",
+            "OrgName": "Soulbinders GB",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621d000",
+            "OrgName": "Stichting Colorful",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0317d000",
+            "OrgName": "Stichting Opwekking",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c019",
+            "OrgName": "Team Givt",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420520c000",
+            "OrgName": "Test 1138",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c001",
+            "OrgName": "Test church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421118c001",
+            "OrgName": "Test Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0517de03",
+            "OrgName": "Test Church 2(Oud DemoK3)",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420621c005",
+            "OrgName": "Test Church Tine",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1018a000",
+            "OrgName": "Test Collect Groep",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014f4c0320db01",
+            "OrgName": "Test CreateColl. Nico",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420520b001",
+            "OrgName": "TEST SQL GROUP",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420721c000",
+            "OrgName": "Test using Martino UK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450118a000",
+            "OrgName": "Test-actie",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421019c003",
+            "OrgName": "Testbedrijfje Jonas V2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0818c001",
+            "OrgName": "Testbedrijfje4",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717c008",
+            "OrgName": "Testen UTC-time",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c001",
+            "OrgName": "Testje",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0921c000",
+            "OrgName": "Testkerk 2 Michiel",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c002",
+            "OrgName": "Testkerk Lars",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450521c000",
+            "OrgName": "Testkerk Maarten BE",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c004",
+            "OrgName": "Testkerk Maarten NL",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450520c001",
+            "OrgName": "Testkerkwantartiestluktniet",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1021c000",
+            "OrgName": "TestPreboarding",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c003",
+            "OrgName": "The Givt Crew",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0621c003",
+            "OrgName": "Tine test de kerk 2",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0221c003",
+            "OrgName": "Tines testkerk Lelystad",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0421c000",
+            "OrgName": "TinesHippeOnline kerk NL",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0321c001",
+            "OrgName": "TinetestdekerkinLelystad",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147420919a001",
+            "OrgName": "Tony's Test Campaign",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421018c001",
+            "OrgName": "UK First Demo Church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 53.5337498,
+                    "Longitude": -0.8220119,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000001",
+                    "dtBegin": "2021-05-17T12:08:00Z",
+                    "dtEnd": "2031-05-17T12:08:00Z"
+                },
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 50.7915715,
+                    "Longitude": -1.167367,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000002",
+                    "dtBegin": "2021-05-17T13:29:00Z",
+                    "dtEnd": "2031-05-17T13:29:00Z"
+                },
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 51.5156702,
+                    "Longitude": -0.2003712,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000003",
+                    "dtBegin": "2021-05-17T13:30:00Z",
+                    "dtEnd": "2031-05-17T13:30:00Z"
+                },
+                {
+                    "Name": "UK First Demo Church",
+                    "Latitude": 57.4771442,
+                    "Longitude": -4.2120247,
+                    "Radius": 50,
+                    "BeaconId": "61f7ed0147421018c001.ac0000000004",
+                    "dtBegin": "2021-05-17T13:31:00Z",
+                    "dtEnd": "2031-05-17T13:31:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014f4c0119c001",
+            "OrgName": "UK Test Artist",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [
+                {
+                    "Name": "TestLocatieVanMike",
+                    "Latitude": 51.750927,
+                    "Longitude": -0.3323727,
+                    "Radius": 500,
+                    "BeaconId": "61f7ed014f4c0119c001.000000000033",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2018-11-28T23:59:59Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0147421118de00",
+            "OrgName": "UK Testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 3,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0517c000",
+            "OrgName": "Utrecht testkerk",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1018b001",
+            "OrgName": "Walvisgeluiden (ex-Save the Whales) 08-19",
+            "Celebrations": false,
+            "CollectGroupType": 2,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed0142450621c000",
+            "OrgName": "wann",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1217c004",
+            "OrgName": "Wijngaard - TK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0520c005",
+            "OrgName": "Wupsekee",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c1017c005",
+            "OrgName": "X-bridge",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0717c006",
+            "OrgName": "Young CFC-church",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0617c000",
+            "OrgName": "Zaanstreek-West TK",
+            "Celebrations": false,
+            "CollectGroupType": 0,
+            "Locations": [],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a005",
+            "OrgName": "ZU - Bwefar",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": " ",
+                    "Latitude": 52.514035,
+                    "Longitude": 6.094652,
+                    "Radius": 1000,
+                    "BeaconId": "61f7ed014e4c0518a005.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2019-05-25T23:59:59Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a006",
+            "OrgName": "ZU - Hoofdtrein",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": " ",
+                    "Latitude": 52.508581,
+                    "Longitude": 5.475289,
+                    "Radius": 15000,
+                    "BeaconId": "61f7ed014e4c0518a006.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2018-11-28T23:59:59Z"
+                },
+                {
+                    "Name": " ",
+                    "Latitude": 50.8318067,
+                    "Longitude": 3.2845114,
+                    "Radius": 15000,
+                    "BeaconId": "61f7ed014e4c0518a006.000000000001",
+                    "dtBegin": "2019-08-01T00:00:00Z",
+                    "dtEnd": "2021-08-01T00:00:00Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        },
+        {
+            "EddyNameSpace": "61f7ed014e4c0518a004",
+            "OrgName": "ZU - Piste 2",
+            "Celebrations": false,
+            "CollectGroupType": 1,
+            "Locations": [
+                {
+                    "Name": " ",
+                    "Latitude": 52.514027,
+                    "Longitude": 6.095958,
+                    "Radius": 24,
+                    "BeaconId": "61f7ed014e4c0518a004.000000000001",
+                    "dtBegin": "2018-05-09T07:38:38.65Z",
+                    "dtEnd": "2018-06-12T07:38:40.29Z"
+                }
+            ],
+            "MultiUseAllocations": []
+        }
+    ],
+    "LastChanged": "2021-12-24T12:22:05.0103974Z"
+}

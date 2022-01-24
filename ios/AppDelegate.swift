@@ -10,7 +10,6 @@ import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
-import AppCenterPush
 import TrustKit
 import UserNotifications
 import Mixpanel
@@ -30,15 +29,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
-        MSAppCenter.start(AppConstants.appcenterId, withServices:[
-                MSAnalytics.self,
-                MSCrashes.self
+        AppCenter.start(withAppSecret: AppConstants.appcenterId, services:[
+                Analytics.self,
+                Crashes.self
             ])
         
-        if MSCrashes.hasCrashedInLastSession()  {
+        if Crashes.hasCrashedInLastSession  {
             logService.error(message: "User had a crash, check AppCenter")
         }
-
+        
+        // This is to convert the accountType setting set on the users their phone
+        // to the new PaymentType so the accountType which is obsolete can be removed soon
+        if UserDefaults.standard.paymentType != .CreditCard {
+            UserDefaults.standard.paymentType = PaymentType.fromAccountType(UserDefaults.standard.accountType)
+        }
+        
         registerHandlers()
         
         logService.info(message: "App started")
@@ -74,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             setupYearlyOverviewNotifications()
         }
         
+        appService.setLocale()
+
         loadAdvertisements()
 
         return true
@@ -262,7 +269,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 UserDefaults.standard.isTempUser = false
             } else if status == "false" { //email is completely new
                 UserDefaults.standard.isTempUser = true
-            } else if status == "temp" || status == "dashboard" { //email is in db but not succesfully registered
+            } else if status == "temp" || status == "dashboard" {
+                //email is in db but not succesfully registered
+                if status == "dashboard" {
+                    // this is a temporary thing because US users dont register with first and last name...
+                    // TODO: REFACTOR THIS
+                    try? Mediater.shared.sendAsync(request: GetAccountsQuery()) { response in
+                        if let getAccountsResponse = response.result {
+                            if let account = getAccountsResponse.accounts?.first {
+                                if account.creditCardDetails != nil {
+                                    UserDefaults.standard.isTempUser = false
+                                    UserDefaults.standard.paymentType = .CreditCard
+                                    UserDefaults.standard.mandateSigned = true
+                                    return
+                                }
+                            }
+                        }
+                    }
+                }
                 UserDefaults.standard.isTempUser = true
             }
         }
@@ -480,96 +504,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         if let urlContext = URLContexts.first {
             let _ = application(UIApplication.shared, open: urlContext.url)
         }
-    }
-    
-    func registerHandlers() {
-        // -- DONATIONS
-        Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
-        Mediater.shared.registerPreProcessor(processor: CreateDonationCommandValidator())
-        Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: GetDonationsByIdsQueryHandler())
-        // -- RECURRING DONATIONS
-        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
-        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
-        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: GetRecurringDonationTurnsQueryHandler())
-        //-- USER QUERIES
-        Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
-        Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
-        
-        // -- COLLECT GROUPS
-        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
-        Mediater.shared.registerPreProcessor(processor: GetCollectGroupsQueryPreProcessor())
-        
-        // -- NAVIGATION
-        Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
-        Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
-        Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
-        Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
-        Mediater.shared.registerHandler(handler: GoToChooseRecurringDonationRouteHandler())
-        Mediater.shared.registerHandler(handler: BackToSetupRecurringDonationRouteHandler())
-        Mediater.shared.registerHandler(handler: PopToRecurringDonationOverviewRouteHandler())
-        Mediater.shared.registerHandler(handler: BackToRecurringDonationOverviewRouteHandler())
-        Mediater.shared.registerHandler(handler: GoToPushNotificationViewRouteHandler())
-        Mediater.shared.registerHandler(handler: DismissPushNotificationViewRouteHandler())
-        Mediater.shared.registerHandler(handler: GoToAboutViewRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenRecurringDonationOverviewListRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenRecurringRuleDetailFromNotificationRouteHandler())
-        
-        //-- INFRA
-        Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
-        Mediater.shared.registerHandler(handler: GoBackOneControllerRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenFeatureByIdRouteHandler())
-        Mediater.shared.registerHandler(handler: ShowUpdateAlertHandler())
-
-        //-- DISCOVER OR AMOUNT: ROUTES
-        Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupSingleDonationRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupRecurringDonationRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSafariRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
-        Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenRecurringSuccessRouteHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
-        Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
-        
-        //-- BUDGET SCENE: ROUTES
-        Mediater.shared.registerHandler(handler: OpenSummaryRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenExternalGivtsRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenGivingGoalRouteHandler())
-        Mediater.shared.registerHandler(handler: GoBackToSummaryRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteHandler())
-        Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteDetailHandler())
-        Mediater.shared.registerHandler(handler: GoBackToYearlyOverviewRouteHandler())
-        Mediater.shared.registerHandler(handler: GoBackFromGivingGoalWithReloadRouteHandler())
-        
-        //-- BUDGET SCENE: QUERYS
-        Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
-        Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
-        Mediater.shared.registerHandler(handler: GetAllExternalDonationsQueryHandler())
-
-        //-- Budget External Donations
-        Mediater.shared.registerHandler(handler: CreateExternalDonationCommandHandler())
-        Mediater.shared.registerPreProcessor(processor: CreateExternalDonationCronGenerator())
-        Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: DownloadSummaryCommandHandler())
-        Mediater.shared.registerPreProcessor(processor: DownloadSummaryCommandPreHandler())
-        
-        //-- Giving Goal
-        Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
-        Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
-        Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())
-        
-        //-- Advertisements
-        Mediater.shared.registerHandler(handler: GetAdvertismentListQueryHandler())
-        Mediater.shared.registerHandler(handler: GetAdvertisementsLastDateQueryHandler())
-        Mediater.shared.registerHandler(handler: ImportAdvertisementsCommandHandler())
-        Mediater.shared.registerHandler(handler: GetRandomAdvertisementQueryHandler())
     }
 }

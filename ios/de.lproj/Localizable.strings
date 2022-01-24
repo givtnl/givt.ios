@@ -81,7 +81,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AskMeLater" = "Frag mich später";
 "GiveDifferently" = "Aus der Liste auswählen";
 "Churches" = "Kirchen";
+<<<<<<< HEAD
+"Stichtingen" = "Gemeinnütziges";
+=======
 "Stichtingen" = "Wohltätigkeit";
+>>>>>>> develop
 "Acties" = "Kampagnen";
 "Overig" = "Andere";
 "SignMandateLaterTitle" = "Okay, wir fragen später noch einmal.";
@@ -176,7 +180,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GiveContextQR" = "Spende, indem du einen QR-Code scannst";
 "SelectContextList" = "Suche ein Spendenziel aus der Liste aus";
 "SelectContext" = "Wähle die Art zu Spenden";
-"ChooseWhoYouWantToGiveTo" = "Wähle dein Spendenziel";
+"ChooseWhoYouWantToGiveTo" = "Wähle, wohin du Spenden möchtest";
 "CancelGiftAlertTitle" = "Die Spende stornieren?";
 "CancelGiftAlertMessage" = "Bist du sicher, dass du die Spende stornieren möchtest?\n";
 "GotIt" = "Hab's kapiert!";
@@ -878,7 +882,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BluetoothErrorMessageEvent" = "Mit Bluetooth kannst du dank Location-Beacons deinen Standort auch ohne / mit schlechter GPS-Verbindung finden.\nAktiviere jetzt dein Bluetooth!";
 "processCashedGivt_NamespaceInvalid" = "Wir sehen, dass du einer Organisation, die Givt leider nicht mehr verwendet, ein nicht verarbeitete Spende gemacht hast. Diese Spende wird annulliert.";
 "SuggestionNamespaceInvalid" = "Dein zuletzt ausgewähltes Spendenziel unterstützt Givt nicht mehr.";
-"Charity" = "Charity";
+"Charity" = "Gemeinnützige Organisation";
 "Artist" = "Künstler";
 "Church" = "Kirche";
 "Campaign" = "Kampagne";

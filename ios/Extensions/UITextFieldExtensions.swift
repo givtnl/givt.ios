@@ -30,22 +30,6 @@ extension UITextField {
         self.rightView = paddingView
         self.rightViewMode = .always
     }
-    func setBorderColor(_ color: UIColor) {
-        self.layer.borderColor = color.cgColor
-    }
-    func resetBorderColor() {
-        self.layer.borderColor = originalColor.cgColor
-    }
-    func setValid(){
-        setBorderColor(#colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1))
-        self.returnKeyType = .done
-        self.reloadInputViews()
-    }
-    func setInvalid(){
-        setBorderColor(#colorLiteral(red: 0.8439754844, green: 0.2364770174, blue: 0.2862294316, alpha: 1))
-        self.returnKeyType = .default
-        self.reloadInputViews()
-    }
     func setState(b: Bool) {
         b ? setValid() : setInvalid()
     }

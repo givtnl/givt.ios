@@ -42,10 +42,12 @@ extension BudgetGivingGoalViewController {
         periodViewTextField.text = frequencys[0][1] as? String
         periodViewTextField.tintColor = .clear
         
-        if UserDefaults.standard.accountType == .sepa {
-            amountViewLabelCurrency.text = "euro-sign"
-        } else {
+        if UserDefaults.standard.paymentType == .CreditCard {
+            amountViewLabelCurrency.text = "dollar-sign"
+        } else if UserDefaults.standard.paymentType == .BACSDirectDebit {
             amountViewLabelCurrency.text = "pound-sign"
+        } else {
+            amountViewLabelCurrency.text = "euro-sign"
         }
         
         if let goal = givingGoal {

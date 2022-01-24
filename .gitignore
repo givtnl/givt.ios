@@ -79,3 +79,5 @@ ios.xcworkspace/xcuserdata/nico.xcuserdatad/WorkspaceSettings.xcsettings
 ios.xcworkspace/xcuserdata
 ios.xcworkspace/xcshareddata
 .DS_Store
+ios.xcodeproj/project.xcworkspace/xcuserdata
+*.xcuserstate

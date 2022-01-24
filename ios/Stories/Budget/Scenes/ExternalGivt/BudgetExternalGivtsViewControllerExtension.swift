@@ -47,12 +47,13 @@ extension BudgetExternalGivtsViewController {
         createToolbar(textFieldExternalGivtsTime)
         createToolbar(textFieldExternalGivtsAmount)
         createToolbar(textFieldExternalGivtsOrganisation)
-        
-        switch UserDefaults.standard.currencySymbol {
-            case "£":
-                labelExternalGivtsAmountCurrency.text = "pound-sign"
-            default:
-                labelExternalGivtsAmountCurrency.text = "euro-sign"
+
+        if UserDefaults.standard.paymentType == .CreditCard {
+            labelExternalGivtsAmountCurrency.text = "dollar-sign"
+        } else if UserDefaults.standard.paymentType == .BACSDirectDebit {
+            labelExternalGivtsAmountCurrency.text = "pound-sign"
+        } else {
+            labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
         
         switchTaxDeductable.isOn = false
@@ -118,8 +119,8 @@ extension BudgetExternalGivtsViewController {
             let model = externalDonations!.filter{$0.id == currentObjectInEditMode}.first!
             modelBeeingEdited = model
             
-            textFieldExternalGivtsOrganisation.text = modelBeeingEdited?.description
-            textFieldExternalGivtsAmount.text = modelBeeingEdited?.amount.getFormattedWithoutCurrency(decimals: 2)
+            textFieldExternalGivtsOrganisation.text = modelBeeingEdited!.description
+            textFieldExternalGivtsAmount.text = CurrencyHelper.shared.getLocalFormat(value: modelBeeingEdited!.amount.toFloat, decimals: true)
             
             frequencyPicker.selectRow(getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue, inComponent: 0, animated: false)
             textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: model.cronExpression).rawValue][1] as? String
@@ -205,8 +206,8 @@ extension BudgetExternalGivtsViewController {
         modelBeeingEdited = model
         
         textFieldExternalGivtsOrganisation.text = modelBeeingEdited!.description
-        textFieldExternalGivtsAmount.text = modelBeeingEdited!.amount.getFormattedWithoutCurrency(decimals: 2)
-        
+        textFieldExternalGivtsAmount.text = CurrencyHelper.shared.getLocalFormat(value: modelBeeingEdited!.amount.toFloat, decimals: true)
+                
         frequencyPicker.selectRow(getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue, inComponent: 0, animated: false)
         textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue][1] as? String
         
