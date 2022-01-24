@@ -298,6 +298,7 @@ final class GivtManager: NSObject {
         }
         Analytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
         Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
+        UserDefaults.standard.hasDonations = true
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
