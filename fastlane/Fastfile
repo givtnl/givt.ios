@@ -27,7 +27,7 @@ platform :ios do
     appcenter_upload(
       owner_name: "Givt-NL",
       owner_type: "organization",
-      app_name: "Givt iOS Pre"
+      app_name: "Test"
     )
   end
 end
