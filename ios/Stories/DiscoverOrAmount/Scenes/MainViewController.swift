@@ -51,7 +51,7 @@ class MainViewController: UIViewController {
             let history = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
             self.present(history, animated: false)
         }
-    }
+        }
     override func viewDidAppear(_ animated: Bool) {
         navigationManager.delegate = self
 

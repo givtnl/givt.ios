@@ -9,7 +9,6 @@
 import UIKit
 import LGSideMenuController
 
-
 class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     func didTransformRootView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
     func didTransformLeftView(sideMenuController: LGSideMenuController, percentage: CGFloat) {}
@@ -30,7 +29,6 @@ class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     override func viewDidLoad() {
         super.delegate = self
         setNeedsStatusBarAppearanceUpdate()
-
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

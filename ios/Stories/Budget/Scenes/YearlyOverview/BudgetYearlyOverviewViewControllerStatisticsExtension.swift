@@ -12,17 +12,17 @@ import UIKit
 extension BudgetYearlyOverviewViewController {
     //-- MARK: Setup functions for different cards
     func setupTotalGivenPerYearCard(_ amount: Double, _ year: Int) {
-        totalGivenPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        totalGivenPerYearAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: amount.toFloat, decimals: true)
         totalGivenPerYearAmountDescription.text = "\("BudgetYearlyOverviewGivenIn".localized) \(year)"
     }
     func setupGivingGoalPerYearCard(_ amount: Double) {
-        givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        givingGoalPerYearAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: amount.toFloat, decimals: true)
         givingGoalPerYearDescriptionLabel.text = "BudgetYearlyOverviewGivingGoalPerYear".localized
         givingGoalPerYearEditGivingGoalLabel.attributedText = "BudgetSummaryGivingGoalEdit".localized.underlined
         givingGoalPerYearStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.editGivingGoal)))
     }
     func setupGivingGoalPerYearRemainingCard(_ amount: Double) {
-        givingGoalPerYearRemainingAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        givingGoalPerYearRemainingAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: amount.toFloat, decimals: true)
         givingGoalPerYearRemainingDescriptionLabel.text = "BudgetSummaryGivingGoalRest".localized
     }
     func setupGivingGoalSmallSetupCard() {
@@ -34,7 +34,7 @@ extension BudgetYearlyOverviewViewController {
         givingGoalBigSetupLabel.attributedText = createAttributeText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
     }
     func setupGivingGoalAmountBigCard(_ amount: Double) {
-        givingGoalBigAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        givingGoalBigAmountLabel.text = CurrencyHelper.shared.getLocalFormat(value: amount.toFloat, decimals: true)
         givingGoalBigDescriptionLabel.text = "BudgetYearlyOverviewGivingGoalPerYear".localized
         givingGoalPerYearBigStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.editGivingGoal)))
     }
