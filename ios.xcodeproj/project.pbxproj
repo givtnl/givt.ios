@@ -4434,8 +4434,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1337;
-				DEVELOPMENT_TEAM = YDSA4AY496;
+				CURRENT_PROJECT_VERSION = 323;
+				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4449,8 +4449,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
-					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/XCFrameworks/release",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4458,7 +4457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.12.1;
+				MARKETING_VERSION = 3.13.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4506,10 +4505,10 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepreus;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Native Givt Pre Auto-Build";
+				PROVISIONING_PROFILE_SPECIFIER = "match InHouse com.givt.iosnativepre";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4637,7 +4636,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1337;
+				CURRENT_PROJECT_VERSION = 323;
 				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_ARCHS = "";
@@ -4653,8 +4652,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
-					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/XCFrameworks/debug",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4662,7 +4660,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.12.1;
+				MARKETING_VERSION = 3.13.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4731,8 +4729,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1337;
-				DEVELOPMENT_TEAM = YDSA4AY496;
+				CURRENT_PROJECT_VERSION = 323;
+				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4746,8 +4744,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
-					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/XCFrameworks/release",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4755,7 +4752,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.12.1;
+				MARKETING_VERSION = 3.13.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4803,10 +4800,10 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Native Givt Pre Auto-Build";
+				PROVISIONING_PROFILE_SPECIFIER = "match InHouse com.givt.iosnativepre";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
