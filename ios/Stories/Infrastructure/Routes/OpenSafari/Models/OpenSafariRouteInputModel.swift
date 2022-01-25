@@ -28,4 +28,9 @@ struct OpenSafariRouteInputModel : Codable {
     var nativeAppScheme: String
     var urlPart: String
     var currency: String
+    var advertisementText: String?
+    var advertisementTitle: String?
+    var advertisementImageUrl: String?
+    var shouldShowCreditCard: Bool
+    var isProduction: Bool
 }

@@ -68,11 +68,8 @@ class SettingsViewController: BaseMenuViewController {
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
-        var appInfo: Setting? = nil
+        let appInfo = Setting(name: "FeatureMenuText".localized, image: #imageLiteral(resourceName: "givt_atoz"), showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
         
-        if (FeatureManager.shared.features.count != 0) {
-            appInfo = Setting(name: "FeatureMenuText".localized, image: #imageLiteral(resourceName: "givt_atoz"), showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
-        }
         let aboutGivt = Setting(name: "TitleAboutGivt".localized, image: #imageLiteral(resourceName: "info24"), callback: { self.about() })
         
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
@@ -110,8 +107,18 @@ class SettingsViewController: BaseMenuViewController {
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
             }
-            
-            let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
+            let givingLimitImage: UIImage!
+            switch(UserDefaults.standard.paymentType) {
+                case .CreditCard:
+                    givingLimitImage = #imageLiteral(resourceName: "dollar")
+                    break
+                case .BACSDirectDebit:
+                    givingLimitImage = #imageLiteral(resourceName: "pound")
+                    break
+                default:
+                    givingLimitImage = #imageLiteral(resourceName: "euro")
+                    break
+            }
             items[1].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[1].append(changePersonalInfo)
             items[1].append(turnOnPresets)
@@ -127,32 +134,23 @@ class SettingsViewController: BaseMenuViewController {
                 items[1].append(fingerprint)
             }
             items[2] = [changeAccount, screwAccount]
-            if let info = appInfo {
-                items[3] = [info, aboutGivt, shareGivt]
-            } else {
-                items[3] = [aboutGivt, shareGivt]
-            }
+            items[3] = [appInfo, aboutGivt, shareGivt]
             
             if !LoginManager.shared.isFullyRegistered {
                 items.insert([finishRegistration], at: 0)
             }
-        } else {            
-            if let info = appInfo {
-                items =
-                    [
-                        [finishRegistration],
-                        [turnOnPresets],
-                        [changeAccount, screwAccount],
-                        [info, aboutGivt, shareGivt],
-                ]
+        } else {
+            items = [[turnOnPresets],
+                [changeAccount, screwAccount],
+                [appInfo, aboutGivt, shareGivt]]
+            
+            if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
+                if let guid = UserDefaults.standard.userExt?.guid,
+                   (try? Mediater.shared.send(request: GetUserHasDonations(userId: guid))) ?? false {
+                    items.insert([finishRegistration], at: 0)
+                }
             } else {
-                items =
-                    [
-                        [finishRegistration],
-                        [turnOnPresets],
-                        [changeAccount, screwAccount],
-                        [aboutGivt, shareGivt],
-                ]
+                items.insert([finishRegistration], at: 0)
             }
         }
     }
@@ -229,8 +227,9 @@ class SettingsViewController: BaseMenuViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.transitioningDelegate = self.slideFromRightAnimation
         if UserDefaults.standard.isTempUser { //temp users can screw their account without authentication
-            self.present(vc, animated: true, completion: {
-            })
+            hideMenuAnimated() {
+                self.present(vc, animated: true)
+            }
         } else {
             hideMenuAnimated() {
                 NavigationManager.shared.pushWithLogin(vc, context: self)
@@ -337,7 +336,7 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     private func setupRecurringDonation() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_MENU_CLICKED")
+        Analytics.trackEvent("RECURRING_DONATIONS_MENU_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_MENU_CLICKED")
         let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen

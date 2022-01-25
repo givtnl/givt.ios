@@ -63,8 +63,8 @@ extension BudgetOverviewViewController {
             yearBarOne.givenViewWidthConstraint.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
             yearBarOne.givenView.backgroundColor = ColorHelper.SoftenedGivtPurple
             yearBarOne.alternateLabel.textColor = ColorHelper.SoftenedGivtPurple
-            yearBarOne.givenLabel.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            yearBarOne.alternateLabel.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarOne.givenLabel.text = CurrencyHelper.shared.getLocalFormat(value: lowestYear.amount.toFloat, decimals: true)
+            yearBarOne.alternateLabel.text = CurrencyHelper.shared.getLocalFormat(value: lowestYear.amount.toFloat, decimals: true)
             yearBarOne.hideGivingGoal()
             if #available(iOS 11.0, *) {
                 yearBarOne.givenView.layer.cornerRadius = 7
@@ -94,8 +94,8 @@ extension BudgetOverviewViewController {
             yearBarTwo.givenViewWidthConstraint.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
             yearBarTwo.givenView.backgroundColor = ColorHelper.GivtLightGreen
             yearBarTwo.alternateLabel.textColor = ColorHelper.GivtLightGreen
-            yearBarTwo.givenLabel.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            yearBarTwo.alternateLabel.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarTwo.givenLabel.text = CurrencyHelper.shared.getLocalFormat(value: highestYear.amount.toFloat, decimals: true)
+            yearBarTwo.alternateLabel.text = CurrencyHelper.shared.getLocalFormat(value: highestYear.amount.toFloat, decimals: true)
             yearBarTwo.hideGivingGoal()
             if #available(iOS 11.0, *) {
                 yearBarTwo.givenView.layer.cornerRadius = 7
@@ -123,7 +123,7 @@ extension BudgetOverviewViewController {
                     yearBarTwo.givenView.layer.cornerRadius = 0
                     yearBarTwo.showGivingGoal()
                     yearBarTwo.givingGoalWidthConstraint.constant = givingGoalBarWidth
-                    yearBarTwo.givingGoalLabel.text = givingGoalReferenceValue.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    yearBarTwo.givingGoalLabel.text = CurrencyHelper.shared.getLocalFormat(value: givingGoalReferenceValue.toFloat, decimals: true)
                     yearBarTwo.givingGoalView.backgroundColor = ColorHelper.GivtLightLightGreen
                     
                     if #available(iOS 11.0, *) {

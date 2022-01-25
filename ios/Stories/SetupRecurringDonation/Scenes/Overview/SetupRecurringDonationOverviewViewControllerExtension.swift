@@ -13,13 +13,13 @@ import SVProgressHUD
 
 extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate, RecurringRuleListDelegate {    
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
+        Analytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP")
         
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "CancelRecurringDonationAlertTitle".localized.replacingOccurrences(of: "{0}", with: recurringRuleCell.nameLabel.text!), message: "CancelRecurringDonationAlertMessage".localized , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
-                MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_YES")
+                Analytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_YES")
                 Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP_YES")
                 print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
                 let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
@@ -56,7 +56,7 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
                 }
             }))
             alert.addAction(UIAlertAction(title: "No".localized, style: .default, handler: {(action) in
-                MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_NO")
+                Analytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_NO")
                 Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP_NO")
             }))
             self.present(alert, animated: true, completion:  {})
@@ -110,7 +110,7 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndex == indexPath.row {
-            MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_OPENED")
+            Analytics.trackEvent("RECURRING_DONATIONS_DONATION_OPENED")
             Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_OPENED")
             return 133
         } else {

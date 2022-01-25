@@ -32,7 +32,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
              self.getDecimalValue(text: secondTextField.text!)!,
              self.getDecimalValue(text: thirdTextField.text!)!]
         LogService.shared.info(message: "Saving custom preset amounts")
-        MSAnalytics.trackEvent("PRESET_CHANGE")
+        Analytics.trackEvent("PRESET_CHANGE")
         Mixpanel.mainInstance().track(event: "PRESET_CHANGE")
         self.sideMenuController?.hideLeftView(sender: self)
         self.backPressed(self)
@@ -49,7 +49,9 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         firstTextField.delegate = self
         secondTextField.delegate = self
         thirdTextField.delegate = self
-        decimalNotation = NSLocale.current.decimalSeparator! as String
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        let locale = Locale(identifier: "\(Locale.current.languageCode!)-\(country!)")
+        decimalNotation = locale.decimalSeparator! as String
         ACCEPTABLE_CHARACTERS.append(decimalNotation)
         firstTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         secondTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
