@@ -31,8 +31,12 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         giveFeedback.text = NSLocalizedString("FeedbackTitle", comment: "")
         
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        
         if AppServices.isCountryFromSimGB() || UserDefaults.standard.accountType == .bacs {
             titleText.text = NSLocalizedString("InformationAboutUsGB", comment: "")
+        } else if country == "US" {
+            titleText.text = NSLocalizedString("InformationAboutUsUS", comment: "")
         } else {
             titleText.text = NSLocalizedString("InformationAboutUs", comment: "")
         }
