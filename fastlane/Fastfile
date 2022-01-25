@@ -1,0 +1,33 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new release build to AppCenter"
+  lane :release do
+    setup_ci
+    sync_code_signing(type: "enterprise", readonly: true)
+    cocoapods
+    increment_build_number(xcodeproj: "ios.xcodeproj")
+    build_app(workspace: "ios.xcworkspace", scheme: "ios")
+    dsym_zip
+    appcenter_upload(
+      owner_name: "Givt-NL",
+      owner_type: "organization",
+      app_name: "Givt iOS Pre"
+    )
+  end
+end
