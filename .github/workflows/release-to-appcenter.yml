@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with: 
-          sumodules: recursive
+          submodules: recursive
       - name: Install ruby
         run : brew install ruby rbenv ruby-build
       - name: Fix environment for building with fastlane
