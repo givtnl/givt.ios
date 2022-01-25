@@ -17,7 +17,7 @@ jobs:
         with: 
           submodules: recursive
       - name: Install ruby
-        run : brew install ruby rbenv ruby-build
+        run : brew install ruby rbenv ruby-build java11
       - name: Fix environment for building with fastlane
         run : |
           bundle config set --local path .gems
