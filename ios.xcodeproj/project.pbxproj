@@ -4449,8 +4449,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
-					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/XCFrameworks/release",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4653,8 +4652,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
-					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/XCFrameworks/debug",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -4746,8 +4744,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwipeCellKit\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/TrustKit\"",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
-					"$(SRCROOT)/givt.apps.shared/GivtCodeShare/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/XCFrameworks/release",
+					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
