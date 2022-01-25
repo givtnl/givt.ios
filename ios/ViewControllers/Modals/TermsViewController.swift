@@ -16,18 +16,28 @@ class TermsViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     var typeOfTerms: TypeOfTerms? {
         didSet {
+            let country = try? Mediater.shared.send(request: GetCountryQuery())
+
             if typeOfTerms == .privacyPolicy {
+                                
                 if AppServices.isCountryFromSimGB() {
                     textToShow = NSLocalizedString("PolicyTextGB", comment: "")
+                } else if country == "US" {
+                    textToShow = NSLocalizedString("PolicyTextUS", comment: "")
                 } else {
                     textToShow = NSLocalizedString("PolicyText", comment: "")
                 }
+                
                 titleToShow = NSLocalizedString("PrivacyTitle", comment: "")
             } else if typeOfTerms == .termsAndConditions {
-                textToShow = NSLocalizedString("TermsText", comment: "")
-                if AppServices.isCountryFromSimGB(){
+                if AppServices.isCountryFromSimGB() {
                     textToShow = NSLocalizedString("TermsTextGB", comment: "")
+                } else if country == "US" {
+                    textToShow = NSLocalizedString("TermsTextUS", comment: "")
+                } else {
+                    textToShow = NSLocalizedString("TermsText", comment: "")
                 }
+                
                 titleToShow = NSLocalizedString("FullVersionTitleTerms", comment: "")
             } else if typeOfTerms == .slimPayInfo {
                 textToShow = NSLocalizedString("SlimPayInfoDetail", comment: "")
