@@ -66,6 +66,7 @@ class OpenSafariRouteHandler : RequestHandlerWithContextProtocol {
         safariViewController.delegate = request.delegate
         safariViewController.modalPresentationStyle = .popover
         context.show(safariViewController, sender: context)
+        safariViewController.navigationController?.navigationBar.isHidden = true
         try completion(safariViewController as! R.TResponse)
     }
     

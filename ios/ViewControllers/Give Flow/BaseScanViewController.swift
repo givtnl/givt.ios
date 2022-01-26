@@ -218,6 +218,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol, SFSafariV
             if let amountVC = self.navigationController?.children[0].children[0].children[0] as? AmountViewController {
                 amountVC.clearAmounts()
             }
+            self.navigationController?.navigationBar.isHidden = false
             self.navigationController?.popToRootViewController(animated: true)
         }
     }
