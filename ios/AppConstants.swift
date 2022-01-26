@@ -206,7 +206,7 @@ class AppConstants {
     
     static var returnUrlDir: String {
         get {
-            return "nativep"
+            return "natived"
         }
     }
     
