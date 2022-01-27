@@ -531,6 +531,7 @@ class LoginManager {
                             } catch { completionHandler(errorTerm) }
                         } else {
                             completionHandler(nil)
+                            UserDefaults.standard.hackForTesting = false
                             self.logout()
                         }
                     }
@@ -720,6 +721,7 @@ class LoginManager {
         UserDefaults.standard.accountType = .undefined
         UserDefaults.standard.paymentType = .Undefined
         UserDefaults.standard.hasDonations = nil
+        GivtManager.shared.clearMinimumAmount()
     }
 }
 

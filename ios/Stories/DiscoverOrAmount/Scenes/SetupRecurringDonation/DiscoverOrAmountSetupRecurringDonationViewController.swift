@@ -261,7 +261,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         createSubcriptionButton.isEnabled = startDateLabel.inputValid
             && endDateLabel.inputValid
             && occurrencesTextField.inputValid
-            && amount >= 0.25
+            && amount >= GivtManager.shared.minimumAmount
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
@@ -417,7 +417,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     @objc func handleAmountEditingChanged() {
-        if amountView.amount >= 0.25 && amountView.amount <= 99999 {
+        if amountView.amount >= GivtManager.shared.minimumAmount && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
@@ -432,7 +432,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     @objc func handleAmountEditingDidEnd() {
-        if amountView.amount > 0 && amountView.amount < 0.25 {
+        if amountView.amount > 0 && amountView.amount < GivtManager.shared.minimumAmount {
             showAmountTooLow()
         } else if amountView.amount > 99999 {
             displayAmountTooHigh()

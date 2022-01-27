@@ -93,6 +93,8 @@ final class GivtManager: NSObject {
     
     var bestBeacon: BestBeacon?
     
+    private var _minimumAmount: Decimal?
+    
     func getBluetoothState() -> BluetoothState {
         return beaconService.getBluetoothState()
     }
@@ -290,14 +292,14 @@ final class GivtManager: NSObject {
         print(date)
         var transactions = [Transaction]()
         for (index, value) in amounts.enumerated() {
-            if value >= 0.25 {
+            if value >= GivtManager.shared.minimumAmount {
                 print(value)
                 let newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                 transactions.append(newTransaction)
             }
         }
-        Analytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
-        Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
+        Analytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .unavailable)])
+        Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .unavailable)])
         UserDefaults.standard.hasDonations = true
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
@@ -346,7 +348,7 @@ final class GivtManager: NSObject {
             print(date)
             var transactions = [Transaction]()
             for (index, value) in amounts.enumerated() {
-                if value >= 0.25 {
+                if value >= GivtManager.shared.minimumAmount {
                     print(value)
                     let newTransaction = Transaction(amount: value, beaconId: bestBeacon.beaconId!, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                     transactions.append(newTransaction)
@@ -442,7 +444,7 @@ final class GivtManager: NSObject {
     
     private func findAndRemoveCachedTransactions(transactions: [Transaction]) {
         for tr in transactions {
-            if let idx = UserDefaults.standard.offlineGivts.index(where: { (trans) -> Bool in
+            if let idx = UserDefaults.standard.offlineGivts.firstIndex(where: { (trans) -> Bool in
                 return trans.amount == tr.amount
                     && trans.beaconId == tr.beaconId
                     && trans.collectId == tr.collectId
@@ -452,7 +454,6 @@ final class GivtManager: NSObject {
                 UserDefaults.standard.offlineGivts.remove(at: idx)
             }
         }
-        
     }
     
     private func tryGive(transactions: [Transaction], trycount: UInt = 0) {
@@ -741,7 +742,27 @@ extension GivtManager: LocationServiceProtocol {
     }
 }
 
-protocol GivtProcessedProtocol: class {
+extension GivtManager {
+    var minimumAmount: Decimal {
+        get {
+            if let minAmount = _minimumAmount {
+                return minAmount
+            } else if let country = try? Mediater.shared.send(request: GetCountryQuery()),
+                    country == "US" {
+                _minimumAmount = Decimal(1.00)
+                return _minimumAmount!
+            } else {
+                _minimumAmount = Decimal(0.25)
+                return _minimumAmount!
+            }
+        }
+    }
+    func clearMinimumAmount() {
+        _minimumAmount = nil
+    }
+}
+
+protocol GivtProcessedProtocol: AnyObject {
     func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool)
     func didUpdateBluetoothState(bluetoothState: BluetoothState)
     func didDetectGivtLocation(orgName: String, identifier: String)

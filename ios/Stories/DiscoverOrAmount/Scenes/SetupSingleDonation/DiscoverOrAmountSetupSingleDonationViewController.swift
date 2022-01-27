@@ -245,13 +245,19 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     
     fileprivate func checkAmount() {
         let parsedDecimal = Decimal(string: (amountControl.amount.replacingOccurrences(of: decimalNotation, with: ".")))!
+        var minimumAmount = Decimal(0.25)
+        if let country = try? Mediater.shared.send(request: GetCountryQuery()),
+           country == "US" {
+            minimumAmount = Decimal(1.00)
+        }
+        
         amountControl.amountLabel.textColor =
-            parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < 0.25) ?
+            parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < minimumAmount) ?
                 UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) :
                 UIColor.init(rgb: 0xD2D1D9)
-        amountControl.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25 || parsedDecimal == 0
+        amountControl.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= minimumAmount || parsedDecimal == 0
         amountControl.activeMarker.backgroundColor = amountControl.isActive ? amountControl.isValid ? #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1) : #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        giveButton.isEnabled = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25
+        giveButton.isEnabled = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= minimumAmount
     }
     
     internal func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {

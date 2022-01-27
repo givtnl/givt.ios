@@ -18,7 +18,7 @@ class CreateDonationCommandValidator: RequestPreProcessorProtocol {
             throw DonationError.amountTooHigh
         }
         
-        if request.amount < 0.25 {
+        if request.amount < GivtManager.shared.minimumAmount {
             throw DonationError.amountTooLow
         }
         
