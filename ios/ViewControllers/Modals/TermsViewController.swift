@@ -1,11 +1,3 @@
-//
-//  TermsViewController.swift
-//  ios
-//
-//  Created by Lennie Stockman on 28/09/17.
-//  Copyright © 2017 Maarten Vergouwe. All rights reserved.
-//
-
 import UIKit
 
 class TermsViewController: UIViewController {
@@ -19,25 +11,24 @@ class TermsViewController: UIViewController {
             let country = try? Mediater.shared.send(request: GetCountryQuery())
 
             if typeOfTerms == .privacyPolicy {
-                                
-                if AppServices.isCountryFromSimGB() {
-                    textToShow = NSLocalizedString("PolicyTextGB", comment: "")
-                } else if country == "US" {
-                    textToShow = NSLocalizedString("PolicyTextUS", comment: "")
-                } else {
-                    textToShow = NSLocalizedString("PolicyText", comment: "")
+                switch(country) {
+                    case "GB", "GG", "JE":
+                        textToShow = NSLocalizedString("PolicyTextGB", comment: "")
+                    case "US":
+                        textToShow = NSLocalizedString("PolicyTextUS", comment: "")
+                    default:
+                        textToShow = NSLocalizedString("PolicyText", comment: "")
                 }
-                
                 titleToShow = NSLocalizedString("PrivacyTitle", comment: "")
             } else if typeOfTerms == .termsAndConditions {
-                if AppServices.isCountryFromSimGB() {
-                    textToShow = NSLocalizedString("TermsTextGB", comment: "")
-                } else if country == "US" {
-                    textToShow = NSLocalizedString("TermsTextUS", comment: "")
-                } else {
-                    textToShow = NSLocalizedString("TermsText", comment: "")
+                switch(country) {
+                    case "GB", "GG", "JE":
+                        textToShow = NSLocalizedString("TermsTextGB", comment: "")
+                    case "US":
+                        textToShow = NSLocalizedString("TermsTextUS", comment: "")
+                    default:
+                        textToShow = NSLocalizedString("TermsText", comment: "")
                 }
-                
                 titleToShow = NSLocalizedString("FullVersionTitleTerms", comment: "")
             } else if typeOfTerms == .slimPayInfo {
                 textToShow = NSLocalizedString("SlimPayInfoDetail", comment: "")
