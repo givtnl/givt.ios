@@ -43,7 +43,16 @@ extension USSecondRegistrationViewController {
                                 }
                             } else {
                                 //show alert
-                                print(String(describing: response.error))
+                                DispatchQueue.main.async {
+                                    SVProgressHUD.dismiss()
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+                                        
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                    LogService.shared.error(message: "Error while registering credit card by token. Reason: \(String(describing: response.error))")
+                                    print(String(describing: response.error))
+                                }
                             }
                         }
                     }
