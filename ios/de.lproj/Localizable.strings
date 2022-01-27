@@ -15,7 +15,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SlimPayInformation" = "Wir möchten, dass du Givt so einfach wie möglich nutzen kannst.";
 "SavingSettings" = "Lehn dich zurück und entspann dich, wir speichern derweil die Einstellungen.";
 "Continue" = "Weiter";
-"GivtMinimumAmountEuro" = "0,25 Euro";
+"GivtMinimumAmountEuro" = "0,25 €";
 "SlimPayInfoDetail" = "Givt arbeitet bei der Ausführung der Transaktionen mit SlimPay zusammen. SlimPay ist spezialisiert auf die Abwicklung von Mandaten und automatischen Geldüberweisungen auf digitalen Plattformen. SlimPay führt diese Aufträge für Givt zu den niedrigsten Preisen auf diesem Markt und mit hoher Geschwindigkeit aus.\n\nSlimPay ist ein idealer Partner für Givt, weil sie das bargeldlose Spenden sehr einfach und sicher machen. Als Zahlungsdienstleister werden sie von der Nederlandsche Bank und anderen europäischen Nationalbanken beaufsichtigt.\n\nDas Geld wird auf einem SlimPay-Konto gesammelt. \nGivt wird sicherstellen, dass das Geld korrekt ausgegeben wird.\n";
 "SlimPayInfoDetailTitle" = "Was ist SlimPay`";
 "ContinueRegistration" = "Dein Benutzerkonto wurde bereits angelegt,\naber es war leider nicht möglich\ndie Registrierung abzuschließen.\n\nWir möchten dir gern dabei helfen, Givt zu nutzen, \ndaher bitten wir dich, sich nochmals einzuloggen,\num die Registrierung abzuschließen.";
@@ -266,7 +266,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsErrGivingLimit" = "Der Betrag ist höher als dein Maximalbetrag.";
 "AmountPresetsErr25C" = "Der Betrag muss mindestens 0,25 Euro betragen.";
 "AmountPresetsErrEmpty" = "Gib einen Betrag ein";
-"GivtMinimumAmountPond" = "0.25 €";
+"GivtMinimumAmountPond" = "0.25 £";
 "AlertBACSMessage" = "Da du {0} als Länderwahl angegeben haben, gehen wir davon aus, dass du lieber über ein SEPA-Mandat (€) geben möchtest, dafür benötigen wir deine IBAN. Falls du lieber BACS (£) verwenden möchtest, benötigen wir deine Bankleitzahl und Kontonummer.";
 "AlertSEPAMessage" = "Da du {0} als Länderwahl angegeben haben, gehen wir davon aus, dass du lieber über BACS Direct Debit (£) geben möchtest, dafür benötigen wir deine Bankleitzahl und Kontonummer. Falls du stattdessen lieber SEPA (€) nutzen möchtest, benötigen wir deine IBAN.";
 "Important" = "Wichtig";
@@ -1107,3 +1107,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "TermsTextUsVersion" = "1.0";
 "InformationAboutUsUS" = "Givt is a product of Givt Inc.\n\nWe are located at the 3343 Peachtree Rd NE Ste145-1032 Atlanta. For questions or complaints you can reach us via +1 (404) 999 7024 or support@givt.app.";
 "FAQantwoord0US" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +1 404 999 7024 or by sending an e-mail to support@givt.app .";
+"GivtMinimumAmountDollar" = "1,00 $";

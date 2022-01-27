@@ -87,7 +87,9 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         setupEndDatePickerView()
         
         createSubcriptionButton.accessibilityLabel = "Give".localized
-        createSubcriptionButton.setTitle("Give".localized, for: .normal)        
+        createSubcriptionButton.setTitle("Give".localized, for: .normal)
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -266,7 +268,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         createSubcriptionButton.isEnabled = startDateLabel.inputValid
             && endDateLabel.inputValid
             && occurrencesTextField.inputValid
-            && amount >= 0.25
+            && amount >= GivtManager.shared.minimumAmount
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
@@ -421,7 +423,8 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     
     @objc func handleAmountEditingChanged() {
-        if amountView.amount >= 0.25 && amountView.amount <= 99999 {
+        
+        if amountView.amount >= GivtManager.shared.minimumAmount && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
@@ -435,7 +438,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         }
     }
     @objc func handleAmountEditingDidEnd() {
-        if amountView.amount > 0 && amountView.amount < 0.25 {
+        if amountView.amount > 0 && amountView.amount < GivtManager.shared.minimumAmount {
             showAmountTooLow()
         } else if amountView.amount > 99999 {
             displayAmountTooHigh()
@@ -530,7 +533,16 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         self.present(alert, animated: true, completion: nil)
     }
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = { () -> String in
+            switch UserDefaults.standard.paymentType {
+            case .BACSDirectDebit:
+                return "GivtMinimumAmountPond".localized
+            case .CreditCard:
+                return "GivtMinimumAmountDollar".localized
+            default:
+                return "GivtMinimumAmountEuro".localized
+            }
+        }()
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
