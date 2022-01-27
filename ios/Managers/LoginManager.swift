@@ -188,24 +188,15 @@ class LoginManager {
                         let userExt = try decoder.decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
                         UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
-                        if UserDefaults.standard.paymentType == .CreditCard && !userExt.IsTempUser {
-                            UserDefaults.standard.mandateSigned = true
-                        } else {
-                            UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
-                            if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
-                                UserDefaults.standard.paymentType = PaymentType.fromAccountType(accountType)
-                            }
-                            UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
+                        UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
+                        if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()),
+                           accountType != .undefined {
+                            UserDefaults.standard.paymentType = PaymentType.fromAccountType(accountType)
                         }
                         UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
                         AppServices.shared.setLocale()
                         if let newConfig = UserDefaults.standard.userExt {
                             newConfig.country = userExt.Country
-#if !PRODUCTION
-                            if UserDefaults.standard.hackForTesting {
-                                newConfig.country = "US"
-                            }
-#endif
                             UserDefaults.standard.userExt = newConfig
                         }
                         completion(userExt)
@@ -410,6 +401,9 @@ class LoginManager {
         
         if let countryCode = try? Mediater.shared.send(request: GetCountryQuery()) {
             regUser.country = countryCode
+            if countryCode == "US" {
+                UserDefaults.standard.paymentType = .CreditCard
+            }
         }
         
         self.registerExtraDataFromUser(regUser) { b in
