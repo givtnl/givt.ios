@@ -533,7 +533,16 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         self.present(alert, animated: true, completion: nil)
     }
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.paymentType.isBacs ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = { () -> String in
+            switch UserDefaults.standard.paymentType {
+            case .BACSDirectDebit:
+                return "GivtMinimumAmountPond".localized
+            case .CreditCard:
+                return "GivtMinimumAmountDollar".localized
+            default:
+                return "GivtMinimumAmountEuro".localized
+            }
+        }()
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))

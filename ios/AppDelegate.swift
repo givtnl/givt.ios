@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
         // This is to convert the accountType setting set on the users their phone
         // to the new PaymentType so the accountType which is obsolete can be removed soon
-        if UserDefaults.standard.paymentType != .CreditCard {
+        if UserDefaults.standard.paymentType == .Undefined {
             UserDefaults.standard.paymentType = PaymentType.fromAccountType(UserDefaults.standard.accountType)
         }
         
