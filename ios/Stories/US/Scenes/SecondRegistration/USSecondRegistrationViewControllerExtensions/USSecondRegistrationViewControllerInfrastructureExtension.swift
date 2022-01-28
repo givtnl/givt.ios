@@ -27,7 +27,6 @@ extension USSecondRegistrationViewController {
     }
 
     func initViewModel() {
-        viewModel.setFirstNameTextField = { }
         viewModel.validateFirstName =  { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.registrationValidator.isValidFirstName {
@@ -35,7 +34,6 @@ extension USSecondRegistrationViewController {
                 }
             }
         }
-        viewModel.setLastNameTextField = { }
         viewModel.validateLastName =  { [weak self] () in
             DispatchQueue.main.async {
                 if let isValid = self?.viewModel.registrationValidator.isValidLastName {

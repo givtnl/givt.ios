@@ -32,11 +32,9 @@ class USSecondRegistrationViewModel {
         switch(fieldTypeTag) {
         case .firstName:
             registrationValidator.firstName = input
-            setFirstNameTextField?()
             break
         case .lastName:
             registrationValidator.lastName = input
-            setLastNameTextField?()
             break
         case .postalCode:
             registrationValidator.postalCode = input
