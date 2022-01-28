@@ -123,7 +123,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol, SFSafariV
                 }
                 return
             } else {
-                self.safariViewController = try? Mediater.shared.send(request: route, withContext: self)
+                DispatchQueue.main.async {
+                    self.safariViewController = try? Mediater.shared.send(request: route, withContext: self)
+                }
             }
         }
     }
