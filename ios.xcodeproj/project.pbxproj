@@ -4439,7 +4439,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 323;
-				DEVELOPMENT_TEAM = 9C9K7PRW9C;
+				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4461,7 +4461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.13.1;
+				MARKETING_VERSION = 3.14.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4509,10 +4509,10 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
+				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "match InHouse com.givt.iosnativepre";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore net.givtapp.ios";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4664,7 +4664,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.13.1;
+				MARKETING_VERSION = 3.14.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4756,7 +4756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.13.1;
+				MARKETING_VERSION = 3.14.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
