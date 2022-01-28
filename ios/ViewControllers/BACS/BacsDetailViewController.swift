@@ -29,7 +29,7 @@ class BacsDetailViewController: UIViewController {
         done.setTitle(NSLocalizedString("Continue", comment: ""), for: UIControl.State.normal)
         personalInformationText.text = NSLocalizedString("BacsVerifyBodyDetails", comment: "")
             .replacingOccurrences(of: "{0}", with: "\(userExtension.FirstName!) \(userExtension.LastName!)")
-            .replacingOccurrences(of: "{1}", with: "\(userExtension.Address!), \(userExtension.PostalCode!) \(userExtension.City!) \(country?.name!)")
+            .replacingOccurrences(of: "{1}", with: "\(userExtension.Address!), \(userExtension.PostalCode!) \(userExtension.City!) \(country!.name)")
             .replacingOccurrences(of: "{2}", with: userExtension.Email)
             .replacingOccurrences(of: "{3}", with: userExtension.SortCode!)
             .replacingOccurrences(of: "{4}", with: userExtension.AccountNumber!)
