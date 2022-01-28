@@ -525,7 +525,9 @@ class LoginManager {
                             } catch { completionHandler(errorTerm) }
                         } else {
                             completionHandler(nil)
+#if !PRODUCTION
                             UserDefaults.standard.hackForTesting = false
+#endif
                             self.logout()
                         }
                     }
@@ -702,7 +704,6 @@ class LoginManager {
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false
         userClaim = .startedApp
-        UserDefaults.standard.hackForTesting = false
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
         BadgeService.shared.removeAllBadges()
@@ -716,6 +717,9 @@ class LoginManager {
         UserDefaults.standard.paymentType = .Undefined
         UserDefaults.standard.hasDonations = nil
         GivtManager.shared.clearMinimumAmount()
+#if !PRODUCTION
+        UserDefaults.standard.hackForTesting = false
+#endif
     }
 }
 

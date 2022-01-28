@@ -66,11 +66,12 @@ class AppServices {
     }
     
     func setLocale() {
+        CurrencyHelper.shared.updateCurrentLocale(determineLocale(UserDefaults.standard.paymentType))
+#if !PRODUCTION
         if (UserDefaults.standard.hackForTesting) {
             CurrencyHelper.shared.updateCurrentLocale("en-US")
-        } else {
-            CurrencyHelper.shared.updateCurrentLocale(determineLocale(UserDefaults.standard.paymentType))
         }
+#endif
     }
     
     private func determineLocale(_ paymentType: PaymentType) -> String {
