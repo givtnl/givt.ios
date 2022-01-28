@@ -19,7 +19,7 @@ platform :ios do
   desc "Push a new release build to AppCenter"
   lane :release do
     setup_ci
-    sync_code_signing(type: "enterprise", readonly: true)
+    sync_code_signing(type: "enterprise", readonly: true, app_identifier: "com.givt.iosnativepre")
     cocoapods
     increment_build_number(xcodeproj: "ios.xcodeproj")
     build_app(workspace: "ios.xcworkspace", scheme: "ios")
@@ -30,5 +30,15 @@ platform :ios do
       app_name: "Test",
       notify_testers: true
     )
+  end
+  
+  desc "Push a new production build to Testflight"
+  lane :production do
+    setup_ci
+    sync_code_signing(type: "appstore", readonly: true, app_identifier: "net.givtapp.ios"))
+    cocoapods
+    increment_build_number(xcodeproj: "ios.xcodeproj")
+    build_app(workspace: "ios.xcworkspace", scheme: "ios Production"
+    dsym_zip
   end
 end
