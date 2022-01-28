@@ -14,18 +14,17 @@ class USSecondRegistrationViewModel {
 
     var firstName: String!
     var lastName: String!
+    var postalCode: String!
     
     var validateFirstName: NillableClosure!
     var validateLastName: NillableClosure!
-    
-    var setFirstNameTextField:  NillableClosure!
-    var setLastNameTextField:  NillableClosure!
+    var validatePostalCode: NillableClosure!
     
     var validateAllFields:  NillableClosure!
     
     var allFieldsValid: Bool {
         get {
-            return registrationValidator.isValidFirstName && registrationValidator.isValidLastName
+            return registrationValidator.isValidFirstName && registrationValidator.isValidLastName && registrationValidator.isValidPostalCode
         }
     }
     
@@ -39,6 +38,9 @@ class USSecondRegistrationViewModel {
             registrationValidator.lastName = input
             setLastNameTextField?()
             break
+        case .postalCode:
+            registrationValidator.postalCode = input
+            break
         }
     }
     
@@ -49,6 +51,9 @@ class USSecondRegistrationViewModel {
             break
         case .lastName:
             validateLastName?()
+            break
+        case .postalCode:
+            validatePostalCode?()
             break
         }
     }

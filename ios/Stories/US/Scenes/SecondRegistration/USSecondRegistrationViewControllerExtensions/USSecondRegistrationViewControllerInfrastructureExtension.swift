@@ -19,6 +19,7 @@ extension USSecondRegistrationViewController {
         setupScrollViewFix()
         setupBackButton()
         setupRegisterButton()
+        setupPostalCodeTextField()
         
         titleLabel.text = "US.Registration.Tax.Title".localized
         subtitleLabel.text = "US.Registration.Tax.Subtitle".localized
@@ -42,6 +43,13 @@ extension USSecondRegistrationViewController {
                 }
             }
         }
+        viewModel.validatePostalCode = { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.registrationValidator.isValidPostalCode {
+                    self?.postalCodeTextField.setBorders(isValid)
+                }
+            }
+        }
         
         viewModel.validateAllFields = { [weak self] () in
             DispatchQueue.main.async {
@@ -51,7 +59,9 @@ extension USSecondRegistrationViewController {
                 if (self?.viewModel.registrationValidator.lastName != "") {
                     self?.viewModel.validateLastName?()
                 }
-                
+                if (self?.viewModel.registrationValidator.postalCode != "") {
+                    self?.viewModel.validatePostalCode?()
+                }
                 if let areAllFieldsValid = self?.viewModel.allFieldsValid {
                     self?.registerButton.isEnabled = areAllFieldsValid
                 }
