@@ -117,7 +117,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: GoBackOneControllerRoute(), withContext: self)
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_DISMISSED")
     }
     
@@ -130,7 +130,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
             makeDonation()
         }
         
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
+        Analytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
     }
 }
@@ -261,7 +261,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         createSubcriptionButton.isEnabled = startDateLabel.inputValid
             && endDateLabel.inputValid
             && occurrencesTextField.inputValid
-            && amount >= 0.25
+            && amount >= GivtManager.shared.minimumAmount
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
@@ -270,7 +270,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     
     private func setupAmountView() {
         // get the currency symbol from user settingsf
-        amountView.currency = UserDefaults.standard.currencySymbol
+        amountView.currency = CurrencyHelper.shared.getCurrencySymbol()
         amountView.bottomBorderColor = UIColor.clear
         
         // setup event handlers
@@ -417,7 +417,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     @objc func handleAmountEditingChanged() {
-        if amountView.amount >= 0.25 && amountView.amount <= 99999 {
+        if amountView.amount >= GivtManager.shared.minimumAmount && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
@@ -432,7 +432,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     @objc func handleAmountEditingDidEnd() {
-        if amountView.amount > 0 && amountView.amount < 0.25 {
+        if amountView.amount > 0 && amountView.amount < GivtManager.shared.minimumAmount {
             showAmountTooLow()
         } else if amountView.amount > 99999 {
             displayAmountTooHigh()
@@ -534,7 +534,16 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let minimumAmount = { () -> String in
+            switch UserDefaults.standard.paymentType {
+            case .BACSDirectDebit:
+                return "GivtMinimumAmountPond".localized
+            case .CreditCard:
+                return "GivtMinimumAmountDollar".localized
+            default:
+                return "GivtMinimumAmountEuro".localized
+            }
+        }()
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))

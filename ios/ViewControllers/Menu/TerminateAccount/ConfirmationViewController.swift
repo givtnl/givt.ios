@@ -25,7 +25,6 @@ class ConfirmationViewController: UIViewController {
         super.viewDidAppear(animated)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-            // Put your code which should be executed with a delay here
             self.dismiss(animated: true, completion: nil)
             NavigationManager.shared.loadMainPage(animated: false)
         })

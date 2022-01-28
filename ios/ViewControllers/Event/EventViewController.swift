@@ -52,7 +52,7 @@ class EventViewController: BaseScanViewController {
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         LogService.shared.info(message: "GIVE_LOCATION_START")
-        MSAnalytics.trackEvent("GIVE_LOCATION_START")
+        Analytics.trackEvent("GIVE_LOCATION_START")
         Mixpanel.mainInstance().track(event: "GIVE_LOCATION_START")
     }
     
@@ -77,7 +77,7 @@ class EventViewController: BaseScanViewController {
                     self.givtManager.stopLookingForGivtLocations()
                     self.giveManually(antennaID: identifier)
                     LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
-                    MSAnalytics.trackEvent("GIVE_LOCATION", withProperties:["id": identifier])
+                    Analytics.trackEvent("GIVE_LOCATION", withProperties:["id": identifier])
                     Mixpanel.mainInstance().track(event: "GIVE_LOCATION", properties: ["id": identifier])
                 }
                 self.present(vc, animated: true, completion: nil)

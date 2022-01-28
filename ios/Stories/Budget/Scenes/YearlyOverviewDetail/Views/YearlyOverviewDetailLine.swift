@@ -14,7 +14,7 @@ class YearlyOverviewDetailLine: UIView {
         didSet {
             if let model = data {
                 descriptionLabel.text = model.Key
-                amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                amountLabel.text = CurrencyHelper.shared.getLocalFormat(value: model.Value.toFloat, decimals: true)
                 if let deductable = model.TaxDeductable {
                     deductableLabel.isHidden = !deductable
                 } else {

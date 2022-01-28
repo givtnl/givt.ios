@@ -24,7 +24,7 @@ class BacsSettingUpViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsInfoViewController") as! BacsInfoViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        MSAnalytics.trackEvent("User started BACS mandate flow")
+        Analytics.trackEvent("User started BACS mandate flow")
         Mixpanel.mainInstance().track(event: "User started BACS mandate flow")
 
         self.navigationController?.removeLogo()

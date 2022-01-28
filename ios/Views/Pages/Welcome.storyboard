@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D49-Il-Zbt">
-    <device id="retina6_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D49-Il-Zbt">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-qc-YNR" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-qc-YNR" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="756" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -56,7 +54,7 @@
                                     <constraint firstAttribute="height" constant="32" id="VQa-mS-iOU"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq4-Vt-GNC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq4-Vt-GNC">
                                 <rect key="frame" x="20" y="808" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="0pu-I8-aMX"/>
@@ -70,6 +68,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pen-91-zUq"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0QF-4b-EFC" firstAttribute="leading" secondItem="Pen-91-zUq" secondAttribute="leading" id="5r2-6R-VSC"/>
@@ -85,7 +84,6 @@
                             <constraint firstItem="0QF-4b-EFC" firstAttribute="trailing" secondItem="Pen-91-zUq" secondAttribute="trailing" id="q7j-wZ-DsB"/>
                             <constraint firstItem="TQK-ca-7ow" firstAttribute="top" secondItem="Pen-91-zUq" secondAttribute="top" constant="20" id="sbz-Iv-dKW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Pen-91-zUq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="kwe-8w-CMs">
                         <barButtonItem key="leftBarButtonItem" id="eOJ-R7-GSt"/>
@@ -138,18 +136,7 @@
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PAw-hK-CdU" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="365" width="374" height="44"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="EtM-qH-iFF"/>
-                                                </constraints>
-                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="383-ea-8pW" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="383-ea-8pW" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="668" width="374" height="44"/>
                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -174,7 +161,7 @@
                                                     <action selector="done:" destination="Op2-mF-ZtZ" eventType="touchUpInside" id="iEi-qR-2ML"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQ1-3z-Qqu">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQ1-3z-Qqu">
                                                 <rect key="frame" x="20" y="720" width="374" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Gvi-lV-MO4"/>
@@ -199,6 +186,17 @@
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PAw-hK-CdU" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="365" width="374" height="44"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="EtM-qH-iFF"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -236,6 +234,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Sa-97-5E2"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="v1w-FR-7YB" firstAttribute="top" secondItem="6Sa-97-5E2" secondAttribute="top" id="9Ax-KO-59i"/>
@@ -248,7 +247,6 @@
                             <constraint firstItem="v1w-FR-7YB" firstAttribute="trailing" secondItem="6Sa-97-5E2" secondAttribute="trailing" id="fFa-Bv-eTY"/>
                             <constraint firstItem="ue2-0Z-aVm" firstAttribute="trailing" secondItem="6Sa-97-5E2" secondAttribute="trailing" id="lQv-D5-YAr"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Sa-97-5E2"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -288,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_welkom" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-Q9-pcW">
-                                <rect key="frame" x="42.666666666666657" y="112" width="290" height="354"/>
+                                <rect key="frame" x="42.666666666666657" y="112" width="290" height="388"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5j-vj-GlK">
                                 <rect key="frame" x="20" y="54.000000000000007" width="335" height="27.333333333333336"/>
@@ -303,6 +301,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="jEj-3g-uRT"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="w5j-vj-GlK" firstAttribute="leading" secondItem="jEj-3g-uRT" secondAttribute="leading" constant="20" id="3eh-jY-2tY"/>
@@ -315,7 +314,6 @@
                             <constraint firstItem="w5j-vj-GlK" firstAttribute="top" secondItem="jEj-3g-uRT" secondAttribute="top" constant="10" id="igQ-MO-W7L"/>
                             <constraint firstItem="jEj-3g-uRT" firstAttribute="trailing" secondItem="4SL-cA-QWS" secondAttribute="trailing" constant="20" id="wGV-ai-643"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="jEj-3g-uRT"/>
                     </view>
                     <size key="freeformSize" width="375" height="500"/>
                     <connections>
@@ -329,6 +327,17 @@
             <point key="canvasLocation" x="2512.8000000000002" y="315.74212893553226"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="383-ea-8pW">
+            <size key="intrinsicContentSize" width="84" height="37"/>
+        </designable>
+        <designable name="PAw-hK-CdU">
+            <size key="intrinsicContentSize" width="78" height="23.666666666666668"/>
+        </designable>
+        <designable name="Qk9-qc-YNR">
+            <size key="intrinsicContentSize" width="99" height="37"/>
+        </designable>
+    </designables>
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="givt32h" width="85" height="32"/>

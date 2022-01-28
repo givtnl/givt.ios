@@ -16,13 +16,23 @@ class NavigationHelper {
             userExt?.email = email
             UserDefaults.standard.userExt = userExt
             let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "RegistrationEmailPW") as! RegistrationViewController
-            vc.passwordField = password
-            register.setViewControllers([vc], animated: false)
+            if let countryFromSim = try? Mediater.shared.send(request: GetCountryQuery()) {
+                switch(countryFromSim) {
+                case "US":
+                    let registrationViewController = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "USRegistrationEmailPW") as! USRegistrationViewController
+                    registrationViewController.setPassword = password
+                    register.setViewControllers([registrationViewController], animated: false)
+                    break
+                default:
+                    let registrationViewController = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "RegistrationEmailPW") as! RegistrationViewController
+                    registrationViewController.passwordField = password
+                    register.setViewControllers([registrationViewController], animated: false)
+                    break
+                }
+            }
             context.present(register, animated: true, completion: nil)
         }
     }
-    
     static func openUrl(url: URL, completion: ((Bool) -> Swift.Void)?) -> Bool {
         if url.absoluteString.starts(with: "http") || UIApplication.shared.canOpenURL(url) {
             if #available(iOS 10.0, *) {

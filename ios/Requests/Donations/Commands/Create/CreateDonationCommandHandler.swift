@@ -30,6 +30,8 @@ class CreateDonationCommandHandler : RequestHandlerProtocol {
         donation.setValue(request.collectId, forKey: "collectId")
         try dataContext.saveToMainContext()
         
+        UserDefaults.standard.hasDonations = true
+
         BadgeService.shared.addBadge(badge: .offlineGifts)
         
         try completion(donation.objectID as! R.TResponse)

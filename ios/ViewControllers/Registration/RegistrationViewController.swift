@@ -37,7 +37,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         
         navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
 
-        MSAnalytics.trackEvent("User started registration")
+        Analytics.trackEvent("User started registration")
         Mixpanel.mainInstance().track(event: "User started registration")
 
         initButtonsWithTags()

@@ -50,7 +50,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
 
-        MSAnalytics.trackEvent("User entered 2nd step of registration")
+        Analytics.trackEvent("User entered 2nd step of registration")
         Mixpanel.mainInstance().track(event: "User entered 2nd step of registration")
 
         setupPaymentView()
@@ -86,9 +86,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             countryField.text = selectedCountry?.name
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
-            iban.text = "NL20INGB0001234567"
-            sortCode.text="000000"
-            accountNumber.text = "12345678"
+            iban.text = "NL77AAAA4828721860"
+            sortCode.text = "404784"
+            accountNumber.text = "70872490"
 
             checkAll(streetAndNumber)
             checkAll(postalCode)
@@ -101,7 +101,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(accountNumber)
         #endif
         
-        if let currentRegionCode = AppServices.getCountryFromSim() {
+        if let currentRegionCode = try? Mediater.shared.send(request: GetCountryQuery()) {
             print(currentRegionCode)
             let filteredCountries = AppConstants.countries.filter {
                 $0.shortName == currentRegionCode
@@ -143,7 +143,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         super.viewDidAppear(animated)
     }
 
-    private var paymentType: AccountType = .sepa
+    private var currentPaymentType: PaymentType = .SEPADirectDebit
+    
     @IBOutlet var bacsButton: UIButton!
     @IBOutlet var sepaButton: UIButton!
     @IBOutlet var leadingAnchorLine: NSLayoutConstraint!
@@ -154,7 +155,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         leadingAnchorLine.constant = 0
         sepaButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 14)
         bacsButton.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14)
-        self.paymentType = .sepa
+        
+        currentPaymentType = .SEPADirectDebit
+        
         self.checkAll(self.iban)
         self.checkAll(self.sortCode)
         if animated {
@@ -180,7 +183,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         leadingAnchorLine.constant = 65
         sepaButton.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14)
         bacsButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 14)
-        self.paymentType = .bacs
+        self.currentPaymentType = .BACSDirectDebit
         self.checkAll(self.iban)
         self.checkAll(self.sortCode)
         if animated {
@@ -454,13 +457,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).capitalized
         var userData: RegistrationUser!
-        if paymentType == .sepa {
-            UserDefaults.standard.accountType = AccountType.sepa
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
+        if currentPaymentType == .SEPADirectDebit {
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "", timeZoneId: TimeZone.current.identifier)
         } else {
-            UserDefaults.standard.accountType = AccountType.bacs
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber, timeZoneId: TimeZone.current.identifier)
         }
+        UserDefaults.standard.paymentType = currentPaymentType
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
                 if success {
@@ -560,7 +562,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             break
         }
         
-        let isBankDataCorrect = (isIbanValid && paymentType == .sepa) || (isBacsValid && paymentType == .bacs)
+        let isBankDataCorrect = (isIbanValid && currentPaymentType == .SEPADirectDebit) || (isBacsValid && currentPaymentType == .BACSDirectDebit)
         nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isBankDataCorrect && isMobilePrefixValid
     }
 
@@ -568,6 +570,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         guard let selectedMobilePrefix = selectedMobilePrefix else { return false }
         
         let shortName = selectedMobilePrefix.shortName
+        
         if shortName == "BE" && !(number.starts(with: "4") || number.starts(with: "04")) {
             return false
         } else if shortName == "NL" && !(number.starts(with: "6") || number.starts(with: "06")) {

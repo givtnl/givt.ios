@@ -165,7 +165,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
             
             if let selectedCell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? DestinationTableCell,
                 let medium = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name }) {
-                MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_RECIPIENT_SELECTED", withProperties:["namespace": medium.namespace])
+                Analytics.trackEvent("RECURRING_DONATIONS_CREATION_RECIPIENT_SELECTED", withProperties:["namespace": medium.namespace])
                 Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_RECIPIENT_SELECTED", properties: ["namespace": medium.namespace])
                 try mediater.send(request: DestinationSelectedRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
             }

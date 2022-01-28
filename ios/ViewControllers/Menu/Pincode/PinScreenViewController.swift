@@ -104,7 +104,7 @@ class PinScreenViewController: UIViewController {
         if pincode.count == 4 {
             if typeOfPin == .login {
                 SVProgressHUD.show()
-                LoginManager.shared.loginUser(email: UserDefaults.standard.userExt!.email, password: pincode, type: .pincode, completionHandler: { (status, err, description) in
+                LoginManager.shared.loginUser(email: UserDefaults.standard.userExt!.email, password: pincode, type: .pincode, completionHandler: { (status, description) in
                     SVProgressHUD.dismiss()
                     if let descr = description, !status {
                         DispatchQueue.main.async {

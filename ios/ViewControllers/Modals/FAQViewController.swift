@@ -28,7 +28,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         /* when answer is opened, we want to scroll to the top of the Question view */
         scrollView.layoutIfNeeded()
         scrollView.scrollToView(view: sender, animated: false)
-        MSAnalytics.trackEvent("OPEN_FAQ_QUESTION", withProperties:["question": sender.questionString])
+        Analytics.trackEvent("OPEN_FAQ_QUESTION", withProperties:["question": sender.questionString])
         Mixpanel.mainInstance().track(event: "OPEN_FAQ_QUESTION", properties: ["question": sender.questionString])
         LogService.shared.info(message: "OPEN_FAQ_QUESTION \(sender.questionString)")
     }
@@ -73,7 +73,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        MSAnalytics.trackEvent("OPEN_FAQ")
+        Analytics.trackEvent("OPEN_FAQ")
         
         Mixpanel.mainInstance().track(event: "OPEN_FAQ")
         
@@ -94,11 +94,20 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         }
         
         
+        let country = try? Mediater.shared.send(request: GetCountryQuery())
+        
         let GB:Bool = AppServices.isCountryFromSimGB() || UserDefaults.standard.accountType == .bacs
+        let US:Bool = country == "US"
+        
         if (GB) {
             addQuestion(q: "FAQVraagDDI", a: "FAQAntwoordDDI")
         }
-        addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
+        
+        if (US) {
+            addQuestion(q: "FAQvraag0", a: "FAQantwoord0US")
+        } else {
+            addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
+        }
         
         // GIVING
         addQuestion(q: "FAQHowDoesGivingWork", a: "AnswerHowDoesGivingWork")
@@ -110,20 +119,20 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         if (GB) {
             addQuestion(q: "FAQvraag5", a: "FAQantwoord5GB")
         }
-        else {
+        else if (!US) {
             addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
         }
         if (GB) {
             addQuestion(q: "FAQQuestion12", a: "FAQAnswer12GB")
         }
-        else {
+        else if (!US) {
             addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
         }
         addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
         if (GB) {
             addQuestion(q: "FAQvraag15GB", a: "FAQantwoord15GB")
         }
-        else {
+        else if (!US) {
             addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
         }
         
@@ -131,7 +140,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         if (GB) {
             addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWorkGB")
         }
-        else {
+        else if (!US) {
             addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
         }
         addQuestion(q: "FAQQuestion11", a: "FAQAnswer11")
@@ -147,7 +156,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         if (GB) {
             addQuestion(q: "FAQvraag7", a: "FAQantwoord7GB")
         }
-        else {
+        else if (!US) {
             addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
         }
         addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
@@ -157,7 +166,10 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
             addQuestion(q: "TermsTitle", a: "TermsTextGB")
             addQuestion(q: "PrivacyTitle", a: "PolicyTextGB")
         }
-        else {
+        else if (US) {
+            addQuestion(q: "TermsTitle", a: "TermsTextUS")
+            addQuestion(q: "PrivacyTitle", a: "PolicyTextUS")
+        } else {
             addQuestion(q: "FAQvraag18", a: "FAQAntwoord18")
             addQuestion(q: "TermsTitle", a: "TermsText")
             addQuestion(q: "PrivacyTitle", a: "PolicyText")

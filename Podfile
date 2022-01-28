@@ -13,8 +13,10 @@ target 'ios' do
   pod 'SwipeCellKit', '~> 2.5.4'
   pod 'MaterialShowcase'
   pod 'ReachabilitySwift'
-  pod 'AppCenter/Push'
   pod 'Mixpanel-swift'
+  pod "MonthYearPicker", '~> 4.0.2'
+  pod "GivtCodeShare", :path => 'givt.apps.shared/GivtCodeShare'
+
   # Pods for ios
   target 'ios.tests' do
     inherit! :search_paths

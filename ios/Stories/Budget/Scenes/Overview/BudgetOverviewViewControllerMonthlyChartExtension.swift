@@ -137,7 +137,10 @@ extension BudgetOverviewViewController {
         chartView.rightAxis.removeAllLimitLines()
         chartView.rightAxis.addLimitLine(ll)
                 
-        chartViewBody.averageButton.setTitle(lineLimit.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0, withSpace: false), for: .normal)
+        var formattedLineLimit: String = CurrencyHelper.shared.getLocalFormat(value: lineLimit.toFloat, decimals: false)
+        formattedLineLimit = formattedLineLimit.replacingOccurrences(of: "\u{00a0}", with: String.empty)
+        
+        chartViewBody.averageButton.setTitle(formattedLineLimit, for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         
