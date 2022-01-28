@@ -12,6 +12,7 @@ import UIKit
 enum USSecondRegistrationFieldType: Int {
     case firstName
     case lastName
+    case postalCode
 }
 
 extension USSecondRegistrationViewController: UITextFieldDelegate {
