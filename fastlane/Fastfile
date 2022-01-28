@@ -49,6 +49,5 @@ platform :ios do
         app_identifier: "net.givtapp.ios",
         api_key: api_key
     )
->>>>>>> develop
   end
 end
