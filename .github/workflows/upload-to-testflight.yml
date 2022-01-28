@@ -1,0 +1,35 @@
+name: Build and publish the app to AppCenter
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build the app and upload to Testflight
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with: 
+          submodules: recursive
+      - name: Install ruby
+        run : brew install ruby rbenv ruby-build java11
+      - name: Fix environment for building with fastlane
+        run : |
+          bundle config set --local path .gems
+          /bin/sh -c "cd $(xcode-select -p)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0 && ln -s universal-darwin21 universal-darwin20" 
+      - name: Install fastlane and plugins
+        run : bundle install
+      - name: Make sure we can download codesigning keys
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.CODESIGNING_DEPLOY_KEY }}
+      - name: Build and publish with fastlane
+        run : bundle exec fastlane production
+        env : 
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
