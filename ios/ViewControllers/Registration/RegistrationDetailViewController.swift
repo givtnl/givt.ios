@@ -87,8 +87,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
             iban.text = "NL77AAAA4828721860"
-            sortCode.text="000000"
-            accountNumber.text = "12345678"
+            sortCode.text = "404784"
+            accountNumber.text = "70872490"
 
             checkAll(streetAndNumber)
             checkAll(postalCode)

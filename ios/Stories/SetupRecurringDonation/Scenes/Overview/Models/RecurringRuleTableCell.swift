@@ -64,9 +64,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 
                 nameLabel.text = data.collectGroupName
                 
-                var tempCronTextLabel = "SetupRecurringGiftText_7".localized + " " + data.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized
-                
-                tempCronTextLabel = tempCronTextLabel + CurrencyHelper.shared.getLocalFormat(value: data.amountPerTurn.toFloat, decimals: true)
+                var tempCronTextLabel = "\("SetupRecurringGiftText_7".localized) \(data.getFrequencyFromCron()) \("RecurringDonationYouGive".localized) \(CurrencyHelper.shared.getLocalFormat(value: data.amountPerTurn.toFloat, decimals: true))"
                 
                 cronTextLabel.text = tempCronTextLabel
                 
