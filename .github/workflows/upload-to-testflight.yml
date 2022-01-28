@@ -1,4 +1,4 @@
-name: Build and publish the app to AppCenter
+name: Build the app and upload to Testflight
 
 on:
   push:
