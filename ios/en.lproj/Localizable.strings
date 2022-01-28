@@ -1171,3 +1171,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "InformationAboutUsUS" = "Givt is a product of Givt Inc.\n\nWe are located at the 3343 Peachtree Rd NE Ste145-1032 Atlanta. For questions or complaints you can reach us via +1 (404) 999 7024 or support@givt.app.";
 "FAQantwoord0US" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +1 404 999 7024 or by sending an e-mail to support@givt.app .";
 "GivtMinimumAmountDollar" = "$1.00";
+"US.Registration.Personal.Details.PostalCode.Placeholder" = "Zip code";
