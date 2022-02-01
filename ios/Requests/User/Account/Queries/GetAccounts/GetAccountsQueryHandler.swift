@@ -7,27 +7,20 @@
 //
 
 import Foundation
+import GivtCodeShare
 
-typealias AccountsArray = [AccountsDetailModel]
 class GetAccountsQueryHandler: RequestHandlerProtocol {
-    private var client = APIClient.shared
-    
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let responseModel = ResponseModel<GetAccountsResponseModel?>(result: nil, error: .unknown)
+        let responseModel = ResponseModel<[AccountDetailModel]?>(result: nil, error: .unknown)
         guard let userId: String = UserDefaults.standard.userExt?.guid else {
             try? completion(responseModel as! R.TResponse)
             return
         }
-        
-        client.get(url: "/api/v2/users/\(userId)/accounts", data: [:]) { response in
-            if let response = response, response.isSuccess {
-                if let data = response.data {
-                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
-                        responseModel.result = GetAccountsResponseModel.fromDictionaryStringAny(dictionary: json)
-                    } else {
-                        responseModel.error = .parseError
-                    }
-                }
+        GivtApi.UserAccounts().getAccounts(userId: userId, bearerToken: UserDefaults.standard.bearerToken!) { accounts, error in
+            if let accounts = accounts {
+                responseModel.result = accounts
+            } else {
+                responseModel.error = .notFound
             }
             try? completion(responseModel as! R.TResponse)
         }
