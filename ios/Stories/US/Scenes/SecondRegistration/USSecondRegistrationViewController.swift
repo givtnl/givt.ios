@@ -11,6 +11,7 @@ import UIKit
 import Mixpanel
 import AppCenterAnalytics
 import SVProgressHUD
+import GivtCodeShare
 
 class USSecondRegistrationViewController: UIViewController {
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
@@ -27,7 +28,7 @@ class USSecondRegistrationViewController: UIViewController {
     var viewModel = USSecondRegistrationViewModel()
 
     // user details from previous screen
-    var registerUserCommand: RegisterUserCommand!
+    var registerUserCommand: RegisterUserCommandBody!
     var registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand!
     
     @IBOutlet weak var backButton: UIBarButtonItem!

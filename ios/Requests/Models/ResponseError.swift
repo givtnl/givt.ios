@@ -13,4 +13,5 @@ public enum ResponseError {
     case unauthorized
     case duplicate
     case parseError
+    case registrationFailed
 }
