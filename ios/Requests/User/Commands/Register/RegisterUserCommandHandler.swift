@@ -7,25 +7,19 @@
 //
 
 import Foundation
+import GivtCodeShare
 
 class RegisterUserCommandHandler: RequestHandlerProtocol {
     private var client = APIClient.shared
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let command = request as! RegisterUserCommand
-        
-        let body = try JSONEncoder().encode(command)
-        
-        do {
-            try client.post(url: "/api/v2/users/register", data: body) { response in
-                if let response = response, response.isSuccess {
-                    try? completion(ResponseModel(result: true) as! R.TResponse)
-                } else {
-                    try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
-                }
+        GivtApi.User().registerUser(registerUserCommandBody: command.registerUserCommandBody) { (result, error) in
+            if (result?.Id) != nil {
+                try? completion(ResponseModel(result: true, error: nil) as! R.TResponse)
+            } else {
+                try? completion(ResponseModel(result: false, error: .registrationFailed) as! R.TResponse)
             }
-        } catch {
-            try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
         }
     }
     
