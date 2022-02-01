@@ -14,6 +14,7 @@ import TrustKit
 import UserNotifications
 import Mixpanel
 import SafariServices
+import GivtCodeShare
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate, NotificationOpenSummaryDelegate, NotificationOpenYearlySummaryDelegate {
@@ -81,7 +82,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         }
         
         appService.setLocale()
-
+        GivtApi.init().doInitSingleton(baseUrl: AppConstants.apiUri)
+        
         loadAdvertisements()
 
         return true
