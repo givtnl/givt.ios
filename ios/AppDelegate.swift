@@ -273,22 +273,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             } else if status == "false" { //email is completely new
                 UserDefaults.standard.isTempUser = true
             } else if status == "temp" || status == "dashboard" {
-                //email is in db but not succesfully registered
-                if status == "dashboard" {
-                    // this is a temporary thing because US users dont register with first and last name...
-                    try? Mediater.shared.sendAsync(request: GetAccountsQuery()) { response in
-                        if let getAccountsResponse = response.result {
-                            if let account = getAccountsResponse.first {
-                                if account.CreditCardDetails != nil {
-                                    UserDefaults.standard.isTempUser = false
-                                    UserDefaults.standard.paymentType = .CreditCard
-                                    UserDefaults.standard.mandateSigned = true
-                                    return
-                                }
-                            }
-                        }
-                    }
-                }
                 UserDefaults.standard.isTempUser = true
             }
         }
