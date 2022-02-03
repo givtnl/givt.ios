@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SVProgressHUD
 import CoreMedia
+import GivtCodeShare
 
 extension USRegistrationViewController {
    
@@ -46,7 +47,7 @@ extension USRegistrationViewController {
     func handleTokenizeFinished(token: String) {
         guard let userExt = UserDefaults.standard.userExt else { return }
 
-        let registerUserCommand = RegisterUserCommand(
+        let registerUserCommand = RegisterUserCommandBody(
             userId: userExt.guid,
             email: userExt.email,
             phoneNumber: viewModel.registrationValidator.phoneNumber,
@@ -54,9 +55,12 @@ extension USRegistrationViewController {
             appLanguage: Locale.current.languageCode ?? "en",
             deviceOS: 2,
             country: "US",
+            postalCode: "",
+            firstName: "",
+            lastName: "",
             timeZoneId: Calendar.current.timeZone.identifier
         )
-
+        
         let registerCreditCardByTokenCommand = RegisterCreditCardByTokenCommand(userId: userExt.guid, PaymentMethodToken: token)
 
         let routeRequest = FromFirstToSecondRegistrationRoute(registerUserCommand: registerUserCommand, registerCreditCardByTokenCommand: registerCreditCardByTokenCommand)

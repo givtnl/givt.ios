@@ -12,8 +12,10 @@ internal struct GetCountryQueryHandler : RequestHandlerProtocol {
     private var client = APIClient.shared
 
     public func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        if let userExt = UserDefaults.standard.userExt, UserDefaults.standard.isLoggedIn {
-            try? completion(userExt.country as! R.TResponse)
+        if let userExt = UserDefaults.standard.userExt,
+           UserDefaults.standard.isLoggedIn,
+           let country = userExt.country {
+            try? completion(country as! R.TResponse)
         } else if let country = AppServices.getCountryFromSim() {
             try? completion(country as! R.TResponse)
         } else {

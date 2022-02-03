@@ -7,12 +7,12 @@
 //
 
 import Foundation
-
+import GivtCodeShare
 
 class FromFirstToSecondRegistrationRoute: NoResponseRequest {
-    var registerUserCommand: RegisterUserCommand
+    var registerUserCommand: RegisterUserCommandBody
     var registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand
-    init(registerUserCommand: RegisterUserCommand, registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand) {
+    init(registerUserCommand: RegisterUserCommandBody, registerCreditCardByTokenCommand: RegisterCreditCardByTokenCommand) {
         self.registerUserCommand = registerUserCommand
         self.registerCreditCardByTokenCommand = registerCreditCardByTokenCommand
     }
