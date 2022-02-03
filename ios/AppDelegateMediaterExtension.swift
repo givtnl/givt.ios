@@ -31,7 +31,6 @@ extension AppDelegate {
         
         //-- USER COMMANDS
         Mediater.shared.registerHandler(handler: RegisterUserCommandHandler())
-        Mediater.shared.registerHandler(handler: RegisterCreditCardCommandHandler())
         Mediater.shared.registerHandler(handler: RegisterCreditCardByTokenCommandHandler())
         
         // -- COLLECT GROUPS

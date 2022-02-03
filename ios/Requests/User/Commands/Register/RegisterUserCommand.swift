@@ -7,19 +7,13 @@
 //
 
 import Foundation
+import GivtCodeShare
 
-internal struct RegisterUserCommand : RequestProtocol, Codable {
+internal struct RegisterUserCommand : RequestProtocol {
     typealias TResponse = ResponseModel<Bool>
     
-    var userId: String
-    var email: String
-    var phoneNumber: String
-    var password: String
-    var appLanguage: String
-    var deviceOS: Int
-    var country: String
-    var timeZoneId: String
-    var postalCode: String? = nil
-    var firstName: String? = nil
-    var lastName: String? = nil
+    var registerUserCommandBody: RegisterUserCommandBody
+    init(registerUserCommandBody: RegisterUserCommandBody) {
+        self.registerUserCommandBody = registerUserCommandBody
+    }
 }

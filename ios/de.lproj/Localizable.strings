@@ -1109,3 +1109,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQantwoord0US" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +1 404 999 7024 or by sending an e-mail to support@givt.app .";
 "GivtMinimumAmountDollar" = "1,00 $";
 "US.Registration.Personal.Details.PostalCode.Placeholder" = "Zip code";
+"AmountPresetsErrMinAmount" = "Der Betrag muss mindestens {0} Euro betragen.";
