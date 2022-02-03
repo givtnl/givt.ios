@@ -69,7 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         }
         
         handleOldBeaconList()
-        checkIfTempUser()
         doMagicForPresets()
         
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
@@ -259,22 +258,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
     func doMagicForPresets() {
         if(UserDefaults.standard.object(forKey: UserDefaults.UserDefaultsKeys.presetsSet.rawValue) == nil){
             UserDefaults.standard.hasPresetsSet = UserDefaults.standard.userExt?.guid != nil
-        }
-    }
-    
-    func checkIfTempUser() {
-        guard let userExt = UserDefaults.standard.userExt else {
-            UserDefaults.standard.isTempUser = true
-            return
-        }
-        LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
-            if status == "true" { //completed registration
-                UserDefaults.standard.isTempUser = false
-            } else if status == "false" { //email is completely new
-                UserDefaults.standard.isTempUser = true
-            } else if status == "temp" || status == "dashboard" {
-                UserDefaults.standard.isTempUser = true
-            }
         }
     }
     
