@@ -106,10 +106,8 @@ class ExternalSuggestionViewController: BaseScanViewController {
         if let _ = URL.absoluteString.index(of: "cloud.givtapp.net") {
             DispatchQueue.main.async {
                 /* TODO: how to reset amountVC ?? */
-                self.dismiss(animated: true) {
-                    self.dismiss(animated: true, completion: nil)
-                    NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: <#T##Any?#>)
-                }
+                self.safariViewController?.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
