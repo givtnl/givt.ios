@@ -27,7 +27,11 @@ class TerminateAccountViewController: UIViewController {
         check.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
         terminate.isEnabled = false
 
-        textLabel.text = NSLocalizedString("UnregisterInfo", comment: "")
+        if UserDefaults.standard.paymentType == .CreditCard {
+            textLabel.text = "UnregisterInfoUS".localized
+        } else {
+            textLabel.text = "UnregisterInfo".localized
+        }
         confirmationLabel.text = NSLocalizedString("UnregisterUnderstood", comment: "")
         terminate.setTitle(NSLocalizedString("UnregisterButton", comment: ""), for: .normal)
         
