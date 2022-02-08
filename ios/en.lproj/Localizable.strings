@@ -88,7 +88,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SignMandateLater" = "You have chosen to sign the mandate later. You can do this the next time you give.";
 "Suggestie" = "Give to:";
 "CodeCanNotBeScanned" = "Alas, this code cannot be used to give within the Givt app.";
-"GiveDifferentScan" = "Scan QR-code";
+"GiveDifferentScan" = "Scan QR code";
 "GiveDiffQRText" = "Now, aim well!";
 "QRCodeOrganisationNotFound" = "Code is scanned, but it seems the organisation has lost its way. Please, try again later.";
 "NoCameraAccess" = "We need your camera to scan the code. Go to the app settings on your smartphone to give us your permission.";
@@ -145,7 +145,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ExtraBluetoothText" = "Does it look like your Bluetooth is on? It is still necessary to switch it off and on again.";
 "OpenMailbox" = "Open inbox";
 "PersonalInfo" = "Personal info";
-"CameraPermission" = "We need to access your camera to scan a qr-code.";
+"CameraPermission" = "We need to access your camera to scan a QR code.";
 "DownloadYearOverview" = "Do you want to download your donations overview of 2017 for your tax return?";
 "SendOverViewTo" = "We'll send the overview to";
 "YearOverviewAvailable" = "Annual overview available";
@@ -169,7 +169,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQVraag16" = "Can I revoke donations?";
 "FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revertible via your bank, it is completely safe and immune to fraud.";
 "SelectContextCollect" = "Give in the church, at the door or on the street";
-"GiveContextQR" = "Give by scanning a QR-code";
+"GiveContextQR" = "Give by scanning a QR code";
 "SelectContextList" = "Select a cause from the list";
 "SelectContext" = "Choose the way you give";
 "ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
@@ -251,7 +251,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
 "CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
 "GivingContextCollectionBag" = "Collection device";
-"GivingContextQRCode" = "QR-code";
+"GivingContextQRCode" = "QR code";
 "GivingContextLocation" = "Location";
 "GivingContextCollectionBagList" = "List";
 "AmountPresetsTitle" = "Amount presets";
@@ -312,7 +312,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AccessDenied" = "Access denied";
 "UnknownError" = "Unknown error";
 "MandateFailed" = "Authorization failed";
-"QRScannedOutOfApp" = "Hey! Great that you want to give with a QR-code! Are you sure you would like to give to {0}?";
+"QRScannedOutOfApp" = "Hey! Great that you want to give with a QR code! Are you sure you would like to give to {0}?";
 "SaveFailed" = "Saving failed";
 "InvalidEmail" = "Invalid e-mail address";
 "GiftsOverviewSent" = "We've sent your donations overview to your mailbox.";
@@ -608,7 +608,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Klopt dit?
 Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts’. Door op deze melding te klikken geef je alsnog het bedrag dat je tijdens de collecte wilde geven. 
  Antwoord op FAQ vraag2*/
-"FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, it’s important that you enable Bluetooth and have a working internet connection. \n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and scan a QR-code, move your phone towards the collection bag or basket, or select a cause from the list.\nYour chosen amount will be saved, withdrawn from your account and distributed to the church or collecting charities.\n\nIf you don’t have an internet connection when making your donation, the donation will be sent at a later time when you re-open the app. Like when you are in a WiFi zone.";
+"FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, it’s important that you enable Bluetooth and have a working internet connection. \n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and scan a QR code, move your phone towards the collection bag or basket, or select a cause from the list.\nYour chosen amount will be saved, withdrawn from your account and distributed to the church or collecting charities.\n\nIf you don’t have an internet connection when making your donation, the donation will be sent at a later time when you re-open the app. Like when you are in a WiFi zone.";
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm) 
  Antwoord op FAQ vraag3*/
@@ -1173,3 +1173,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "GivtMinimumAmountDollar" = "$1.00";
 "US.Registration.Personal.Details.PostalCode.Placeholder" = "Zip code";
 "AmountPresetsErrMinAmount" = "The amount has to be at least {0}";
+"UnregisterInfoUS" = "We’re sad to see you go!";
