@@ -108,6 +108,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
                 /* TODO: how to reset amountVC ?? */
                 self.safariViewController?.dismiss(animated: true, completion: nil)
                 self.dismiss(animated: true, completion: nil)
+                NotificationCenter.default.post(name: .GivtAmountsShouldReset, object: self)
             }
         }
     }
