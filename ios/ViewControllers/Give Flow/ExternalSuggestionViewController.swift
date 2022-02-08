@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import SafariServices
 
 class ExternalSuggestionViewController: BaseScanViewController {
 
@@ -49,15 +50,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
         super.viewWillDisappear(animated)
         GivtManager.shared.delegate = nil
     }
-    
-    override func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool) {
-        super.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare)
-        DispatchQueue.main.async {
-            /* TODO: how to reset amountVC ?? */
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
+
     @objc func giveAction() {
         giveManually(antennaID: GivtManager.shared.externalIntegration!.mediumId)
     }
@@ -107,5 +100,17 @@ class ExternalSuggestionViewController: BaseScanViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        if let _ = URL.absoluteString.index(of: "cloud.givtapp.net") {
+            DispatchQueue.main.async {
+                /* TODO: how to reset amountVC ?? */
+                self.dismiss(animated: true) {
+                    self.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: <#T##NSNotification.Name#>, object: <#T##Any?#>)
+                }
+            }
+        }
     }
 }
