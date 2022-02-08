@@ -21,4 +21,5 @@ extension Notification.Name {
     public static let GivtSegmentControlStateDidChange = Notification.Name("GivtSegmentControlStateDidChange")
     
     public static let GivtComingFromBudget = Notification.Name("GivtComingFromBudget")
+    public static let GivtAmountsShouldReset = NSNotification.Name("GivtAmountsShouldReset")
 }

@@ -144,7 +144,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         collectThree.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("ThirdCollect", comment: ""))
         
         NotificationCenter.default.addObserver(self, selector: #selector(presetsWillShow), name: .GivtAmountPresetsSet, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(clearAmountz), name: .GivtAmountsShouldReset, object: nil)
         
     }
     
@@ -474,6 +474,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
     }
     func selectFirstCollect(){
         setActiveCollection(collectionViews.first!)
+    }
+    
+    @objc func clearAmountz() {
+        clearAmounts()
     }
     
     func clearAmounts() {
