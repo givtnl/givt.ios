@@ -16,7 +16,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol, SFSafariV
     private var isBacs = false
     
     private var bluetoothAsked = false
-    private var safariViewController: SFSafariViewController? = nil
+    var safariViewController: SFSafariViewController? = nil
     
     func didUpdateBluetoothState(bluetoothState: BluetoothState) {
         DispatchQueue.main.async {
