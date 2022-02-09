@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import WebKit
+import SVProgressHUD
 
 extension USRegistrationViewController : WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -17,6 +18,16 @@ extension USRegistrationViewController : WKScriptMessageHandler {
             DispatchQueue.main.async     {
                 self.hideLoader()
             }
+        } else if body.first?.key == "error" {
+            if #available(iOS 14.0, *) {
+                userContentController.removeAllScriptMessageHandlers()
+            } else {
+                userContentController.removeScriptMessageHandler(forName: "registrationMessageHandler")
+            }
+            self.loadWebview()
+            let alert = UIAlertController(title: "Error", message: "Please check your credit card credentials", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            SVProgressHUD.dismiss(withDelay: 0) { self.present(alert, animated: true) }
         } else if body.first?.key == "token" {
             handleTokenizeFinished(token: body.first!.value)
         } else {
