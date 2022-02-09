@@ -14,7 +14,7 @@ extension USSecondRegistrationViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        self.endEditing()
-        self.dismiss(animated: true, completion: nil)
+        self.endEditing();
+        try! Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
     }
 }

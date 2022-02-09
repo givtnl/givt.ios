@@ -14,8 +14,7 @@ extension USRegistrationViewController : WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard let body = message.body as? [String: String] else { return }
         if body.first?.key == "event" && body.first?.value == "iFrameLoaded" {
-            DispatchQueue.main.async {
-                self.mainView.isHidden = false
+            DispatchQueue.main.async     {
                 self.hideLoader()
             }
         } else if body.first?.key == "token" {
