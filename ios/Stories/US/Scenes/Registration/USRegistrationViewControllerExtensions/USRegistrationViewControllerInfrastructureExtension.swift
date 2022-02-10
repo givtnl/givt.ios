@@ -20,9 +20,7 @@ extension USRegistrationViewController {
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
-        
-        loadWebview()
-        
+                
         setupPhoneNumberField()
         setupEmailAddressField()
         setupPasswordField()

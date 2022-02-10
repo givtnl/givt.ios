@@ -45,6 +45,8 @@ class USRegistrationViewController : UIViewController {
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        reloadWebView(creditCardWebView.configuration.userContentController)
     }
     
     override func viewDidLoad() {
