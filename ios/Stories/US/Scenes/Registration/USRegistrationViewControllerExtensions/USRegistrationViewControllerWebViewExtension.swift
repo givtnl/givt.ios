@@ -15,26 +15,30 @@ extension USRegistrationViewController : WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard let body = message.body as? [String: String] else { return }
         if body.first?.key == "event" && body.first?.value == "iFrameLoaded" {
-            DispatchQueue.main.async     {
-                self.hideLoader()
-            }
+            self.hideLoader()
         } else if body.first?.key == "error" {
-            if #available(iOS 14.0, *) {
-                userContentController.removeAllScriptMessageHandlers()
-            } else {
-                userContentController.removeScriptMessageHandler(forName: "registrationMessageHandler")
+            self.reloadWebView(userContentController)
+            self.showCreditCardError()
             }
-            self.loadWebview()
-            let alert = UIAlertController(title: "Error", message: "Please check your credit card credentials", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            SVProgressHUD.dismiss(withDelay: 0) { self.present(alert, animated: true) }
         } else if body.first?.key == "token" {
             handleTokenizeFinished(token: body.first!.value)
         } else {
             print(body)
         }
     }
-    
+    func showCreditCardError() {
+        let alert = UIAlertController(title: "Error", message: "Please check your credit card credentials", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        SVProgressHUD.dismiss(withDelay: 0) { self.present(alert, animated: true) }
+    }
+    func reloadWebView(_ userContentController: WKUserContentController) {
+        if #available(iOS 14.0, *) {
+            userContentController.removeAllScriptMessageHandlers()
+        } else {
+            userContentController.removeScriptMessageHandler(forName: "registrationMessageHandler")
+        }
+        self.loadWebview()
+    }
     func loadWebview() {
         creditCardWebView.scrollView.contentInset = UIEdgeInsets(top: -8, left: -9, bottom: 0, right: 0)
         creditCardWebView.scrollView.isScrollEnabled = false
