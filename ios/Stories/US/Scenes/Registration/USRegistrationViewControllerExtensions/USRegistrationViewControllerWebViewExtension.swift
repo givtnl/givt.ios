@@ -19,6 +19,8 @@ extension USRegistrationViewController : WKScriptMessageHandler {
         } else if body.first?.key == "error" {
             self.reloadWebView(userContentController)
             self.showCreditCardError()
+            if let errorValue = body.first?.value {
+                LogService.shared.error(message: "There was an error during tokenization: \(errorValue)")
             }
         } else if body.first?.key == "token" {
             handleTokenizeFinished(token: body.first!.value)
