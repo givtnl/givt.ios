@@ -50,6 +50,16 @@ extension USSecondRegistrationViewController: UITextFieldDelegate {
         }
         viewModel.handleValidationRequest(fieldTypeTag: fieldTypeTag)
         viewModel.validateAllFields?()
+        
+        
+        if viewModel.registrationValidator.isValidFirstName && viewModel.registrationValidator.isValidLastName && !viewModel.registrationValidator.isValidFullName {
+            let alert = UIAlertController(title: "Important".localized, message: "Make sure that you have entered the name as it appears on your credit card.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            }))
+            self.present(alert, animated: true)
+            return
+        }
+        
     }
     
     // MARK: When return button is pressed
