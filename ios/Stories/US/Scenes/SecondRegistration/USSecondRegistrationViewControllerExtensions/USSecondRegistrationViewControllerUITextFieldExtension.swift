@@ -43,6 +43,11 @@ extension USSecondRegistrationViewController: UITextFieldDelegate {
         guard let fieldTypeTag = USSecondRegistrationFieldType(rawValue: textField.tag) else {
             return
         }
+        if fieldTypeTag == .firstName || fieldTypeTag == .lastName {
+            if viewModel.registrationValidator.firstName.count >= 2 && viewModel.registrationValidator.lastName.count >= 2 {
+                viewModel.validateFullName?()
+            }
+        }
         viewModel.handleValidationRequest(fieldTypeTag: fieldTypeTag)
         viewModel.validateAllFields?()
     }

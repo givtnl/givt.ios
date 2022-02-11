@@ -49,16 +49,20 @@ extension USSecondRegistrationViewController {
             }
         }
         
+        viewModel.validateFullName = { [weak self] () in
+            DispatchQueue.main.async {
+                if let isValid = self?.viewModel.registrationValidator.isValidFullName {
+                    self?.firstNameTextField.setBorders(isValid)
+                    self?.lastNameTextField.setBorders(isValid)
+                }
+            }
+        }
+        
         viewModel.validateAllFields = { [weak self] () in
             DispatchQueue.main.async {
-                if (self?.viewModel.registrationValidator.firstName != "") {
-                    self?.viewModel.validateFirstName?()
-                }
-                if (self?.viewModel.registrationValidator.lastName != "") {
-                    self?.viewModel.validateLastName?()
-                }
                 if (self?.viewModel.registrationValidator.postalCode != "") {
                     self?.viewModel.validatePostalCode?()
+                    self?.viewModel.validateFullName?()
                 }
                 if let areAllFieldsValid = self?.viewModel.allFieldsValid {
                     self?.registerButton.isEnabled = areAllFieldsValid
