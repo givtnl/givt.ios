@@ -9,6 +9,7 @@
 import Foundation
 import SVProgressHUD
 import GivtCodeShare
+import UIKit
 
 extension USSecondRegistrationViewController {
     func setupRegisterButton() {
@@ -26,6 +27,14 @@ extension USSecondRegistrationViewController {
     }
     
     @IBAction func registerPressed(_ sender: Any) {
+        
+        if !viewModel.registrationValidator.isValidFullName {
+            let alert = UIAlertController(title: "Important".localized, message: "Make sure that you have entered the name as it appears on your credit card.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            }))
+            self.present(alert, animated: true)
+            return
+        }
         
         SVProgressHUD.show()
         
