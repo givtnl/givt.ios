@@ -35,12 +35,12 @@ extension PersonalInfoViewController {
                 
                 try? Mediater.shared.sendAsync(request: GetAccountsQuery()) { accountDetails in
                     self.uExt?.CreditCardNumber = accountDetails.result?.first?.CreditCardDetails?.CardNumber
-                }
-                
-                self.generateUserInfoRows() { settings in
-                    completionHandler(settings.sorted(by: { first, second in
-                        first.position! < second.position!
-                    }))
+                    
+                    self.generateUserInfoRows() { settings in
+                        completionHandler(settings.sorted(by: { first, second in
+                            first.position! < second.position!
+                        }))
+                    }
                 }
             }
         }
