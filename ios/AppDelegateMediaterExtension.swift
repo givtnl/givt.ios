@@ -29,6 +29,7 @@ extension AppDelegate {
         Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
         Mediater.shared.registerHandler(handler: GetAccountsQueryHandler())
         
+        
         //-- USER COMMANDS
         Mediater.shared.registerHandler(handler: RegisterUserCommandHandler())
         Mediater.shared.registerHandler(handler: RegisterCreditCardByTokenCommandHandler())
@@ -107,5 +108,7 @@ extension AppDelegate {
         Mediater.shared.registerHandler(handler: GetAdvertisementsLastDateQueryHandler())
         Mediater.shared.registerHandler(handler: ImportAdvertisementsCommandHandler())
         Mediater.shared.registerHandler(handler: GetRandomAdvertisementQueryHandler())
+        
+        
     }
 }
