@@ -9,6 +9,7 @@
 import Foundation
 import SVProgressHUD
 import GivtCodeShare
+import UIKit
 
 extension USSecondRegistrationViewController {
     func setupRegisterButton() {
@@ -18,7 +19,7 @@ extension USSecondRegistrationViewController {
     
     fileprivate func showError() {
         SVProgressHUD.dismiss()
-        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("SmsFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
             
         }))
@@ -26,6 +27,14 @@ extension USSecondRegistrationViewController {
     }
     
     @IBAction func registerPressed(_ sender: Any) {
+        
+        if !viewModel.registrationValidator.isValidFullName {
+            let alert = UIAlertController(title: "Important".localized, message: "Make sure that you have entered the name as it appears on your credit card.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            }))
+            self.present(alert, animated: true)
+            return
+        }
         
         SVProgressHUD.show()
         

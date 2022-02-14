@@ -357,7 +357,7 @@ class LoginManager {
     func checkMandate(completionHandler: @escaping (String) -> Void) {
         if UserDefaults.standard.paymentType == .CreditCard {
             self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-            !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
+            !self.isFullyRegistered && UserDefaults.standard.yearsWithGivts.count > 0 ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
             completionHandler("No mandates for credit card, so trick the system we are signed")
             return
         }

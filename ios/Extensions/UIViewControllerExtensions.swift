@@ -39,7 +39,18 @@ extension UIViewController {
         SVProgressHUD.dismiss()
     }
     
+    @objc func hideLoader(completion: @escaping () -> Void) {
+        SVProgressHUD.dismiss(completion: completion)
+    }
+    
     func hideView(_ view: UIView, _ hide: Bool) {
         view.isHidden = hide
+    }
+    
+    func showAlertWithConfirmation(title: String, message: String, completion: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: completion)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -32,6 +32,12 @@ class NavigationManager {
     public func finishRegistrationAlert(_ context: UIViewController) {
         if !loginManager.isFullyRegistered && loginManager.userClaim != .giveOnce {
             
+            if let country = try? Mediater.shared.send(request: GetCountryQuery()),
+               let userId = UserDefaults.standard.userExt?.guid,
+               country == "US" && !((try? Mediater.shared.send(request: GetUserHasDonations(userId: userId))) ?? false) {
+                return
+            }
+                        
             if let alert = self.currentAlert, alert == self.topController?.presentedViewController {
                 self.currentAlert!.dismiss(animated: false, completion: nil)
                 self.currentAlert = nil

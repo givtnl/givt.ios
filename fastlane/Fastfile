@@ -21,7 +21,12 @@ platform :ios do
     setup_ci
     sync_code_signing(type: "enterprise", readonly: true, app_identifier: "com.givt.iosnativepre")
     cocoapods
-    increment_build_number(xcodeproj: "ios.xcodeproj")
+    increment_build_number(
+      xcodeproj: "ios.xcodeproj",
+      build_number: appcenter_fetch_version_number(
+        owner_name: "Givt-NL",
+        app_name: "Test"
+      )["build_number"].to_i + 1)
     build_app(workspace: "ios.xcworkspace", scheme: "ios")
     dsym_zip
     appcenter_upload(

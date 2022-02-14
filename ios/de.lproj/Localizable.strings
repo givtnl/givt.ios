@@ -1110,3 +1110,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "GivtMinimumAmountDollar" = "1,00 $";
 "US.Registration.Personal.Details.PostalCode.Placeholder" = "Zip code";
 "AmountPresetsErrMinAmount" = "Der Betrag muss mindestens {0} Euro betragen.";
+"UnregisterInfoUS" = "We’re sad to see you go!";
