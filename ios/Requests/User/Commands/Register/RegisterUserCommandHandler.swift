@@ -10,8 +10,6 @@ import Foundation
 import GivtCodeShare
 
 class RegisterUserCommandHandler: RequestHandlerProtocol {
-    private var client = APIClient.shared
-    
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let command = request as! RegisterUserCommand
         GivtApi.User().registerUser(registerUserCommandBody: command.registerUserCommandBody) { (result, error) in
@@ -22,7 +20,6 @@ class RegisterUserCommandHandler: RequestHandlerProtocol {
             }
         }
     }
-    
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
         return request is RegisterUserCommand
     }

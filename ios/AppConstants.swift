@@ -24,7 +24,6 @@ class AppConstants {
             return "?.?"
         }
     }
-    
     static var countries: [Country] = {
         var countries: [Country] = []
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", phoneNumber: PhoneNumber(prefix: "+31", firstNumbers: ["6"], length: 8)))
