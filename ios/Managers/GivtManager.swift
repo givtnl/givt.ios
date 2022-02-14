@@ -15,7 +15,9 @@ import CoreLocation
 import Reachability
 import AppCenterAnalytics
 import Mixpanel
-
+enum ProcessCachedGivtsSource: String {
+    case Startup = "App started", ConnectionStatusChanged = "User got internet", SilentPushNotification = "Silent push notification"
+}
 struct BeaconList: Codable {
     var OrgBeacons: [OrgBeacon]
     var LastChanged: Date
@@ -166,20 +168,20 @@ final class GivtManager: NSObject {
         
         DispatchQueue.global(qos: .userInitiated).async {
             if AppServices.shared.isServerReachable {
-                self.processCachedGivts();
+                self.processCachedGivts(.Startup);
             }
         }
     }
     
-    func processCachedGivts() {
+    func processCachedGivts(_ source: ProcessCachedGivtsSource) {
         let bgTask = UIApplication.shared.beginBackgroundTask {
             //task will end by itself
         }
         cachedGivtsLock.lock()
         var shouldWait = false
         let semaGroup = DispatchGroup()
-        log.info(message: "Started processing cached Givts")
         if let donations = try? mediater.send(request: GetAllDonationsQuery()) {
+            log.info(message: "Started processing cached Givts - Source: \(source.rawValue)")
             donations.forEach { donation in
                 shouldWait = true
                 semaGroup.enter()
@@ -243,7 +245,7 @@ final class GivtManager: NSObject {
         if let canSend = notification.object as? Bool {
             print("Server is reachable ?  \(canSend)")
             if canSend {
-                processCachedGivts()
+                processCachedGivts(.ConnectionStatusChanged)
             }
         }
     }
