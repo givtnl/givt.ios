@@ -344,11 +344,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                         LogService.shared.info(message: "App scheme: QR entering Givt-app with identifier \(mediumId)")
                         return true;
                     }
-                } else if let _ = ["natived", "nativep", "nativee", "store"].first(where: { url.absoluteString.contains($0) }),
-                          let mainNavController = self.window?.rootViewController?.children.first(where: { $0 is MainNavigationController }),
-                          let safariViewController = mainNavController.children.first(where: { $0 is SFSafariViewController }) as? SFSafariViewController {
-                    safariViewController.delegate?.safariViewController?(safariViewController, initialLoadDidRedirectTo: url
-                    )
+                } else if let _ = ["natived", "nativep", "nativee", "store"].first(where: { url.absoluteString.contains($0) }) {
+                    if let mainNavController = self.window?.rootViewController?.children.first(where: { $0 is MainNavigationController }),
+                    let safariViewController = mainNavController.children.first(where: { $0 is SFSafariViewController }) as? SFSafariViewController { safariViewController.delegate?.safariViewController?(safariViewController, initialLoadDidRedirectTo: url)
+                    } else if let givtManagerDelegate = GivtManager.shared.delegate as? BaseScanViewController,
+                                let safariViewController = givtManagerDelegate.safariViewController {
+                        givtManagerDelegate.safariViewController(safariViewController, initialLoadDidRedirectTo: url)
+                    }
                 }
             }
         }

@@ -1,193 +1,15 @@
 //
-//  PersonalInfoViewController.swift
+//  PersonalInfoViewControllerTableViewExtension.swift
 //  ios
 //
-//  Created by Lennie Stockman on 30/11/17.
-//  Copyright © 2017 Givt. All rights reserved.
+//  Created by Mike Pattyn on 10/02/2022.
+//  Copyright © 2022 Givt. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import SVProgressHUD
 import GivtCodeShare
-
-public enum SettingType {
-    case name
-    case emailaddress
-    case address
-    case countrycode
-    case phonenumber
-    case iban
-    case changepassword
-    case bacs
-    case giftaid
-    case creditCard
-}
-
-class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
-    var settings: [PersonalSetting]!
-    private var _country: String = ""
-    
-    struct PersonalSetting {
-        var image: UIImage
-        var name: String
-        var type: SettingType
-    }
-    
-    private var validatedPhoneNumber: String = ""
-    private let loginManager = LoginManager.shared
-    private let validationHelper = ValidationHelper.shared
-    @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet var titleText: UILabel!
-    @IBOutlet var settingsTableView: UITableView!
-    private var position: Int?
-    private var deleting: Bool = false
-    private var uExt: LMUserExt?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        settingsTableView.delegate = self
-        settingsTableView.dataSource = self
-        title = NSLocalizedString("TitlePersonalInfo", comment: "")
-        settings = [PersonalSetting]()
-        settingsTableView.tableFooterView = UIView()
-        self.navigationController?.removeLogo()
-        
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setDefaultAnimationType(.native)
-        SVProgressHUD.setBackgroundColor(.white)
-        
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        
-        let lbl = UILabel()
-        lbl.textAlignment = .center
-        lbl.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Light", size: 16.0)
-        lbl.numberOfLines = 0
-        lbl.translatesAutoresizingMaskIntoConstraints = false
-        lbl.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
-        
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        containerView.addSubview(lbl)
-        lbl.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        lbl.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
-        lbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
-        lbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
-        
-        settingsTableView.tableHeaderView = containerView
-        
-        containerView.widthAnchor.constraint(equalTo: self.settingsTableView.widthAnchor).isActive = true
-        containerView.centerXAnchor.constraint(equalTo: self.settingsTableView.centerXAnchor).isActive = true
-        containerView.topAnchor.constraint(equalTo: self.settingsTableView.topAnchor, constant: 10).isActive = true
-        
-        self.settingsTableView.layoutIfNeeded()
-        self.settingsTableView.tableHeaderView = self.settingsTableView.tableHeaderView
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        /* We may have lost internet connection when coming back from a personal info change setting viewcontroller */
-        if AppServices.shared.isServerReachable {
-            SVProgressHUD.show()
-            loginManager.getUserExt { (userExtObject) in
-                SVProgressHUD.dismiss()
-                self.uExt = userExtObject
-                guard let userExt = userExtObject else {
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
-                        DispatchQueue.main.async {
-                            self.backPressed(self)
-                        }
-                    }))
-                    return
-                }
-                self.settings.removeAll()
-
-                switch(userExt.Country) {
-                case "US":
-                    self.settings.append(
-                        PersonalSetting(
-                            image: #imageLiteral(resourceName: "personal_gray"),
-                            name: "\(userExt.FirstName!) \(userExt.LastName!)",
-                            type: .name
-                        )
-                    )
-                    self.settings.append(
-                        PersonalSetting(
-                            image: #imageLiteral(resourceName: "house"),
-                            name: "United States",
-                            type: .address
-                        )
-                    )
-                    self.settings.append(
-                        PersonalSetting(
-                            image: #imageLiteral(resourceName: "phone_red"),
-                            name: userExt.PhoneNumber,
-                            type: .phonenumber
-                        )
-                    )
-                    self.settings.append(
-                        PersonalSetting(
-                            image: #imageLiteral(resourceName: "email_sign"),
-                            name: userExt.Email,
-                            type: .emailaddress)
-                    
-                    )
-                    let prefferedImageSize = self.settings.first { $0.type == .address }!.image.size
-                    if let cardInfo = try! Mediater.shared.send(request: GetAccountsQuery()).result?.first?.CreditCardDetails {
-                        let maskedCardNumber = cardInfo.CardNumber
-                        let cardType = cardInfo.CardType
-                            let creditCardType = CreditCardHelper.getCreditCardCompanyEnumValue(value: cardType)
-                            let cardImage = CreditCardHelper.getCreditCardCompanyLogo(creditCardType)
-                            self.settings.append(
-                                PersonalSetting(
-                                    image: cardImage.resized(to: prefferedImageSize)!,
-                                    name: maskedCardNumber.chunked(by: 4),
-                                    type: .creditCard
-                                )
-                            )
-                        
-                    }
-                    break
-                default:
-                    self._country = AppConstants.countries.filter { (c) -> Bool in
-                        c.shortName == userExt.Country
-                        }[0].name
-                    self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName! + " " + userExt.LastName!, type: .name))
-                    self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
-                    self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address! + "\n" + userExt.PostalCode! + " " + userExt.City! + ", " + self._country, type: .address))
-                    self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone_red"), name: userExt.PhoneNumber, type: .phonenumber))
-                    if let iban = userExt.IBAN {
-                        self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: iban.separate(every: 4, with: " "), type: .iban))
-                    } else if let sortCode = userExt.SortCode, let accountNumber = userExt.AccountNumber {
-                        self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: NSLocalizedString("BacsSortcodeAccountnumber", comment: "").replacingOccurrences(of: "{0}", with: sortCode).replacingOccurrences(of: "{1}", with: accountNumber), type: .bacs))
-                    }
-                    
-                    if UserDefaults.standard.paymentType == .BACSDirectDebit {
-                        self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "Giftaid_Icon-yellow"), name: "Gift Aid", type: .giftaid))
-                    }
-                    break
-                }
-                
-                
-                
-                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: SettingType.changepassword))
-                
-                DispatchQueue.main.async {
-                    self.settingsTableView.reloadData()
-                }
-            }
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if let selectedRow = settingsTableView.indexPathForSelectedRow {
-            settingsTableView.deselectRow(at: selectedRow, animated: false)
-        }
-    }
-}
+import SVProgressHUD
 
 extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -199,45 +21,24 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.labelView.text = settings[indexPath.row].name
         cell.img.image = settings[indexPath.row].image
         
-        if (UserDefaults.standard.paymentType == .CreditCard) {
-            switch settings[indexPath.row].type {
-                case .address, .creditCard:
-                    cell.accessoryType = .none
-                    cell.labelView.alpha = 0.5
-                    cell.selectionStyle = .none
-                    cell.img.image = cell.img.image!.noir.alpha(0.5)
-                    cell.isUserInteractionEnabled = false
-                break
-                case .name:
-                    cell.accessoryType = .none
-                    cell.labelView.alpha = 0.5
-                    cell.selectionStyle = .none
-                    cell.img.image = cell.img.image!.noir
-                    cell.isUserInteractionEnabled = false
-                default:
-                    cell.accessoryType = .disclosureIndicator
-                    cell.labelView.alpha = 1
-                    cell.selectionStyle = .default
-                break
-            }
-            return cell
-        }
-        switch settings[indexPath.row].type {
-        case .name:
+        if (settings[indexPath.row].disabled) {
             cell.accessoryType = .none
             cell.labelView.alpha = 0.5
             cell.selectionStyle = .none
-            cell.img.image = cell.img.image!.noir
-        case .emailaddress:
+            switch(settings[indexPath.row].type) {
+                case .address:
+                    cell.img.image = cell.img.image!.noir.alpha(0.5)
+                default:
+                    cell.img.image = cell.img.image!.noir.alpha(1)
+            }
+            cell.isUserInteractionEnabled = false
+        } else {
             cell.accessoryType = .disclosureIndicator
             cell.labelView.alpha = 1
             cell.selectionStyle = .default
-            cell.labelView.numberOfLines = 1
-        default:
-            cell.accessoryType = .disclosureIndicator
-            cell.labelView.alpha = 1
-            cell.selectionStyle = .default
+            cell.isUserInteractionEnabled = true
         }
+        
         return cell
     }
     
@@ -264,11 +65,11 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                                 DispatchQueue.main.async {
                                     let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-
+                                        
                                     }))
                                     SVProgressHUD.dismiss()
                                     self.present(alert, animated: true, completion: nil)
-
+                                    
                                 }
                                 return
                             }
@@ -283,7 +84,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                                     DispatchQueue.main.async {
                                         let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-
+                                            
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                     }
@@ -308,11 +109,11 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                     let newEmail = email.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
                     NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                         SVProgressHUD.show()
-                        self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
+                        LoginManager.shared.checkTLD(email: newEmail, completionHandler: { (success) in
                             if success {
                                 if var uext = self.uExt {
                                     uext.Email = newEmail
-                                    self.loginManager.updateUser(uext: uext, completionHandler: { (success2) in
+                                    LoginManager.shared.updateUser(uext: uext, completionHandler: { (success2) in
                                         SVProgressHUD.dismiss()
                                         if success2 {
                                             DispatchQueue.main.async {
@@ -367,12 +168,12 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
             vc.validateInput1 = { s in
-                return self.validationHelper.isIbanChecksumValid(s)
+                return ValidationHelper.shared.isIbanChecksumValid(s)
             }
             vc.saveAction = { s in
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.getUserExt(completion: { (userExt) in
+                    LoginManager.shared.getUserExt(completion: { (userExt) in
                         guard var userExt = userExt else
                         {
                             DispatchQueue.main.async {
@@ -386,7 +187,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                             return
                         }
                         userExt.IBAN = s.replacingOccurrences(of: " ", with: "")
-                        self.loginManager.updateUserExt(userExt: userExt, callback: { (success) in
+                        LoginManager.shared.updateUserExt(userExt: userExt, callback: { (success) in
                             SVProgressHUD.dismiss()
                             if success.ok {
                                 DispatchQueue.main.async {
@@ -418,18 +219,18 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 vc.inputOfInput2 = uExt.AccountNumber
             }
             vc.validateInput1 = { s in
-                return self.validationHelper.isValidSortcode(s: s)
+                return ValidationHelper.shared.isValidSortcode(s: s)
             }
             vc.validateInput2 = { s in
-                return self.validationHelper.isValidAccountNumber(s: s)
+                return ValidationHelper.shared.isValidAccountNumber(s: s)
             }
-
+            
             vc.saveAction2 = { sortCode, accountNumber in
                 self.uExt?.SortCode = sortCode
                 self.uExt?.AccountNumber = accountNumber
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.updateUserExt(userExt: self.uExt!) { (result) in
+                    LoginManager.shared.updateUserExt(userExt: self.uExt!) { (result) in
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
                         }
@@ -467,17 +268,17 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.inputOfInput = settings[indexPath.row].name
             vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
             vc.validateInput1 = { s in
-                return self.validationHelper.isEmailAddressValid(s.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
+                return ValidationHelper.shared.isEmailAddressValid(s.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
             }
             vc.saveAction = { email in
                 let newEmail = email.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
+                    LoginManager.shared.checkTLD(email: newEmail, completionHandler: { (success) in
                         if success {
                             if var uext = self.uExt {
                                 uext.Email = newEmail
-                                self.loginManager.updateUser(uext: uext, completionHandler: { (success2) in
+                                LoginManager.shared.updateUser(uext: uext, completionHandler: { (success2) in
                                     SVProgressHUD.dismiss()
                                     if success2 {
                                         DispatchQueue.main.async {

@@ -18,13 +18,14 @@ class USSecondRegistrationViewModel {
     
     var validateFirstName: NillableClosure!
     var validateLastName: NillableClosure!
+    var validateFullName: NillableClosure!
     var validatePostalCode: NillableClosure!
     
     var validateAllFields:  NillableClosure!
     
     var allFieldsValid: Bool {
         get {
-            return registrationValidator.isValidFirstName && registrationValidator.isValidLastName && registrationValidator.isValidPostalCode
+            return registrationValidator.isValidFullName && registrationValidator.isValidPostalCode
         }
     }
     
