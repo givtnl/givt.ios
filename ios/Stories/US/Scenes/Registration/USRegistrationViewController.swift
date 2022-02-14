@@ -45,7 +45,7 @@ class USRegistrationViewController : UIViewController {
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        SVProgressHUD.show()
         reloadWebView(creditCardWebView.configuration.userContentController)
     }
     

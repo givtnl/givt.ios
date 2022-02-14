@@ -112,6 +112,7 @@ class LoginManager {
                                 self.getUserExt(completion: { (obj) in
                                     if obj != nil {
                                         if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
+                                            UserDefaults.standard.paymentType = .CreditCard
                                             if (try? Mediater.shared.send(request: GetUserHasDonations(userId: guid))) ?? false {
                                                 self.userClaim = self.isFullyRegistered ? .give : .giveOnce
                                                 !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
