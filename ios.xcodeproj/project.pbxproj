@@ -21,6 +21,9 @@
 		27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */; };
 		27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */; };
 		320280BC25E0582F006A68CE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 320280BB25E0582F006A68CE /* Charts */; settings = {ATTRIBUTES = (Required, ); }; };
+		320296BD27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320296BC27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift */; };
+		320296BF27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320296BE27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift */; };
+		320296C327BBF15600D730E3 /* BeaconListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320296C227BBF15600D730E3 /* BeaconListHelper.swift */; };
 		320B7FBD255B020A00779B1D /* RecurringCustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320B7FBC255B020A00779B1D /* RecurringCustomUITextField.swift */; };
 		320B7FBF255B03E300779B1D /* RecurringCustomUITextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320B7FBE255B03E300779B1D /* RecurringCustomUITextField.xib */; };
 		320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift */; };
@@ -590,6 +593,9 @@
 		27AC59F922255DEE00163BF4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
 		27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonWithRightArrow.swift; sourceTree = "<group>"; };
 		27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonWithRightArrow.xib; sourceTree = "<group>"; };
+		320296BC27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectGroupsV2Query.swift; sourceTree = "<group>"; };
+		320296BE27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectGroupsV2QueryHandler.swift; sourceTree = "<group>"; };
+		320296C227BBF15600D730E3 /* BeaconListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconListHelper.swift; sourceTree = "<group>"; };
 		320B7FBC255B020A00779B1D /* RecurringCustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringCustomUITextField.swift; sourceTree = "<group>"; };
 		320B7FBE255B03E300779B1D /* RecurringCustomUITextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecurringCustomUITextField.xib; sourceTree = "<group>"; };
 		320CF46E25DEAB85009D3C5C /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1165,6 +1171,15 @@
 				3273B8A225359DC6003DB100 /* GetTurns */,
 			);
 			path = Queries;
+			sourceTree = "<group>";
+		};
+		320296BB27BBB68600D730E3 /* GetCollectGroupsV2Query */ = {
+			isa = PBXGroup;
+			children = (
+				320296BC27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift */,
+				320296BE27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift */,
+			);
+			path = GetCollectGroupsV2Query;
 			sourceTree = "<group>";
 		};
 		320CC7A7255B12CE0092782A /* Custom views */ = {
@@ -2595,6 +2610,7 @@
 				3232450824DB0206003CF5CF /* ColorHelper.swift */,
 				32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */,
 				324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */,
+				320296C227BBF15600D730E3 /* BeaconListHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -3354,6 +3370,7 @@
 		FBC185A724C0CD33001A4C6B /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				320296BB27BBB68600D730E3 /* GetCollectGroupsV2Query */,
 				FBC1857724C06447001A4C6B /* GetCollectGroupsQuery */,
 			);
 			path = Queries;
@@ -3927,6 +3944,7 @@
 				320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift in Sources */,
 				FB45AC3B21CA4A4A00F12584 /* BaseMenuViewController.swift in Sources */,
 				FBC185AB24C0CD6F001A4C6B /* GetLocalUserConfiguration.swift in Sources */,
+				320296C327BBF15600D730E3 /* BeaconListHelper.swift in Sources */,
 				32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				3256AFED2718702300D80916 /* USRegistrationViewControllerUITextFieldExtension.swift in Sources */,
@@ -4117,6 +4135,7 @@
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
 				3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
+				320296BD27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift in Sources */,
 				321A21662683B72D009D8BC4 /* GoBackFromGivingGoalWithReloadRouteHandler.swift in Sources */,
 				329C3E7A25F210E60037D750 /* CreateExternalDonationCommandHandler.swift in Sources */,
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
@@ -4237,6 +4256,7 @@
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				323F170525ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift in Sources */,
 				32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */,
+				320296BF27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift in Sources */,
 				321A21642683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift in Sources */,
 				FB930431274E31C9007D5300 /* GetRandomAdvertisementQueryHandler.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
