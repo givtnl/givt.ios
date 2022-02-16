@@ -140,8 +140,8 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     }
     
     func giveManually(scanResult: String) {
-        GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { success in
-            if !success {
+        GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { qrCodeStatus in
+            if qrCodeStatus == .Failure {
                 self.log.warning(message: "Could not scan QR: " + scanResult )
                 let alert = UIAlertController(title: NSLocalizedString("QRScanFailed", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
@@ -152,6 +152,20 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 }
                 alert.addAction(action)
                 alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
+            } else if qrCodeStatus == .Disabled {
+                self.log.warning(message: "User scanned a disabled QR-code: " + scanResult )
+                let alert = UIAlertController(title: "Oops", message: "Ti ni gelukt", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Okeej", style: .cancel) { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                let giveToOrganisation = UIAlertAction(title: "Gif mo an de organisatie", style: .default) { (nok) in
+                    if let namespace = GivtManager.shared.getMediumIdFromGivtLink(link: scanResult)?.split(separator: ".")[0] {
+                        GivtManager.shared.give(antennaID: String(namespace), organisationName: GivtManager.shared.getOrganisationName(organisationNameSpace: String(namespace)))
+                    }
+                }
+                alert.addAction(action)
+                alert.addAction(giveToOrganisation)
                 self.present(alert, animated: true, completion: nil)
             }
         })

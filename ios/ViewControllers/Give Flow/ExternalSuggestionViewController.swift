@@ -11,7 +11,7 @@ import AudioToolbox
 import SafariServices
 
 class ExternalSuggestionViewController: BaseScanViewController {
-
+    var namespace: String? = nil
     var closeAction: () -> () = {}
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +25,29 @@ class ExternalSuggestionViewController: BaseScanViewController {
         externalSuggestion.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         externalSuggestion.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
-        externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControl.Event.touchUpInside)
-        externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControl.State.normal)
+        self.namespace = String(describing: GivtManager.shared.externalIntegration!.mediumId.split(separator: ".")[0])
         
-        externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControl.Event.touchUpInside)
-        externalSuggestion.cancelButton.isUserInteractionEnabled = true
-        
+        if let orgBeacon = UserDefaults.standard.orgBeaconListV2?.OrgBeacons.first(where: { orgBeacon in orgBeacon.EddyNameSpace == self.namespace }) {
+            if let qrCode = orgBeacon.QrCodes?.first(where: {qrCode in qrCode.MediumId == GivtManager.shared.externalIntegration!.mediumId }), qrCode.Active {
+                externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControl.Event.touchUpInside)
+                externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControl.State.normal)
+                
+                externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControl.Event.touchUpInside)
+                externalSuggestion.cancelButton.isUserInteractionEnabled = true
+                
+                setupLabel(label: externalSuggestion.label)
+            } else {
+                externalSuggestion.label.text = "Ey ey deze qrcood is disabled. aaaaah minnen aarm ister an"
+                externalSuggestion.button.addTarget(self, action: #selector(self.giveActionNameSpace), for: UIControl.Event.touchUpInside)
+                externalSuggestion.button.setTitle("Go mor eki", for: UIControl.State.normal)
+                
+                externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControl.Event.touchUpInside)
+                externalSuggestion.cancelButton.isUserInteractionEnabled = true
+            }
+        }
         externalSuggestion.image.image = GivtManager.shared.externalIntegration!.logo
         
-        setupLabel(label: externalSuggestion.label)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +67,10 @@ class ExternalSuggestionViewController: BaseScanViewController {
 
     @objc func giveAction() {
         giveManually(antennaID: GivtManager.shared.externalIntegration!.mediumId)
+    }
+    
+    @objc func giveActionNameSpace() {
+        giveManually(antennaID: self.namespace!)
     }
     
     @objc func cancel(sender: UIButton) {
