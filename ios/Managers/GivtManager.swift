@@ -81,6 +81,10 @@ struct OrgBeaconLocation: Codable {
     let dtEnd: Date
 }
 
+enum QrCodeStatus {
+    case Success, Failure, Disabled
+}
+
 final class GivtManager: NSObject {
     private let beaconService = BeaconService()
     static let shared = GivtManager()
@@ -313,8 +317,9 @@ final class GivtManager: NSObject {
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
-    func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
+    func giveQR(scanResult: String, completionHandler: @escaping (QrCodeStatus) -> Void) {
         if let mediumid = getMediumIdFromGivtLink(link: scanResult) {
+                       
             let bestBeacon = BestBeacon()
             /* mimic bestbeacon */
             bestBeacon.beaconId = mediumid
@@ -324,11 +329,18 @@ final class GivtManager: NSObject {
                 bestBeacon.namespace = mediumid
             }
             self.bestBeacon = bestBeacon
-            //bepaal naam
-            give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
-            completionHandler(true)
+            
+            if let orgBeacon = orgBeaconList?.first(where: { orgBeacon in orgBeacon.EddyNameSpace == self.bestBeacon!.namespace! }) {
+                if let qrCode = orgBeacon.QrCodes?.first(where: {qrCode in qrCode.MediumId == mediumid }), qrCode.Active {
+                    //bepaal naam
+                    give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+                    completionHandler(.Success)
+                } else {
+                    completionHandler(.Disabled)
+                }
+            }
         } else {
-            completionHandler(false)
+            completionHandler(.Failure)
         }
     }
     
