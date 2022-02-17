@@ -189,4 +189,8 @@ extension String{
         }
         return string.joined(separator: " ")
     }
+    
+    func replace(_ value: String, with otherValue: String) -> String {
+        return self.replacingOccurrences(of:value, with: otherValue)
+    }
 }

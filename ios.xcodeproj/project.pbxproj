@@ -212,6 +212,8 @@
 		32CA17B524CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */; };
 		32CF87BF27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF87BE27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift */; };
 		32CF87C12760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */; };
+		32D245FD27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D245FC27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift */; };
+		32D2460327BE7E4000147A1B /* SubstringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D2460227BE7E4000147A1B /* SubstringExtensions.swift */; };
 		32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */; };
 		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
@@ -786,6 +788,8 @@
 		32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationRouteHandler.swift; sourceTree = "<group>"; };
 		32CF87BE27608FD6005914E7 /* USSecondRegistrationViewControllerRegisterButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USSecondRegistrationViewControllerRegisterButtonExtension.swift; sourceTree = "<group>"; };
 		32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USSecondRegistrationViewControllerBackButtonExtension.swift; sourceTree = "<group>"; };
+		32D245FC27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalSuggestionViewControllerExtension.swift; sourceTree = "<group>"; };
+		32D2460227BE7E4000147A1B /* SubstringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringExtensions.swift; sourceTree = "<group>"; };
 		32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
@@ -2034,6 +2038,15 @@
 			path = ChooseDestination;
 			sourceTree = "<group>";
 		};
+		32D245FB27BE75D100147A1B /* ExternalSuggestion */ = {
+			isa = PBXGroup;
+			children = (
+				D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */,
+				32D245FC27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift */,
+			);
+			path = ExternalSuggestion;
+			sourceTree = "<group>";
+		};
 		32D4852A24D0442800F821A5 /* RecurringDonations */ = {
 			isa = PBXGroup;
 			children = (
@@ -2712,10 +2725,10 @@
 		D7F746D81FD943B8005354A3 /* Give Flow */ = {
 			isa = PBXGroup;
 			children = (
+				32D245FB27BE75D100147A1B /* ExternalSuggestion */,
 				D761E9B61F18B89D002B849B /* AmountViewController.swift */,
 				D726298C1FFBD10C00743224 /* BaseScanViewController.swift */,
 				D7CAB10320875E9F004139CB /* CelebrateViewController.swift */,
-				D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */,
@@ -2837,6 +2850,7 @@
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
 				32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */,
 				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
+				32D2460227BE7E4000147A1B /* SubstringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4028,6 +4042,7 @@
 				27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */,
 				FBC185CC24C6CCD2001A4C6B /* MediaterError.swift in Sources */,
 				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
+				32D245FD27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift in Sources */,
 				32CF87C12760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
@@ -4058,6 +4073,7 @@
 				327C5B802506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,
 				32F46B1A27B591440013B44E /* PersonalInfoViewControllerTableViewExtension.swift in Sources */,
+				32D2460327BE7E4000147A1B /* SubstringExtensions.swift in Sources */,
 				321509412746369B00499C3A /* USRegistrationViewControllerEmailAddressExtension.swift in Sources */,
 				3260CF2D254AC11D00BA6BD7 /* DiscoverOrAmountBackToSelectDestinationRoute.swift in Sources */,
 				326E0973256D42560079B4B0 /* OpenFeatureByIdRouteHandler.swift in Sources */,
