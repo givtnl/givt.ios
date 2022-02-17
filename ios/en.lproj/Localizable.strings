@@ -615,7 +615,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQantwoord3" = "You can access the app menu by tapping the menu at the top left of the ‘Amount’ screen. To change your settings, you have to log in using your e-mail address and password, or when activated; a passcode, fingerprint/Touch ID or a FaceID. In the menu you can find an overview of your donations, adjust your maximum amount, review and/or change your personal information, change your amount presets, set a passcode, fingerprint/Touch ID or FaceID, or terminate your Givt account.\n";
 
 /*Antwoord op FAQ vraag4*/
-"FAQantwoord4" = "More and more organisations\nYou can use Givt in all organisations that are registered with us. More organisations are joining every week, you can see the latest overview at https://givt.co.uk/where-to-use-givt/. \n\nNot registered yet? \nIf your organisation is not affiliated with Givt yet, please contact us at +31 320 320 115 or info@givtapp.net.";
+"FAQantwoord4" = "More and more organisations\nYou can use Givt in all organisations that are registered with us. More organisations are joining every week, you can see the latest overview at https://givt.co.uk/where-to-use-givt/. \n\nNot registered yet? \nIf your organisation is not affiliated with Givt yet, please contact us at +44 2037 908068 or info@givt.app .";
 
 /*Antwoord op FAQ vraag5*/
 "FAQantwoord5" = "SlimPay\nWhen installing Givt, the user gives the app authorisation to debit their account. The transactions are handled by Slimpay – a bank that specialises in processing mandates.\n\nRevocable afterwards\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revocable, it is completely safe and immune to fraud.";
@@ -1174,3 +1174,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "US.Registration.Personal.Details.PostalCode.Placeholder" = "Zip code";
 "AmountPresetsErrMinAmount" = "The amount has to be at least {0}";
 "UnregisterInfoUS" = "We’re sad to see you go!";
+"InvalidQRcodeTitle" = "Invalid QR code";
+"InvalidQRcodeMessage" = "Unfortunately, this QR code is no longer active. Would you like to give to {0}?";

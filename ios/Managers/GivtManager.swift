@@ -517,9 +517,9 @@ final class GivtManager: NSObject {
     }
     
     func getGivts(callback: @escaping ([HistoryTransaction]) -> Void) {
-        client.get(url: "/api/Givts", data: [:]) { (response) in
+        client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts", data: [:]) { (response) in
             var models: [HistoryTransaction] = []
-            if let response = response, let data = response.data, response.statusCode == 202 {
+            if let response = response, let data = response.data, response.statusCode == 200 {
                 do
                 {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
