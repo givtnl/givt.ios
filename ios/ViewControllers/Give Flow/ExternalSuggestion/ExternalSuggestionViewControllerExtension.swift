@@ -19,7 +19,11 @@ extension ExternalSuggestionViewController {
         externalSuggestion.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         externalSuggestion.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         externalSuggestion.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControl.Event.touchUpInside)
+        var action = #selector(self.giveAction)
+        if externalIntegrationObject!.entryKind == .QRCode && !qrCode!.Active {
+            action = #selector(self.giveActionNameSpace)
+        }
+        externalSuggestion.button.addTarget(self, action: action, for: UIControl.Event.touchUpInside)
         externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControl.State.normal)
         externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControl.Event.touchUpInside)
         externalSuggestion.cancelButton.isUserInteractionEnabled = true
@@ -27,7 +31,7 @@ extension ExternalSuggestionViewController {
         externalSuggestion.image.image = externalIntegrationObject!.logo
     }
     @objc func giveAction() {
-        giveManually(antennaID: GivtManager.shared.externalIntegration!.mediumId)
+        giveManually(antennaID: self.externalIntegrationObject!.mediumId)
     }
     
     @objc func giveActionNameSpace() {
