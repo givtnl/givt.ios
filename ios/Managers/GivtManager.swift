@@ -22,13 +22,18 @@ struct BeaconList: Codable {
     var OrgBeacons: [OrgBeacon]
     var LastChanged: Date
 }
-
+struct QrCode: Codable {
+    var Name: String?
+    var MediumId: String
+    var Active: Bool
+    
+}
 struct OrgBeacon: Codable {
     let EddyNameSpace: String
     let OrgName: String
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
-    
+    let QrCodes: [QrCode]?
     var paymentType: PaymentType {
         get {
             let start = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 8)
@@ -74,6 +79,10 @@ struct OrgBeaconLocation: Codable {
     let BeaconId: String
     let dtBegin: Date
     let dtEnd: Date
+}
+
+enum QrCodeStatus {
+    case Success, Failure, Disabled
 }
 
 final class GivtManager: NSObject {
@@ -308,8 +317,9 @@ final class GivtManager: NSObject {
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
-    func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
+    func giveQR(scanResult: String, completionHandler: @escaping (QrCodeStatus) -> Void) {
         if let mediumid = getMediumIdFromGivtLink(link: scanResult) {
+                       
             let bestBeacon = BestBeacon()
             /* mimic bestbeacon */
             bestBeacon.beaconId = mediumid
@@ -319,11 +329,18 @@ final class GivtManager: NSObject {
                 bestBeacon.namespace = mediumid
             }
             self.bestBeacon = bestBeacon
-            //bepaal naam
-            give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
-            completionHandler(true)
+            
+            if let orgBeacon = orgBeaconList?.first(where: { orgBeacon in orgBeacon.EddyNameSpace == self.bestBeacon!.namespace! }) {
+                if let qrCode = orgBeacon.QrCodes?.first(where: {qrCode in qrCode.MediumId == mediumid }), qrCode.Active {
+                    //bepaal naam
+                    give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+                    completionHandler(.Success)
+                } else {
+                    completionHandler(.Disabled)
+                }
+            }
         } else {
-            completionHandler(false)
+            completionHandler(.Failure)
         }
     }
     
@@ -618,65 +635,18 @@ final class GivtManager: NSObject {
     }
 
     func getBeaconsFromOrganisation(tries: Int = 4, completionHandler: @escaping (Bool) -> Void) {
-        
-        if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            let data = ["Guid" : userExt.guid]
-            client.get(url: "/api/v2/collectgroups/applist", data: data, timeout: 20, callback: { (response) in
-                if let response = response, let data = response.data {
-                    if response.statusCode == 200 {
-                        do {
-                            let decoder = JSONDecoder()
-                            decoder.dateDecodingStrategy = .custom({ (date) -> Date in
-                                let container = try date.singleValueContainer()
-                                var dateStr = try container.decode(String.self)
-                                dateStr = dateStr.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
-                            })
-                            let bl = try decoder.decode(BeaconList.self, from: data)
-                            UserDefaults.standard.orgBeaconListV2 = bl
-                        
-                            completionHandler(true)
-                        } catch let err as NSError {
-                            if (tries > 0) {
-                                self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
-                                self.log.warning(message: "Retrying the fetch beacon list.")
-                                return
-                            } else {
-                                self.log.warning(message: "Stop trying to fetch beacon list.")
-                            }
-                            completionHandler(false)
-                            print(err)
-                        }
-                    } else if response.statusCode == 204 {
-                        completionHandler(false)
-                        print("list up to date")
-                    } else {
-                        if (tries > 0) {
-                            self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
-                            self.log.warning(message: "Retrying the fetch beacon list.")
-                            return
-                        } else {
-                            self.log.warning(message: "Stop trying to fetch beacon list.")
-                        }
-                        completionHandler(false)
-                        print("unknow statuscode")
-                    }
-                } else {
-                    if (tries > 0) {
-                        self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
-                        self.log.warning(message: "Retrying the fetch beacon list.")
-                        return
-                    } else {
-                        self.log.warning(message: "Stop trying to fetch beacon list.")
-                    }
-                    print("no response from server?")
-                    completionHandler(false)
-                }
-            })
+        try! mediater.sendAsync(request: GetCollectGroupsV2Query()) { responseModel in
+            if let result = responseModel.result {
+                UserDefaults.standard.orgBeaconListV2 = result
+                completionHandler(true)
+            } else if tries > 0 {
+                self.getBeaconsFromOrganisation(tries: tries-1, completionHandler: completionHandler)
+                self.log.warning(message: "Retrying the fetch beacon list.")
+                return
+            } else {
+                self.log.warning(message: "Stop trying to fetch beacon list.")
+                completionHandler(false)
+            }
         }
     }
     
