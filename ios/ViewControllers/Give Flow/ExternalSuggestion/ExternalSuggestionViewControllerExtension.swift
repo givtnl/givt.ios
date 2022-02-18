@@ -23,7 +23,7 @@ extension ExternalSuggestionViewController {
         externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControl.State.normal)
         externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControl.Event.touchUpInside)
         externalSuggestion.cancelButton.isUserInteractionEnabled = true
-        externalSuggestion.label.attributedText = getAttributedTextWithBoldOrganisationName()
+        externalSuggestion.label.attributedText = StringHelper.getAttributedTextWithBoldCollectGroupName(getMessageForExternalSuggestionKind(externalIntegrationObject!.entryKind), self.collectGroupDetailModel!.OrgName)
         externalSuggestion.image.image = externalIntegrationObject!.logo
     }
     @objc func giveAction() {
@@ -57,20 +57,4 @@ extension ExternalSuggestionViewController {
         }
     }
     
-    fileprivate func getAttributedTextWithBoldOrganisationName() -> NSAttributedString {
-        let lightAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 17)!,
-            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        ] as [NSAttributedString.Key : Any]
-        let boldAttributes = [
-            NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 17)!,
-            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        ] as [NSAttributedString.Key : Any]
-        
-        let message = getMessageForExternalSuggestionKind(externalIntegrationObject!.entryKind)
-        let rangeOfSubstring = (message as NSString).range(of: self.collectGroupDetailModel!.OrgName)
-        let attributedString = NSMutableAttributedString(string: message, attributes: lightAttributes)
-        attributedString.setAttributes(boldAttributes, range: rangeOfSubstring)
-        return attributedString
-    }
 }

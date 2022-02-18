@@ -154,15 +154,21 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 alert.addAction(cancel)
                 self.present(alert, animated: true, completion: nil)
             } else if qrCodeStatus == .Disabled {
+                let namespace = GivtManager.shared.getMediumIdFromGivtLink(link: scanResult)?.split(separator: ".")[0].toString()
+                let collectGroup = UserDefaults.standard.orgBeaconListV2?.OrgBeacons.first(where: {orgBeacon in orgBeacon.EddyNameSpace == namespace })
+                
                 self.log.warning(message: "User scanned a disabled QR-code: " + scanResult )
-                let alert = UIAlertController(title: "Oops", message: "Ti ni gelukt", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Okeej", style: .cancel) { (action) in
+                
+                let alert = UIAlertController(
+                    title: "InvalidQRcodeTitle".localized,
+                    message: StringHelper.getMessageWithCollectGroupName("InvalidQRcodeMessage".localized.replace("{0}", with: collectGroup!.OrgName), collectGroup!.OrgName),
+                    preferredStyle: .alert)
+                
+                let action = UIAlertAction(title: "Cancel".localized, style: .cancel) { (action) in
                     self.navigationController?.popViewController(animated: true)
                 }
-                let giveToOrganisation = UIAlertAction(title: "Gif mo an de organisatie", style: .default) { (nok) in
-                    if let namespace = GivtManager.shared.getMediumIdFromGivtLink(link: scanResult)?.split(separator: ".")[0] {
-                        GivtManager.shared.give(antennaID: String(namespace), organisationName: GivtManager.shared.getOrganisationName(organisationNameSpace: String(namespace)))
-                    }
+                let giveToOrganisation = UIAlertAction(title: "YesPlease".localized, style: .default) { (nok) in
+                    GivtManager.shared.give(antennaID: collectGroup!.EddyNameSpace, organisationName: collectGroup!.OrgName)
                 }
                 alert.addAction(action)
                 alert.addAction(giveToOrganisation)

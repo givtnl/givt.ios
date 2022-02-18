@@ -214,6 +214,7 @@
 		32CF87C12760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */; };
 		32D245FD27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D245FC27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift */; };
 		32D2460327BE7E4000147A1B /* SubstringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D2460227BE7E4000147A1B /* SubstringExtensions.swift */; };
+		32D2460527BF893C00147A1B /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D2460427BF893C00147A1B /* StringHelper.swift */; };
 		32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */; };
 		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
@@ -790,6 +791,7 @@
 		32CF87C02760901F005914E7 /* USSecondRegistrationViewControllerBackButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USSecondRegistrationViewControllerBackButtonExtension.swift; sourceTree = "<group>"; };
 		32D245FC27BE75ED00147A1B /* ExternalSuggestionViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalSuggestionViewControllerExtension.swift; sourceTree = "<group>"; };
 		32D2460227BE7E4000147A1B /* SubstringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringExtensions.swift; sourceTree = "<group>"; };
+		32D2460427BF893C00147A1B /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
@@ -2624,6 +2626,7 @@
 				32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */,
 				324A0C42273A8A5000FB3E8D /* CurrencyHelper.swift */,
 				320296C227BBF15600D730E3 /* BeaconListHelper.swift */,
+				32D2460427BF893C00147A1B /* StringHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -4009,6 +4012,7 @@
 				3274EB6A25E9C32200FC8D6A /* LineWithIcon.swift in Sources */,
 				FB4C5DFA27985A0F0045E653 /* AppDelegateMediaterExtension.swift in Sources */,
 				323F170725ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift in Sources */,
+				32D2460527BF893C00147A1B /* StringHelper.swift in Sources */,
 				3260CF21254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift in Sources */,
 				323F16ED25EAC12A00B12049 /* CALayerExtension.swift in Sources */,
 				32F46B1C27B593DB0013B44E /* PersonalInfoViewControllerUIExtension.swift in Sources */,
