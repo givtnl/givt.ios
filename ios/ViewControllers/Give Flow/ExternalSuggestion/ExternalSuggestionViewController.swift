@@ -31,6 +31,21 @@ class ExternalSuggestionViewController: BaseScanViewController {
         setupMessageBox()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        GivtManager.shared.delegate = self
+        GivtManager.shared.externalIntegration!.wasShownAlready = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        GivtManager.shared.delegate = nil
+    }
+    
     override func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
         if let _ = URL.absoluteString.index(of: "cloud.givtapp.net") {
             DispatchQueue.main.async {
