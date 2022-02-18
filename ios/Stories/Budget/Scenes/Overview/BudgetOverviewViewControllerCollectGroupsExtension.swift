@@ -93,6 +93,8 @@ extension BudgetOverviewViewController {
                 buttonSeeMore.isHidden = true
                 buttonControlView.bottomAnchor.constraint(equalTo: buttonAddExternalDonationView.bottomAnchor, constant: 15).isActive = true
             }
+            buttonControlView.setNeedsUpdateConstraints()
+            buttonControlView.setNeedsLayout()
         }
     }
     
