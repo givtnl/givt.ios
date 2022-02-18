@@ -1180,5 +1180,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "US.Registration.Personal.Details.PostalCode.Placeholder" = "Postcode";
 "AmountPresetsErrMinAmount" = "Het bedrag moet minstens {0} zijn";
 "UnregisterInfoUS" = "We’re sad to see you go!";
-"InvalidQRcodeTitle" = "Ongeldige QR-code";
-"InvalidQRcodeMessage" = "Helaas, deze QR-code is niet meer actief. Wil je toch graag geven aan {0}?";
+"InvalidQRcodeTitle" = "QR-code niet actief";
+"InvalidQRcodeMessage" = "Helaas, deze QR-code is niet meer actief. Wil je toch graag geven aan de algemene collecte van {0}?";
