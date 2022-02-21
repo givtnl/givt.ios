@@ -45,9 +45,7 @@ extension USRegistrationViewController : WKScriptMessageHandler {
         creditCardWebView.scrollView.contentInset = UIEdgeInsets(top: -8, left: -9, bottom: 0, right: 0)
         creditCardWebView.scrollView.isScrollEnabled = false
         creditCardWebView.configuration.userContentController.add(self, name: "registrationMessageHandler")
-        if let url = Bundle.main.url(forResource: "wepay", withExtension: "html") {
-            creditCardWebView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
-        }
+        creditCardWebView.load(URLRequest(url: URL(string: "\(AppConstants.apiUri)/wepay-ios.html")!))
     }
     
     func tokenize() {
