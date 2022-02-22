@@ -140,8 +140,8 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     }
     
     func giveManually(scanResult: String) {
-        GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { success in
-            if !success {
+        GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { qrCodeStatus in
+            if qrCodeStatus == .Failure {
                 self.log.warning(message: "Could not scan QR: " + scanResult )
                 let alert = UIAlertController(title: NSLocalizedString("QRScanFailed", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
@@ -152,6 +152,26 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 }
                 alert.addAction(action)
                 alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
+            } else if qrCodeStatus == .Disabled {
+                let namespace = GivtManager.shared.getMediumIdFromGivtLink(link: scanResult)?.split(separator: ".")[0].toString()
+                let collectGroup = UserDefaults.standard.orgBeaconListV2?.OrgBeacons.first(where: {orgBeacon in orgBeacon.EddyNameSpace == namespace })
+                
+                self.log.warning(message: "User scanned a disabled QR-code: " + scanResult )
+                
+                let alert = UIAlertController(
+                    title: "InvalidQRcodeTitle".localized,
+                    message: StringHelper.getMessageWithCollectGroupName("InvalidQRcodeMessage".localized.replace("{0}", with: collectGroup!.OrgName), collectGroup!.OrgName),
+                    preferredStyle: .alert)
+                
+                let action = UIAlertAction(title: "Cancel".localized, style: .cancel) { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                let giveToOrganisation = UIAlertAction(title: "YesPlease".localized, style: .default) { (nok) in
+                    GivtManager.shared.give(antennaID: collectGroup!.EddyNameSpace, organisationName: collectGroup!.OrgName)
+                }
+                alert.addAction(action)
+                alert.addAction(giveToOrganisation)
                 self.present(alert, animated: true, completion: nil)
             }
         })

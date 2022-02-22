@@ -109,6 +109,9 @@ extension AppDelegate {
         Mediater.shared.registerHandler(handler: ImportAdvertisementsCommandHandler())
         Mediater.shared.registerHandler(handler: GetRandomAdvertisementQueryHandler())
         
+        //-- CollectGroups
+        Mediater.shared.registerHandler(handler: GetCollectGroupsV2QueryHandler())
+        
         
     }
 }
