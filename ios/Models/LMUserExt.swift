@@ -27,6 +27,7 @@ struct LMUserExt: Codable {
     var AccountType: String
     var GiftAidEnabled: Bool
     var CreditCardNumber: String?
+    var CreditCardType: String?
     
     func getFullAddress() throws -> String {
         switch Country {

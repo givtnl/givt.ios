@@ -34,9 +34,15 @@ extension PersonalInfoViewController {
                 self.uExt = userExtension
                 
                 try? Mediater.shared.sendAsync(request: GetAccountsQuery()) { accountDetails in
-                    self.uExt?.CreditCardNumber = accountDetails.result?.first?.CreditCardDetails?.CardNumber
+                    var cardType: String? = nil
+                    if UserDefaults.standard.paymentType == .CreditCard {
+                        if let creditCardDetails = accountDetails.result?.first?.CreditCardDetails {
+                            self.uExt?.CreditCardNumber = self.formatCreditCard(creditCardDetails.CardNumber, creditCardDetails.CardType)
+                            cardType = creditCardDetails.CardType
+                        }
+                    }
                     
-                    self.generateUserInfoRows() { settings in
+                    self.generateUserInfoRows(cardType) { settings in
                         completionHandler(settings.sorted(by: { first, second in
                             first.position! < second.position!
                         }))
@@ -45,6 +51,17 @@ extension PersonalInfoViewController {
             }
         }
     }
+    
+    func formatCreditCard(_ cardNumber: String, _ cardType: String) -> String {
+        var length: Int = 19
+        switch cardType {
+            case "Visa", "Mastercard", "Discover": length = 16
+            case "Amex": length = 15
+            default: length = 19
+        }
+        return "\(String(repeating: "*", count: length - 4))\(cardNumber[cardNumber.index(cardNumber.endIndex, offsetBy: -4)...])".chunked(by: 4)
+    }
+    
     func setupUI() {
         settingsTableView.delegate = self
         settingsTableView.dataSource = self

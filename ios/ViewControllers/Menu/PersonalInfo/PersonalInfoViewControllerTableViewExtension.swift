@@ -10,22 +10,49 @@ import Foundation
 import UIKit
 import GivtCodeShare
 import SVProgressHUD
+import SwipeCellKit
 
-extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource {
+extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right, settings[indexPath.row].type == .creditCard else { return nil }
+        let deleteAction = SwipeAction(style: .destructive, title: "Remove payment method") { action, indexPath in
+            let alert = UIAlertController(title: "Info", message: "Do you want to remove this payment method?", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) { yesAction in
+                self.settings.remove(at: indexPath.row)
+                action.fulfill(with: .delete)
+                tableView.reloadData()
+                return
+            })
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { noAction in
+                action.fulfill(with: .reset)
+                tableView.reloadData()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        return [deleteAction]
+    }
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .selection
+        options.transitionStyle = .reveal
+        return options
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PersonalSettingTableViewCell", for: indexPath) as! PersonalSettingTableViewCell
-        cell.labelView.text = settings[indexPath.row].name
-        cell.img.image = settings[indexPath.row].image
+        cell.delegate = self
+        let currentSetting = settings[indexPath.row]
+        cell.labelView.text = currentSetting.name
+        cell.img.image = currentSetting.image
         
-        if (settings[indexPath.row].disabled) {
+        if currentSetting.disabled && currentSetting.type != .creditCard {
             cell.accessoryType = .none
             cell.labelView.alpha = 0.5
             cell.selectionStyle = .none
-            switch(settings[indexPath.row].type) {
+            switch(currentSetting.type) {
                 case .address:
                     cell.img.image = cell.img.image!.noir.alpha(0.5)
                 default:
@@ -45,6 +72,9 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (UserDefaults.standard.paymentType == .CreditCard) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            
+            guard settings[indexPath.row].type != .creditCard else { return tableView.deselectRow(at: indexPath, animated: true)}
+                
             vc.type = settings[indexPath.row].type
             vc.img = settings[indexPath.row].image
             switch settings[indexPath.row].type {
