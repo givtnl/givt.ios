@@ -54,11 +54,12 @@ struct UserInfoRowDetail {
         )
     }
     
-    static func paymentMethod(_ details: String, paymentType: PaymentType, _ cardType: String? = nil) -> UserInfoRowDetail {
+    static func paymentMethod(_ details: String, paymentType: PaymentType, _ cardType: String? = nil, active: Bool = true) -> UserInfoRowDetail {
         return UserInfoRowDetail(
             image: getImageForPaymentMethod(cardType: cardType),
             name: details,
             type: mapToSettingType(paymentType: paymentType),
+            disabled: !active,
             position: 5
         )
     }

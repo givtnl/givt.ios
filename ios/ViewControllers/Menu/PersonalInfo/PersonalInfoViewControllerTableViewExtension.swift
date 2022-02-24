@@ -18,9 +18,28 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         let deleteAction = SwipeAction(style: .destructive, title: "Remove payment method") { action, indexPath in
             let alert = UIAlertController(title: "Info", message: "Do you want to remove this payment method?", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default) { yesAction in
-                self.settings.remove(at: indexPath.row)
-                action.fulfill(with: .delete)
-                tableView.reloadData()
+                DispatchQueue.main.async {
+                    SVProgressHUD.show()
+                    APIClient.shared.patch(url: "/api/v2/users/:userId/accounts", data: ["Active": false]) { response in
+                        SVProgressHUD.dismiss()
+                        if let response = response, response.isSuccess {
+                            self.loadSettings() { settings in
+                                DispatchQueue.main.async {
+                                    self.settings = settings
+                                    self.settingsTableView.reloadData()
+                                    SVProgressHUD.dismiss()
+                                }
+                            }
+                        } else {
+                            let alertFailed = UIAlertController(title: "Oops", message: "Something went wrong. Please try again later", preferredStyle: UIAlertController.Style.alert)
+                            alertFailed.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                            action.fulfill(with: .reset)
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        }
+                    }
+                }
                 return
             })
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { noAction in
@@ -48,12 +67,12 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.labelView.text = currentSetting.name
         cell.img.image = currentSetting.image
         
-        if currentSetting.disabled && currentSetting.type != .creditCard {
+        if currentSetting.disabled {
             cell.accessoryType = .none
             cell.labelView.alpha = 0.5
             cell.selectionStyle = .none
             switch(currentSetting.type) {
-                case .address:
+            case .address, .creditCard:
                     cell.img.image = cell.img.image!.noir.alpha(0.5)
                 default:
                     cell.img.image = cell.img.image!.noir.alpha(1)

@@ -11,7 +11,7 @@ import UIKit
 
 extension PersonalInfoViewController {
     
-    func generateUserInfoRows(_ cardType: String?, completion: @escaping ([UserInfoRowDetail]) -> Void) {
+    func generateUserInfoRows(completion: @escaping ([UserInfoRowDetail]) -> Void) {
         var retVal = [UserInfoRowDetail]()
         do {
             retVal = [
@@ -30,14 +30,14 @@ extension PersonalInfoViewController {
                 retVal.insert(try UserInfoRowDetail.paymentMethod(self.uExt!.getPrettyIban(), paymentType: self.uExt!.getPaymentType()), at: retVal.count - 1)
             case .BACSDirectDebit:
                 retVal.insert(contentsOf: [
-                    try UserInfoRowDetail.paymentMethod(self.uExt!.getPrettySortCodeAndAccountNumber(), paymentType: self.uExt!.getPaymentType()),
-                    UserInfoRowDetail.giftAid()
+                    try UserInfoRowDetail.paymentMethod(self.uExt!.getPrettySortCodeAndAccountNumber(), paymentType: self.uExt!.getPaymentType()), UserInfoRowDetail.giftAid()
                 ], at: retVal.count - 1)
             case .CreditCard:
-                retVal.insert(
-                    UserInfoRowDetail.paymentMethod(self.uExt!.CreditCardNumber!,
-                                                    paymentType: try! self.uExt!.getPaymentType(), cardType), at: retVal.count - 1)
-                retVal[retVal.count - 2].image = retVal[retVal.count - 2].image.resized(to: retVal.first!.image.size)!
+                if let cardNumber = self.uExt?.CreditCardNumber, let cardType = self.uExt?.CreditCardType, let isActive = self.uExt?.AccountActive {
+                    retVal.insert(
+                        UserInfoRowDetail.paymentMethod(cardNumber, paymentType: try! self.uExt!.getPaymentType(), cardType, active: isActive), at: retVal.count - 1)
+                    retVal[retVal.count - 2].image = retVal[retVal.count - 2].image.resized(to: retVal.first!.image.size)!
+                }
             default:
                 break
             }
