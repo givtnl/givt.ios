@@ -34,15 +34,17 @@ extension PersonalInfoViewController {
                 self.uExt = userExtension
                 
                 try? Mediater.shared.sendAsync(request: GetAccountsQuery()) { accountDetails in
-                    var cardType: String? = nil
                     if UserDefaults.standard.paymentType == .CreditCard {
-                        if let creditCardDetails = accountDetails.result?.first?.CreditCardDetails {
-                            self.uExt?.CreditCardNumber = self.formatCreditCard(creditCardDetails.CardNumber, creditCardDetails.CardType)
-                            cardType = creditCardDetails.CardType
+                        if let account = accountDetails.result?.first {
+                            if let creditCardDetails = account.CreditCardDetails {
+                                self.uExt?.CreditCardNumber = self.formatCreditCard(creditCardDetails.CardNumber, creditCardDetails.CardType)
+                                self.uExt?.CreditCardType = creditCardDetails.CardType
+                                self.uExt?.AccountActive = account.Active
+                            }
                         }
                     }
                     
-                    self.generateUserInfoRows(cardType) { settings in
+                    self.generateUserInfoRows { settings in
                         completionHandler(settings.sorted(by: { first, second in
                             first.position! < second.position!
                         }))

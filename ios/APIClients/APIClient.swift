@@ -239,11 +239,14 @@ class APIClient: NSObject, URLSessionDelegate {
             }
     }
     
-    func patch(url: String, callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
+    func patch(url: String, data: [String: Any] = [:], callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
         var headers: [String: String] = [:]
         if let bearerToken = UserDefaults.standard.bearerToken {
             headers["Authorization"] = "Bearer " + bearerToken
         }
+        
+        let url = url.replace(":userId", with: UserDefaults.standard.userExt!.guid)
+        
         log.info(message: "PATCH on " + url)
         
         var retries = retryCount
@@ -251,6 +254,7 @@ class APIClient: NSObject, URLSessionDelegate {
         client.patch(url: url).delegate(delegate: self)
             .type(type: "json")
             .set(headers: headers)
+            .send(data: data)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
                     if retries < 5 {
