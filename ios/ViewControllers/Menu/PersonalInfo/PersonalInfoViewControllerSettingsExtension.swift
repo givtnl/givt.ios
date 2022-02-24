@@ -11,10 +11,10 @@ import UIKit
 
 extension PersonalInfoViewController {
     
-    func generateUserInfoRows(completion: @escaping ([UserInfoRowDetail]) -> Void) {
+    func generateUserInfoRows(_ cardType: String?, completion: @escaping ([UserInfoRowDetail]) -> Void) {
         var retVal = [UserInfoRowDetail]()
         do {
-             retVal = [
+            retVal = [
                 try UserInfoRowDetail.address(
                     self.uExt!.getFullAddress(),
                     UserDefaults.standard.paymentType == .CreditCard
@@ -26,19 +26,20 @@ extension PersonalInfoViewController {
             ]
             
             switch try! self.uExt!.getPaymentType() {
-                case .SEPADirectDebit:
+            case .SEPADirectDebit:
                 retVal.insert(try UserInfoRowDetail.paymentMethod(self.uExt!.getPrettyIban(), paymentType: self.uExt!.getPaymentType()), at: retVal.count - 1)
-                case .BACSDirectDebit:
+            case .BACSDirectDebit:
                 retVal.insert(contentsOf: [
                     try UserInfoRowDetail.paymentMethod(self.uExt!.getPrettySortCodeAndAccountNumber(), paymentType: self.uExt!.getPaymentType()),
-                            UserInfoRowDetail.giftAid()
-                    ], at: retVal.count - 1)
-                case .CreditCard:
+                    UserInfoRowDetail.giftAid()
+                ], at: retVal.count - 1)
+            case .CreditCard:
                 retVal.insert(
-                        UserInfoRowDetail.paymentMethod(self.uExt!.CreditCardNumber!,
-                                                        paymentType: try! self.uExt!.getPaymentType()), at: retVal.count - 1)
-                default:
-                    break
+                    UserInfoRowDetail.paymentMethod(self.uExt!.CreditCardNumber!,
+                                                    paymentType: try! self.uExt!.getPaymentType(), cardType), at: retVal.count - 1)
+                retVal[retVal.count - 2].image = retVal[retVal.count - 2].image.resized(to: retVal.first!.image.size)!
+            default:
+                break
             }
         } catch {
             print(error)
@@ -58,6 +59,7 @@ enum SettingType: CaseIterable {
     case bacs
     case giftaid
     case creditCard
+    case removePaymentMethod
 }
 
 

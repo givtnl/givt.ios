@@ -54,12 +54,11 @@ struct UserInfoRowDetail {
         )
     }
     
-    static func paymentMethod(_ details: String, paymentType: PaymentType) -> UserInfoRowDetail {
+    static func paymentMethod(_ details: String, paymentType: PaymentType, _ cardType: String? = nil) -> UserInfoRowDetail {
         return UserInfoRowDetail(
-            image: #imageLiteral(resourceName: "card"),
+            image: getImageForPaymentMethod(cardType: cardType),
             name: details,
             type: mapToSettingType(paymentType: paymentType),
-            disabled: paymentType == .CreditCard,
             position: 5
         )
     }
@@ -69,7 +68,6 @@ struct UserInfoRowDetail {
             image: #imageLiteral(resourceName: "Giftaid_Icon-yellow"),
             name: "Gift Aid",
             type: .giftaid,
-            disabled: false,
             position: 6
         )
     }
@@ -85,9 +83,21 @@ struct UserInfoRowDetail {
     }
     
     private static func mapToSettingType(paymentType: PaymentType) -> SettingType {
-        return SettingType.allCases.first { settingType in
-            settingType.hashValue == paymentType.hashValue
-        }!
+        switch paymentType {
+        case .BACSDirectDebit:
+            return .bacs
+        case .CreditCard:
+            return .creditCard
+        default:
+            return .iban
+        }
+    }
+    private static func getImageForPaymentMethod(cardType: String?) -> UIImage {
+        guard let cardType = cardType else {
+            return #imageLiteral(resourceName: "card")
+        }
+            return CreditCardHelper.getCreditCardCompanyLogo(CreditCardHelper.getCreditCardCompanyEnumValue(value: cardType))
+        
     }
 }
 
