@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class PersonalSettingTableViewCell: UITableViewCell {
+class PersonalSettingTableViewCell: SwipeTableViewCell {
 
     @IBOutlet var img: UIImageView!
     @IBOutlet var labelView: UILabel!
