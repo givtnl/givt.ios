@@ -23,4 +23,33 @@ class ExternalAppIntegration {
         self.appScheme = appScheme
         self.wasShownAlready = wasShownAlready
     }
+    
+    
+    var entryKind: ExternalSuggestionKind {
+        get {
+            switch name {
+                case "normal":
+                    return .Normal
+                case "QR":
+                    return .QRCode
+                default:
+                    return .OtherApp
+            }
+        }
+    }
+    
+    enum ExternalSuggestionKind {
+        case Normal, QRCode, OtherApp
+    }
+    
+    var namespace: String {
+        get {
+            if mediumId.contains(".") {
+                return mediumId.split(separator: ".")[0].toString()
+            } else {
+                return mediumId
+            }
+        }
+    }
 }
+
