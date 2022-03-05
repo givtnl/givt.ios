@@ -18,17 +18,14 @@ extension Int {
         return Double(self)
     }
     
-    
-    
     func getUTCDateForYear(type: DateType) -> String {
         var componentsForYearlySummaryComponents = DateComponents()
         componentsForYearlySummaryComponents.day = 1
         componentsForYearlySummaryComponents.month = 1
         componentsForYearlySummaryComponents.year = [DateType.start: self, DateType.end: self+1][type]
         let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = DateFormatter()
+        let dateFormatter = ISO8601DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: date)
     }
 }
