@@ -1134,6 +1134,8 @@
 		FBD827E5234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBD9CACB237580D5006C07FA /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		FBD9CACD237580DB006C07FA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FBDBF78127F449F80098B05E /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		FBDBF78227F449F80098B05E /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FBFAF47C25669CF30012E4A6 /* GetAllDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllDonationsQuery.swift; sourceTree = "<group>"; };
 		FBFAF47E25669D3D0012E4A6 /* GetAllDonationsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllDonationsQueryHandler.swift; sourceTree = "<group>"; };
 		FBFAF48125669EFE0012E4A6 /* DonationDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationDetailModel.swift; sourceTree = "<group>"; };
@@ -3629,6 +3631,7 @@
 				nl,
 				en,
 				de,
+				"en-GB",
 			);
 			mainGroup = FB3CE6CA1F14CA1F0055185B;
 			packageReferences = (
@@ -4308,6 +4311,7 @@
 				D761E9C61F20D341002B849B /* nl */,
 				D72B19811FE3016700EE3FDE /* en */,
 				FBD827E5234DF2F70034BB51 /* de */,
+				FBDBF78227F449F80098B05E /* en-GB */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -4318,6 +4322,7 @@
 				D7E708521FE7FD67002A7770 /* nl */,
 				D7E708531FE7FD68002A7770 /* en */,
 				FBD827E4234DF2F70034BB51 /* de */,
+				FBDBF78127F449F80098B05E /* en-GB */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
