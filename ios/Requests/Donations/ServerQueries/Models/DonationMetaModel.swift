@@ -15,6 +15,6 @@ struct DonationMetaModel : Codable {
     
     var HasDeductableGivts : Bool
     var AccountType : String
-    var YearsWithGivts : [Int]
+    var YearsWithGivts : [Int]?
     var GiftAidSettings: GiftAidSettingsModel?
 }
