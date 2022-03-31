@@ -19,8 +19,8 @@ class GetUserHasDonationsQueryHandler : RequestHandlerProtocol {
                 if let response = response, response.isSuccess,
                     let data = response.data,
                     let model = try? JSONDecoder().decode(DonationMetaModel.self, from: data) {
-                    UserDefaults.standard.hasDonations = model.YearsWithGivts.count > 0
-                    try? completion((model.YearsWithGivts.count > 0) as! R.TResponse)
+                    UserDefaults.standard.hasDonations = model.YearsWithGivts?.count ?? 0 > 0
+                    try? completion(UserDefaults.standard.hasDonations as! R.TResponse)
                 } else {
                     try? completion(false as! R.TResponse)
                 }
