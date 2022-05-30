@@ -188,7 +188,9 @@ class LoginManager {
                         decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
                         let userExt = try decoder.decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
-                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
+                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0
+                            ? userExt.Country == "US" ? 4999 : 499
+                            : userExt.AmountLimit
                         UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
                         if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()),
                            accountType != .undefined {
@@ -245,7 +247,7 @@ class LoginManager {
             "City":  user.city,
             "PostalCode":  user.postalCode,
             "Country":  user.country,
-            "AmountLimit": "499",
+            "AmountLimit": "\(user.country == "US" ? 4999 : 499)",
             "TimeZoneId": user.timeZoneId]
         
         if !user.iban.isEmpty {
@@ -272,7 +274,7 @@ class LoginManager {
                         self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, descr) in
                             if success {
                                 if let limit = params["AmountLimit"] {
-                                    UserDefaults.standard.amountLimit = Int(limit) ?? 499
+                                    UserDefaults.standard.amountLimit = Int(limit) ?? (user.country == "US" ? 4999 : 499)
                                 }
                                 completionHandler(true)
                             } else {
