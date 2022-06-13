@@ -33,3 +33,4 @@ jobs:
         env : 
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
+          APPSTORECONNECT_PRIVATE_KEY: ${{ secrets.APPSTORECONNECT_PRIVATE_KEY }}
