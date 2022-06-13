@@ -15,21 +15,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios certificates
+
+```sh
+[bundle exec] fastlane ios certificates
+```
+
+
+
 ### ios release
 
 ```sh
 [bundle exec] fastlane ios release
 ```
 
-Push a new release build to AppCenter
-
-### ios production
-
-```sh
-[bundle exec] fastlane ios production
-```
-
-Push a new production build to Testflight
+Push a new build to Testflight
 
 ----
 

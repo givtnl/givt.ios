@@ -5,42 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000315">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000342">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: setup_ci" time="0.00017">
+      <testcase classname="fastlane.lanes" name="1: git_branch" time="0.025747">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: sync_code_signing" time="2.992543">
+      <testcase classname="fastlane.lanes" name="2: setup_ci" time="0.000486">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: cocoapods" time="1.595794">
+      <testcase classname="fastlane.lanes" name="3: sync_code_signing" time="2.382717">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: increment_build_number" time="1.125158">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="5: build_app" time="128.392316">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="6: dsym_zip" time="0.803015">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="7: app_store_connect_api_key" time="0.005019">
+      <testcase classname="fastlane.lanes" name="4: cocoapods" time="0.426791">
         
       </testcase>
     
