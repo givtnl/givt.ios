@@ -20,7 +20,6 @@
 		27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC59F922255DEE00163BF4 /* SelectContextView.swift */; };
 		27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */; };
 		27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */; };
-		320280BC25E0582F006A68CE /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 320280BB25E0582F006A68CE /* Charts */; settings = {ATTRIBUTES = (Required, ); }; };
 		320296BD27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320296BC27BBB6EE00D730E3 /* GetCollectGroupsV2Query.swift */; };
 		320296BF27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320296BE27BBB70300D730E3 /* GetCollectGroupsV2QueryHandler.swift */; };
 		320296C327BBF15600D730E3 /* BeaconListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320296C227BBF15600D730E3 /* BeaconListHelper.swift */; };
@@ -492,6 +491,7 @@
 		FB87303524C88AF8005FF355 /* FinalizeGivingRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87303424C88AF8005FF355 /* FinalizeGivingRoute.swift */; };
 		FB87303724C88B21005FF355 /* FinalizeGivingRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87303624C88B21005FF355 /* FinalizeGivingRouteHandler.swift */; };
 		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
+		FB8F2BFD2857E9450057A14A /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = FB8F2BFC2857E9450057A14A /* Charts */; };
 		FB93042A274D4A40007D5300 /* ThreadError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB930429274D4A40007D5300 /* ThreadError.swift */; };
 		FB93042D274E3129007D5300 /* GetRandomAdvertisementQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93042C274E3129007D5300 /* GetRandomAdvertisementQuery.swift */; };
 		FB93042F274E317C007D5300 /* LocalizedAdvertisementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB93042E274E317C007D5300 /* LocalizedAdvertisementModel.swift */; };
@@ -1156,7 +1156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */,
-				320280BC25E0582F006A68CE /* Charts in Frameworks */,
+				FB8F2BFD2857E9450057A14A /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3578,7 +3578,7 @@
 			);
 			name = ios;
 			packageProductDependencies = (
-				320280BB25E0582F006A68CE /* Charts */,
+				FB8F2BFC2857E9450057A14A /* Charts */,
 			);
 			productName = ios;
 			productReference = FB3CE6D31F14CA200055185B /* ios.app */;
@@ -3635,7 +3635,7 @@
 			);
 			mainGroup = FB3CE6CA1F14CA1F0055185B;
 			packageReferences = (
-				320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */,
+				FB8F2BFB2857E9450057A14A /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = FB3CE6D41F14CA200055185B /* Products */;
 			projectDirPath = "";
@@ -4916,20 +4916,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */ = {
+		FB8F2BFB2857E9450057A14A /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mikepattyn/Charts.git";
+			repositoryURL = "https://github.com/givtnl/Charts";
 			requirement = {
-				branch = main;
+				branch = master;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		320280BB25E0582F006A68CE /* Charts */ = {
+		FB8F2BFC2857E9450057A14A /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */;
+			package = FB8F2BFB2857E9450057A14A /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
