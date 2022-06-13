@@ -4798,8 +4798,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 325;
-				DEVELOPMENT_TEAM = 9C9K7PRW9C;
+				CURRENT_PROJECT_VERSION = 323;
+				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4872,7 +4872,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "match InHouse com.givt.iosnativepre";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore net.givtapp.ios.test";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RELEASE;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
