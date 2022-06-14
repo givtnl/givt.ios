@@ -4918,9 +4918,9 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		FB8F2BFB2857E9450057A14A /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/givtnl/Charts";
+			repositoryURL = "https://github.com/givtnl/Charts.git";
 			requirement = {
-				branch = master;
+				branch = main;
 				kind = branch;
 			};
 		};
