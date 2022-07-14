@@ -48,7 +48,8 @@ platform :ios do
     dsym_zip
     upload_to_testflight(
         app_identifier: app_identifier,
-        api_key: api_key
+        api_key: api_key,
+        skip_waiting_for_build_processing: true
     )
   end
 end
