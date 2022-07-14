@@ -114,6 +114,10 @@ final class GivtManager: NSObject {
         return UserDefaults.standard.orgBeaconListV2?.OrgBeacons
     }
     
+    func getQrCodeName(organisationNameSpace: String, mediumId: String) -> String? {
+        return orgBeaconList?.first { $0.EddyNameSpace == organisationNameSpace }?.QrCodes?.first { $0.MediumId == mediumId }?.Name
+    }
+    
     func getOrganisationName(organisationNameSpace: String) -> String? {
         return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
             return orgBeacon.EddyNameSpace == organisationNameSpace
@@ -330,10 +334,15 @@ final class GivtManager: NSObject {
             }
             self.bestBeacon = bestBeacon
             
+
             if let orgBeacon = orgBeaconList?.first(where: { orgBeacon in orgBeacon.EddyNameSpace == self.bestBeacon!.namespace! }) {
                 if let qrCode = orgBeacon.QrCodes?.first(where: {qrCode in qrCode.MediumId == mediumid }), qrCode.Active {
                     //bepaal naam
-                    give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+                    if let orgName = self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!), let qrName = qrCode.Name {
+                        give(antennaID: mediumid, organisationName: "\(orgName): \(qrName)")
+                    } else {
+                        give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+                    }
                     completionHandler(.Success)
                 } else {
                     completionHandler(.Disabled)
@@ -355,7 +364,12 @@ final class GivtManager: NSObject {
         self.bestBeacon = bestBeacon
         
         let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
-        
+
+        var orgName = self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)
+        if orgName != nil, let qrName = self.getQrCodeName(organisationNameSpace: bestBeacon.namespace!, mediumId: antennaId) {
+            orgName = "\(orgName!): \(qrName)"
+        }
+
         print("should celebrate \(shouldCelebrate)")
         if let afterGivt = afterGivt, shouldCelebrate {
             LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
@@ -388,12 +402,12 @@ final class GivtManager: NSObject {
                     Analytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20))])
                     Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20))])
                     self.delegate?.onGivtProcessed(transactions: transactions,
-                                                   organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!),
+                                                   organisationName: orgName,
                                                    canShare: self.canShare(id: bestBeacon.beaconId!))
                 }
             })
         } else {
-            give(antennaID: bestBeacon.beaconId!, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+            give(antennaID: bestBeacon.beaconId!, organisationName: orgName)
         }
         
     }
