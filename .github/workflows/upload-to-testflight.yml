@@ -2,9 +2,9 @@ name: Build the app and upload to Testflight
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, pre-main ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, pre-main ]
 
 jobs:
   build:
@@ -29,7 +29,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.CODESIGNING_DEPLOY_KEY }}
       - name: Build and publish with fastlane
-        run : bundle exec fastlane production
+        run : bundle exec fastlane ${{ endsWith(github.ref, '/main') && 'production' || 'release' }}
         env : 
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
+          APPSTORECONNECT_PRIVATE_KEY: ${{ secrets.APPSTORECONNECT_PRIVATE_KEY }}
