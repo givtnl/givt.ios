@@ -51,13 +51,13 @@ extension ExternalSuggestionViewController {
             case .Normal:
                 return "GiveOutOfApp".localized.replace("{0}", with: self.collectGroupDetailModel!.OrgName)
             case .QRCode:
-                if self.qrCode!.Active {
-                    if let qrCode = self.qrCode {
-                        return "QRScannedOutOfApp".localized.replace("{0}", with: "\(self.collectGroupDetailModel!.OrgName): \(qrCode)")
-                    }
-                    return "QRScannedOutOfApp".localized.replace("{0}", with: self.collectGroupDetailModel!.OrgName)
-                } else {
+                guard qrCode!.Active else {
                     return "InvalidQRcodeMessage".localized.replace("{0}", with: self.collectGroupDetailModel!.OrgName)
+                }
+                if let qrCodeName = qrCode!.Name {
+                    return "QRScannedOutOfApp".localized.replace("{0}", with: "\(self.collectGroupDetailModel!.OrgName): \(qrCodeName)")
+                } else {
+                    return "QRScannedOutOfApp".localized.replace("{0}", with: self.collectGroupDetailModel!.OrgName)
                 }
             default:
                 return "ExternalSuggestionLabel".localized.replace("{0}", with: self.collectGroupDetailModel!.OrgName)
