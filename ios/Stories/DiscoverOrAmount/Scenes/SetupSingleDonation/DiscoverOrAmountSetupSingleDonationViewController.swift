@@ -95,7 +95,8 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     @IBAction func giveButton(_ sender: Any) {
         giveButton.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
         do {
-            let user = try mediater.send(request: GetLocalUserConfiguration())
+            let country = (try? mediater.send(request:GetCountryQuery())) ?? "NL"
+            let user = try mediater.send(request: GetLocalUserConfiguration(country: country))
             guard let userId = user.userId else {
                 LogService.shared.error(message: "Trying to donate without valid userId")
                 hideLoader()

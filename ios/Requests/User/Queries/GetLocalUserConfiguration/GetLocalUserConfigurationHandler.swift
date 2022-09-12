@@ -10,12 +10,19 @@ import Foundation
 
 internal struct GetLocalUserConfigurationHandler : RequestHandlerProtocol {
     public func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let paymentType = UserDefaults.standard.accountType == .undefined
-            ?
-            (NSLocale.current.regionCode == "GB" || NSLocale.current.regionCode == "GG" || NSLocale.current.regionCode == "JE" ) ? PaymentType.BACSDirectDebit : PaymentType.SEPADirectDebit
-            :
-            UserDefaults.standard.accountType == .bacs ? PaymentType.BACSDirectDebit : PaymentType.SEPADirectDebit
-        
+        let request = request as! GetLocalUserConfiguration
+        let paymentType = { () -> PaymentType in
+            switch UserDefaults.standard.accountType {
+            case .undefined :
+                switch request.country {
+                case "GB", "GG", "JE" : return PaymentType.BACSDirectDebit
+                case "US": return PaymentType.CreditCard
+                default: return PaymentType.SEPADirectDebit
+                }
+            case .bacs: return PaymentType.BACSDirectDebit
+            default: return PaymentType.SEPADirectDebit
+            }
+        }()
         var userId: UUID?
         if let user = UserDefaults.standard.userExt {
             userId = UUID.init(uuidString: user.guid)

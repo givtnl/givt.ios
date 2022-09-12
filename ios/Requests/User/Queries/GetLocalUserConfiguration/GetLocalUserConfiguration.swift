@@ -10,4 +10,6 @@ import Foundation
 
 internal struct GetLocalUserConfiguration : RequestProtocol {
     typealias TResponse = LocalUserConfigurationModel
+    
+    public var country: String
 }

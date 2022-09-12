@@ -264,7 +264,6 @@ extension DiscoverOrAmountSelectDestinationViewController {
     }
     
     private func loadDestinations() {
-        let userDetail = try? mediater.send(request: GetLocalUserConfiguration())
         try? mediater.sendAsync(request: GetCollectGroupsQuery()) { response in
             self.destinations = response.filter({ (orgBeacon) -> Bool in
                     if (UserDefaults.standard.paymentType == .Undefined){
