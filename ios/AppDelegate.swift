@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
     
     var loginManager: LoginManager = LoginManager.shared
     
-    var mixpanel: MixpanelInstance = Mixpanel.initialize(token: AppConstants.mixpanelProjectId)
+    var mixpanel: MixpanelInstance = Mixpanel.initialize(token: AppConstants.mixpanelProjectId, trackAutomaticEvents: false)
     
     var coreDataContext = CoreDataContext()
         
