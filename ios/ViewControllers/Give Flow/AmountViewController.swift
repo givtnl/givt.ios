@@ -502,18 +502,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
     }
 
     fileprivate func showAmountTooLow() {
-        let minimumAmount = { () -> String in
-            switch UserDefaults.standard.paymentType {
-            case .BACSDirectDebit:
-                return "GivtMinimumAmountPond".localized
-            case .CreditCard:
-                return "GivtMinimumAmountDollar".localized
-            default:
-                return "GivtMinimumAmountEuro".localized
-            }
-        }()
         let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
-                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
+                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: CurrencyHelper.shared.getLocalFormat(value: Float(Double(truncating: NSDecimalNumber(decimal: givtService.minimumAmount))), decimals: true)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }

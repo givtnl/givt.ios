@@ -734,8 +734,8 @@ extension GivtManager {
             if let minAmount = _minimumAmount {
                 return minAmount
             } else if let country = try? Mediater.shared.send(request: GetCountryQuery()),
-                    country == "US" {
-                _minimumAmount = Decimal(1.00)
+                      ["US","CA"].contains(where: { $0 == country }) {
+                _minimumAmount = Decimal(1.50)
                 return _minimumAmount!
             } else {
                 _minimumAmount = Decimal(0.25)

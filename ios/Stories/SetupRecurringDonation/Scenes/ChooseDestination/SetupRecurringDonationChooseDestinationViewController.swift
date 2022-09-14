@@ -222,7 +222,8 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     }
     
     private func loadDestinations() {
-        let userDetail = try? mediater.send(request: GetLocalUserConfiguration())
+        let country = (try? mediater.send(request:GetCountryQuery())) ?? "NL"
+        let userDetail = try? mediater.send(request: GetLocalUserConfiguration(country: country))
         try? mediater.sendAsync(request: GetCollectGroupsQuery()) { response in
             self.destinations = response
                 .filter { $0.paymentType == userDetail?.paymentType } // only show destinations that the user can give to with his account

@@ -95,7 +95,8 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     @IBAction func giveButton(_ sender: Any) {
         giveButton.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
         do {
-            let user = try mediater.send(request: GetLocalUserConfiguration())
+            let country = (try? mediater.send(request:GetCountryQuery())) ?? "NL"
+            let user = try mediater.send(request: GetLocalUserConfiguration(country: country))
             guard let userId = user.userId else {
                 LogService.shared.error(message: "Trying to donate without valid userId")
                 hideLoader()
@@ -216,19 +217,8 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     }
     
     fileprivate func showAmountTooLow() {
-
-        let minimumAmount = { () -> String in
-            switch UserDefaults.standard.paymentType {
-            case .BACSDirectDebit:
-                return "GivtMinimumAmountPond".localized
-            case .CreditCard:
-                return "GivtMinimumAmountDollar".localized
-            default:
-                return "GivtMinimumAmountEuro".localized
-            }
-        }()
         let alert = UIAlertController(title: "AmountTooLow".localized,
-                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
+                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: CurrencyHelper.shared.getLocalFormat(value: Float(Double(truncating: NSDecimalNumber(decimal: GivtManager.shared.minimumAmount))), decimals: true)), preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
         }))
         self.present(alert, animated: true, completion:nil)

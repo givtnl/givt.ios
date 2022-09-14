@@ -110,22 +110,32 @@ class AppConstants {
                     ]
                ]
     }()
-    
+        
     static var apiUri: String = {
-        #if PRODUCTION
+#if PRODUCTION
+        if let country = try? Mediater.shared.send(request: GetCountryQuery()),
+           ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
+            return "https://api.givt.app" // do not put this in prod before release!
+        } else {
             return "https://api.givtapp.net" // do not put this in prod before release!
-        #else
-            return "https://givt-debug-api.azurewebsites.net"
-            //return "http://localhost:5000"
-        #endif
+        }
+#else
+        return "https://givt-debug-api.azurewebsites.net"
+        //return "http://localhost:5000"
+#endif
     }()
     
     static var cloudApiUri: String = {
-        #if PRODUCTION
+#if PRODUCTION
+        if let country = try? Mediater.shared.send(request: GetCountryQuery()),
+           ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
+            return "https://api.production.givt.app" // do not put this in prod before release!
+        } else {
             return "https://api.production.givtapp.net"
-        #else
-            return "https://api.development.givtapp.net"
-        #endif
+        }
+#else
+        return "https://api.development.givtapp.net"
+#endif
     }()
     
     static var advertisementsApiUrl: String = {
@@ -166,25 +176,41 @@ class AppConstants {
                     kTSKPublicKeyHashes: [
                         "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
-                    ]],
+                    ]
+                ],
                 "api.development.givtapp.net" : [
                     kTSKPublicKeyHashes: [
                         "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
-                    ]],
+                    ]
+                ],
+                "api.production.givt.app" : [
+                    kTSKPublicKeyHashes: [
+                        "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]
+                ],
                 "api.givtapp.net": [
                     kTSKPublicKeyHashes: [
                         "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
-                    ]],
+                    ]
+                ],
+                "api.givt.app": [
+                    kTSKPublicKeyHashes: [
+                        "J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=",
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w="
+                    ]
+                ],
                 "api.logit.io": [
                     kTSKExpirationDate: "2019-10-12",
                     kTSKPublicKeyHashes: [
                         "/JvZY7DBIDt5NylYRKjYP76G3E0F/6C4X6u0bqosQok=",
                         "Slt48iBVTjuRQJTjbzopminRrHSGtndY0/sj0lFf9Qk="
-                    ]]
+                    ]
                 ]
-            ] as [String : Any]
+            ]
+        ] as [String : Any]
         return trustKitConfig
     }()
     
