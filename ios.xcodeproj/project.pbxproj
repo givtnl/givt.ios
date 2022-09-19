@@ -4521,7 +4521,7 @@
 					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4724,7 +4724,7 @@
 					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4816,7 +4816,7 @@
 					"$(PROJECT_DIR)/givt.apps.shared/GivtCodeShare/build/cocoapods/framework",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4920,7 +4920,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/givtnl/Charts.git";
 			requirement = {
-				branch = main;
+				branch = master;
 				kind = branch;
 			};
 		};
