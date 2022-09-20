@@ -4918,7 +4918,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		320280BA25E0582F006A68CE /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mikepattyn/Charts.git";
+			repositoryURL = "https://github.com/givtnl/Charts.git";
 			requirement = {
 				branch = master;
 				kind = branch;
