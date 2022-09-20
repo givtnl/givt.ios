@@ -24,6 +24,7 @@ class AppConstants {
             return "?.?"
         }
     }
+
     static var countries: [Country] = {
         var countries: [Country] = []
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", phoneNumber: PhoneNumber(prefix: "+31", firstNumbers: ["6"], length: 8)))
@@ -88,6 +89,7 @@ class AppConstants {
                 "IE":"+353",
                 "AD":"+376"]
     }()
+    
     enum CountryCodes: String {
         case UnitedKingdom = "GB"
         case Belgium = "BE"
@@ -110,11 +112,22 @@ class AppConstants {
                     ]
                ]
     }()
-        
+    
+    static var country: String = {
+        if let userExt = UserDefaults.standard.userExt,
+           UserDefaults.standard.isLoggedIn,
+           let country = userExt.country {
+            return country
+        } else if let country = AppServices.getCountryFromSim() {
+            return country
+        } else {
+            return "NL"
+        }
+    }()
+    
     static var apiUri: String = {
 #if PRODUCTION
-        if let country = try? Mediater.shared.send(request: GetCountryQuery()),
-           ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
+        if ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
             return "https://api.givt.app" // do not put this in prod before release!
         } else {
             return "https://api.givtapp.net" // do not put this in prod before release!
@@ -127,8 +140,7 @@ class AppConstants {
     
     static var cloudApiUri: String = {
 #if PRODUCTION
-        if let country = try? Mediater.shared.send(request: GetCountryQuery()),
-           ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
+        if ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
             return "https://api.production.givt.app" // do not put this in prod before release!
         } else {
             return "https://api.production.givtapp.net"
