@@ -146,7 +146,7 @@ class SettingsViewController: BaseMenuViewController {
             
             if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
                 if let guid = UserDefaults.standard.userExt?.guid,
-                   (try? Mediater.shared.send(request: GetUserHasDonations(userId: guid))) ?? false {
+                   (try? Mediater.shared.send(request: GetUserHasDonationsQuery(userId: guid))) ?? false {
                     items.insert([finishRegistration], at: 0)
                 }
             } else {

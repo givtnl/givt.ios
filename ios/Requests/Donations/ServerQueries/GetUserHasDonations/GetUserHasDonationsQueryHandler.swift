@@ -10,9 +10,9 @@ import Foundation
 
 class GetUserHasDonationsQueryHandler : RequestHandlerProtocol {
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! GetUserHasDonations
+        let request = request as! GetUserHasDonationsQuery
         
-        if let hasDonations = UserDefaults.standard.hasDonations {
+        if !request.forceSyncServer, let hasDonations = UserDefaults.standard.hasDonations {
             try completion(hasDonations as! R.TResponse)
         } else {
             APIClient.shared.get(url: "/api/v2/users/\(request.userId)/givts/public-meta?year=\(Date().getYear())", data: [:]) { response in
@@ -29,6 +29,6 @@ class GetUserHasDonationsQueryHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        request is GetUserHasDonations
+        request is GetUserHasDonationsQuery
     }
 }
