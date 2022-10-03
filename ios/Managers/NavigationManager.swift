@@ -95,7 +95,9 @@ class NavigationManager {
                             if userHasDonations ?? false {
                                 self.pushOnMainPage(context, vc)
                             } else {
-                                self.presentNoDonationsAlert(context)
+                                DispatchQueue.main.async {
+                                    self.presentNoDonationsAlert(context)
+                                }
                             }
                         } else {
                             self.pushOnMainPage(context, vc)
