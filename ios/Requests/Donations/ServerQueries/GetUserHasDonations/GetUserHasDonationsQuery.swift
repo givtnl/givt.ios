@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct GetUserHasDonations : RequestProtocol {
+struct GetUserHasDonationsQuery : RequestProtocol {
     typealias TResponse = Bool
     
     var userId: String
+    var forceSyncServer: Bool = false
 }

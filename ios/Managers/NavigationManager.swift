@@ -34,7 +34,7 @@ class NavigationManager {
             
             if let country = try? Mediater.shared.send(request: GetCountryQuery()),
                let userId = UserDefaults.standard.userExt?.guid,
-               country == "US" && !((try? Mediater.shared.send(request: GetUserHasDonations(userId: userId))) ?? false) {
+               country == "US" && !((try? Mediater.shared.send(request: GetUserHasDonationsQuery(userId: userId))) ?? false) {
                 return
             }
                         
@@ -65,6 +65,12 @@ class NavigationManager {
         }
     }
     
+    private func presentNoDonationsAlert(_ context: UIViewController) {
+        currentAlert = UIAlertController(title: "RegistrationErrorTitle".localized, message: "NoDonationsFoundOnRegistrationMessage".localized, preferredStyle: UIAlertController.Style.alert)
+        currentAlert?.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+        context.present(currentAlert!, animated: false)
+    }
+    
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.transitioningDelegate = slideFromRightAnimation
@@ -82,7 +88,18 @@ class NavigationManager {
                 self.permissionAsked { (asked) in
                     if UserDefaults.standard.isTempUser { //tempuser
                         vc.startPoint = .registration
-                        self.pushOnMainPage(context, vc)
+                        //Sync user has donations from server to make sure that they can actually register
+                        if let country = try? Mediater.shared.send(request: GetCountryQuery()),
+                            ["US","CA"].contains(where: { $0 == country }) {
+                            let userHasDonations = try? Mediater.shared.send(request: GetUserHasDonationsQuery(userId: userExt.guid, forceSyncServer: true))
+                            if userHasDonations ?? false {
+                                self.pushOnMainPage(context, vc)
+                            } else {
+                                self.presentNoDonationsAlert(context)
+                            }
+                        } else {
+                            self.pushOnMainPage(context, vc)
+                        }
                     } else if !asked {
                         vc.startPoint = .permission
                         self.pushWithLogin(vc, context: context)

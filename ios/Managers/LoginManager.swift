@@ -113,7 +113,7 @@ class LoginManager {
                                     if obj != nil {
                                         if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
                                             UserDefaults.standard.paymentType = .CreditCard
-                                            if (try? Mediater.shared.send(request: GetUserHasDonations(userId: guid))) ?? false {
+                                            if (try? Mediater.shared.send(request: GetUserHasDonationsQuery(userId: guid))) ?? false {
                                                 self.userClaim = self.isFullyRegistered ? .give : .giveOnce
                                                 !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
                                             } else {
@@ -374,7 +374,7 @@ class LoginManager {
                         UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
                         self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
                         if (try? Mediater.shared.send(request: GetCountryQuery())) == "US" {
-                            if (try? Mediater.shared.send(request: GetUserHasDonations(userId: user.guid))) ?? false {
+                            if (try? Mediater.shared.send(request: GetUserHasDonationsQuery(userId: user.guid))) ?? false {
                                 !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
                             } else {
                                 BadgeService.shared.removeBadge(badge: .completeRegistration)
