@@ -1175,4 +1175,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "InvalidQRcodeMessage" = "Unfortunately, this QR code is no longer active. Would you like to give to the general funds of {0}?";
 "ErrorOccurred" = "An error occurred";
 "RegistrationErrorTitle" = "Registration cannot be completed";
-"NoDonationsFoundOnRegistrationMessage" = "We could not retrieve any donations. Please contact support at support@givt.app to complete your registration";
+"NoDonationsFoundOnRegistrationMessage" = "We could not retrieve any donations but we need one to complete your registration. Please contact support at support@givt.app or through About Givt/Contact in the menu.";
