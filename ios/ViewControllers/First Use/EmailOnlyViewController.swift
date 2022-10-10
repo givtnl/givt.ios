@@ -215,7 +215,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate, UIGestureR
                     if country == "US" {
                         self._loginManager.loginUser(email: email, password: AppConstants.tempUserPassword, type: .password) { (success, error) in
                             if success,
-                               let hasDonations = try? Mediater.shared.send(request: GetUserHasDonations(userId: UserDefaults.standard.userExt!.guid)),
+                               let hasDonations = try? Mediater.shared.send(request: GetUserHasDonationsQuery(userId: UserDefaults.standard.userExt!.guid)),
                                hasDonations {
                                 self.hideLoader()
                                 NavigationHelper.showRegistration(context: self, email: email)

@@ -15,7 +15,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SlimPayInformation" = "We want your Givt experience to be as smooth as possible.";
 "SavingSettings" = "Sit back and relax,\nwe are saving your settings.";
 "Continue" = "Continue";
-"GivtMinimumAmountEuro" = "€0.25";
 "SlimPayInfoDetail" = "Givt works together with SlimPay for executing the transactions. SlimPay is specialised in handling mandates and automatic money transfers on digital platforms. SlimPay executes these orders for Givt at the lowest rates on this market and at a high speed.\n\nSlimPay is an ideal partner for Givt because they make giving without cash very easy and safe. As a payment company, they are supervised by the Nederlandsche Bank and other European national banks.\n\nThe money will be collected in a SlimPay account. \nGivt will ensure that the money is distributed correctly.";
 "SlimPayInfoDetailTitle" = "What is SlimPay?";
 "ContinueRegistration" = "Your user account was already\ncreated, but it was impossible\nto finalise the registration.\n\nWe would love for you to use\nGivt, so we ask you to login\nto complete the registration.";
@@ -185,10 +184,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GiveSituationShowcaseTitle" = "Next, choose how you want to give";
 "SoonMessage" = "Coming soon...";
 "GiveWithYourPhone" = "Move your phone";
-"CelebrateTitle" = "Wait for it...";
-"CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. \nWhat's going to happen? You'll soon see...";
-"AfterCelebrationTitle" = "And now... wave!";
-"AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
+"CelebrateTitle" = "Let's countdown";
+"CelebrateMessage" = "When the countdown hits 0, hold your phone above your head.\n\nWhat's going to happen? You'll soon see...";
+"AfterCelebrationTitle" = "Wave!";
+"AfterCelebrationMessage" = "Hold it up, shine your light!";
 "ErrorContactGivt" = "An error has occurred, please contact us at support@givtapp.net .";
 "MandateFailPersonalInformation" = "It seems there is something wrong with the information you filled in. Could you please check in the menu, under 'Personal information'? You can change the information there as well, if necessary.";
 "MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
@@ -262,7 +261,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Fuzzy*/
 "AmountPresetsErr25C" = "The amount has to be at least 0.25";
 "AmountPresetsErrEmpty" = "Enter an amount";
-"GivtMinimumAmountPond" = "£0.25";
 "AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate (€), we need your IBAN for that. If you prefer to use BACS (£), we need your Sort Code and Account Number.";
 "AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit (£), we need your Sort Code and Account Number for that. If you prefer to use SEPA (€), we need your IBAN.";
 "Important" = "Important";
@@ -845,8 +843,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt is a product of Givt Ltd.\nOur office is located on Schutweg 47 in Lelystad, the Netherlands. \nFor questions or complaints you can reach us via support@givt.app.\n\nWe are registered under Company Number (CRN): 11396586.";
 "CelebrationHappyToSeeYou" = "Let's celebrate your Givt together!";
-"CelebrationQueueText" = "Just leave the app open and we will make sure your phone receives a push notification to start the countdown.";
-"CelebrationQueueCancel" = "Give without Flash Givt";
+"CelebrationQueueText" = "Just leave the app open and wait for the countdown to start.";
+"CelebrationQueueCancel" = "Give without participating";
 "CelebrationEnablePushNotification" = "Activate push notifications";
 "FAQButtonAccessibilityLabel" = "Frequently asked questions";
 "ProgressBarStepOne" = "Step 1";
@@ -1170,9 +1168,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "TermsTextUsVersion" = "1.0";
 "InformationAboutUsUS" = "Givt is a product of Givt Inc.\n\nWe are located at the 3343 Peachtree Rd NE Ste145-1032 Atlanta. For questions or complaints you can reach us via 404 999 7024 or support@givt.app.";
 "FAQantwoord0US" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling 404 999 7024 or by sending an e-mail to support@givt.app.";
-"GivtMinimumAmountDollar" = "$1.00";
 "US.Registration.Personal.Details.PostalCode.Placeholder" = "Zip code";
 "AmountPresetsErrMinAmount" = "The amount has to be at least {0}";
 "UnregisterInfoUS" = "We’re sad to see you go!";
 "InvalidQRcodeTitle" = "Inactive QR code";
 "InvalidQRcodeMessage" = "Unfortunately, this QR code is no longer active. Would you like to give to the general funds of {0}?";
+"ErrorOccurred" = "An error occurred";
+"RegistrationErrorTitle" = "Registration cannot be completed";
+"NoDonationsFoundOnRegistrationMessage" = "We could not retrieve any donations but we need one to complete your registration. Please contact support at support@givt.app or through About Givt/Contact in the menu.";
