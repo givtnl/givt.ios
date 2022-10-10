@@ -184,10 +184,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GiveSituationShowcaseTitle" = "Next, choose how you want to give";
 "SoonMessage" = "Coming soon...";
 "GiveWithYourPhone" = "Move your phone";
-"CelebrateTitle" = "Wait for it...";
-"CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. \nWhat's going to happen? You'll soon see...";
-"AfterCelebrationTitle" = "And now... wave!";
-"AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
+"CelebrateTitle" = "Let's countdown";
+"CelebrateMessage" = "When the countdown hits 0, hold your phone above your head.\n\nWhat's going to happen? You'll soon see...";
+"AfterCelebrationTitle" = "Wave!";
+"AfterCelebrationMessage" = "Hold it up, shine your light!";
 "ErrorContactGivt" = "An error has occurred, please contact us at support@givtapp.net .";
 "MandateFailPersonalInformation" = "It seems there is something wrong with the information you filled in. Could you please check in the menu, under 'Personal information'? You can change the information there as well, if necessary.";
 "MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
@@ -843,8 +843,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt is a product of Givt Ltd.\nOur office is located on Schutweg 47 in Lelystad, the Netherlands. \nFor questions or complaints you can reach us via support@givt.app.\n\nWe are registered under Company Number (CRN): 11396586.";
 "CelebrationHappyToSeeYou" = "Let's celebrate your Givt together!";
-"CelebrationQueueText" = "Just leave the app open and we will make sure your phone receives a push notification to start the countdown.";
-"CelebrationQueueCancel" = "Give without Flash Givt";
+"CelebrationQueueText" = "Just leave the app open and wait for the countdown to start.";
+"CelebrationQueueCancel" = "Give without participating";
 "CelebrationEnablePushNotification" = "Activate push notifications";
 "FAQButtonAccessibilityLabel" = "Frequently asked questions";
 "ProgressBarStepOne" = "Step 1";
