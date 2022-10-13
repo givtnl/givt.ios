@@ -61,6 +61,8 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if reloadData {
             tableView.isHidden = true
             imageView.isHidden = false
@@ -73,6 +75,8 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if !reloadData { return }
         
         do {
