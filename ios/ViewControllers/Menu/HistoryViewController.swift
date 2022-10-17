@@ -57,7 +57,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             taxOverviewFeature = nil
         }
     }
-    
+    struct BadRequestError: Decodable {
+        var error: String
+        var error_description: String
+    }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         let tx = self.sortedArray[indexPath.section].value[indexPath.row]
@@ -117,7 +120,30 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                         self.givyContainer.isHidden = false
                                     }
                                 }
-                                
+                            case .badRequest:
+                                if let data = response.data, let badRequestBody = try? JSONDecoder().decode(BadRequestError.self, from: data) {
+                                    switch(badRequestBody.error) {
+                                    case "already_processed":
+                                        let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: "CantCancelAlreadyProcessed".localized, preferredStyle: UIAlertController.Style.alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                        DispatchQueue.main.async {
+                                            self.present(alert, animated: true, completion: nil)
+                                        }
+                                    default:
+                                        let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                        DispatchQueue.main.async {
+                                            self.present(alert, animated: true, completion: nil)
+                                        }
+                                    }
+                                    
+                                } else {
+                                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                    DispatchQueue.main.async {
+                                        self.present(alert, animated: true, completion: nil)
+                                    }
+                                }
                             case .expectationFailed:
                                 let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
