@@ -123,12 +123,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             case .badRequest:
                                 if let data = response.data, let badRequestBody = try? JSONDecoder().decode(BadRequestError.self, from: data) {
                                     switch(badRequestBody.error) {
-                                    case "timeout":
-                                        let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                        DispatchQueue.main.async {
-                                            self.present(alert, animated: true, completion: nil)
-                                        }
                                     case "already_processed":
                                         let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: "Donation was already processed", preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
