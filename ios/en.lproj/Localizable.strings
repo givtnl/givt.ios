@@ -1176,3 +1176,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "ErrorOccurred" = "An error occurred";
 "RegistrationErrorTitle" = "Registration cannot be completed";
 "NoDonationsFoundOnRegistrationMessage" = "We could not retrieve any donations but we need one to complete your registration. Please contact support at support@givt.app or through About Givt/Contact in the menu.";
+"CantCancelAlreadyProcessed" = "Alas, you can't cancel this donation because it is already processed.";
