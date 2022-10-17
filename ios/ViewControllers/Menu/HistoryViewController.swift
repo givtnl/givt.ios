@@ -124,7 +124,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 if let data = response.data, let badRequestBody = try? JSONDecoder().decode(BadRequestError.self, from: data) {
                                     switch(badRequestBody.error) {
                                     case "already_processed":
-                                        let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: "Donation was already processed", preferredStyle: UIAlertController.Style.alert)
+                                        let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: "CantCancelAlreadyProcessed".localized, preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                         DispatchQueue.main.async {
                                             self.present(alert, animated: true, completion: nil)
