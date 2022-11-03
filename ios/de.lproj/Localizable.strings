@@ -1113,3 +1113,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "ErrorOccurred" = "Ein Fehler ist aufgetreten";
 "RegistrationErrorTitle" = "Die Registrierung kann nicht abgeschlossen werden";
 "NoDonationsFoundOnRegistrationMessage" = "Wir konnten keine Spenden abrufen. Bitte kontaktieren Sie den Support unter support@givt.app, um Ihre Registrierung abzuschließen";
+"CantCancelAlreadyProcessed" = "Leider können Sie diese Spende nicht stornieren, da sie bereits bearbeitet wurde.";
