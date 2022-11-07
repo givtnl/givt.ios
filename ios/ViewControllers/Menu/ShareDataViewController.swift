@@ -14,17 +14,22 @@ import Mixpanel
 
 class ShareDataViewController: UIViewController {
     
-    var uExt: LMUserExt?
+    var comingFromShareDataPopup = false
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var shareDataSwitch: UISwitch!
     @IBOutlet weak var lblSettings: UILabel!
     @IBOutlet weak var lblInfo: UILabel!
     @IBOutlet weak var lblHeaderDisclaimer: UILabel!
-    @IBOutlet weak var lblBodyDisclaimer: UILabel!
     @IBOutlet weak var btnSave: CustomButton!
     @IBOutlet weak var scrollView: UIScrollView!
-
+    
     override func viewDidLoad() {
+        if comingFromShareDataPopup {
+            backButton.isEnabled = false
+            backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            backButton.image = UIImage()
+        }
         NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
             self.showLoader()
             try? Mediater.shared.sendAsync(request: GetShareDataQuery(), completion: { res in
@@ -47,22 +52,24 @@ class ShareDataViewController: UIViewController {
                 try? Mediater.shared.sendAsync(request: PutShareDataCommand(shareData: self.shareDataSwitch.isOn)) { res in
                     self.hideLoader()
                     if res {
-                        self.dismiss(animated: true, completion: nil)
+                        if self.comingFromShareDataPopup {
+                            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     } else {
                         self.showAlert(
                             title: NSLocalizedString("SomethingWentWrong", comment: ""),
                             message: NSLocalizedString("UpdatePersonalInfoError", comment: ""),
                             action1: UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+                                self.dismiss(animated: true, completion: nil)
                             }),
                             action2: nil
                         )
                     }
                     
                 }
-        
-//                else {
-
-//                }
         })
     }
     
