@@ -72,7 +72,14 @@ struct UserInfoRowDetail {
             position: 6
         )
     }
-    
+    static func shareData() -> UserInfoRowDetail {
+        return UserInfoRowDetail(
+            image: #imageLiteral(resourceName: "Giftaid_Icon-yellow"),
+            name: "Share data",
+            type: .shareData,
+            position: 6
+        )
+    }
     static func password() -> UserInfoRowDetail {
         return UserInfoRowDetail(
             image: #imageLiteral(resourceName: "lock"),

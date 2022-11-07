@@ -89,7 +89,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (UserDefaults.standard.paymentType == .CreditCard) {
+        if (UserDefaults.standard.paymentType == .CreditCard && settings[indexPath.row].type == .shareData) {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ShareDataViewController") as! ShareDataViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if (UserDefaults.standard.paymentType == .CreditCard) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             
             guard settings[indexPath.row].type != .creditCard else { return tableView.deselectRow(at: indexPath, animated: true)}
