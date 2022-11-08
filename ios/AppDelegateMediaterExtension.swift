@@ -113,5 +113,10 @@ extension AppDelegate {
         Mediater.shared.registerHandler(handler: GetCollectGroupsV2QueryHandler())
         
         
+        //-- ShareData
+        Mediater.shared.registerHandler(handler: PutShareDataCommandHandler())
+        Mediater.shared.registerHandler(handler: GetShareDataQueryHandler())
+        
+        
     }
 }

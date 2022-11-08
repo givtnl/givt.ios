@@ -54,6 +54,7 @@ extension UserDefaults {
         #if !PRODUCTION
         case hackForTesting
         #endif
+        case didShowShareData
     }
 
     var hasDonations : Bool? {
@@ -525,7 +526,15 @@ extension UserDefaults {
             synchronize()
         }
     }
-    
+    var didShowShareData: Bool{
+        get {
+            return bool(forKey: UserDefaultsKeys.didShowShareData.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.didShowShareData.rawValue)
+            synchronize()
+        }
+    }
     var giftAidEnabled: Bool{
         get {
             return bool(forKey: UserDefaultsKeys.giftAidEnabled.rawValue)

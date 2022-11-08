@@ -38,6 +38,7 @@ extension PersonalInfoViewController {
                         UserInfoRowDetail.paymentMethod(cardNumber, paymentType: try! self.uExt!.getPaymentType(), cardType, active: isActive), at: retVal.count - 1)
                     retVal[retVal.count - 2].image = retVal[retVal.count - 2].image.resized(to: retVal.first!.image.size)!
                 }
+                retVal.insert(UserInfoRowDetail.shareData(), at: retVal.count - 1)
             default:
                 break
             }
@@ -60,6 +61,7 @@ enum SettingType: CaseIterable {
     case giftaid
     case creditCard
     case removePaymentMethod
+    case shareData
 }
 
 
