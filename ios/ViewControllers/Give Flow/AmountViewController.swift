@@ -325,8 +325,21 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
         Analytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         Mixpanel.mainInstance().track(event: "GIVING_STARTED", properties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
-        
-        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
+        if !UserDefaults.standard.didShowShareData {
+            let alert = UIAlertController(title: "Do you want a tax statement?",
+                                          message: "To receive a tax statement, you will need to share your data with the organisation(s) you are giving to.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "No, thank you!", style: UIAlertAction.Style.cancel, handler: { action in
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }))
+            alert.addAction(UIAlertAction(title: "Yes please!", style: UIAlertAction.Style.default, handler: { action in
+                let vc = UIStoryboard.init(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "ShareDataViewController") as! ShareDataViewController
+                vc.comingFromShareDataPopup = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }))
+            self.present(alert, animated: true, completion: {})
+            UserDefaults.standard.didShowShareData = true
+        } else if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
             let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
             vc.providesPresentationContextTransitionStyle = true
             vc.definesPresentationContext = true
