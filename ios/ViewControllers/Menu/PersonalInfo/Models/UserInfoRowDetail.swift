@@ -74,7 +74,7 @@ struct UserInfoRowDetail {
     }
     static func shareData() -> UserInfoRowDetail {
         return UserInfoRowDetail(
-            image: #imageLiteral(resourceName: "Giftaid_Icon-yellow"),
+            image: #imageLiteral(resourceName: "share_data"),
             name: "Share data",
             type: .shareData,
             position: 6
