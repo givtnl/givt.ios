@@ -1180,3 +1180,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "ShareDataSwitch" = "I want to share the necessary personal data with the organisation I donate to, so I can receive a tax statement.";
 "ShareDataInfo" = "When you enable this option, you agree to share your personal information. With this information, the organisation that receives your donation will be able to provide you with a tax statement.";
 "ShareDataDisclaimer" = "When you disable this option, your donations will remain anonymous for that organisation.";
+"ShareDataAlertTitle" = "Do you want a tax statement?";
+"ShareDataAlertMessage" = "To receive a tax statement, you need to share your personal information with the organisation you donate to.";
