@@ -28,22 +28,13 @@ class ValidationHelper {
         return (count > 1 && count <= maxLength)
     }
     func isValidUKPostalCode(string: String) -> Bool {
-        let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)
-        if(!trimmedString.contains(" ")) {
-            return false
-        }
-        
-        let splitString = trimmedString.components(separatedBy: " ")
-        
-        if(splitString.count != 2) {
-            return false
-        }
-        
-        if(splitString[0].count < 2 || splitString[1].count != 3) {
-            return false
-        }
-        
-        return true
+        // see https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#Validation
+        let pattern = #"^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$"#
+        var range = string.range(
+            of: pattern,
+            options: .regularExpression
+        )
+        return (range != nil)
     }
     func isEmailAddressValid(_ string: String) -> Bool {
         let firstpart = "([A-Z0-9a-z._%+-]{0,30})?"
