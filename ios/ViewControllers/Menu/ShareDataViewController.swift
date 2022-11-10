@@ -25,6 +25,10 @@ class ShareDataViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
+        lblSettings.text = "ShareDataSwitch".localized
+        lblInfo.text = "ShareDataInfo".localized
+        lblHeaderDisclaimer.text = "ShareDataDisclaimer".localized
+        
         if comingFromShareDataPopup {
             backButton.isEnabled = false
             backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
