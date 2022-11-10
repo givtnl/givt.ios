@@ -25,6 +25,10 @@ class ShareDataViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
+        lblSettings.text = "ShareDataSwitch".localized
+        lblInfo.text = "ShareDataInfo".localized
+        lblHeaderDisclaimer.text = "ShareDataDisclaimer".localized
+        
         if comingFromShareDataPopup {
             backButton.isEnabled = false
             backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
@@ -47,8 +51,12 @@ class ShareDataViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
-        NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
-            self.showLoader()
+        
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+                self.showLoader()
                 try? Mediater.shared.sendAsync(request: PutShareDataCommand(shareData: self.shareDataSwitch.isOn)) { res in
                     self.hideLoader()
                     if res {
@@ -70,7 +78,8 @@ class ShareDataViewController: UIViewController {
                     }
                     
                 }
-        })
+            })
+        }
     }
     
     func showAlert(title:String, message:String, action1: UIAlertAction, action2: UIAlertAction?) {

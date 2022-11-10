@@ -525,6 +525,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         case postalCode:
             isPostalCodeValid = validationHelper.isBetweenCriteria(postalCode.text!, 15) && validationHelper.isValidAddress(string: postalCode.text!)
             if(["GB","GG","JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1) {
+                postalCode.text = postalCode.text!.uppercased()
                 isPostalCodeValid = validationHelper.isValidUKPostalCode(string: postalCode.text!)
             }
             isPostalCodeValid ? textField.setValid() : textField.setInvalid()
