@@ -176,6 +176,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         case postalCode:
             tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 15) && validationHelper.isValidAddress(string: tx.text!)
             if(["GB","GG","JE"].filter{$0 == currentCountry!.shortName}.count == 1) {
+                tx.text = tx.text!.uppercased()
                 tx.isValid = validationHelper.isValidUKPostalCode(string: tx.text!)
             }
         case city:
