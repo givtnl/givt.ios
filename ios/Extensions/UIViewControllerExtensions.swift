@@ -51,8 +51,6 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: completion)
         alert.addAction(action)
-        DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
-        }
+        self.present(alert, animated: true, completion: nil)
     }
 }

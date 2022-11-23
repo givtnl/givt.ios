@@ -29,7 +29,7 @@ class ValidationHelper {
     }
     func isValidUKPostalCode(string: String) -> Bool {
         // see https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#Validation
-        let pattern = #"^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR ?0A{2}|SAN ?TA1)$"#
+        let pattern = #"^(([A-Z][0-9]{1,2})|(([A-Z][A-HJ-Y][0-9]{1,2})|(([A-Z][0-9][A-Z])|([A-Z][A-HJ-Y][0-9]?[A-Z])))) [0-9][A-Z]{2}$"#
         var range = string.range(
             of: pattern,
             options: .regularExpression
