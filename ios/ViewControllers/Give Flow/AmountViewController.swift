@@ -335,13 +335,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
             alert.addAction(UIAlertAction(title: "Yes please!", style: UIAlertAction.Style.default, handler: { action in
                 let vc = UIStoryboard.init(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "ShareDataViewController") as! ShareDataViewController
                 vc.comingFromShareDataPopup = true
-                if !AppServices.shared.isServerReachable {
-                    try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-                } else {
-                    NavigationManager.shared.executeWithLogin(context: self) {
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }
+                self.navigationController?.pushViewController(vc, animated: true)
             }))
             self.present(alert, animated: true, completion: {})
             UserDefaults.standard.didShowShareData = true
