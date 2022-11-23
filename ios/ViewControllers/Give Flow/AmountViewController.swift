@@ -326,9 +326,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
         Analytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         Mixpanel.mainInstance().track(event: "GIVING_STARTED", properties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         if !UserDefaults.standard.didShowShareData {
-            let alert = UIAlertController(title: "ShareDataAlertTitle".localized,
-                                          message: "ShareDataAlertMessage".localized,
-                                          preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Do you want a tax statement?",
+                                          message: "To receive a tax statement, you will need to share your data with the organisation(s) you are giving to.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "No, thank you!", style: UIAlertAction.Style.cancel, handler: { action in
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
                 self.navigationController?.pushViewController(vc, animated: true)
