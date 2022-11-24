@@ -238,11 +238,6 @@
 		32EB1CF025D3E1330005CCAC /* BudgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */; };
 		32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */; };
 		32EB1CF525D3E3A80005CCAC /* MonthlySummary.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */; };
-		32EBC67D2918ECC5002DEE8A /* ShareDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBC67C2918ECC5002DEE8A /* ShareDataViewController.swift */; };
-		32EBC68229191FB6002DEE8A /* GetShareDataQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBC68129191FB6002DEE8A /* GetShareDataQuery.swift */; };
-		32EBC68429191FDC002DEE8A /* GetShareDataQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBC68329191FDC002DEE8A /* GetShareDataQueryHandler.swift */; };
-		32EBC686291924A7002DEE8A /* PutShareDataCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBC685291924A7002DEE8A /* PutShareDataCommand.swift */; };
-		32EBC688291924B2002DEE8A /* PutShareDataCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EBC687291924B2002DEE8A /* PutShareDataCommandHandler.swift */; };
 		32EEB2B7262838F4008EED9A /* OpenSummaryRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2B6262838F4008EED9A /* OpenSummaryRoute.swift */; };
 		32EEB2B9262838FF008EED9A /* OpenSummaryRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2B8262838FF008EED9A /* OpenSummaryRouteHandler.swift */; };
 		32EEB2BC26283F56008EED9A /* TestimonialCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2BB26283F56008EED9A /* TestimonialCarouselViewController.swift */; };
@@ -821,11 +816,6 @@
 		32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetNavigationController.swift; sourceTree = "<group>"; };
 		32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummary.swift; sourceTree = "<group>"; };
 		32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlySummary.xib; sourceTree = "<group>"; };
-		32EBC67C2918ECC5002DEE8A /* ShareDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareDataViewController.swift; sourceTree = "<group>"; };
-		32EBC68129191FB6002DEE8A /* GetShareDataQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetShareDataQuery.swift; sourceTree = "<group>"; };
-		32EBC68329191FDC002DEE8A /* GetShareDataQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetShareDataQueryHandler.swift; sourceTree = "<group>"; };
-		32EBC685291924A7002DEE8A /* PutShareDataCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutShareDataCommand.swift; sourceTree = "<group>"; };
-		32EBC687291924B2002DEE8A /* PutShareDataCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutShareDataCommandHandler.swift; sourceTree = "<group>"; };
 		32EEB2B6262838F4008EED9A /* OpenSummaryRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSummaryRoute.swift; sourceTree = "<group>"; };
 		32EEB2B8262838FF008EED9A /* OpenSummaryRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSummaryRouteHandler.swift; sourceTree = "<group>"; };
 		32EEB2BB26283F56008EED9A /* TestimonialCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCarouselViewController.swift; sourceTree = "<group>"; };
@@ -2208,33 +2198,6 @@
 			path = MonthlySummary;
 			sourceTree = "<group>";
 		};
-		32EBC67E29191F96002DEE8A /* ShareData */ = {
-			isa = PBXGroup;
-			children = (
-				32EBC68029191FA4002DEE8A /* Get */,
-				32EBC67F29191FA0002DEE8A /* Put */,
-			);
-			path = ShareData;
-			sourceTree = "<group>";
-		};
-		32EBC67F29191FA0002DEE8A /* Put */ = {
-			isa = PBXGroup;
-			children = (
-				32EBC685291924A7002DEE8A /* PutShareDataCommand.swift */,
-				32EBC687291924B2002DEE8A /* PutShareDataCommandHandler.swift */,
-			);
-			path = Put;
-			sourceTree = "<group>";
-		};
-		32EBC68029191FA4002DEE8A /* Get */ = {
-			isa = PBXGroup;
-			children = (
-				32EBC68129191FB6002DEE8A /* GetShareDataQuery.swift */,
-				32EBC68329191FDC002DEE8A /* GetShareDataQueryHandler.swift */,
-			);
-			path = Get;
-			sourceTree = "<group>";
-		};
 		32EEB2B5262838DA008EED9A /* OpenSummary */ = {
 			isa = PBXGroup;
 			children = (
@@ -2696,7 +2659,6 @@
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
-				32EBC67C2918ECC5002DEE8A /* ShareDataViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -3392,7 +3354,6 @@
 		FBC185A424C0CD0B001A4C6B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				32EBC67E29191F96002DEE8A /* ShareData */,
 				FBD44E352746802C00B5E558 /* Advertisements */,
 				FBC185A524C0CD11001A4C6B /* CollectGroups */,
 				FB87300724C818FA005FF355 /* Donations */,
@@ -3935,7 +3896,6 @@
 				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
 				DF8BB30524F7A12200104668 /* RecurringRuleTableCell.swift in Sources */,
 				32D488A6266A2FAC00B166B4 /* OpenYearlyOverviewRouteHandler.swift in Sources */,
-				32EBC68429191FDC002DEE8A /* GetShareDataQueryHandler.swift in Sources */,
 				FBC185C524C5CDF2001A4C6B /* MediaterExtension.swift in Sources */,
 				D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */,
 				32810EFA25DF2403004E305C /* ChartViewBody.swift in Sources */,
@@ -3964,7 +3924,6 @@
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
 				322441A0253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift in Sources */,
 				DFD4F94F252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift in Sources */,
-				32EBC68229191FB6002DEE8A /* GetShareDataQuery.swift in Sources */,
 				FBC185A024C08F19001A4C6B /* PaymentType.swift in Sources */,
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
 				FBC1857A24C0647C001A4C6B /* NotLoggedInError.swift in Sources */,
@@ -4189,7 +4148,6 @@
 				32E506F725DE98AD00BC6070 /* CardViewHeader.swift in Sources */,
 				323F16F125EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift in Sources */,
 				32ABDD80275E76F600544BCF /* USSecondRegistrationViewControllerInfrastructureExtension.swift in Sources */,
-				32EBC688291924B2002DEE8A /* PutShareDataCommandHandler.swift in Sources */,
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				324BA466267360C2008A8EA8 /* DownloadSummaryCommand.swift in Sources */,
@@ -4232,7 +4190,6 @@
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
 				32847A072726FB0D00BB42C8 /* GetAccountsQueryHandler.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
-				32EBC686291924A7002DEE8A /* PutShareDataCommand.swift in Sources */,
 				32EAC7752722A5050051F8A0 /* RegisterUserCommandHandler.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,
 				DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */,
@@ -4307,7 +4264,6 @@
 				FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
-				32EBC67D2918ECC5002DEE8A /* ShareDataViewController.swift in Sources */,
 				3245E13F262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift in Sources */,
 				32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */,
 				FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */,
@@ -4547,7 +4503,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 186;
+				CURRENT_PROJECT_VERSION = 327;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4570,7 +4526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.14.13;
+				MARKETING_VERSION = 3.14.15;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4676,7 +4632,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -4728,7 +4684,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
@@ -4749,7 +4705,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 186;
+				CURRENT_PROJECT_VERSION = 327;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = YDSA4AY496;
 				ENABLE_BITCODE = NO;
@@ -4774,7 +4730,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.14.13;
+				MARKETING_VERSION = 3.14.15;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4867,7 +4823,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.14.13;
+				MARKETING_VERSION = 3.14.15;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
