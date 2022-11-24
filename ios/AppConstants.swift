@@ -142,7 +142,7 @@ class AppConstants {
     
     static var cloudApiUri: String = {
 #if PRODUCTION
-        usCountries.contains(where: { $0 == country.uppercased() }) {
+        if usCountries.contains(where: { $0 == country.uppercased() }) {
             return "https://api.production.givt.app" // do not put this in prod before release!
         } else {
             return "https://api.production.givtapp.net"
