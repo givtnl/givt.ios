@@ -83,7 +83,7 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
         
         do {
             let collectGroupDetailList: [CollectGroupDetailModel] = try mediater.send(request: GetCollectGroupsQuery())
-            let collectGroupDetail: CollectGroupDetailModel = collectGroupDetailList.first(where: { $0.namespace == rule.namespace })!
+            let collectGroupDetail: CollectGroupDetailModel = collectGroupDetailList.first(where: { $0.namespace == rule.namespace }) ?? CollectGroupDetailModel(namespace: rule.namespace, name: "Disabled", type: .unknown, paymentType: .Undefined)
             rule.collectGroupName = collectGroupDetail.name
             rule.collectGroupType = collectGroupDetail.type
             rule.indexPath = indexPath
@@ -110,6 +110,9 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndex == indexPath.row {
+            if (tableView.visibleCells[indexPath.row] as! RecurringRuleTableCell).nameLabel.text == "Disabled" {
+                return 89
+            }
             Analytics.trackEvent("RECURRING_DONATIONS_DONATION_OPENED")
             Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_OPENED")
             return 133

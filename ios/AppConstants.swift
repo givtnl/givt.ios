@@ -124,10 +124,12 @@ class AppConstants {
             return "NL"
         }
     }()
-    
+    static var usCountries = ["US", "CA", "MX","UY",
+                              "AR","CL","PA","PR",
+                              "CR","DO","MA"]
     static var apiUri: String = {
 #if PRODUCTION
-        if ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
+        if usCountries.contains(where: { $0 == country.uppercased() }) {
             return "https://api.givt.app" // do not put this in prod before release!
         } else {
             return "https://api.givtapp.net" // do not put this in prod before release!
@@ -140,7 +142,7 @@ class AppConstants {
     
     static var cloudApiUri: String = {
 #if PRODUCTION
-        if ["US", "CA"].contains(where: { $0 == country.uppercased() }) {
+        if usCountries.contains(where: { $0 == country.uppercased() }) {
             return "https://api.production.givt.app" // do not put this in prod before release!
         } else {
             return "https://api.production.givtapp.net"
@@ -204,7 +206,7 @@ class AppConstants {
                 ],
                 "api.givtapp.net": [
                     kTSKPublicKeyHashes: [
-                        "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
+                        "QLyh2geWh6rcEgzp4tGPeA3GaxEiXbvRlayQRF+BA38=",
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]
                 ],
