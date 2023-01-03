@@ -206,7 +206,7 @@ class AppConstants {
                 ],
                 "api.givtapp.net": [
                     kTSKPublicKeyHashes: [
-                        "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
+                        "QLyh2geWh6rcEgzp4tGPeA3GaxEiXbvRlayQRF+BA38=",
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]
                 ],
