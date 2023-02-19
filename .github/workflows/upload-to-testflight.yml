@@ -1,6 +1,8 @@
 name: Build and publish the app to AppCenter
 
 on:
+  workflow_dispatch:
+    branches: [ main, pre-main ]
   push:
     branches: [ main, pre-main ]
   pull_request:
