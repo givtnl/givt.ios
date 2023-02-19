@@ -1,6 +1,8 @@
 name: Build the app and upload to Testflight
 
 on:
+  workflow_dispatch:
+    branches: [ main, pre-main ]
   push:
     branches: [ main, pre-main ]
   pull_request:
