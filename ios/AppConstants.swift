@@ -212,7 +212,7 @@ class AppConstants {
                 ],
                 "api.givt.app": [
                     kTSKPublicKeyHashes: [
-                        "J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=",
+                        "kGdE4aEepI8ow001qhcy6svjdOb2xKO2MZfBh2aBNtI=",
                         "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w="
                     ]
                 ],
