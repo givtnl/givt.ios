@@ -207,13 +207,31 @@ class AppConstants {
                 "api.givtapp.net": [
                     kTSKPublicKeyHashes: [
                         "QLyh2geWh6rcEgzp4tGPeA3GaxEiXbvRlayQRF+BA38=",
-                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                        "cGuxAXyFXFkWm61cF4HPWX8S0srS9j0aSqN0k4AP+4A=" // Root cert
                     ]
                 ],
                 "api.givt.app": [
                     kTSKPublicKeyHashes: [
                         "kGdE4aEepI8ow001qhcy6svjdOb2xKO2MZfBh2aBNtI=",
-                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w="
+                        "Y9mvm0exBk1JoQ57f9Vm28jKo5lFm/woKcVxrYxu80o=" // Root cert
+                    ]
+                ],
+                "backend.givt.app": [
+                    kTSKPublicKeyHashes: [
+                        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=", // ISRG X1
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]
+                ],
+                "backend.givtapp.net": [
+                    kTSKPublicKeyHashes: [
+                        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=", // ISRG X1
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]
+                ],
+                "dev-backend.givtapp.net": [
+                    kTSKPublicKeyHashes: [
+                        "C5+lpZ7tcVwmwQIMcRtPbsQtWLABXhQzejna0wHFr8M=", // ISRG X1
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]
                 ],
                 "api.logit.io": [
