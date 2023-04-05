@@ -1,4 +1,4 @@
-name: Build and publish the app to AppCenter
+name: Build the app and upload to Testflight
 
 on:
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.CODESIGNING_DEPLOY_KEY }}
       - name: Build and publish with fastlane
-        run : bundle exec fastlane ${{ endsWith(github.ref, '/main') && 'production' || 'release' }}
+        run : bundle exec fastlane release
         env : 
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}

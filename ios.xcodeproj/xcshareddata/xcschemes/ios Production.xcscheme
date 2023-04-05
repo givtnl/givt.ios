@@ -106,6 +106,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Production"
+      customArchiveName = "Givt Production"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

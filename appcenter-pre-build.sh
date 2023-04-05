@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Executing prebuild script."
-if [ "$APPCENTER_BRANCH" == "master" ];
+if [ "$APPCENTER_BRANCH" == "main" ];
     then
     	echo "Getting collectgroups for prod."
         curl -H "Accept: application/json" https://api.givtapp.net/api/v2/collectgroups/applist > ios/collectGroupsList.json
