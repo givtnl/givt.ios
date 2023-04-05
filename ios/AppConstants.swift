@@ -263,7 +263,7 @@ class AppConstants {
     
     static var returnUrlDir: String {
         get {
-            return "natived"
+            return "store"
         }
     }
     
