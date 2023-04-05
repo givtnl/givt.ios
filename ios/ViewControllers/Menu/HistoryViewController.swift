@@ -77,13 +77,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         
         let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString("CancelShort", comment: "")) { action, indexPath in
             
-            if tx.timestamp < newDate {
-                action.fulfill(with: ExpansionFulfillmentStyle.reset)
-                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
             var transactionIdsToCancel = [Int]()
             self.sortedArray[indexPath.section].value[indexPath.row].collections.forEach {
                 transactionIdsToCancel.append($0.transactionId)
