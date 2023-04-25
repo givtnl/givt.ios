@@ -1,5 +1,0 @@
-"NSCameraUsageDescription" = "With the camera you can give to a Givt QR-code";
-"NSBluetoothPeripheralUsageDescription" = "Needed to scan the Givt-beacons.";
-"NSFaceIDUsageDescription" = "Login quickly and easily with Face ID";
-"NSBluetoothAlwaysUsageDescription" = "With Bluetooth we are able to detect the Givt beacons";
-"NSLocationWhenInUseUsageDescription" = "We'd like to know on which event you are!";
