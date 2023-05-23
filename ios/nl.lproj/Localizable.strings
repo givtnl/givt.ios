@@ -160,13 +160,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AlreadyAnAccount" = "Heb je al een account?";
 "UnitedKingdom" = "Verenigd Koninkrijk";
 "CancelShort" = "Annuleer";
-"CantCancelGiftAfter15Minutes" = "Helaas, deze gift kan je niet meer annuleren vanuit de Givt-app omdat het langer dan 15 minuten geleden is dat je deze gift hebt gedaan.";
+"CantCancelGiftAfter15Minutes" = "Helaas, deze gift kan je niet meer annuleren vanuit de Givt-app.";
 "UnknownErrorCancelGivt" = "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact op met ons op support@givtapp.net voor meer informatie.";
 "TransactionCancelled" = "De gift naar {0} zal geannuleerd worden.";
 "Cancelled" = "Geannuleerd";
 "Undo" = "Ongedaan maken";
 "FAQVraag16" = "Kan ik mijn giften annuleren?";
-"FAQAntwoord16" = "Binnen een kwartier nadat je je gift hebt gegeven, kun je via het giftenoverzicht je gift annuleren door naar links te swipen (vegen). Dit is dus enkel mogelijk binnen de eerste 15 minuten na het geven. Let op: dit kan alleen als je je registratie in de Givt-app hebt voltooid.\n\nJe kunt je giften ook op een later moment herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.";
+"FAQAntwoord16" = "Je kan via het giftenoverzicht je gift annuleren door naar links te swipen (vegen). Als je de Gift niet meer kan verwijderen is deze al verwerkt. Let op: dit kan alleen als je je registratie in de Givt-app hebt voltooid.\n\nJe kunt je giften ook op een later moment herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.";
 "SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
 "GiveContextQR" = "Geef door middel van een QR-code";
 "SelectContextList" = "Kies een doel uit de lijst";
