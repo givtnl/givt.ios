@@ -170,7 +170,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Cancelled" = "Storniert";
 "Undo" = "Zurück";
 "FAQVraag16" = "Kann ich einen Spende zurückziehen?";
-"FAQAntwoord16" = "In den ersten 15 Minuten nach der Spende per App ist es möglich, die Spende zu stornieren. Wechseln Sie einfach in die Spendenübersicht und wische die betreffende Spende nach links. Die Stornierung ist kostenlos, wenn es auf diese Weise geschieht. Hinweis: Die Spende kann nur storniert werden, wenn die Registrierung in der Givt App abgeschlossen wurde.\n\nIm Moment der Spende finden keinerlei Transaktionen statt. Die Transaktionen erfolgen ausschließlich per Lastschrift danach. Da diese Transaktionen der Bank ebenfalls reversibel sind, sind diese absolut sicher und vor Betrug geschützt. Diese Art der Rückabwicklung verursacht aber ggf. Kosten für die Organisation, der du gespendet hast.";
+"FAQAntwoord16" = "Wechseln Sie einfach in die Spendenübersicht und wische die betreffende Spende nach links. Die Stornierung ist kostenlos, wenn es auf diese Weise geschieht. Hinweis: Die Spende kann nur storniert werden, wenn die Registrierung in der Givt App abgeschlossen wurde.\n\nIm Moment der Spende finden keinerlei Transaktionen statt. Die Transaktionen erfolgen ausschließlich per Lastschrift danach. Da diese Transaktionen der Bank ebenfalls reversibel sind, sind diese absolut sicher und vor Betrug geschützt. Diese Art der Rückabwicklung verursacht aber ggf. Kosten für die Organisation, der du gespendet hast.";
 "SelectContextCollect" = "Spende in der Kirche, an der Haustür oder auf der Straße";
 "GiveContextQR" = "Spende, indem du einen QR-Code scannst";
 "SelectContextList" = "Suche ein Spendenziel aus der Liste aus";
@@ -179,7 +179,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CancelGiftAlertTitle" = "Die Spende stornieren?";
 "CancelGiftAlertMessage" = "Bist du sicher, dass du die Spende stornieren möchtest?\n";
 "GotIt" = "Hab's kapiert!";
-"CancelFeatureTitle" = "Du kannst eine Spende innerhalb von 15 Minuten stornieren, indem du sie nach links wischst";
+"CancelFeatureTitle" = "Du kannst eine Spende stornieren, indem du sie nach links wischst";
 "CancelFeatureMessage" = "Tippe irgendwo hin, um diese Nachricht zu verlassen";
 "GiveSubtitle" = "Es gibt mehrere Möglichkeiten, um mit Givt zu spenden. Wähle die, welche am besten zu dir passt.";
 "Confirm" = "Bestätige";
