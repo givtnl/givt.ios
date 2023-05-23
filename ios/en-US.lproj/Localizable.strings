@@ -154,13 +154,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AlreadyAnAccount" = "Already have an account?";
 "UnitedKingdom" = "United Kingdom";
 "CancelShort" = "Cancel";
-"CantCancelGiftAfter15Minutes" = "Alas, you can't cancel this donation within the Givt app because it was more than 15 minutes ago since you gave this donation.";
+"CantCancelGiftAfter15Minutes" = "Alas, you can't cancel this donation within the Givt app ";
 "UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givt.app for more information.";
 "TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
 "Undo" = "Undo";
 "FAQVraag16" = "Can I revoke donations?";
-"FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nWe believe giving should never come with obligations. We're therefore happy to reverse any donations you've made. Simply contact us through the contact field in the menu to get in touch.";
+"FAQAntwoord16" = "Yes, simply go to the donation overview and swipe the donation you want to cancel to the left. If this it not possible the donation has already been processed. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nWe believe giving should never come with obligations. We're therefore happy to reverse any donations you've made. Simply contact us through the contact field in the menu to get in touch.";
 "SelectContextCollect" = "Give in the church, at the door or on the street";
 "GiveContextQR" = "Give by scanning a QR code";
 "SelectContextList" = "Select a cause from the list";
@@ -169,7 +169,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CancelGiftAlertTitle" = "Cancel donation?";
 "CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
 "GotIt" = "Got it";
-"CancelFeatureTitle" = "You can cancel a donation within 15 minutes by swiping left";
+"CancelFeatureTitle" = "You can cancel a donation by swiping left";
 "CancelFeatureMessage" = "Tap anywhere to dismiss this message";
 "GiveSubtitle" = "There are several ways to ‘Givt’. Pick the one that suits you best.";
 "Confirm" = "Confirm";
